@@ -38,16 +38,23 @@ def contact(request):
     View for the contact us page.
     """
     context = _get_context('Contact')
+    contact_form = None
+
+    if request.method == 'POST':
+        contact_form = _send_contact_form(request)
+    else:
+        contact_form = ContactForm()
+
     context.update({
-        'contact_us_form': ContactForm()
+        'contact_us_form': contact_form
     })
+
     return render(request, 'public/contact.html', context)
 
 
-@require_POST
-def send_contact_form(request):
+def _send_contact_form(request):
     """
-    View to submit the contact form
+    Helper for submitting the contact form and sending the email
     """
     form = ContactForm(request.POST)
     if form.is_valid():
@@ -67,16 +74,11 @@ def send_contact_form(request):
         to_emails = [EC_EMAIL]
         cc_emails = []
         send_email(subject, body, to_emails, cc_emails)
+        messages.success(request, 'Success!')
     else:
-        message = (
-                'Failed to upload resource. Make ' +
-                'sure that you have provided all fields correctly.'
-        )
+        message = 'Failed to send message.'
         messages.error(request, message)
-
-    response = {}
-
-    return JsonResponse(response)
+    return form
 
 
 def activities(request):

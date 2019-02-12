@@ -10,4 +10,4 @@ class ContactForm(forms.Form):
     """
     sender = forms.CharField(max_length=50)
     message = forms.CharField(widget=forms.Textarea)
-    response_email = forms.CharField()
+    response_email = forms.EmailField()
