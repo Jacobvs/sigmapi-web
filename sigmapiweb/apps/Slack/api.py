@@ -201,11 +201,18 @@ def sigma_poll_update(request):
 ############################################
 
 def make_clique_group_error(msg):
+    """
+    Helper to pass along error messages encountered during Clique operations
+    :param msg: Error message for the integration to report
+    """
     return JsonResponse({"response_type": "ephermal", "text": msg})
 
 
 @verify_clique_sig
 def clique_create(request):
+    """
+    Creates a new grouping in the database (this integration must be stored in the db to be useful)
+    """
     requesting_user_id = request.POST.get('user_id')
     args = re.findall(DOUBLE_QUOTE_ARG_REGEX, request.POST.get("text"))
     # Check to see if everything looks right
@@ -223,6 +230,8 @@ def clique_create(request):
         try:
             group_users.append(CliqueUser.objects.get(slack_id=slack_id))
         except CliqueUser.DoesNotExist:
+            # This is the first time that we've seen this user
+            # we need to add them to the db
             new_user = CliqueUser(slack_id=slack_id)
             new_user.save()
             group_users.append(new_user)
