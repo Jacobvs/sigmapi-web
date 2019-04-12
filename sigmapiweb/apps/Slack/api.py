@@ -258,13 +258,13 @@ def clique_create(request):
 def clique_send_msg(request):
     """
     Send a message to a Clique group
-    Arguments: /group-send "groupname" "message"
+    Arguments: /group-message "groupname" "message"
     """
     args = re.findall(DOUBLE_QUOTE_ARG_REGEX, request.POST.get('text'))
     # Boilerplate error checking before continuing the function
     if len(args) != 2:
         return make_clique_group_error("Error in arguments (Double quotes are required!). Usage:\n"
-                                       "`/group-send \"groupName\" \"message\"")
+                                       "`/group-message \"groupName\" \"message\"")
 
     if CliqueGroup.objects.filter(name=args[0]).count() == 0:
         return make_clique_group_error("This group <{}> doesn't exist!".format(args[0]))
