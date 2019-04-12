@@ -249,7 +249,7 @@ def clique_create(request):
 
     new_group.save()
     # Testing response string
-    resp_string = 'GROUP <{0}> HAS BEEN CREATED WITH USERS:'.format(args[0])
+    resp_string = 'Group <{0}> has been created with users:'.format(args[0])
     resp_string += ' '.join(format_user(user.slack_id) for user in new_group.members.all())
     return JsonResponse({"replace_original": True, "text": resp_string})
 
