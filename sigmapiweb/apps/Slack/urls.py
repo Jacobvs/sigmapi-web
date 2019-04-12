@@ -26,4 +26,24 @@ urlpatterns = [
         view=api.clique_send_msg,
         name='slack_clique-send'
     ),
+    url(
+        regex=r'^clique/add_users/$',
+        view=api.clique_add_users,
+        name='slack_clique-add-users'
+    ),
+    url(
+        regex=r'^clique/remove_users/$',
+        view=api.clique_remove_users,
+        name='slack_clique-remove-users'
+    ),
+    url(
+        regex=r'^clique/delete/$',
+        view=api.clique_delete,
+        name='slack_clique-delete'
+    ),
+    url(
+        regex=r'^clique/list/$',
+        view=api.clique_list,
+        name='slack_clique-list'
+    ),
 ]
