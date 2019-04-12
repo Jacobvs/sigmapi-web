@@ -20,6 +20,6 @@ class CliqueGroup(ModelMixin, models.Model):
         on_delete=models.CASCADE,
         related_name="creator",
     )
-    name = models.TextField()
+    name = models.TextField(unique=True)
     members = models.ManyToManyField(CliqueUser)
 

@@ -7,6 +7,11 @@ import re
 from django.http import JsonResponse, HttpResponse
 
 from .utils import verify_sigma_poll_sig, verify_clique_sig
+from .models import CliqueGroup, CliqueUser
+
+SLACK_ID_REGEX = r"@(.*?)\|"
+# TODO(Tom): Find a regex that works for single and double quote
+DOUBLE_QUOTE_ARG_REGEX = r"(\".*?\")"
 
 
 def make_poll_usage_error(message, user_text):
@@ -195,7 +200,40 @@ def sigma_poll_update(request):
 ### Clique integration specific functions
 ############################################
 
+def make_clique_group_error(msg):
+    return JsonResponse({"response_type": "ephermal", "text": msg})
+
+
 @verify_clique_sig
 def clique_create(request):
-    print(request.POST)
-    return JsonResponse({"replace_original": True, "text": "123"})
+    requesting_user_id = request.POST.get('user_id')
+    args = re.findall(DOUBLE_QUOTE_ARG_REGEX, request.POST.get("text"))
+    # Check to see if everything looks right
+    if len(args) != 2:
+        return make_clique_group_error("Error in arguments. Usage:\n"
+                                        "`/group-create \"groupName\" \"@user1 @user2\"")
+
+    if CliqueGroup.objects.filter(name=args[0]).count() > 0:
+        return make_clique_group_error('This group already exists!')
+
+    # Move on to creating the group
+    raw_group_members = re.findall(SLACK_ID_REGEX, args[1])
+    group_users = []
+    for slack_id in raw_group_members:
+        try:
+            group_users.append(CliqueUser.objects.get(slack_id=slack_id))
+        except CliqueUser.DoesNotExist:
+            new_user = CliqueUser(slack_id=slack_id)
+            new_user.save()
+            group_users.append(new_user)
+
+    new_group = CliqueGroup(creator=CliqueUser.objects.get(slack_id=requesting_user_id), name=args[0])
+    new_group.save()
+    for clique_user in group_users:
+        new_group.members.add(clique_user)
+
+    new_group.save()
+    # Testing response string
+    resp_string = 'GROUP <{0}> HAS BEEN CREATED WITH USERS:'.format(args[0])
+    resp_string += ' '.join(format_user(user.slack_id) for user in new_group.members.all())
+    return JsonResponse({"replace_original": True, "text": resp_string})
