@@ -44,7 +44,6 @@ def verify_slack_signature(func, client_secret):
             if hmac.compare_digest(my_signature, slack_signature):
                 # hooray, the request came from Slack!
                 return func(request)
-            print("this isn't going to be fun")
             return HttpResponse('Slack signature verification failed', status=403)
         return HttpResponse('Slack command must include a signature', status=403)
 
