@@ -276,10 +276,11 @@ def clique_send_msg(request):
         "text": ("@{}".format(args[0]) +
                  " { " + " ".join(format_user(user.slack_id) for user in group.members.all()) +
                  " }:\n" + args[1]),
+        "as_user": True,
     }
     post("https://slack.com/api/chat.postMessage", data=request_args)
     # Best practice to return _something_ so we give a 200
-    return JsonResponse({"response_type": "ephemeral", "text": "Sending message to {}...".format(args[0])})
+    return HttpResponse('')
 
 
 @verify_clique_sig
@@ -360,7 +361,7 @@ def clique_remove_users(request):
 
     response = {
         "response_type": "ephemeral",
-        "text": ("<{}> now contains:\n{".format(args[0]) +
+        "text": ("<{}> now contains:\n".format(args[0]) +  "{" +
                  ", ".join(format_user(user.slack_id) for user in group.members.all()).strip(',') +
                  " }"),
     }
@@ -424,7 +425,7 @@ def describe_clique(group_name):
 
     response = {
         "response_type": "ephemeral",
-        "text": ("Members of group <{}>:\n{" +
+        "text": ("Members of group <{}>:\n".format(group.name) + "{" +
                  ", ".join(format_user(user.slack_id) for user in group.members.all()).strip(',') +
                  "}")
     }
@@ -438,7 +439,7 @@ def describe_all_cliques():
     final_string = ""
     for group in CliqueGroup.objects.all():
         final_string += (
-            "Members of group <{}>:\n{" +
+            "Members of group <{}>:\n".format(group.name) + "{" +
             ", ".join(format_user(user.slack_id) for user in group.members.all()).strip(',') +
             "}"
         )
