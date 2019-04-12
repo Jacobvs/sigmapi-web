@@ -20,5 +20,10 @@ urlpatterns = [
         regex=r'^clique/create/$',
         view=api.clique_create,
         name='slack_clique-create'
-    )
+    ),
+    url(
+        regex=r'^clique/send/$',
+        view=api.clique_send_msg,
+        name='slack_clique-send'
+    ),
 ]

@@ -4,14 +4,16 @@ API Endpoints for Slack Apps
 import json
 import re
 
+from django.conf import settings
 from django.http import JsonResponse, HttpResponse
+from requests import post
 
 from .utils import verify_sigma_poll_sig, verify_clique_sig
 from .models import CliqueGroup, CliqueUser
 
 SLACK_ID_REGEX = r"@(.*?)\|"
 # TODO(Tom): Find a regex that works for single and double quote
-DOUBLE_QUOTE_ARG_REGEX = r"(\".*?\")"
+DOUBLE_QUOTE_ARG_REGEX = r"\"(.*?)\""
 
 
 def make_poll_usage_error(message, user_text):
@@ -212,12 +214,13 @@ def make_clique_group_error(msg):
 def clique_create(request):
     """
     Creates a new grouping in the database (this integration must be stored in the db to be useful)
+    Arguments: /group-create "groupname" "@user1 @user2"
     """
     requesting_user_id = request.POST.get('user_id')
     args = re.findall(DOUBLE_QUOTE_ARG_REGEX, request.POST.get("text"))
     # Check to see if everything looks right
     if len(args) != 2:
-        return make_clique_group_error("Error in arguments. Usage:\n"
+        return make_clique_group_error("Error in arguments (Double quotes are required!). Usage:\n"
                                         "`/group-create \"groupName\" \"@user1 @user2\"")
 
     if CliqueGroup.objects.filter(name=args[0]).count() > 0:
@@ -236,7 +239,10 @@ def clique_create(request):
             new_user.save()
             group_users.append(new_user)
 
-    new_group = CliqueGroup(creator=CliqueUser.objects.get(slack_id=requesting_user_id), name=args[0])
+    new_group = CliqueGroup(
+        creator=CliqueUser.objects.get(slack_id=requesting_user_id),
+        name=args[0]
+    )
     new_group.save()
     for clique_user in group_users:
         new_group.members.add(clique_user)
@@ -246,3 +252,29 @@ def clique_create(request):
     resp_string = 'GROUP <{0}> HAS BEEN CREATED WITH USERS:'.format(args[0])
     resp_string += ' '.join(format_user(user.slack_id) for user in new_group.members.all())
     return JsonResponse({"replace_original": True, "text": resp_string})
+
+
+@verify_clique_sig
+def clique_send_msg(request):
+    """
+    Send a message to a Clique group
+    Arguments: /group-send "groupname" "message"
+    """
+    args = re.findall(DOUBLE_QUOTE_ARG_REGEX, request.POST.get('text'))
+    if len(args) != 2:
+        return make_clique_group_error("Error in arguments (Double quotes are required!). Usage:\n"
+                                       "`/group-send \"groupName\" \"message\"")
+
+    if CliqueGroup.objects.filter(name=args[0]).count() == 0:
+        return make_clique_group_error("This group doesn't exist!")
+    group = CliqueGroup.objects.get(name=args[0])
+    request_args = {
+        "token": settings.CLIQUE_SLACK_OATH_TOKEN,
+        "channel": request.POST.get('channel_id'),
+        "text": ("@{}".format(args[0]) +
+                 " { " + " ".join(format_user(user.slack_id) for user in group.members.all()) +
+                 " } " + args[1]),
+    }
+    post("https://slack.com/api/chat.postMessage", data=request_args)
+    # Best practice to return _something_ so we give a 200
+    return JsonResponse({"response_type": "ephemeral", "text": "Sending message to {}...".format(args[0])})
