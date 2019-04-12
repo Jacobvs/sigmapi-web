@@ -6,7 +6,7 @@ import re
 
 from django.http import JsonResponse, HttpResponse
 
-from .utils import verify_sigma_poll_sig
+from .utils import verify_sigma_poll_sig, verify_clique_sig
 
 
 def make_poll_usage_error(message, user_text):
@@ -190,3 +190,12 @@ def sigma_poll_update(request):
             break
 
     return JsonResponse(response)
+
+############################################
+### Clique integration specific functions
+############################################
+
+@verify_clique_sig
+def clique_create(request):
+    print(request.POST)
+    return JsonResponse({"replace_original": True, "text": "123"})

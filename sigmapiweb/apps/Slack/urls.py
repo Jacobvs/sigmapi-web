@@ -15,5 +15,10 @@ urlpatterns = [
         regex=r'^sigma-poll/update/$',
         view=api.sigma_poll_update,
         name='slack_sigma-poll-update'
+    ),
+    url(
+        regex=r'^clique/create/$',
+        view=api.clique_create,
+        name='slack_clique-create'
     )
 ]

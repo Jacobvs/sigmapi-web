@@ -44,6 +44,7 @@ def verify_slack_signature(func, client_secret):
             if hmac.compare_digest(my_signature, slack_signature):
                 # hooray, the request came from Slack!
                 return func(request)
+            print("this isn't going to be fun")
             return HttpResponse('Slack signature verification failed', status=403)
         return HttpResponse('Slack command must include a signature', status=403)
 
@@ -58,3 +59,11 @@ def verify_sigma_poll_sig(func):
     :param func: The function to wrap
     """
     return verify_slack_signature(func, settings.SIGMA_POLLS_SLACK_CLIENT_SECRET)
+
+
+def verify_clique_sig(func):
+    """
+    A decorator that verifies a message was sent from the Clique app
+    :param func: The function to wrap
+    """
+    return verify_slack_signature(func, settings.CLIQUE_SLACK_SIGNING_SECRET)
