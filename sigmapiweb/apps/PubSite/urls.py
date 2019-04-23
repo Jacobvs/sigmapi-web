@@ -72,6 +72,11 @@ urlpatterns = [
         name='pub-contact',
     ),
     url(
+        regex=r'^send_contact_form[/]$',
+        view=views.send_contact_form,
+        name='send-contact-form'
+    ),
+    url(
         regex=r'^403/',
         view=views.permission_denied,
         name='pub-permission_denied',

@@ -37,7 +37,11 @@ def contact(request):
     """
     View for the contact us page.
     """
-    return render(request, 'public/contact.html', _get_context('Contact'))
+    context = _get_context('Contact')
+    context.update({
+        'contact_us_form': ContactForm()
+    })
+    return render(request, 'public/contact.html', context)
 
 
 @require_POST
@@ -46,7 +50,7 @@ def send_contact_form(request):
     View to submit the contact form
     """
     form = ContactForm(request.POST)
-    if form.isValid():
+    if form.is_valid():
         sender = form.cleaned_data.get('sender')
         body = form.cleaned_data.get('message')
         response_email = form.cleaned_data.get('response_email')
