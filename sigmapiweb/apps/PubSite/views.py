@@ -70,10 +70,9 @@ def send_contact_form(request):
         )
         messages.error(request, message)
 
-        response = {}
+    response = {}
 
-        return JsonResponse{response}
-
+    return JsonResponse(response)
 
 
 def activities(request):
