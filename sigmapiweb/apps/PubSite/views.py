@@ -4,7 +4,7 @@ Views for PubSite app.
 from django.conf import settings
 from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView
 from django.shortcuts import render
-from forms import ContactForm
+from .forms import ContactForm
 from django.views.decorators.http import require_POST
 from common.utils import send_email
 from common.settings.base import EC_EMAIL
@@ -62,6 +62,7 @@ def send_contact_form(request):
         cc_emails = []
         send_email(subject, body, to_emails, cc_emails)
     else:
+        pass
         # TODO errors
 
 
