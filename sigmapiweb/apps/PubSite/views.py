@@ -4,7 +4,7 @@ Views for PubSite app.
 from django.http import JsonResponse
 from django.contrib import messages
 from django.conf import settings
-from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView
+from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
 from django.shortcuts import render
 from .forms import ContactForm
 from django.views.decorators.http import require_POST
@@ -116,3 +116,6 @@ class ResetPasswordDone(PasswordResetDoneView):
 
 class ResetPasswordConfirm(PasswordResetConfirmView):
     template_name = "password_reset/password_reset_confirm.html"
+
+class ResetPasswordComplete(PasswordResetCompleteView):
+    template_name = "password_reset/password_reset_complete.html"
