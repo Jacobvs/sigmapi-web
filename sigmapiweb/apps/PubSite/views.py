@@ -4,6 +4,10 @@ Views for PubSite app.
 from django.conf import settings
 from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView
 from django.shortcuts import render
+from forms import ContactForm
+from django.views.decorators.http import require_POST
+from common.utils import send_email
+from common.settings.base import EC_EMAIL
 
 
 def _get_context(page_name):
@@ -32,6 +36,34 @@ def contact(request):
     View for the contact us page.
     """
     return render(request, 'public/contact.html', _get_context('Contact'))
+
+
+@require_POST
+def send_contact_form(request):
+    """
+    View to submit the contact form
+    """
+    form = ContactForm(request.POST)
+    if form.isValid():
+        sender = form.cleaned_data.get('sender')
+        body = form.cleaned_data.get('message')
+        response_email = form.cleaned_data.get('response_email')
+        subject = 'Email from {sender} via Contact Us page on the website'.format(sender=sender)
+        body = '''
+        A contact request was sent by {sender} via the website. The body of the email is as follows:
+        -------
+        {body}
+        -------
+        The sender left the following email for reply: {response_email}
+        
+        Please contact the Web chair if you experience any technical difficulties with this email.
+        '''.format(sender=sender, body=body, response_email=response_email)
+        to_emails = [EC_EMAIL]
+        cc_emails = []
+        send_email(subject, body, to_emails, cc_emails)
+    else:
+        # TODO errors
+
 
 
 def activities(request):
