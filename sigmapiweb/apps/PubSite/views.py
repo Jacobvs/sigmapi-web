@@ -1,6 +1,8 @@
 """
 Views for PubSite app.
 """
+from django.http import JsonResponse
+from django.contrib import messages
 from django.conf import settings
 from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView
 from django.shortcuts import render
@@ -62,8 +64,15 @@ def send_contact_form(request):
         cc_emails = []
         send_email(subject, body, to_emails, cc_emails)
     else:
-        pass
-        # TODO errors
+        message = (
+                'Failed to upload resource. Make ' +
+                'sure that you have provided all fields correctly.'
+        )
+        messages.error(request, message)
+
+        response = {}
+
+        return JsonResponse{response}
 
 
 
