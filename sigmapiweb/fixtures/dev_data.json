@@ -1094,6 +1094,11 @@
         "academicresource"
       ],
       [
+        "scholarship_head",
+        "Scholarship",
+        "trackeduser"
+      ],
+      [
         "delete_summonshistoryrecord",
         "Standards",
         "summonshistoryrecord"
