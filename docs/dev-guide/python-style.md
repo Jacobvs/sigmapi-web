@@ -66,6 +66,27 @@ from a import b, c, \
               d, e
 ```
 
+#### Special rules for testing
+The django test runner only loads portions of the application that it needs.
+As such, there are some issues that come with loading individual apps.
+When writing test cases you **must** use absolute imports from what is listed under `INSTALLED APPS` in the settings.
+
+```python
+# __file__ = 'common/settings/dev.py'
+...
+INSTALLED_APPS = (
+    ...
+    'apps.Scholarship',
+    ...
+)
+...
+
+# __file__ = 'apps/Scholarship/test*.py'
+from apps.Scholarship.models import TrackedUser, ...
+```
+
+If you try to use another type of import, django will complain about `app_label` not being set.
+
 ### Docstrings
 * Every module should have a docstring in the following format:
 ```python

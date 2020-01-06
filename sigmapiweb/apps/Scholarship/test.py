@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
 
-#from .models import TrackedUser, StudyHoursRecord, AcademicResource, LibraryItem
+from apps.Scholarship.models import TrackedUser, StudyHoursRecord, AcademicResource, LibraryItem
 
 class StudyHoursTest(TestCase):
     fixtures = ["dev_data"]
@@ -10,7 +10,7 @@ class StudyHoursTest(TestCase):
         userA = User.objects.get(username="brother")
         userB = User.objects.get(username="scholarshipchair")
 
-        #TrackedUser.objects.create(userA, 10)
+        TrackedUser.objects.create(user=userA, number_of_hours=10)
 
     def test_track_new_user(self):
         """
