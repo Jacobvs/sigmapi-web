@@ -38,3 +38,31 @@ class StudyHoursTest(TestCase):
         # Check that test user is now in set
         self.assertEqual(TrackedUser.objects.all().count(), 2)
         self.assertTrue(TrackedUser.objects.get(user=self.userB))
+
+    def test_reject_alumni_addition(self):
+        """
+        Ensure that an alumni can't
+        get assigned study hours
+        """
+        path = reverse('scholarship-update_requirements')
+        alumni = User.objects.get(username='alumni')
+
+        r = self.client.post(path, {
+            "user": alumni.id,
+            "number_of_hours": 22
+        })
+
+        self.assertEqual(TrackedUser.objects.all().count(), 1)
+
+    def test_fake_user_addition(self):
+        """
+        Test a non existant user id
+        """
+        path = reverse('scholarship-update_requirements')
+
+        self.client.post(path, {
+            "user": 0,
+            "number_of_hours": 12,
+        })
+
+        self.assertEqual(TrackedUser.objects.all().count(), 1)

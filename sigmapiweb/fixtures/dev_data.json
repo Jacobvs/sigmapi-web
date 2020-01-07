@@ -1667,6 +1667,28 @@
   }
 },
 {
+  "model": "auth.user",
+  "pk": 19,
+  "fields": {
+    "password": "pbkdf2_sha256$36000$y6MJVc9TlzoG$maBSAjktPrSvkNLNbV+GK/Hb2z7x/YQbNJ8/AUdLFws=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "alumni",
+    "first_name": "Alumni",
+    "last_name": "Alumni",
+    "email": "alumni@local.dev",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2020-01-06T00:17:37",
+    "groups": [
+      [
+        "Alumni"
+      ]
+    ],
+    "user_permissions": []
+  }
+},
+{
   "model": "sessions.session",
   "pk": "4489z9sgl06x4lkuqgcij63cby84dp8i",
   "fields": {
