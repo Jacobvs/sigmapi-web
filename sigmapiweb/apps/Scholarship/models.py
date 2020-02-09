@@ -10,6 +10,7 @@ from django.db import models
 
 
 from common.mixins import ModelMixin
+from .utils import Term, allowed_years
 
 
 def validate_date(date):
@@ -171,3 +172,40 @@ class LibraryItem(ModelMixin, models.Model):
     item_pdf = models.FileField(upload_to='protected/scholarship/library')
     submittedBy = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
     approved = models.BooleanField(default=False)
+
+class Course(ModelMixin):
+    """
+    Model for a Course offered at WPI
+    """
+    catalog_code = models.TextField()
+    title = models.TextField()
+
+
+class CourseSection(ModelMixin):
+    """
+    A single instance of a Course
+    """
+    catalog_course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    term = models.CharField(choices=Term.choices())
+    year = models.IntegerField(choices=allowed_years(), default=datetime.date.today().year)
+    professor = models.CharField()
+
+
+class CourseOfficeHour(ModelMixin):
+    """
+    A class for a single office hour session
+    """
+    professor = models.BooleanField()
+    facilitator = models.CharField()
+    day_and_time = models.CharField()
+    location = models.CharField()
+    course_section = models.ForeignKey(CourseSection, related_name="office_hours")
+
+
+class CourseReview(ModelMixin):
+    """
+    Reviews of a specific class
+    """
+    reviewer = models.ForeignKey(User, on_delete=models.CASCADE)
+    stars = models.IntegerField(choices=[(i,i) for i in range(0,5)])
+    text = models.TextField(max_length=400)
