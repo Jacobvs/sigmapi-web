@@ -206,20 +206,21 @@ class CourseSection(ModelMixin, models.Model):
     participants = models.ManyToManyField(User)
 
 
-class CourseOfficeHour(ModelMixin, models.Model):
+class CourseOfficeHour(ModelMixin,models.Model):
     """
     Represents an office hour held by course staff.
     """
+
     professor = models.BooleanField(default=False)
     facilitator = models.CharField(max_length=100)
     day_and_time = models.CharField(max_length=100)
     location = models.CharField(max_length=100)
 
 
-class Review(ModelMixin, models.Model):
+class Review(ModelMixin,models.Model):
     """
     Represents a single review for a course.
     """
     reviewer = models.ForeignKey(User)
-    stars = models.IntegerField(validators=[validate_stars])
+    stars = models.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(5)])
     text = models.CharField(max_length=1000)
