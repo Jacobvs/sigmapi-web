@@ -8,7 +8,11 @@ from .models import (
     AcademicResource,
     LibraryItem,
     StudyHoursRecord,
-    TrackedUser
+    TrackedUser,
+    Course,
+    CourseSection,
+    CourseOfficeHour,
+    Review
 )
 
 
@@ -78,3 +82,27 @@ class LibraryItemForm(forms.ModelForm):
     class Meta:
         model = LibraryItem
         fields = ['title', 'isbn_number', 'course', 'edition', 'item_pdf']
+
+
+class CourseForm(forms.ModelForm):
+    class Meta:
+        model = Course
+        fields = ['catalog_code', 'title']
+
+
+class CourseSectionForm(forms.ModelForm):
+    class Meta:
+        model = CourseSection
+        fields = ['catalog_course', 'term', 'professor']
+
+
+class CourseOfficeHourForm(forms.ModelForm):
+    class Meta:
+        model = CourseOfficeHour
+        fields = ['professor', 'facilitator', 'day_and_time', 'location']
+
+
+class ReviewForm(forms.ModelForm):
+    class Meta:
+        model = Review
+        fields = ['stars', 'text']
