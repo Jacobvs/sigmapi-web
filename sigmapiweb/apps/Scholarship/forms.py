@@ -12,7 +12,7 @@ from .models import (
     Course,
     CourseSection,
     CourseOfficeHour,
-    Review
+    Review,
 )
 
 
