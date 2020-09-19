@@ -12,11 +12,7 @@ from .models import (
     Course,
     CourseSection,
     CourseOfficeHour,
-<<<<<<< HEAD
     Review,
-=======
-    Review
->>>>>>> 2f629c0... added model forms
 )
 
 
