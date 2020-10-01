@@ -91,7 +91,7 @@
   position: relative;
 }
 
-.family-tree-fab {
+.family-tree-fab  {
   position: absolute;
   top: 20px;
   right: 20px;
@@ -117,4 +117,49 @@
       color: $sp-purple;
     }
   }
+}
+
+.test-button {
+  position: absolute;
+  top: 20px;
+  right: 140px;
+
+  @media(max-width: $sm-max) {
+    display: none;
+  }
+
+  .inner {
+    background: #3f3a5f;
+    border-radius: 4px;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+    border: 1px solid white;
+    transition: 0.25s all;
+
+    &:hover {
+      background: white;
+      color: $sp-purple;
+    }
+  }
+}
+
+// For whatever reason, popover content is small by default; have to add selectors to make
+// it regular-sized.
+#popover-content {
+
+  h3 {
+    text-align: center;
+  }
+
+  span, input, select, option, label, .btn {
+    font-size: medium;
+  }
+  
+  .btn {
+    margin-top: 1rem;
+  }
+
 }

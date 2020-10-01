@@ -11,10 +11,54 @@
   Brothers
 {% endblock %}
 {% block content %}
+
+  <!-- Form for filtering brothers, filled into popover in script right below -->
+  <div style="display: none">
+    <div id="popover-content" class="container hide">
+      <h3>Filter Brothers</h3>
+      <div class="form-group">
+        <label for="majorSelector">Major</label>
+        <select class="form-control" id="majorSelector">
+          <option>CS</option>
+          <option>ME</option>
+          <option>ECE</option>
+        </select>
+
+        <label for="activitiesAndInterests">Activities and Interests</label>
+        <input class="form-control" type="text" placeholder="Frisbee, Hiking, etc.">
+
+        <label for="yearSelector">Year</label>
+        <select class="form-control" id="yearSelector">
+          <option>2021</option>
+          <option>2022</option>
+          <option>2023</option>
+        </select>
+
+        <label for="homeState">Home State</label>
+        <input class="form-control" type="text" placeholder="MA">
+      </div>
+      <div class="col text-center">
+        <button class="btn btn-primary">Filter</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    $(function () {
+      $('[data-toggle="popover"]').popover({
+        html: true,
+        content: $('#popover-content')
+      })
+    })
+  </script>
+
   <div class="family-tree-fab">
     <a class="inner" href="{% url 'userinfo-family_tree_dashbaord' %}">
       View Family Tree
     </a>
+  </div>
+  <div class="test-button" data-container="body" data-toggle="popover" data-placement="bottom">
+    <p class="inner">Filter</p>
   </div>
   {% for group in brother_groups %}
     {% if group.count > 0 %}
