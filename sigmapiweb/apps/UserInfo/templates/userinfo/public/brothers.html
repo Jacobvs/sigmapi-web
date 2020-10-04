@@ -25,20 +25,20 @@
         </select>
 
         <label for="activitiesAndInterests">Activities and Interests</label>
-        <input class="form-control" type="text" placeholder="Frisbee, Hiking, etc.">
+        <input id="activitiesAndInterests" class="form-control" type="text" placeholder="Frisbee, Hiking, etc.">
 
         <label for="yearSelector">Year</label>
         <select class="form-control" id="yearSelector">
-          <option>2021</option>
-          <option>2022</option>
-          <option>2023</option>
+          <option value="2021">2021</option>
+          <option value="2022">2022</option>
+          <option value="2023">2023</option>
         </select>
 
         <label for="homeState">Home State</label>
-        <input class="form-control" type="text" placeholder="MA">
+        <input id="homeState" class="form-control" type="text" placeholder="MA">
       </div>
       <div class="col text-center">
-        <button class="btn btn-primary">Filter</button>
+        <button class="btn btn-primary" onclick="filterBrothers()">Filter</button>
       </div>
     </div>
   </div>
@@ -50,6 +50,26 @@
         content: $('#popover-content')
       })
     })
+
+    // Get filter info and reload page with said info in URL
+    function filterBrothers() {
+      const year = document.getElementById("yearSelector").value;
+      const major = document.getElementById("majorSelector").value;
+      const homeState = document.getElementById("homeState").value;
+      const activities = document.getElementById("activitiesAndInterests").value
+
+      // Clear parameters before trying to add new
+      history.pushState(null, "", location.href.split("?")[0])
+
+      if(window.location.search.includes("year")) {
+        window.location.search = ""
+      }
+
+      if(year) {
+        window.location.search += `year=${year}&major=${major}&homeState=${homeState}&activities=${activities}`
+      }
+    }
+
   </script>
 
   <div class="family-tree-fab">
