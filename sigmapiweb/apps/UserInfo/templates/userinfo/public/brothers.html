@@ -19,23 +19,25 @@
       <div class="form-group">
         <label for="majorSelector">Major</label>
         <select class="form-control" id="majorSelector">
+          <option>-</option>
           <option>CS</option>
           <option>ME</option>
           <option>ECE</option>
         </select>
 
         <label for="activitiesAndInterests">Activities and Interests</label>
-        <input id="activitiesAndInterests" class="form-control" type="text" placeholder="Frisbee, Hiking, etc.">
+        <input class="form-control" type="text" placeholder="">
 
         <label for="yearSelector">Year</label>
         <select class="form-control" id="yearSelector">
-          <option value="2021">2021</option>
-          <option value="2022">2022</option>
-          <option value="2023">2023</option>
+          <option>-</option>
+          <option>2021</option>
+          <option>2022</option>
+          <option>2023</option>
         </select>
 
         <label for="homeState">Home State</label>
-        <input id="homeState" class="form-control" type="text" placeholder="MA">
+        <input class="form-control" type="text" placeholder="">
       </div>
       <div class="col text-center">
         <button class="btn btn-primary" onclick="filterBrothers()">Filter</button>

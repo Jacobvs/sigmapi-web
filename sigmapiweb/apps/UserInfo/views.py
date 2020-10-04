@@ -42,6 +42,8 @@ def users(request):
     first = check_user_exists('1st Counselor', 'new1st')
     herald = check_user_exists('Herald', 'newHerald')
 
+    exec_list =  [sage, second, third, fourth, first, herald]
+
     # Get the rest of the users.  Exclude pledges or any execs.
     seniors = User.objects.filter(groups__name='Brothers')
     seniors = seniors.filter(
@@ -96,14 +98,16 @@ def users(request):
             freshmen = freshmen.exclude(username=user.username)
             user.title = exec_brother[1]
 
+
+    #filter exec list
     context = {
         'pages': settings.PUBLIC_PAGES,
         'current_page_name': 'Brothers',
         'brother_groups': [
             {
                 'group_title': 'Executive Council',
-                'brothers': [sage, second, third, fourth, first, herald],
-                'count': 6
+                'brothers': exec_list,
+                'count': len(exec_list)
             },
             {
                 'group_title': 'Seniors',
