@@ -34,6 +34,19 @@ def validate_number(number):
         raise ValidationError("The number given cannot be negative.")
 
 
+def validate_stars(number):
+    """
+    Raises a validation error if the given number is <1 or >5.
+
+    Arguments:
+        number (int)
+    """
+    if number < 1:
+        raise ValidationError("The stars given cannot be below 1.")
+    elif number > 5:
+        raise ValidationError("The stars given cannot be above 5.")
+
+
 def occurred_this_week(date):
     """
     Returns whether the given date occured within this week (starting Monday).
@@ -193,21 +206,20 @@ class CourseSection(ModelMixin, models.Model):
     participants = models.ManyToManyField(User)
 
 
-class CourseOfficeHour(ModelMixin,models.Model):
+class CourseOfficeHour(ModelMixin, models.Model):
     """
     Represents an office hour held by course staff.
     """
-
     professor = models.BooleanField(default=False)
     facilitator = models.CharField(max_length=100)
     day_and_time = models.CharField(max_length=100)
     location = models.CharField(max_length=100)
 
 
-class Review(ModelMixin,models.Model):
+class Review(ModelMixin, models.Model):
     """
     Represents a single review for a course.
     """
     reviewer = models.ForeignKey(User)
-    stars = models.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(5)])
+    stars = models.IntegerField(validators=[validate_stars])
     text = models.CharField(max_length=1000)

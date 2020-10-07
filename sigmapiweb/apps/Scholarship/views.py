@@ -668,3 +668,34 @@ def record_review(request):
         )
         messages.error(request, message, extra_tags='report')
     return redirect('scholarship-record_review')
+
+@login_required
+@require_GET
+def courses(request):
+    """
+        View for seeing all courses
+    """
+    all_courses = Course.objects.order_by('-catalog_code')
+
+    error = None
+    msg = None
+
+    try:
+        error = request.session['scholarship_course_error']
+        del request.session['scholarship_course_error']
+    except KeyError:
+        pass
+
+    try:
+        msg = request.session['scholarship_course_msg']
+        del request.session['scholarship_course_msg']
+    except KeyError:
+        pass
+
+    context = {
+        'all_courses': all_courses,
+        'error': error,
+        'msg': msg
+    }
+
+    return render(request, 'scholarship/courses.html', context)
