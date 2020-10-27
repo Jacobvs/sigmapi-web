@@ -256,7 +256,7 @@ def r_quickrun():
 
 @describe('Run tests (not implemented)')
 def r_test():
-    print('lol what tests')
+    format_and_call('{MANAGE} test')
 
 
 @describe('Run the pycodestyle checks')
