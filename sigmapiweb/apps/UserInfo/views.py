@@ -142,11 +142,14 @@ def users(request):
                 'group_title': 'Executive Council',
                 'brothers': exec_list,
                 'count': len(exec_list)
+<<<<<<< HEAD
             },
             {
                 'group_title': 'Graduate Students',
                 'brothers': gradstudents,
                 'count': len(gradstudents)
+=======
+>>>>>>> 7006c9db62d6f7d328ae2fd05698a4b432769e39
             },
             {
                 'group_title': 'Seniors',
