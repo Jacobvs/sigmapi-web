@@ -26,7 +26,7 @@
         </select>
 
         <label for="activitiesAndInterests">Activities and Interests</label>
-        <input class="form-control" type="text" placeholder="">
+        <input class="form-control" type="text" placeholder="" id="activitiesAndInterests">
 
         <label for="yearSelector">Year</label>
         <select class="form-control" id="yearSelector">
@@ -37,10 +37,11 @@
         </select>
 
         <label for="homeState">Home State</label>
-        <input class="form-control" type="text" placeholder="">
+        <input class="form-control" type="text" placeholder="" id="homeState">
       </div>
       <div class="col text-center">
-        <button class="btn btn-primary" onclick="filterBrothers()">Filter</button>
+        <button class="btn btn-primary" onclick="filterBrothers()" style="margin-right: 2rem;">Filter</button>
+        <button class="btn btn-primary" onclick="clearFilter()">Clear</button>
       </div>
     </div>
   </div>
@@ -70,6 +71,24 @@
       if(year) {
         window.location.search += `year=${year}&major=${major}&homeState=${homeState}&activities=${activities}`
       }
+    }
+
+    function clearFilter() {
+      document.getElementById("yearSelector").value = "-"
+      document.getElementById("majorSelector").value = "-"
+      document.getElementById("homeState").value = ""
+      document.getElementById("activitiesAndInterests").value = ""
+      window.location.search = ""
+    }
+
+    document.body.onload = function() {
+      // Get URL parameters, if any, and fill them into filter form
+      console.log("In onload!")
+      const urlParams = new URLSearchParams(window.location.search);
+      document.getElementById("yearSelector").value = urlParams.get('year')
+      document.getElementById("majorSelector").value = urlParams.get('major')
+      document.getElementById("homeState").value = urlParams.get('homeState')
+      document.getElementById("activitiesAndInterests").value = urlParams.get('activities')
     }
 
   </script>

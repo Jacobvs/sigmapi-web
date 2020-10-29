@@ -44,41 +44,68 @@ def users(request):
 
     exec_list =  [sage, second, third, fourth, first, herald]
 
+    # Get URL parameters
+    filterYear = request.GET.get('year')
+    filterMajor = request.GET.get('major')
+    filterHomeState = request.GET.get('homeState')
+    filterActivities = request.GET.get('activities')
+
+    filteredUsers = User.objects.filter(groups__name='Brothers')
+
+    if filterYear and filterYear.isnumeric():
+        filteredUsers = filteredUsers.filter(
+            userinfo__graduationYear=filterYear
+        )
+    
+    if filterMajor and filterMajor != "-":
+        filteredUsers = filteredUsers.filter(
+            userinfo__major__icontains=filterMajor
+        )
+
+    if filterHomeState and filterHomeState != "-":
+        filteredUsers = filteredUsers.filter(
+            userinfo__hometown__icontains=filterHomeState
+        )
+
+    if filterActivities and filterActivities != "-":
+        # Complex lookup (look for match in activities OR interests), so we use Q here
+        filteredUsers = filteredUsers.filter(
+            Q(userinfo__activities__icontains=filterActivities) |
+            Q(userinfo__interests__icontains=filterActivities)
+        )
+
     # Get the rest of the users.  Exclude pledges or any execs.
-    gradstudents = User.objects.filter(groups__name='Brothers')
+    gradstudents = filteredUsers
     gradstudents = gradstudents.filter(
         userinfo__graduationYear__lt=senior_year,
         groups__name="Brothers"
     ).prefetch_related('userinfo').order_by("last_name")
 
-    seniors = User.objects.filter(groups__name='Brothers')
+    seniors = filteredUsers
     seniors = seniors.filter(
         userinfo__graduationYear=senior_year,
         groups__name="Brothers"
     ).prefetch_related('userinfo').order_by("last_name")
 
-    juniors = User.objects.filter(
-        userinfo__graduationYear=(senior_year + 1),
-        groups__name="Brothers"
+    juniors = filteredUsers.filter(
+      userinfo__graduationYear=(senior_year + 1)  
     ).prefetch_related('userinfo').order_by("last_name")
     juniors = juniors.exclude(groups__name='Pledges')
     juniors = juniors.exclude(groups__name='Alumni')
 
-    sophomores = User.objects.filter(
-        userinfo__graduationYear=(senior_year + 2),
-        groups__name="Brothers"
+    sophomores = filteredUsers.filter(
+      userinfo__graduationYear=(senior_year + 2)  
     ).prefetch_related('userinfo').order_by("last_name")
     sophomores = sophomores.exclude(groups__name='Pledges')
     sophomores = sophomores.exclude(groups__name='Alumni')
 
-    freshmen = User.objects.filter(
-        userinfo__graduationYear=(senior_year + 3),
-        groups__name="Brothers"
+    freshmen = filteredUsers.filter(
+      userinfo__graduationYear=(senior_year + 3)  
     ).prefetch_related('userinfo').order_by("last_name")
     freshmen = freshmen.exclude(groups__name='Pledges')
     freshmen = freshmen.exclude(groups__name='Alumni')
 
-    sweethearts = User.objects.filter(
+    sweethearts = filteredUsers.filter(
         userinfo__graduationYear__gte=senior_year,
         groups__name='Sweethearts'
     ).prefetch_related('userinfo').order_by("last_name")
