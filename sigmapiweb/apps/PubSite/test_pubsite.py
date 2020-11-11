@@ -1,7 +1,14 @@
 from django.test import Client, TestCase
 from django.urls import reverse
 
+"""
+Unit tests for correct HTTP response of all public site pages 
+"""
+
 class PublicViewTests(TestCase):
+
+    print("->Testing Public Site Pages Correct Response")
+
     fixtures = ['dev_data']
 
     def setUp(self):
@@ -9,7 +16,7 @@ class PublicViewTests(TestCase):
 
     def test_home_page(self):
         """
-        Test if the Home Page renders
+        Test if Home Page renders
         """
         # pub-index here is the name of the url to get the view for, defined in
         # /pubsite/urls.py 
