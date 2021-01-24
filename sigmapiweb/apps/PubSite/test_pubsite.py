@@ -8,13 +8,11 @@ import sigmapiweb.apps.UserInfo
 
 
 class PublicViewTests(TestCase):
-    fixtures = ['test_2']
+    fixtures = ['dev_data']
 
     def setUp(self):
         self.client = Client()
         self.group = Group.objects
-        
-    
 
     def test_home_page(self):
         """
