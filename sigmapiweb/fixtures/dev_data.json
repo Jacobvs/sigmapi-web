@@ -1228,8 +1228,8 @@
   "model": "auth.user",
   "pk": 1,
   "fields": {
-    "password": "pbkdf2_sha256$36000$0oQ3PT2jpYRA$GXQLQj0r0BqekhSYK66O80KrO1rRRmTUEm86f7Y1aus=",
-    "last_login": "2019-12-16T17:42:10.819",
+    "password": "pbkdf2_sha256$216000$jDRxOpvuhwLU$grA80QFtZn+EPiOENpy36MasxA0I4Pgxb0Yfx500/Mw=",
+    "last_login": "2020-11-12T12:34:37.508",
     "is_superuser": true,
     "username": "admin",
     "first_name": "",
@@ -1678,6 +1678,30 @@
   }
 },
 {
+  "model": "sessions.session",
+  "pk": "hn1ey337ma9aweggrh5vs8m70mfzpnyd",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2pACZaAu3fcMZJgZpWpoUtqV8e7apAvd_vfef6mE21rS1mRJE6uzMur0u2Wkh9Qd8B3rbdY013WZst4VfdCmx5nleTncv4OCrXxrixa8Y4givRETEcANFKyBnPnquuBJPGA0JtIA1HsQF5i4Yy8ZJav3B9U7ODQ:1kdGUX:qnrcXqB4JCOlbTbPNNWmZ-AM7ZREfJ3hCNq0vKfIqVM",
+    "expire_date": "2020-11-26T12:34:37.512"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "in3yj66zts49dp7dz43m6c20vji8facv",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hBmhHZw6b5nIDNApWpoUtqV8e7apAvd_vfef6nA21rC1vISpqQuCtTpdxOOj1x3kO5cb7OOc12XSfSu6IM2PcwpP6-H-3dQuJVvLdYwJjIdoBDhmRzCiGJ7A8n56BwT9eRHgRwRO_As0vncA1tIDKLeH7l5NzQ:1kLCEl:N88JNO0bEayBdm0CGvHbgVFBb0YcoqlP6KvyZ83oCZ4",
+    "expire_date": "2020-10-07T17:23:39.742"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "s21cc12wdlx2wzgsacuxndx54g38kj4y",
+  "fields": {
+    "session_data": ".eJxVjEsOwjAMRO-SNYrsNHZUluw5Q2U3hhZQIvWzQtydVuoCNLt5b-btOlmXoVtnm7oxu7NDd_rtVPqnlR3kh5R79X0tyzSq3xV_0Nlfa7bX5XD_DgaZh23dGDGoYoO3oJgSB2BjwBgTSgyZtaWWE6lCNtoiTEq9BFCKCOA-X7rRNu4:1kSTVQ:pr_V0X1Lku09KK5pY1ZHlQ5UlNkXmUs9VxAC2ZL0iN8",
+    "expire_date": "2020-10-27T19:14:56.080"
+  }
+},
+{
   "model": "sites.site",
   "pk": 1,
   "fields": {
@@ -1686,1091 +1710,167 @@
   }
 },
 {
-  "model": "admin.logentry",
-  "pk": 1,
-  "fields": {
-    "action_time": "2016-08-17T10:42:22.701",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "group"
-    ],
-    "object_id": "1",
-    "object_repr": "Brothers",
-    "action_flag": 1,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 2,
-  "fields": {
-    "action_time": "2016-08-17T10:59:40.551",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "2",
-    "object_repr": "brother",
-    "action_flag": 1,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 3,
-  "fields": {
-    "action_time": "2016-08-17T11:20:38.978",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "group"
-    ],
-    "object_id": "2",
-    "object_repr": "1st Counselor",
-    "action_flag": 1,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 4,
-  "fields": {
-    "action_time": "2016-08-17T11:21:54.936",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "group"
-    ],
-    "object_id": "3",
-    "object_repr": "2nd Counselor",
-    "action_flag": 1,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 5,
-  "fields": {
-    "action_time": "2016-08-17T11:28:49.169",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "group"
-    ],
-    "object_id": "4",
-    "object_repr": "3rd Counselor",
-    "action_flag": 1,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 6,
-  "fields": {
-    "action_time": "2016-08-17T11:36:18.557",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "group"
-    ],
-    "object_id": "5",
-    "object_repr": "4th Counselor",
-    "action_flag": 1,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 7,
-  "fields": {
-    "action_time": "2016-08-17T11:37:50.433",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "group"
-    ],
-    "object_id": "6",
-    "object_repr": "Alumni",
-    "action_flag": 1,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 8,
-  "fields": {
-    "action_time": "2016-08-17T11:41:02.720",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "group"
-    ],
-    "object_id": "7",
-    "object_repr": "Alumni Relations Chair",
-    "action_flag": 1,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 9,
-  "fields": {
-    "action_time": "2016-08-17T11:41:26.722",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "group"
-    ],
-    "object_id": "8",
-    "object_repr": "BAC Chair",
-    "action_flag": 1,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 10,
-  "fields": {
-    "action_time": "2016-08-17T11:42:02.469",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "group"
-    ],
-    "object_id": "9",
-    "object_repr": "Herald",
-    "action_flag": 1,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 11,
-  "fields": {
-    "action_time": "2016-08-17T11:42:27.092",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "group"
-    ],
-    "object_id": "10",
-    "object_repr": "House Manager",
-    "action_flag": 1,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 12,
-  "fields": {
-    "action_time": "2016-08-17T11:46:26.213",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "group"
-    ],
-    "object_id": "11",
-    "object_repr": "Parliamentarian",
-    "action_flag": 1,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 13,
-  "fields": {
-    "action_time": "2016-08-17T11:47:09.428",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "group"
-    ],
-    "object_id": "12",
-    "object_repr": "Philanthropy Chair",
-    "action_flag": 1,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 14,
-  "fields": {
-    "action_time": "2016-08-17T11:47:42.297",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "group"
-    ],
-    "object_id": "13",
-    "object_repr": "Pledges",
-    "action_flag": 1,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 15,
-  "fields": {
-    "action_time": "2016-08-17T11:48:59.442",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "group"
-    ],
-    "object_id": "14",
-    "object_repr": "PR Chair",
-    "action_flag": 1,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 16,
-  "fields": {
-    "action_time": "2016-08-17T11:49:46.270",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "group"
-    ],
-    "object_id": "15",
-    "object_repr": "Rush Chair",
-    "action_flag": 1,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 17,
-  "fields": {
-    "action_time": "2016-08-17T11:51:05.782",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "group"
-    ],
-    "object_id": "16",
-    "object_repr": "Sage",
-    "action_flag": 1,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 18,
-  "fields": {
-    "action_time": "2016-08-17T11:51:48.312",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "group"
-    ],
-    "object_id": "16",
-    "object_repr": "Sage",
-    "action_flag": 2,
-    "change_message": "Changed permissions."
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 19,
-  "fields": {
-    "action_time": "2016-08-17T11:52:33.633",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "group"
-    ],
-    "object_id": "17",
-    "object_repr": "Scholarship Chair",
-    "action_flag": 1,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 20,
-  "fields": {
-    "action_time": "2016-08-17T11:53:12.910",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "group"
-    ],
-    "object_id": "18",
-    "object_repr": "Social Chair",
-    "action_flag": 1,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 21,
-  "fields": {
-    "action_time": "2016-08-17T11:53:38.103",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "group"
-    ],
-    "object_id": "19",
-    "object_repr": "Steward",
-    "action_flag": 1,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 22,
-  "fields": {
-    "action_time": "2016-08-17T11:54:22.687",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "3",
-    "object_repr": "first",
-    "action_flag": 1,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 23,
-  "fields": {
-    "action_time": "2016-08-17T11:54:33.635",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "3",
-    "object_repr": "first",
-    "action_flag": 2,
-    "change_message": "Changed groups."
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 24,
-  "fields": {
-    "action_time": "2016-08-17T11:55:24.752",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "4",
-    "object_repr": "second",
-    "action_flag": 1,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 25,
-  "fields": {
-    "action_time": "2016-08-17T11:55:46.065",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "4",
-    "object_repr": "second",
-    "action_flag": 2,
-    "change_message": "Changed groups."
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 26,
-  "fields": {
-    "action_time": "2016-08-17T11:56:15.012",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "2",
-    "object_repr": "brother",
-    "action_flag": 2,
-    "change_message": "Changed first_name and last_name."
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 27,
-  "fields": {
-    "action_time": "2016-08-17T11:56:26.068",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "3",
-    "object_repr": "first",
-    "action_flag": 2,
-    "change_message": "Changed first_name and last_name."
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 28,
-  "fields": {
-    "action_time": "2016-08-17T11:56:34.832",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "4",
-    "object_repr": "second",
-    "action_flag": 2,
-    "change_message": "Changed first_name and last_name."
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 29,
-  "fields": {
-    "action_time": "2016-08-17T11:56:50.257",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "5",
-    "object_repr": "third",
-    "action_flag": 1,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 30,
-  "fields": {
-    "action_time": "2016-08-17T11:56:59.493",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "5",
-    "object_repr": "third",
-    "action_flag": 2,
-    "change_message": "Changed first_name and groups."
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 31,
-  "fields": {
-    "action_time": "2016-08-17T11:57:16.822",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "5",
-    "object_repr": "third",
-    "action_flag": 2,
-    "change_message": "Changed first_name and last_name."
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 32,
-  "fields": {
-    "action_time": "2016-08-17T11:57:52.585",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "6",
-    "object_repr": "fourth",
-    "action_flag": 1,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 33,
-  "fields": {
-    "action_time": "2016-08-17T11:58:04.954",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "6",
-    "object_repr": "fourth",
-    "action_flag": 2,
-    "change_message": "Changed first_name, last_name and groups."
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 34,
-  "fields": {
-    "action_time": "2016-08-17T11:58:19.194",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "2",
-    "object_repr": "brother",
-    "action_flag": 2,
-    "change_message": "Changed groups."
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 35,
-  "fields": {
-    "action_time": "2016-08-17T11:59:02.625",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "7",
-    "object_repr": "alumnichair",
-    "action_flag": 1,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 36,
-  "fields": {
-    "action_time": "2016-08-17T11:59:14.505",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "7",
-    "object_repr": "alumnichair",
-    "action_flag": 2,
-    "change_message": "Changed first_name, last_name and groups."
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 37,
-  "fields": {
-    "action_time": "2016-08-17T12:00:43.258",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "8",
-    "object_repr": "newmember",
-    "action_flag": 1,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 38,
-  "fields": {
-    "action_time": "2016-08-17T12:00:52.627",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "8",
-    "object_repr": "newmember",
-    "action_flag": 2,
-    "change_message": "Changed first_name, last_name and groups."
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 39,
-  "fields": {
-    "action_time": "2016-08-17T12:01:33.334",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "9",
-    "object_repr": "bacchair",
-    "action_flag": 1,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 40,
-  "fields": {
-    "action_time": "2016-08-17T12:02:01.106",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "9",
-    "object_repr": "bacchair",
-    "action_flag": 2,
-    "change_message": "Changed groups."
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 41,
-  "fields": {
-    "action_time": "2016-08-17T12:02:30.960",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "10",
-    "object_repr": "housemanager",
-    "action_flag": 1,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 42,
-  "fields": {
-    "action_time": "2016-08-17T12:02:42.300",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "10",
-    "object_repr": "housemanager",
-    "action_flag": 2,
-    "change_message": "Changed first_name, last_name and groups."
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 43,
-  "fields": {
-    "action_time": "2016-08-17T12:03:16.335",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "11",
-    "object_repr": "parliamentarian",
-    "action_flag": 1,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 44,
-  "fields": {
-    "action_time": "2016-08-17T12:03:28.475",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "11",
-    "object_repr": "parliamentarian",
-    "action_flag": 2,
-    "change_message": "Changed first_name and groups."
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 45,
-  "fields": {
-    "action_time": "2016-08-17T12:03:43.360",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "12",
-    "object_repr": "prchair",
-    "action_flag": 1,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 46,
-  "fields": {
-    "action_time": "2016-08-17T12:03:52.025",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "12",
-    "object_repr": "prchair",
-    "action_flag": 2,
-    "change_message": "Changed first_name, last_name and groups."
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 47,
-  "fields": {
-    "action_time": "2016-08-17T12:05:03.562",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "13",
-    "object_repr": "philanthropychair",
-    "action_flag": 1,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 48,
-  "fields": {
-    "action_time": "2016-08-17T12:05:20.505",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "13",
-    "object_repr": "philanthropychair",
-    "action_flag": 2,
-    "change_message": "Changed first_name, last_name and groups."
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 49,
-  "fields": {
-    "action_time": "2016-08-17T12:05:53.553",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "14",
-    "object_repr": "rushchair",
-    "action_flag": 1,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 50,
-  "fields": {
-    "action_time": "2016-08-17T12:06:06.161",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "14",
-    "object_repr": "rushchair",
-    "action_flag": 2,
-    "change_message": "Changed first_name, last_name and groups."
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 51,
-  "fields": {
-    "action_time": "2016-08-17T12:09:02.621",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "15",
-    "object_repr": "sage",
-    "action_flag": 1,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 52,
-  "fields": {
-    "action_time": "2016-08-17T12:09:12.749",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "15",
-    "object_repr": "sage",
-    "action_flag": 2,
-    "change_message": "Changed first_name, last_name and groups."
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 53,
-  "fields": {
-    "action_time": "2016-08-17T12:10:10.834",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "16",
-    "object_repr": "scholarshipchair",
-    "action_flag": 1,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 54,
-  "fields": {
-    "action_time": "2016-08-17T12:10:24.577",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "16",
-    "object_repr": "scholarshipchair",
-    "action_flag": 2,
-    "change_message": "Changed first_name, last_name and groups."
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 55,
-  "fields": {
-    "action_time": "2016-08-17T12:10:55.347",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "17",
-    "object_repr": "socialchair",
-    "action_flag": 1,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 56,
-  "fields": {
-    "action_time": "2016-08-17T12:11:15.547",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "17",
-    "object_repr": "socialchair",
-    "action_flag": 2,
-    "change_message": "Changed first_name, last_name and groups."
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 57,
-  "fields": {
-    "action_time": "2016-08-17T12:11:43.960",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "18",
-    "object_repr": "steward",
-    "action_flag": 1,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 58,
-  "fields": {
-    "action_time": "2016-08-17T12:11:53.807",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "18",
-    "object_repr": "steward",
-    "action_flag": 2,
-    "change_message": "Changed first_name and groups."
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 59,
-  "fields": {
-    "action_time": "2016-09-12T01:33:00.851",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "PartyList",
-      "blacklistedguest"
-    ],
-    "object_id": "1",
-    "object_repr": "Brothers ksbbf4e9c0c646d289",
-    "action_flag": 1,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 60,
-  "fields": {
-    "action_time": "2019-12-16T15:38:02.092",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "group"
-    ],
-    "object_id": "1",
-    "object_repr": "Brothers",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"permissions\"]}}]"
-  }
-},
-{
   "model": "UserInfo.pledgeclass",
   "pk": 1,
   "fields": {
     "name": "Omega",
     "dateInitiated": "2000-01-01"
+  }
+},
+{
+  "model": "UserInfo.userinfo",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "scholarshipchair"
+    ],
+    "picture": "",
+    "phoneNumber": "",
+    "graduationYear": 2022,
+    "major": "",
+    "hometown": "",
+    "activities": "",
+    "interests": "",
+    "favoriteMemory": "django",
+    "bigBrother": [
+      "third"
+    ],
+    "pledgeClass": 1
+  }
+},
+{
+  "model": "UserInfo.userinfo",
+  "pk": 2,
+  "fields": {
+    "user": [
+      "brother"
+    ],
+    "picture": "",
+    "phoneNumber": "",
+    "graduationYear": 2022,
+    "major": "CHE",
+    "hometown": "Worcester",
+    "activities": "Balls",
+    "interests": "Rick and tortelini",
+    "favoriteMemory": "sd",
+    "bigBrother": null,
+    "pledgeClass": 1
+  }
+},
+{
+  "model": "UserInfo.userinfo",
+  "pk": 3,
+  "fields": {
+    "user": [
+      "first"
+    ],
+    "picture": "",
+    "phoneNumber": "",
+    "graduationYear": 2021,
+    "major": "RBE",
+    "hometown": "SF",
+    "activities": "",
+    "interests": "",
+    "favoriteMemory": "",
+    "bigBrother": null,
+    "pledgeClass": 1
+  }
+},
+{
+  "model": "UserInfo.userinfo",
+  "pk": 4,
+  "fields": {
+    "user": [
+      "fourth"
+    ],
+    "picture": "",
+    "phoneNumber": "",
+    "graduationYear": 2021,
+    "major": "CS",
+    "hometown": "",
+    "activities": "",
+    "interests": "",
+    "favoriteMemory": "",
+    "bigBrother": null,
+    "pledgeClass": 1
+  }
+},
+{
+  "model": "UserInfo.userinfo",
+  "pk": 5,
+  "fields": {
+    "user": [
+      "sage"
+    ],
+    "picture": "",
+    "phoneNumber": "",
+    "graduationYear": 2024,
+    "major": "ME",
+    "hometown": "",
+    "activities": "",
+    "interests": "",
+    "favoriteMemory": "",
+    "bigBrother": null,
+    "pledgeClass": 1
+  }
+},
+{
+  "model": "UserInfo.userinfo",
+  "pk": 6,
+  "fields": {
+    "user": [
+      "second"
+    ],
+    "picture": "",
+    "phoneNumber": "",
+    "graduationYear": 2023,
+    "major": "",
+    "hometown": "",
+    "activities": "",
+    "interests": "",
+    "favoriteMemory": "",
+    "bigBrother": null,
+    "pledgeClass": 1
+  }
+},
+{
+  "model": "UserInfo.userinfo",
+  "pk": 7,
+  "fields": {
+    "user": [
+      "third"
+    ],
+    "picture": "",
+    "phoneNumber": "",
+    "graduationYear": 2022,
+    "major": "",
+    "hometown": "",
+    "activities": "",
+    "interests": "",
+    "favoriteMemory": "",
+    "bigBrother": null,
+    "pledgeClass": 1
+  }
+},
+{
+  "model": "PartyListV2.party",
+  "pk": 1,
+  "fields": {
+    "name": "Super Party",
+    "party_start": "2020-09-25T22:00:00",
+    "has_party_invite_limits": true,
+    "max_party_invites": 5,
+    "has_preparty": true,
+    "preparty_start": "21:00:00",
+    "has_preparty_invite_limits": true,
+    "max_preparty_invites": 3,
+    "guycount": 0,
+    "girlcount": 0,
+    "guys_ever_signed_in": 0,
+    "girls_ever_signed_in": 0,
+    "last_updated": "2020-09-23T17:24:16.010",
+    "guest_update_counter": 0,
+    "jobs": ""
   }
 }
 ]
