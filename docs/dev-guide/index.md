@@ -11,3 +11,4 @@ The website is powered by [Django 1.11](https://djangoproject.com), a free and o
 * [Deployment](https://github.com/sigmapi-gammaiota/sigmapi-web/tree/master/docs/dev-guide/deploy.md)
 * [Project Structure](https://github.com/sigmapi-gammaiota/sigmapi-web/tree/master/docs/dev-guide/structure.md)
 * [Python Style Guide](https://github.com/sigmapi-gammaiota/sigmapi-web/tree/master/docs/dev-guide/python-style.md)
+* [Front-end Developer Style Guide](https://github.com/sigmapi-gammaiota/sigmapi-web/tree/master/docs/dev-guide/front-end-style-guide.md)
