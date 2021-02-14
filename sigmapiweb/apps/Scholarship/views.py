@@ -18,12 +18,19 @@ from .models import (
     LibraryItem,
     StudyHoursRecord,
     TrackedUser,
+    Course,
+    CourseSection,
+    Review,
 )
+
 from .forms import (
     AcademicResourceForm,
     LibraryItemForm,
     StudyHoursRecordForm,
     TrackedUserForm,
+    CourseForm,
+    CourseSectionForm,
+    ReviewForm,
 )
 
 
@@ -572,3 +579,122 @@ def decline_libraryitem(request, item):
         item_obj.delete()
         messages.info(request, 'Item declined successfully.')
     return redirect('scholarship-approve')
+
+
+@login_required
+@require_POST
+def add_course(request):
+    """
+    TODO: Docstring
+    """
+    add_course_form = CourseForm(request.POST)
+    if add_course_form.is_valid():
+        course_record = add_course_form.save(commit=False)
+        course_record.save()
+
+        message = 'Course successfully recorded.'
+        messages.info(request, message, extra_tags='report')
+    else:
+        message = (
+            'The Course was messed up in some way or '+
+            'another idk im still workin on this -amrit'
+        )
+        messages.error(request, message, extra_tags='report')
+    return redirect('scholarship-add_course')
+
+
+@login_required
+@require_POST
+def add_course_section(request):
+    """
+    TODO: Docstring
+    """
+    add_course_section_form = CourseSectionForm(request.POST)
+    if add_course_section_form.is_valid():
+        course_section_record = add_course_section_form.save(commit=False)
+        course_section_record.save()
+
+        message = 'Course Section successfully recorded.'
+        messages.info(request, message, extra_tags='report')
+    else:
+        message = (
+            'The course section was messed up in some way or '+
+            'another idk im still workin on this -amrit'
+        )
+        messages.error(request, message, extra_tags='report')
+    return redirect('scholarship-add_course_section')
+
+
+@login_required
+@require_POST
+def add_course_office_hours(request):
+    """
+    TODO: Docstring
+    """
+    add_course_office_hours_form = CourseOfficeHourForm(request.POST)
+    if add_course_office_hours_form.is_valid():
+        course_office_hours_record = add_course_office_hours_form.save(commit=False)
+        course_office_hours_record.save()
+
+        message = 'Course Section successfully recorded.'
+        messages.info(request, message, extra_tags='report')
+    else:
+        message = (
+            'The course office hours were messed up in some way or '+
+            'another idk im still workin on this -amrit'
+        )
+        messages.error(request, message, extra_tags='report')
+    return redirect('scholarship-add_course_office_hours')
+
+
+@login_required
+@require_POST
+def record_review(request):
+    """
+    TODO: Docstring
+    """
+    record_review_form = ReviewForm(request.POST)
+    if record_review_form.is_valid():
+        review_record = record_review_form.save(commit=False)
+        review_record.reviewer = request.user
+        review_record.save()
+
+        message = 'Review successfully reported.'
+        messages.info(request, message, extra_tags='report')
+    else:
+        message = (
+            'The Review was invalid? what did you do'
+        )
+        messages.error(request, message, extra_tags='report')
+    return redirect('scholarship-record_review')
+
+@login_required
+@require_GET
+def courses(request):
+    """
+        View for seeing all courses
+    """
+    all_courses = Course.objects.order_by('-catalog_code')
+
+    error = None
+    msg = None
+
+    try:
+        error = request.session['scholarship_course_error']
+        del request.session['scholarship_course_error']
+    except KeyError:
+        pass
+
+    try:
+        msg = request.session['scholarship_course_msg']
+        del request.session['scholarship_course_msg']
+    except KeyError:
+        pass
+
+    context = {
+        'all_courses': all_courses,
+        'error': error,
+        'msg': msg
+    }
+
+    return render(request, 'scholarship/courses.html', context)

@@ -11,6 +11,17 @@ from django.db import models
 
 from common.mixins import ModelMixin
 
+def validate_stars(number):
+    """
+    Raises a validation error if the given number is <1 or >5.
+    Arguments:
+        number (int)
+    """
+    if number < 1:
+        raise ValidationError("The stars given cannot be below 1.")
+    elif number > 5:
+        raise ValidationError("The stars given cannot be above 5.")
+
 
 def validate_date(date):
     """
@@ -171,3 +182,31 @@ class LibraryItem(ModelMixin, models.Model):
     item_pdf = models.FileField(upload_to='protected/scholarship/library')
     submittedBy = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
     approved = models.BooleanField(default=False)
+
+class Course(ModelMixin, models.Model):
+    """
+    Holds information about a WPI Catalog Course, i.e. CS1004.
+    """
+
+    catalog_code = models.CharField(max_length=10)
+    title = models.CharField(max_length=100)
+
+
+class CourseSection(ModelMixin, models.Model):
+    """
+    Holds info for a single instance of the course.
+    """
+
+    catalog_course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    term = models.CharField(max_length=10)
+    professor = models.CharField(max_length=100)
+    participants = models.ManyToManyField(User)
+    
+    
+class Review(ModelMixin, models.Model):
+    """
+    Represents a single review for a course.
+    """
+    reviewer = models.ForeignKey(User, on_delete=models.CASCADE)
+    stars = models.IntegerField(validators=[validate_stars])
+    text = models.CharField(max_length=1000)

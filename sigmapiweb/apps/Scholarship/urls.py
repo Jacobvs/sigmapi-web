@@ -25,6 +25,11 @@ urlpatterns = [
         name='scholarship-resources',
     ),
     url(
+        regex=r'^courses/$',
+        view=views.courses,
+        name='scholarship-courses',
+    ),
+    url(
         regex=r'^library/$',
         view=views.library,
         name='scholarship-library',

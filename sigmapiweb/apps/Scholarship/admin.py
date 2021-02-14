@@ -7,7 +7,10 @@ from .models import (
     AcademicResource,
     LibraryItem,
     StudyHoursRecord,
-    TrackedUser
+    TrackedUser,
+    Course,
+    CourseSection,
+    Review,
 )
 
 
@@ -16,4 +19,7 @@ register_model_admins(
     LibraryItem,
     StudyHoursRecord,
     TrackedUser,
+    Course,
+    CourseSection,
+    Review,
 )
