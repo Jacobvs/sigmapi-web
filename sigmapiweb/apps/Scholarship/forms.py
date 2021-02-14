@@ -8,7 +8,10 @@ from .models import (
     AcademicResource,
     LibraryItem,
     StudyHoursRecord,
-    TrackedUser
+    TrackedUser,
+    Course,
+    CourseSection,
+    Review,
 )
 
 
@@ -78,3 +81,20 @@ class LibraryItemForm(forms.ModelForm):
     class Meta:
         model = LibraryItem
         fields = ['title', 'isbn_number', 'course', 'edition', 'item_pdf']
+
+
+class CourseForm(forms.ModelForm):
+    class Meta:
+        model = Course
+        fields = ['catalog_code', 'title']
+
+
+class CourseSectionForm(forms.ModelForm):
+    class Meta:
+        model = CourseSection
+        fields = ['catalog_course', 'term', 'professor']
+
+class ReviewForm(forms.ModelForm):
+    class Meta:
+        model = Review
+        fields = ['stars', 'text']

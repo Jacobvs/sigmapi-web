@@ -34,6 +34,19 @@
 				</a>
 			</li>
 
+			{% if '/scholarship/courses/' in request.path %}
+			<li class="active">
+			{% else %}
+			<li>
+			{% endif %}
+				<a href="{% url 'scholarship-courses' %}">
+					Courses
+				</a>
+			</li>
+
+			<!--
+				specific to login
+			-->
 			{% if is_scholarship_head %}
 
 			{% if '/scholarship/approve/' in request.path %}
