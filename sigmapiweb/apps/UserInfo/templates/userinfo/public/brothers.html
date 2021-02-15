@@ -31,9 +31,6 @@
         <label for="yearSelector">Year</label>
         <select class="form-control" id="yearSelector">
           <option>-</option>
-          <option>2021</option>
-          <option>2022</option>
-          <option>2023</option>
         </select>
 
         <label for="homeState">Home State</label>
@@ -63,14 +60,8 @@
 
       // Clear parameters before trying to add new
       history.pushState(null, "", location.href.split("?")[0])
-
-      if(window.location.search.includes("year")) {
-        window.location.search = ""
-      }
-
-      if(year) {
-        window.location.search += `year=${year}&major=${major}&homeState=${homeState}&activities=${activities}`
-      }
+      window.location.search = ""
+      window.location.search += `year=${year}&major=${major}&homeState=${homeState}&activities=${activities}`
     }
 
     function clearFilter() {
@@ -83,12 +74,23 @@
 
     document.body.onload = function() {
       // Get URL parameters, if any, and fill them into filter form
-      console.log("In onload!")
       const urlParams = new URLSearchParams(window.location.search);
       document.getElementById("yearSelector").value = urlParams.get('year')
       document.getElementById("majorSelector").value = urlParams.get('major')
       document.getElementById("homeState").value = urlParams.get('homeState')
       document.getElementById("activitiesAndInterests").value = urlParams.get('activities')
+
+      // Populate selectors with appropriate values
+      const yearSelector = document.getElementById("yearSelector");
+
+      // Go 1 year back, 3 years forward... This probably covers everybody, including grad students. A slightly better (but more complicated) way
+      // would be to get the list of unique years among Brothers from the database, but that would require writing an endpoint and making a request.
+      let currentYear = new Date().getFullYear();
+      for(let i = -1; i <= 3; i++) {
+        let year = document.createElement("option");
+        year.innerText = currentYear + i;
+        yearSelector.appendChild(year);
+      }
     }
 
   </script>
