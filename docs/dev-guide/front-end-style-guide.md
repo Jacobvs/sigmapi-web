@@ -2,12 +2,16 @@
 
 [_(Back to project home)_](https://github.com/sigmapi-gammaiota/sigmapi-web/)
 
-## Complie SASS to CSS
-Every time you make a change you need to run this command
-```python3 devl.py static_prod```
+## Compile SASS to CSS
+Every time you make a change SASS files you will need compile and run this command
+```
+python3 devl.py static_prod
+```
 
-Aside: You could also manualy do it with the following command on the command line:
-```sass input_directory output_directory```
+Aside: You could also manually do it with the following command on the command line:
+```
+sass input_directory output_directory
+```
 
 ## How it works
 
@@ -17,6 +21,6 @@ Aside: You could also manualy do it with the following command on the command li
 
 ## Extra Resources on front-end 
 
-A good website to learn more about sass is: [SASS website](https://sass-lang.com/guide)
+A good website to learn more about sass: [SASS website](https://sass-lang.com/guide)
 
 

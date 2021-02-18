@@ -1,3 +1,5 @@
+ @import "../common/_variables.scss";
+ 
   /**
  * Hack to work around bug with Windows Phone 8 rendering
  **/
@@ -15,7 +17,7 @@
 
 html 
 {
-	background-color: rgb(167, 169, 172);
+	background-color: black;
 	height:100%;
 }
 
