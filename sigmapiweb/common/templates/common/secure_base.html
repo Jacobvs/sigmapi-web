@@ -3,10 +3,11 @@
 {% load static %}
 {% load sass_tags %}
 {% block local_includes %}
-  <script type='text/javascript' src='{% static "js/lib/jquery-1.11.1.min.js" %}'></script>
-  <script type="text/javascript" src='{% static "bootstrap/js/bootstrap.min.js" %}'></script>
+  	<script type='text/javascript' src='{% static "js/lib/jquery-1.11.1.min.js" %}'></script>
+  	<script type="text/javascript" src='{% static "bootstrap/js/bootstrap.min.js" %}'></script>
 
-  <link rel="stylesheet" type="text/css" href='{% static "bootstrap/css/bootstrap.min.css" %}'/>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  	<link rel="stylesheet" type="text/css" href='{% static "bootstrap/css/bootstrap.min.css" %}'/>
 
  	<link rel="stylesheet" type="text/css" href='{% sass_src "css/secure/base_v0.scss" %}'/>
 	<script type="text/javascript" src="{% static 'js/secure/common.js' %}"></script>
@@ -17,103 +18,114 @@
 {% block body %}
 	
     <!-- Block included for any content that must be rendered at the top level of the body -->
-    {% block toplevel_content %}
-    {% endblock %}  
+<!--    {% block toplevel_content %}-->
+<!--    {% endblock %}  -->
 
-	<div id="wrapper">
-		<div id="banner-top">
-			<div id="banner-wrapper">
-				<a href="/"><img id="banner-img" src="/static/img/banner-crest.png"/></a>
-				<div class="text">
-					Sigma Pi
+	<!--Top bar for secure side/Navigation-->
+	<div id="header">
+		<div class="container">
+			<div class="row">
+				<div class="logo-wrapper">
+					<a href="/">
+						<div class="logo">
+							<img src="{% static 'img/logo.svg' %}"/>
+						</div>
+					</a>
 				</div>
-				<div class="sub-text">
-					<span class="sub-text-main">Gamma Iota Chapter</span> <span class="sub-text-extra">at Worcester Polytechnic Institute</span> <span class="sub-text-extra-small">at WPI</span>
+				<div id="menu-toggle">
+					<svg aria-hidden="true" data-prefix="fas" data-icon="bars" class="svg-inline--fa fa-bars fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"></path></svg>
+				</div>
+				<div id="desktop-menu" class="menu-wrapper d-none d-md-inline-flex">
+
+						{% if secure_index %}
+						<div class="active menu-item">
+							{% else %}
+						<div>
+							{% endif %}
+							<a href="{{'/secure/'}}">
+								<span class="glyphicon glyphicon-lock"></span>
+							</a>
+						</div>
+
+						{% if perms.Archive.access_guide %}
+						{% if '/secure/archives' in request.path %}
+						<div class="active menu-item">
+							{% else %}
+						<div>
+							{% endif %}
+							<a id="archives" href="{{ '/secure/archives' }}">
+								Archives
+							</a>
+						</div>
+						{% endif %}
+
+						{% if '/secure/scholarship' in request.path %}
+						<div class="active menu-item">
+							{% else %}
+						<div>
+							{% endif %}
+							<a id="scholarship" href="{{ '/secure/scholarship' }}">
+								Scholarship
+							</a>
+						</div>
+
+						{% if '/secure/standards' in request.path %}
+						<div class="active menu-item">
+							{% else %}
+						<div>
+							{% endif %}
+							<a id="standards" href="{{'/secure/standards'}}">
+								Standards
+							</a>
+						</div>
+
+						{% if perms.Links.access_link %}
+						{% if '/secure/links' in request.path %}
+						<div class="active menu-item">
+							{% else %}
+						<div>
+							{% endif %}
+							<a id="links" href="{{ '/secure/links' }}">
+								Links
+							</a>
+						</div>
+						{% endif %}
+
+						{% if perms.PartyListV2.view_parties %}
+						{% if '/secure/parties' in request.path %}
+						<div class="active menu-item">
+							{% else %}
+						<div>
+							{% endif %}
+							<a id="party_list" href="{{ '/secure/parties' }}">
+								Parties
+							</a>
+						</div>
+						{% endif %}
+
+						{% if perms.UserInfo.manage_users %}
+						{% if '/secure/users' in request.path %}
+						<div class="active menu-item">
+							{% else %}
+						<div>
+							{% endif %}
+							<a id="users" href="{{ '/secure/users' }}">
+								Users
+							</a>
+						</div>
+						{% endif %}
+				</div>
+				<div id="mobile-menu" class="menu-wrapper container-fluid" style="display: none;">
+					<div class="menu row">
 				</div>
 			</div>
 		</div>
+	</div>
 
+	<!-- Body -->
+	<div id="wrapper">
 		<nav class="navbar navbar-default" role="navigation">
 			<div class="container-fluid">
-				<ul class="nav navbar-nav">
-					{% if secure_index %}
-					<li class="active">
-					{% else %}
-					<li>
-					{% endif %}
-						<a href="{{'/secure/'}}">
-							<span class="glyphicon glyphicon-lock"></span>
-						</a>
-					</li>
-
-					{% if perms.Archive.access_guide %}
-					{% if '/secure/archives' in request.path %}
-					<li class="active">
-					{% else %}
-					<li>
-					{% endif %}
-					<a id="archives" href="{{ '/secure/archives' }}">
-						  Archives
-					</a>
-					</li>
-					{% endif %}
-
-					{% if '/secure/scholarship' in request.path %}
-					<li class="active">
-					{% else %}
-					<li>
-					{% endif %}
-					<a id="scholarship" href="{{ '/secure/scholarship' }}">
-						Scholarship
-					</a>
-					</li>
-
-					{% if '/secure/standards' in request.path %}
-					<li class="active">
-					{% else %}
-					<li>
-					{% endif %}
-					<a id="standards" href="{{'/secure/standards'}}">
-						Standards
-					</a>
-					</li>
-
-					{% if perms.Links.access_link %}
-					{% if '/secure/links' in request.path %}
-					<li class="active">
-					{% else %}
-					<li>
-					{% endif %}
-					<a id="links" href="{{ '/secure/links' }}">
-						Links
-					</a>
-					</li>
-					{% endif %}
-
-                    {% if perms.PartyListV2.view_parties %}
-                        {% if '/secure/parties' in request.path %}
-                        <li class="active">
-                        {% else %}
-                        <li>
-                        {% endif %}
-                        <a id="party_list" href="{{ '/secure/parties' }}">
-                            Parties
-                        </a>
-                        </li>
-                    {% endif %}
-
-					{% if perms.UserInfo.manage_users %}
-						{% if '/secure/users' in request.path %}
-						<li class="active">
-						{% else %}
-						<li>
-						{% endif %}
-						<a id="users" href="{{ '/secure/users' }}">
-							Users
-						</a>
-						</li>
-					{% endif %}
-				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown">
@@ -122,11 +134,11 @@
 			  			</a>
 			  			<ul class="dropdown-menu" role="menu">
 									{% if user.is_staff %}
-						<li><a href="/admin/">Admin Panel</a>
+							<li><a href="/admin/">Admin Panel</a></li>
 									{% else %}
 							<li><a href="{% url 'userinfo-edit_user' user.username %}">Edit Profile</a></li>
 							<li><a href="{% url 'userinfo-change_password' %}">Change Password</a></li>
-					  {% endif %}
+					  				{% endif %}
 							<li class="divider"></li>
 							<li><a href="/logout/">Logout</a></li>
 						</ul>
