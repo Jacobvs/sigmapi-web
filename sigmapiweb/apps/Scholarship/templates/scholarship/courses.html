@@ -1,9 +1,5 @@
-{% extends 'scholarship/_base.html' %} 
-
-{% block title %}Sigma Pi Secure -Courses {% endblock %} 
-
-{% load static %} 
-{% block module_includes %}
+{% extends 'scholarship/_base.html' %} {% block title %}Sigma Pi Secure -Courses
+{% endblock %} {% load static %} {% block module_includes %}
 <script
   type="text/javascript"
   src='{% static "js/lib/jquery.dataTables.min.js" %}'
@@ -26,57 +22,157 @@
   type="text/javascript"
   src='{% static "js/lib/jquery.fileupload.js" %}'
 ></script>
-{% endblock %} 
-
-{% block content %}
-
-{% if messages %}
-{% for message in messages %}
-{% if message.level == 40 %}
+{% endblock %} {% block content %} {% if messages %} 
+{% for message in messages %} {% if message.level == 40 %}
 <div class="alert alert-danger">
-	<strong>Error! </strong>
-{% else %}
-<div class="alert alert-info">
-	<strong>Info! </strong>
-{% endif %}
-	{{ message }}
+  <strong>Error! </strong>
+  {% else %}
+  <div class="alert alert-info">
+    <strong>Info! </strong>
+    {% endif %} {{ message }}
+  </div>
+  {% endfor %} {% endif %}
+
+  <h3>View all courses.</h3>
+
+  <div class="actions">
+    <ul class="nav nav-pills">
+      <li>
+        <a href="#" data-toggle="modal" data-target="#add-course">
+          <span class="glyphicon glyphicon-plus"></span> Add Course
+        </a>
+      </li>
+      <li>
+        <a href="#" data-toggle="modal" data-target="#add-course-section">
+          <span class="glyphicon glyphicon-plus"></span> Add Course Section
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  {% if all_courses %}
+  <div class="table-responsive">
+    <table class="table dataTable-nosort">
+      <thead>
+        <tr>
+          <th>Catalog Code</th>
+          <th>Title</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for course in all_courses %}
+        <tr>
+          <td>{{course.catalog_code}}</td>
+          <td>{{course.title}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+  <p>There are no course items uploaded. Check back later.</p>
+
+  {% endif %} {% endblock %} {% block toplevel_content %}
+  <!-- Add Course Form -->
+  <div class="modal" id="add-course">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">
+            <span aria-hidden="true">&times;</span>
+            <span class="sr-only">Close</span>
+          </button>
+          <h4 class="modal-title">Add Course Section</h4>
+        </div>
+        <div class="modal-body">
+          <form
+            enctype="multipart/form-data"
+            method="post"
+            action="{% url 'scholarship-add_course' %}"
+            id="add-course-form"
+          >
+            {% csrf_token %}
+            <div class="form-group">
+              <label class="control-label">Catalog Code*</label>
+              {{ add_course_form.catalog_code }}
+            </div>
+
+            <div class="form-group">
+              <label class="control-label">Title*</label>
+              {{ add_course_form.catalog_code }}
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <div id="upload-btns">
+            <button
+              type="button"
+              class="btn btn-default"
+              id="cancel-btn"
+              data-dismiss="modal"
+            >
+              Cancel
+            </button>
+            <button type="button" class="btn btn-primary" id="submit-btn">
+              Add Course
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Add Course Section Form -->
+  <div class="modal" id="add-course-section">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">
+            <span aria-hidden="true">&times;</span>
+            <span class="sr-only">Close</span>
+          </button>
+          <h4 class="modal-title">Add Course Section</h4>
+        </div>
+        <div class="modal-body">
+          <form
+            enctype="multipart/form-data"
+            method="post"
+            action="{% url 'scholarship-add_course_section' %}"
+            id="add-course-section-form"
+          >
+            {% csrf_token %}
+            <div class="form-group">
+              <label class="control-label">Catalog Code*</label>
+              {{ add_course_section_form.catalog_course }}
+            </div>
+
+            <div class="form-group">
+              <label class="control-label">Term*</label>
+              {{ add_course_section_form.term }}
+            </div>
+            <div class="form-group">
+              <label class="control-label">Professor*</label>
+              {{ add_course_section_form.professor }}
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          
+          <div id="upload-btns">
+            <button
+              type="button"
+              class="btn btn-default"
+              id="cancel-btn"
+              data-dismiss="modal"
+            >
+              Cancel
+            </button>
+            <button type="button" class="btn btn-primary" id="submit-btn">
+              Add Course Section
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}
 </div>
-{% endfor %}
-{% endif %}
-
-<h3>View all courses.</h3>
-
-<div class="actions">
-  <ul class="nav nav-pills">
-    <li>
-      <a href="#" data-toggle="modal" data-target="#upload-item">
-        <span class="glyphicon glyphicon-plus"></span> Upload New Item
-      </a>
-    </li>
-  </ul>
-</div>
-
-
-{% if all_courses %}
-<div class="table-responsive">
-  <table class="table dataTable-nosort">
-    <thead>
-      <tr>
-        <th>Catalog Code</th>
-        <th>Title</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for course in all_courses %}
-      <tr>
-        <td>{{course.catalog_code}}</td>
-        <td>{{course.title}}</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-</div>
-{% else %}
-<p>There are no course items uploaded. Check back later.</p>
-
-{% endif %} {% endblock %}
