@@ -123,4 +123,14 @@ urlpatterns = [
         view=views.upload_libraryitem,
         name='scholarship-upload_libraryitem',
     ),
+    url(
+        regex=r'^courses/add-course/$',
+        view=views.add_course,
+        name='scholarship-add_course',
+    ),
+    url(
+        regex=r'^courses/add-course-section/$',
+        view=views.add_course,
+        name='scholarship-add_course_section',
+    ),
 ]
