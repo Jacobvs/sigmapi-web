@@ -140,7 +140,7 @@ urlpatterns = [
     ),
     url(
         regex=r'^courses/add-course-section/$',
-        view=views.add_course,
+        view=views.add_course_section,
         name='scholarship-add_course_section',
     ),
 ]
