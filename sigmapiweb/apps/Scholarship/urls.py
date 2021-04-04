@@ -30,9 +30,14 @@ urlpatterns = [
         name='scholarship-courses',
     ),
     url(
-        regex=r'^courses/(?P<item>[\d]+)/$',
-        view=views.courses,
-        name='scholarship-courses',
+        regex=r'^sections/(?P<catalog_code>[\w]+)/$',
+        view=views.sections,
+        name='scholarship-section',
+    ),
+    url(
+        regex=r'^sections/$',
+        view=views.sections,
+        name='scholarship-sections-all',
     ),
     url(
         regex=r'^library/$',

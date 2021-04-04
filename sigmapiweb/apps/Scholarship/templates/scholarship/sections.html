@@ -57,26 +57,28 @@
 </div>
 
 
-{% if all_courses %}
+{% if sections %}
 <div class="table-responsive">
   <table class="table dataTable-nosort">
     <thead>
       <tr>
         <th>Catalog Code</th>
-        <th>Title</th>
+        <th>Term</th>
+        <th>Professor</th>
       </tr>
     </thead>
     <tbody>
-      {% for course in all_courses %}
+      {% for section in sections %}
       <tr>
-        <td>{{course.catalog_code}}</td>
-        <td>{{course.title}}</td>
+        <td>{{section.catalog_course}}</td>
+        <td>{{section.term}}</td>
+        <td>{{section.professor}}</td>
       </tr>
       {% endfor %}
     </tbody>
   </table>
 </div>
 {% else %}
-<p>There are no course items uploaded. Check back later.</p>
+<p>There are no sections added. Check back later.</p>
 
 {% endif %} {% endblock %}
