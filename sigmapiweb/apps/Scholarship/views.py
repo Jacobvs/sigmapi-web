@@ -600,7 +600,7 @@ def add_course(request):
             'another idk im still workin on this -amrit'
         )
         messages.error(request, message, extra_tags='report')
-    return redirect('scholarship-add_course')
+    return redirect('scholarship-courses')
 
 
 @login_required
@@ -622,30 +622,7 @@ def add_course_section(request):
             'another idk im still workin on this -amrit'
         )
         messages.error(request, message, extra_tags='report')
-    return redirect('scholarship-add_course_section')
-
-
-@login_required
-@require_POST
-def add_course_office_hours(request):
-    """
-    TODO: Docstring
-    """
-    add_course_office_hours_form = CourseOfficeHourForm(request.POST)
-    if add_course_office_hours_form.is_valid():
-        course_office_hours_record = add_course_office_hours_form.save(commit=False)
-        course_office_hours_record.save()
-
-        message = 'Course Section successfully recorded.'
-        messages.info(request, message, extra_tags='report')
-    else:
-        message = (
-            'The course office hours were messed up in some way or '+
-            'another idk im still workin on this -amrit'
-        )
-        messages.error(request, message, extra_tags='report')
-    return redirect('scholarship-add_course_office_hours')
-
+    return redirect('scholarship-courses')
 
 @login_required
 @require_POST
@@ -679,6 +656,11 @@ def courses(request):
     error = None
     msg = None
 
+    add_course_form = None
+    add_course_form = CourseForm()
+    add_course_section_form = None
+    add_course_section_form = CourseSectionForm()
+
     try:
         error = request.session['scholarship_course_error']
         del request.session['scholarship_course_error']
@@ -694,7 +676,9 @@ def courses(request):
     context = {
         'all_courses': all_courses,
         'error': error,
-        'msg': msg
+        'msg': msg,
+        "add_course_form":add_course_form,
+        "add_course_section_form":add_course_section_form
     }
 
     return render(request, 'scholarship/courses.html', context)
