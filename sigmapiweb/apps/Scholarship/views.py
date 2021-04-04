@@ -698,3 +698,21 @@ def courses(request):
     }
 
     return render(request, 'scholarship/courses.html', context)
+
+@login_required
+@require_GET
+def sections(request, catalog_code=None):
+    """
+        View for seeing the sections of selected course
+    """
+    if catalog_code:
+        all_sections = CourseSection.objects.filter(catalog_course__catalog_code=catalog_code)
+    else:
+        all_sections = CourseSection.objects.order_by('-catalog_course')
+
+    context = {
+        'sections': all_sections
+    }
+
+    return render(request, 'scholarship/sections.html', context)
+
