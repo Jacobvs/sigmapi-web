@@ -30,6 +30,11 @@ urlpatterns = [
         name='scholarship-courses',
     ),
     url(
+        regex=r'^courses/(?P<item>[\d]+)/$',
+        view=views.courses,
+        name='scholarship-courses',
+    ),
+    url(
         regex=r'^library/$',
         view=views.library,
         name='scholarship-library',
