@@ -108,6 +108,38 @@ def users(request):
             Q(userinfo__interests__icontains=filterActivities)
         )
 
+    exec_list =  [sage, second, third, fourth, first, herald]
+
+    # Get URL parameters
+    filterYear = request.GET.get('year')
+    filterMajor = request.GET.get('major')
+    filterHomeState = request.GET.get('homeState')
+    filterActivities = request.GET.get('activities')
+
+    filteredUsers = User.objects.filter(groups__name='Brothers')
+
+    if filterYear and filterYear.isnumeric():
+        filteredUsers = filteredUsers.filter(
+            userinfo__graduationYear=filterYear
+        )
+    
+    if filterMajor and filterMajor != "-":
+        filteredUsers = filteredUsers.filter(
+            userinfo__major__icontains=filterMajor
+        )
+
+    if filterHomeState and filterHomeState != "-":
+        filteredUsers = filteredUsers.filter(
+            userinfo__hometown__icontains=filterHomeState
+        )
+
+    if filterActivities and filterActivities != "-":
+        # Complex lookup (look for match in activities OR interests), so we use Q here
+        filteredUsers = filteredUsers.filter(
+            Q(userinfo__activities__icontains=filterActivities) |
+            Q(userinfo__interests__icontains=filterActivities)
+        )
+
     # Get the rest of the users.  Exclude pledges or any execs.
     gradstudents = filteredUsers
     gradstudents = gradstudents.filter(
