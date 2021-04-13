@@ -73,8 +73,8 @@ def users(request):
     first = check_user_exists('1st Counselor', 'new1st', users=filteredUsers)
     herald = check_user_exists('Herald', 'newHerald', users=filteredUsers)
 
-    exec_list =  [sage, second, third, fourth, first, herald]
-    print(exec_list)
+    # Remove occurences of [None] from the list
+    exec_list =  [u for u in [sage, second, third, fourth, first, herald] if u != None]
 
     # Get the rest of the users.  Exclude pledges or any execs.
     gradstudents = filteredUsers
