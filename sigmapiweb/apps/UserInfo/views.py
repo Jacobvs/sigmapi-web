@@ -11,7 +11,7 @@ from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.template.defaultfilters import stringfilter, register
 from django.utils.html import strip_tags
-from django.db.models import Q
+from django.db.models import Q, Exists
 
 from . import utils
 from .forms import EditUserInfoForm
@@ -30,17 +30,51 @@ def users(request):
     # Find out what current year is the senior year grad date.
     senior_year = utils.get_senior_year()
 
+    # Apply filters, if any
+    filteredUsers = User.objects.filter(groups__name='Brothers')
+
+    # Get URL parameters
+    filterYear = request.GET.get('year')
+    filterMajor = request.GET.get('major')
+    filterHomeState = request.GET.get('homeState')
+    filterActivities = request.GET.get('activities')
+
+    if filterYear and filterYear.isnumeric():
+        filteredUsers = filteredUsers.filter(
+            userinfo__graduationYear=filterYear
+        )
+    
+    if filterMajor and filterMajor != "-":
+        filteredUsers = filteredUsers.filter(
+            userinfo__major__icontains=filterMajor
+        )
+
+    if filterHomeState and filterHomeState != "-":
+        filteredUsers = filteredUsers.filter(
+            userinfo__hometown__icontains=filterHomeState
+        )
+
+    if filterActivities and filterActivities != "-":
+        # Complex lookup (look for match in activities OR interests), so we use Q here
+        filteredUsers = filteredUsers.filter(
+            Q(userinfo__activities__icontains=filterActivities) |
+            Q(userinfo__interests__icontains=filterActivities)
+        )
+    
     # Get the execs.
     # Use try/catch to avoid crashing the site if an exec is missing.
     # The "newX" positions are for when NME needs the updated list for
     # notebooks, but permissions aren't transitioned yet
     # (last two weeks of B-term basically)
-    sage = check_user_exists('Sage', 'newSage')
-    second = check_user_exists('2nd Counselor', 'new2nd')
-    third = check_user_exists('3rd Counselor', 'new3rd')
-    fourth = check_user_exists('4th Counselor', 'new4th')
-    first = check_user_exists('1st Counselor', 'new1st')
-    herald = check_user_exists('Herald', 'newHerald')
+    sage = check_user_exists('Sage', 'newSage', users=filteredUsers)
+    second = check_user_exists('2nd Counselor', 'new2nd', users=filteredUsers)
+    third = check_user_exists('3rd Counselor', 'new3rd', users=filteredUsers)
+    fourth = check_user_exists('4th Counselor', 'new4th', users=filteredUsers)
+    first = check_user_exists('1st Counselor', 'new1st', users=filteredUsers)
+    herald = check_user_exists('Herald', 'newHerald', users=filteredUsers)
+
+    # Remove occurences of [None] from the list
+    exec_list =  [u for u in [sage, second, third, fourth, first, herald] if u != None]
 
     exec_list =  [sage, second, third, fourth, first, herald]
 
@@ -122,7 +156,8 @@ def users(request):
     ]
 
     # Exclude exec members from their class group
-    for exec_brother in exec_board:
+    for exec_brother in list(exec_board):
+        # print(exec_brother)
         user = exec_brother[0]
         if user is not None:
             gradstudents = gradstudents.exclude(username=user.username)
@@ -268,18 +303,43 @@ def find_big(tree, big_id, little):
             return True
     return False
 
+def get_ec():
+    """
+    Helper function to get entire EC as a queryset, not individually.
+    """
+    sage_roles = ['Sage', 'newSage']
+    second_roles = ['2nd Counselor', 'new2nd']
+    third_roles = ['3rd Counselor', 'new3rd']
+    fourth_roles = ['4th Counselor', 'new4th']
+    first_roles = ['1st Counselor', 'new1st']
+    herald_roles = ['Herald', 'newHerald']
 
-def check_user_exists(name, new_name):
+    # For each of the above, check if the new role exists; if not, look for the old one.
+    role_list = []
+
+    for role in [sage_roles, second_roles, third_roles, fourth_roles, first_roles, herald_roles]:
+        # Check if new role exists; if so, add it to the list of roles we'll search for
+        if User.objects.filter(groups__name=role[1]).exists():
+            role_list.append(role[1])
+        else:
+            role_list.append(role[0])
+
+    ec = User.objects.filter(groups__name__in=role_list)
+    return ec
+
+def check_user_exists(name, new_name, users=User.objects.all()):
     """
     Helper function to check if the EC role is assigned within the system.
+    Can optionally pass a pre-filtered QuerySet of users if you want to filter;
+    otherwise, defaults to all users.
     """
     user = None
 
     try:
-        user = User.objects.get(groups__name=new_name)
+        user = users.get(groups__name=new_name)
     except User.DoesNotExist:
         try:
-            user = User.objects.get(groups__name=name)
+            user = users.get(groups__name=name)
         except User.DoesNotExist:
             user = None
 
