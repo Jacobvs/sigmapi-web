@@ -1,0 +1,23 @@
+{% extends 'public/_article_base.html' %}
+{% load static %}
+
+
+{% block module_includes %}
+    {% load sass_tags %}
+    <link rel='stylesheet' type='text/css' href='{% sass_src "css/public/rush.scss" %}?v=1.2' />
+{% endblock %}
+
+{% block title %}Sigma Pi Gamma Iota - Campaign
+{% endblock %}
+  {% load static %} {% block content_title %} Donation Campaign
+{% endblock %}
+
+{% block article %}
+
+<div class="container content-top-margin">
+  <img src="{% static 'img/home/mountain.png' %}" class="img-fluid" alt="Responsive image">
+  <iframe src="https://givebutter.com/embed/c/dxQLB9" width="100%" height="100%" style="max-width: 100%;" name="givebutter" frameborder="0" scrolling="no" seamless allowpaymentrequest></iframe><script src="https://givebutter.com/js/widget.js"></script>
+  <div class="text-block">
+  </div>
+</div>
+{% endblock %}
