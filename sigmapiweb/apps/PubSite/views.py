@@ -12,12 +12,19 @@ def _get_context(page_name):
         'current_page_name': page_name,
     }
 
+# Regular index
+# def index(request):
+#     """
+#     View for the static index page
+#     """
+#     return render(request, 'public/home.html', _get_context('Home'))
 
+# For having a campaign, renders copy of index.html 
 def index(request):
     """
     View for the static index page
     """
-    return render(request, 'public/home.html', _get_context('Home'))
+    return render(request, 'public/home-campaign.html', _get_context('Home'))
 
 
 def about(request):
@@ -45,6 +52,16 @@ def rush(request):
         request,
         'public/rush.html',
         _get_context('Rush'),
+    )
+
+def campaign(request):
+    """
+    View for the static chapter service page.
+    """
+    return render(
+        request,
+        'public/campaign.html',
+        _get_context('Campaign'),
     )
 
 

@@ -69,6 +69,11 @@ urlpatterns = [
         name='pub-rush',
     ),
     url(
+        regex=r'^campaign[/]$',
+        view=views.campaign,
+        name='pub-campaign',
+    ),
+    url(
         regex=r'^403/',
         view=views.permission_denied,
         name='pub-permission_denied',
