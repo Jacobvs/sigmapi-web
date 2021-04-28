@@ -15,8 +15,28 @@
 {% block article %}
 
 <div class="container content-top-margin">
-  <img src="{% static 'img/home/mountain.png' %}" class="img-fluid" alt="Responsive image" style="padding-bottom: 2rem">
-    <div class="container">
+    <div class="row">
+        <img src="{% static 'img/home/mountain.png' %}" class="img-fluid" alt="Responsive image" style="padding-bottom: 2rem">
+            <p>
+            The undergraduate brothers of Sigma Pi are running a fundraising campaign to solve the two of largest issues facing
+            our chapter currently. Those being: the financial struggle we’ve been tasked with overcoming this upcoming school
+            year, and our disconnect from the majority of chapter alumni. </p>
+            <p>Like many, us undergraduates were affected by the
+            COVID-19 pandemic and it has created much more of a financial hardship when trying to pay dues. That being said, it
+            is a necessity to raise these funds to help the brothers in need this upcoming year. Increased rent and inability to
+            fill the chapter house has placed us in a tough position that this campaign will aid in resolving.</p> 
+            <p>So, we’ve devised
+            a plan to do just that, while reconnecting with alumni at the same time. We’ve set a goal of $54,000 dollars with
+            the plans to use a percentage of funds raised towards subsidizing brothers struggling to pay dues, and the unused
+            funds would go towards chapter hosted events for alumni connections.</p> 
+            <p>Those events would include things like: Alumni
+            Dinners, Alumni Reunions, and other various events to reconnect the undergraduates to the network of talent that
+            came before them. Please consider donating towards this campaign and future campaigns to further the progress of
+            this brotherhood as a whole!</p> 
+            <p>For more information on our current situation or this fundraising campaign please email
+            <a href="mailto:gr-sigmapi@wpi.edu">gr-sigmapi@wpi.edu</a> or our chapter Sage, Alex Boucher Jr. at <a href="mailto:arboucher@wpi.edu">arboucher@wpi.edu</a>, for more details.</p>
+    </div>
+    <hr style="padding-bottom: 1rem">
         <div class="row">
             <div class="col-md-8">
                 <iframe id="givebutterIframe" src="https://givebutter.com/embed/c/dxQLB9" width="100%" height="100%" style="max-width: 100%;" name="givebutter" frameborder="0"
@@ -37,15 +57,20 @@
             </script>
             <div id="donorlist" class="col-md-4 card" style="max-height: 600px; background-color: #f7f9fa; border-radius: 4px;">
                 <h2 class="card-title" style="padding-top: 1rem">Donor List</h2>
-                <h6 class="card-subtitle" style="padding-bottom: 1rem">Thank you to all {{num_txs}} generous donors!</h6>
+                {% if transactions %}
+                <h4 class="card-subtitle">
+                     Thank you to all {{num_txs}} donors! 
+                </h4>
+                {% endif %} 
+                <h4 class="card-subtitle" style="padding-bottom: 1rem">
+                    The top 20 donors will recieve recognition with a plaque in the chapter house for their generous contributions.
+                </h4>
                 <div class="overflow-auto" style="overflow-y: scroll">
                     <div class="list-group">
                         {% if transactions %}
                             {% for tx in transactions %}
                                 <a class="list-group-item clearfix">
                                     <h4 class="float-right list-group-item-heading">${{tx.amount}}</h4>
-    <!--                                <h5 class="float-left list-group-item-text">{{forloop.counter}} </h5>-->
-    <!--                                <div style="border-left:1px solid #000;height:5px"></div>-->
                                     <h4 class="list-group-item-heading">
                                         {{tx.first_name}} {{tx.last_name}}
                                     </h4>
@@ -64,6 +89,7 @@
     </div>
   <div class="text-block">
   </div>
-
-</div>
 {% endblock %}
+
+
+
