@@ -59,6 +59,74 @@ def campaign(request):
     View for the static chapter service page.
     """
 
+    ex_data = [{
+    "id": "OR2Q93LZhKm1PL66",
+    "campaign_id": 71,
+    "team_id": None,
+    "member_id": None,
+    "first_name": "John",
+    "last_name": "Doe",
+    "email": "johndoe@example.net",
+    "phone": "(271) 555-1212",
+    "address": {
+        "address_1": "4 Privet Drive",
+        "address_2": None,
+        "city": "Newark",
+        "state": "NJ",
+        "zipcode": "07104",
+        "country": "USA"
+    },
+    "status": "succeeded",
+    "method": "card",
+    "amount": 49,
+    "fee": 3.29,
+    "fee_covered": 3.29,
+    "donated": 49,
+    "payout": 49,
+    "currency": "USD",
+    "created_at": "2020-05-15 19:50:02",
+    "giving_space": {
+        "id": 263,
+        "name": "John Doe",
+        "amount": 49,
+        "message": None
+    },
+    "transactions": [
+        {
+            "id": "7535510393",
+            "plan_id": None,
+            "amount": 49,
+            "fee": 3.29,
+            "fee_covered": 3.29,
+            "donated": 49,
+            "payout": 49,
+            "captured": True,
+            "captured_at": "2020-05-15 19:50:03",
+            "refunded": False,
+            "line_items": [
+                {
+                    "type": "item",
+                    "subtype": "ticket",
+                    "description": "General Admission",
+                    "quantity": 1,
+                    "price": 49,
+                    "discount": 0,
+                    "total": 49
+                },
+                {
+                    "type": "donation",
+                    "subtype": "fee",
+                    "description": "Processing fee",
+                    "quantity": 1,
+                    "price": 3.29,
+                    "discount": 0,
+                    "total": 3.29
+                }
+            ]
+        }
+    ]
+}]
+
     url = 'https://api.givebutter.com/v1/transactions/'
     headers = {'Authorization': f'Bearer {settings.GIVEBUTTER_API_KEY}'}
     response = None
@@ -83,20 +151,25 @@ def campaign(request):
     except requests.exceptions.RequestException:
         print("An unknown issue occurred while trying to retrieve GiveButter Donor List")
 
+    ctx = _get_context('Campaign')
+
     # Check for successful response, if so - filter, sort, and format data
     if response and 'data' in response:
         print(f'Response: {response}')
-        response = response['data']
+        response = ex_data # response['data']
         print(f'Data: {response}')
-        successful_txs = [tx for tx in response if tx['status'] == 'success']
+        successful_txs = [tx for tx in response if tx['status'] == 'succeeded']
         print(f'Filtered: {successful_txs}')
         sorted_txs = sorted(successful_txs, key=lambda tx: tx['amount'], reverse=True)
         print(f'Sorted: {sorted_txs}')
+        transactions = [{'first_name': tx['first_name'], 'last_name': tx['last_name'], 'amount': tx['amount'], 'message': tx['giving_space']['message']} for tx in sorted_txs]
+        print(f'Transactions: {transactions}')
+        ctx['transactions'] = transactions
 
     return render(
         request,
         'public/campaign.html',
-        _get_context('Campaign'),
+        ctx,
     )
 
 
