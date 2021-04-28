@@ -15,31 +15,55 @@
 {% block article %}
 
 <div class="container content-top-margin">
-  <img src="{% static 'img/home/mountain.png' %}" class="img-fluid" alt="Responsive image">
-  <iframe src="https://givebutter.com/embed/c/dxQLB9" width="100%" height="100%" style="max-width: 100%;" name="givebutter" frameborder="0" scrolling="no" seamless allowpaymentrequest></iframe>
-    <script src="https://givebutter.com/js/widget.js"></script>
-  <div class="text-block">
-  </div>
+  <img src="{% static 'img/home/mountain.png' %}" class="img-fluid" alt="Responsive image" style="padding-bottom: 2rem">
     <div class="container">
-        <h2>Thank You To All Our Generous Donors!</h2>
-        <div class="list-group">
-            {% if transactions %}
-                {% for tx in transactions %}
-                    <a class="list-group-item clearfix">
-                        <h3 class="float-right list-group-item-heading">${{tx.amount}}</h3>
-                        <h5 class="float-left list-group-item-text">{{forloop.counter}} </h5> <!---<div style="border-left:1px solid #000;height:5px"></div>--->
-                        <h4 class="list-group-item-heading">
-                            {{tx.first_name}} {{tx.last_name}}
-                        </h4>
-                        {% if tx.message %}
-                            <p class="list-group-item-text">{{tx.message}}</p>
+        <div class="row">
+            <div class="col-md-8">
+                <iframe id="givebutterIframe" src="https://givebutter.com/embed/c/dxQLB9" width="100%" height="100%" style="max-width: 100%;" name="givebutter" frameborder="0"
+                        scrolling="no"
+                         seamless allowpaymentrequest></iframe>
+                    <script src="https://givebutter.com/js/widget.js"></script>
+            </div>
+            <script>
+                function setHeight(){
+                    console.log("Set Height function")
+                    document.getElementById("donorlist").style.maxHeight = document.querySelector("#givebutterIframe").style.height;
+                }
+                document.querySelector("#givebutterIframe").addEventListener("load", evt => {
+                    console.log("iframe loaded")
+                    document.querySelector("#givebutterIframe").addEventListener("resize", setHeight);
+                    setHeight();
+                })
+            </script>
+            <div id="donorlist" class="col-md-4 card" style="max-height: 600px; background-color: #f7f9fa; border-radius: 4px;">
+                <h2 class="card-title" style="padding-top: 1rem">Donor List</h2>
+                <h6 class="card-subtitle">Thank you to all {{num_txs}} generous donors!</h6>
+                <div class="overflow-auto" style="overflow-y: scroll">
+                    <div class="list-group">
+                        {% if transactions %}
+                            {% for tx in transactions %}
+                                <a class="list-group-item clearfix">
+                                    <h4 class="float-right list-group-item-heading">${{tx.amount}}</h4>
+    <!--                                <h5 class="float-left list-group-item-text">{{forloop.counter}} </h5>-->
+    <!--                                <div style="border-left:1px solid #000;height:5px"></div>-->
+                                    <h4 class="list-group-item-heading">
+                                        {{tx.first_name}} {{tx.last_name}}
+                                    </h4>
+                                    {% if tx.message %}
+                                        <h6 class="list-group-item-text" style="color: #666">{{tx.message}}</h6>
+                                    {% endif %}
+                                </a>
+                            {% endfor %}
+                        {% else %}
+                        <p>No Donations Processed!</p>
                         {% endif %}
-                    </a>
-                {% endfor %}
-            {% else %}
-            <p>No Donations Processed!</p>
-            {% endif %}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+  <div class="text-block">
+  </div>
+
 </div>
 {% endblock %}
