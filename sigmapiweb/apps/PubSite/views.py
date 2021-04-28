@@ -65,11 +65,11 @@ def campaign(request):
     print(headers)
     # Make GET request to server, timeout in seconds
     try:
-        r = requests.get(url, headers=headers, timeout=3, allow_redirects=False)
+        r = requests.get(url, headers=headers, timeout=1, allow_redirects=False)
         if r.status_code == 301 or r.status_code == 307: # workaround for dropped auth headers due to redirect
-            r = requests.get(r.headers['Location'], headers=headers, allow_redirects=False)
+            r = requests.get(r.headers['Location'], timeout=1, headers=headers, allow_redirects=False)
             if r.status_code == 301 or r.status_code == 307:  # workaround for dropped auth headers due to redirect
-                r = requests.get(r.headers['Location'], headers=headers, allow_redirects=False)
+                r = requests.get(r.headers['Location'], timeout=1, headers=headers, allow_redirects=False)
                 if r.status_code == 200:
                     response = r.json()
                 else:
