@@ -1,12 +1,13 @@
 """
 Views for PubSite app.
 """
-import random
-
 from django.conf import settings
 from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
 from django.shortcuts import render
 import requests
+import logging
+
+logger = logging.getLogger(__name__)
 
 def _get_context(page_name):
     return {
@@ -56,50 +57,60 @@ def rush(request):
         _get_context('Rush'),
     )
 
+
 def campaign(request):
     """
     View for the static chapter service page.
     """
 
+    # Overrride requests Session authentication handling
+    class NoRebuildAuthSession(requests.Session):
+        def rebuild_auth(self, prepared_request, response):
+            """
+            No code here means requests will always preserve the Authorization
+            header when redirected.
+            Be careful not to leak your credentials to untrusted hosts!
+            """
+
     url = 'https://api.givebutter.com/v1/transactions/'
     headers = {'Authorization': f'Bearer {settings.GIVEBUTTER_API_KEY}'}
     response = None
+    # Create custom requests session
+    session = NoRebuildAuthSession()
 
     # Make GET request to server, timeout in seconds
     try:
-        r = requests.get(url, headers=headers, timeout=1, allow_redirects=False)
-        if r.status_code == 301 or r.status_code == 307: # workaround for dropped auth headers due to redirect
-            r = requests.get(r.headers['Location'], timeout=1, headers=headers, allow_redirects=False)
-            if r.status_code == 301 or r.status_code == 307:  # workaround for dropped auth headers due to redirect
-                r = requests.get(r.headers['Location'], timeout=1, headers=headers, allow_redirects=False)
-                if r.status_code == 200:
-                    response = r.json()
-                else:
-                    print(f"ERROR in re-request: {r.status_code}")
+        r = session.get(url, headers=headers, timeout=0.75)
+        if r.status_code == 200:
+            response = r.json()
         else:
-            print(f"ERROR in request: {r.status_code}")
+            logger.error(f"ERROR in request: {r.status_code}")
     except requests.exceptions.Timeout:
-        print("Connection Timed out")
+        logger.warning("Connection to GiveButter API Timed out")
     except requests.ConnectionError:
-        print("Connection to GiveButter API could not be resolved")
+        logger.warning("Connection to GiveButter API could not be resolved")
     except requests.exceptions.RequestException:
-        print("An unknown issue occurred while trying to retrieve GiveButter Donor List")
+        logger.error("An unknown issue occurred while trying to retrieve GiveButter Donor List")
 
+    # Grab context object to use later
     ctx = _get_context('Campaign')
 
     # Check for successful response, if so - filter, sort, and format data
     if response and 'data' in response:
-        response = response['data']
-        # print(f'Data: {response}')
+        response = response['data'] # Pull data from GET response object
+        logger.debug(f'GiveButter API Response: {response}')
+
+        # Filter by only successful transactions, then sort by amount descending
         successful_txs = [tx for tx in response if tx['status'] == 'succeeded']
-        # print(f'Filtered: {successful_txs}')
         sorted_txs = sorted(successful_txs, key=lambda tx: tx['amount'], reverse=True)
-        # print(f'Sorted: {sorted_txs}')
+
+        # Clean data to a list of dictionaries & remove unnecessary data
         transactions = [
             {'first_name': tx['first_name'], 'last_name': tx['last_name'], 'amount': tx['amount'], 'message': tx['giving_space']['message']}
             for tx in sorted_txs[:20]
         ]
-        # print(f'Transactions: {transactions}')
+
+        # Attach transaction dictionary & length to context object
         ctx['transactions'] = transactions
         ctx['num_txs'] = len(successful_txs)
 

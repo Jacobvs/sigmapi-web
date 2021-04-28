@@ -37,7 +37,7 @@
             </script>
             <div id="donorlist" class="col-md-4 card" style="max-height: 600px; background-color: #f7f9fa; border-radius: 4px;">
                 <h2 class="card-title" style="padding-top: 1rem">Donor List</h2>
-                <h6 class="card-subtitle">Thank you to all {{num_txs}} generous donors!</h6>
+                <h6 class="card-subtitle" style="padding-bottom: 1rem">Thank you to all {{num_txs}} generous donors!</h6>
                 <div class="overflow-auto" style="overflow-y: scroll">
                     <div class="list-group">
                         {% if transactions %}
@@ -55,7 +55,7 @@
                                 </a>
                             {% endfor %}
                         {% else %}
-                        <p>No Donations Processed!</p>
+                        <h4 class="list-group-item-text" style="padding-top: 2rem; color: #666">No Donations Processed!</h4>
                         {% endif %}
                     </div>
                 </div>
