@@ -16,7 +16,8 @@
 
 <div class="container content-top-margin">
     <div class="row">
-        <img src="{% static 'img/home/mountain.png' %}" class="img-fluid" alt="Responsive image" style="padding-bottom: 2rem">
+        <div class="col">
+            <img src="{% static 'img/home/mountain.png' %}" class="img-fluid" alt="Responsive image" style="padding-bottom: 2rem">
             <p>
             The undergraduate brothers of Sigma Pi are running a fundraising campaign to solve the two of largest issues facing
             our chapter currently. Those being: the financial struggle we’ve been tasked with overcoming this upcoming school
@@ -35,6 +36,7 @@
             this brotherhood as a whole!</p> 
             <p>For more information on our current situation or this fundraising campaign please email
             <a href="mailto:gr-sigmapi@wpi.edu">gr-sigmapi@wpi.edu</a> or our chapter Sage, Alex Boucher Jr. at <a href="mailto:arboucher@wpi.edu">arboucher@wpi.edu</a>, for more details.</p>
+        </div>      
     </div>
     <hr style="padding-bottom: 1rem">
         <div class="row">
@@ -44,19 +46,8 @@
                          seamless allowpaymentrequest></iframe>
                     <script src="https://givebutter.com/js/widget.js"></script>
             </div>
-            <script>
-                function setHeight(){
-                    console.log("Set Height function")
-                    document.getElementById("donorlist").style.maxHeight = document.querySelector("#givebutterIframe").style.height;
-                }
-                document.querySelector("#givebutterIframe").addEventListener("load", evt => {
-                    console.log("iframe loaded")
-                    document.querySelector("#givebutterIframe").addEventListener("resize", setHeight);
-                    setHeight();
-                })
-            </script>
-            <div id="donorlist" class="col-md-4 card" style="max-height: 600px; background-color: #f7f9fa; border-radius: 4px;">
-                <h2 class="card-title" style="padding-top: 1rem">Donor List</h2>
+            <div id="donorlist" class="col-md-4 card" style="background-color: #f7f9fa; border-radius: 4px;">
+                <h2 class="card-title" style="padding-top: 1rem;">Donor List</h2>
                 {% if transactions %}
                 <h4 class="card-subtitle">
                      Thank you to all {{num_txs}} donors! 
@@ -89,7 +80,16 @@
     </div>
   <div class="text-block">
   </div>
+
+  <!-- <script>
+    function setHeight(){
+        console.log("Set Height function")
+        document.getElementById("donorlist").style.maxHeight = document.querySelector(".collect-donate-border").style.height;
+    }
+    document.querySelector(".collect-donate-border").addEventListener("load", evt => {
+        console.log("iframe loaded")
+        document.querySelector(".collect-donate-border").addEventListener("resize", setHeight);
+        setHeight();
+    })
+    </script> -->
 {% endblock %}
-
-
-
