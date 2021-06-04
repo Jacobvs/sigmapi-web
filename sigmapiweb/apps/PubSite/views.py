@@ -101,12 +101,14 @@ def campaign(request):
         logger.debug(f'GiveButter API Response: {response}')
 
         # Filter by only successful transactions, then sort by amount descending
-        successful_txs = [tx for tx in response if tx['status'] == 'succeeded']
-        sorted_txs = sorted(successful_txs, key=lambda tx: tx['amount'], reverse=True)
+        successful_txs = [tx for tx in response if 
+            tx['status'] == 'succeeded']
+        sorted_txs = sorted(
+            successful_txs, key=lambda tx: tx['amount'], reverse=True)
 
         # Clean data to a list of dictionaries & remove unnecessary data
         transactions = [
-            {'first_name': tx['first_name'], 'last_name': tx['last_name'], 'amount': tx['amount'], 'message': tx['giving_space']['message']}
+            {'name':tx['giving_space']['name'],'amount':tx['giving_space']['amount'], 'message': tx['giving_space']['message']}
             for tx in sorted_txs[:20]
         ]
 

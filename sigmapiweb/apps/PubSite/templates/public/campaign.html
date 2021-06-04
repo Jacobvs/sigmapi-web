@@ -61,9 +61,15 @@
                         {% if transactions %}
                             {% for tx in transactions %}
                                 <a class="list-group-item clearfix">
-                                    <h4 class="float-right list-group-item-heading">${{tx.amount}}</h4>
+                                    <h4 class="float-right list-group-item-heading">
+                                        {% ifequal tx.amount 0 %}
+                                            $-----
+                                        {% else %}
+                                            ${{tx.amount}}
+                                        {% endifequal %}
+                                    </h4>
                                     <h4 class="list-group-item-heading">
-                                        {{tx.first_name}} {{tx.last_name}}
+                                        {{tx.name}}
                                     </h4>
                                     {% if tx.message %}
                                         <h6 class="list-group-item-text" style="color: #666">{{tx.message}}</h6>
