@@ -8,4 +8,4 @@ def menu_items(request):
     """
     Adds the main navigation menu items to the django template context
     """
-    return {'PUBLIC_LINKS': settings.PUBLIC_PAGES}
+    return {"PUBLIC_LINKS": settings.PUBLIC_PAGES}
