@@ -38,9 +38,9 @@ import glob
 # The values below are just defaults and will be superceded by devl_settings.json
 
 user_variables = {
-    "PYTHON": "python3.6",
-    "PIP": "sudo pip3.6",
-    "MANAGE": "python3.6 manage.py",
+    "PYTHON": "python3",
+    "PIP": "sudo pip3",
+    "MANAGE": "python3 manage.py",
     "DEV_DATA": os.path.join("fixtures", "dev_data.json"),
     "PORT": "8000",
 }
