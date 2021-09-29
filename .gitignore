@@ -9,6 +9,9 @@ build/
 sigmapiweb/static/css/secure/*.css
 sigmapiweb/static/css/public/*.css
 sigmapiweb/common/settings/local.py
+.venv/
+python3.6
+venvbinactivate
 
 # Colin is using pipenv, don't want to accidentally push this
 Pipfile

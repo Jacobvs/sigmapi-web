@@ -1,7 +1,7 @@
 """
 Views for Links app.
 """
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from django.contrib.auth.decorators import permission_required
 from django.core.exceptions import PermissionDenied
@@ -17,12 +17,14 @@ def view_all(request):
     Displays all of the links in the system.
     """
     linkform = LinkForm()
-    general_links = Link.objects.filter(promoted=False).order_by('-date')
+    general_links = Link.objects.filter(promoted=False,).order_by('-date').filter(date__range = [datetime.today() - timedelta(days = 365), datetime.today()])
     promoted_links = Link.objects.filter(promoted=True).order_by('-date')
+    archived_links = Link.objects.filter(promoted=False).order_by('-date').filter(date__range = [datetime.today() - timedelta(days = 365*20), datetime.today() - timedelta(days = 365)])
     context = {
         'linkform': linkform,
         'general_links': general_links,
         'promoted_links': promoted_links,
+        'archived_links' : archived_links,
     }
     return render(request, 'links/view.html', context)
 

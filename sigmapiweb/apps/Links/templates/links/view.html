@@ -40,6 +40,25 @@
 	{% endfor %}
 </div>
 {% endif %}
+
+
+{% if archived_links %}
+<h3>Archived Links</h3>
+<a class="btn btn-primary" role="button" data-toggle="collapse" href="#archiveCollapse" aria-expanded="false" aria-controls="archiveCollapse">
+	Open
+</a>
+<div class="collapse" id="archiveCollapse">
+	<div class="card card-body">
+		<div class="links-list">
+			{% for link in archived_links %}
+			{% include 'links/single_link.html' %}
+			{% endfor %}
+		</div>
+	</div>
+</div>
+
+{% endif %}
+
 {% endblock %}
 
 {% if perms.Links.add_link %}
@@ -55,7 +74,8 @@
 				<h4 class="modal-title">Post New Link</h4>
 			</div>
 			<div class="modal-body">
-				<form enctype="multipart/form-data" method="post" action="{% url 'links-add_link' %}" id="add-link-form">
+				<form enctype="multipart/form-data" method="post" action="{% url 'links-add_link' %}"
+					id="add-link-form">
 					{% csrf_token %}
 					<div class="form-group">
 						<label for="id_title" class="control-label">Title*</label>
