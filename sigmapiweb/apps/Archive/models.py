@@ -8,7 +8,7 @@ from django.db import models
 from common.mixins import ModelMixin
 
 
-def timestamp_file_name(fname, fmt='%Y-%m-%d_{fname}'):
+def timestamp_file_name(fname, fmt="%Y-%m-%d_{fname}"):
     """
     Utility function to add a timestamp to uploaded files.
     """
@@ -40,6 +40,7 @@ class Bylaws(ModelMixin, models.Model):
     """
     Model for a single document of house bylaws.
     """
+
     date = models.DateField()
     filepath = models.FileField(upload_to=bylaws_path)
 
@@ -50,15 +51,14 @@ class Bylaws(ModelMixin, models.Model):
     class Meta:
         verbose_name_plural = "Bylaws"
         verbose_name = "Bylaws"
-        permissions = (
-            ("access_bylaws", "Can access bylaws."),
-        )
+        permissions = (("access_bylaws", "Can access bylaws."),)
 
 
 class HouseRules(ModelMixin, models.Model):
     """
     Model for a single document of house rules.
     """
+
     date = models.DateField()
     filepath = models.FileField(upload_to=houserules_path)
 
@@ -69,15 +69,14 @@ class HouseRules(ModelMixin, models.Model):
     class Meta:
         verbose_name_plural = "House Rules"
         verbose_name = "House Rules"
-        permissions = (
-            ("access_houserules", "Can access house rules."),
-        )
+        permissions = (("access_houserules", "Can access house rules."),)
 
 
 class Guide(ModelMixin, models.Model):
     """
     Model for a single document of a house guide.
     """
+
     name = models.CharField(max_length=100)
     datePosted = models.DateField()
     description = models.TextField(blank=True)
@@ -91,6 +90,4 @@ class Guide(ModelMixin, models.Model):
     class Meta:
         verbose_name_plural = "Guides"
         verbose_name = "Guide"
-        permissions = (
-            ("access_guide", "Can access guides."),
-        )
+        permissions = (("access_guide", "Can access guides."),)

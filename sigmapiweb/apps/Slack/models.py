@@ -9,12 +9,15 @@ class CliqueUser(ModelMixin, models.Model):
     Slack usernames can change, but their ID should stay the same.
     We need some sort of unique mapping for the groups to work
     """
+
     slack_id = models.TextField()
+
 
 class CliqueGroup(ModelMixin, models.Model):
     """
     Model for keeping track of users in a specific Clique group
     """
+
     creator = models.ForeignKey(
         CliqueUser,
         on_delete=models.CASCADE,
@@ -22,4 +25,3 @@ class CliqueGroup(ModelMixin, models.Model):
     )
     name = models.TextField(unique=True)
     members = models.ManyToManyField(CliqueUser)
-

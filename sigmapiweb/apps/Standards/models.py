@@ -19,8 +19,10 @@ def _get_reason(summons):
     """
     return (
         (
-            'Conversation outcome: ' + summons.outcomes +
-            '\nFurther action required because: ' + summons.standards_action
+            "Conversation outcome: "
+            + summons.outcomes
+            + "\nFurther action required because: "
+            + summons.standards_action
         )
         if summons.spokeWith
         else summons.special_circumstance
@@ -31,16 +33,17 @@ class SummonsRequest(ModelMixin, models.Model):
     """
     Model for a request to summons a user.
     """
+
     # TODO: Delete this model, and just use Summons with an approved flag.
     summoner = models.ForeignKey(
         User,
-        related_name='+',
+        related_name="+",
         null=True,
         on_delete=models.SET_NULL,
     )
     summonee = models.ForeignKey(
         User,
-        related_name='+',
+        related_name="+",
         on_delete=models.CASCADE,
     )
     spokeWith = models.BooleanField()
@@ -58,7 +61,7 @@ class SummonsRequest(ModelMixin, models.Model):
         return _get_reason(self)
 
     def __str__(self):
-        return '{0} wants to summon {1}'.format(
+        return "{0} wants to summon {1}".format(
             get_formal_name_or_deleted(self.summoner),
             get_formal_name_or_deleted(self.summonee),
         )
@@ -72,20 +75,21 @@ class Summons(ModelMixin, models.Model):
     """
     Model for a summons that is given to a User.
     """
+
     summoner = models.ForeignKey(
         User,
-        related_name='+',
+        related_name="+",
         null=True,
         on_delete=models.SET_NULL,
     )
     summonee = models.ForeignKey(
         User,
-        related_name='+',
+        related_name="+",
         on_delete=models.CASCADE,
     )
     approver = models.ForeignKey(
         User,
-        related_name='+',
+        related_name="+",
         null=True,
         on_delete=models.SET_NULL,
     )
@@ -112,20 +116,21 @@ class SummonsHistoryRecord(ModelMixin, models.Model):
     """
     Model for a summons history record.
     """
+
     summoner = models.ForeignKey(
         User,
-        related_name='+',
+        related_name="+",
         null=True,
         on_delete=models.SET_NULL,
     )
     summonee = models.ForeignKey(
         User,
-        related_name='+',
+        related_name="+",
         on_delete=models.CASCADE,
     )
     saved_by = models.ForeignKey(
         User,
-        related_name='+',
+        related_name="+",
         null=True,
         on_delete=models.SET_NULL,
     )
@@ -135,7 +140,7 @@ class SummonsHistoryRecord(ModelMixin, models.Model):
     date = models.DateField()
 
     def __str__(self):
-        return '{0} summoned {1}'.format(
+        return "{0} summoned {1}".format(
             get_formal_name_or_deleted(self.summoner),
             get_formal_name_or_deleted(self.summonee),
         )

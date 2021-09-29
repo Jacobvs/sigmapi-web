@@ -11,6 +11,7 @@ class EditUserInfoForm(ModelForm):
     """
     Form for editing a user
     """
+
     phoneNumber = forms.CharField(max_length=100, required=False)
     major = forms.CharField(max_length=100, required=False)
     hometown = forms.CharField(max_length=100, required=False)
@@ -20,5 +21,12 @@ class EditUserInfoForm(ModelForm):
 
     class Meta:
         model = UserInfo
-        fields = ['phoneNumber', 'major', 'hometown', 'activities',
-                  'interests', 'favoriteMemory', 'pledgeClass']
+        fields = [
+            "phoneNumber",
+            "major",
+            "hometown",
+            "activities",
+            "interests",
+            "favoriteMemory",
+            "pledgeClass",
+        ]

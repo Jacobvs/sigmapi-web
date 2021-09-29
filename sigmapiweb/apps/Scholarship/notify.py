@@ -16,13 +16,13 @@ def scholarship_content_submitted():
     """
     subject = "Scholarship: Content Submitted for Approval"
     message = (
-        "Content has been submitted to " +
-        "the Scholarship module for your approval. " +
-        "You may view and approve/deny " +
-        "this content at" +
-        "https://sigmapigammaiota.org/secure/scholarship/approve/"
+        "Content has been submitted to "
+        + "the Scholarship module for your approval. "
+        + "You may view and approve/deny "
+        + "this content at"
+        + "https://sigmapigammaiota.org/secure/scholarship/approve/"
     )
-    scholarship = User.objects.filter(groups__name='Scholarship Chair')
+    scholarship = User.objects.filter(groups__name="Scholarship Chair")
     if not scholarship.exists():
         return
     scholarship_chair = scholarship.first()
@@ -40,16 +40,16 @@ def study_hours_tracked(tracked_user):
     """
     subject = "Scholarship: Study Hours"
     message = (
-        "Based on your academic performance, " +
-        "you are now required to report " +
-        str(tracked_user.number_of_hours) + " " +
-        "study hours per week. "
-        "Weeks begin on Mondays and " +
-        "end at Sunday at midnight. "
-        "You may report your study hours " +
-        "at: https://sigmapigammaiota.org/secure/scholarship/study_hours/"
+        "Based on your academic performance, "
+        + "you are now required to report "
+        + str(tracked_user.number_of_hours)
+        + " "
+        + "study hours per week. "
+        "Weeks begin on Mondays and " + "end at Sunday at midnight. "
+        "You may report your study hours "
+        + "at: https://sigmapigammaiota.org/secure/scholarship/study_hours/"
     )
-    scholarship = User.objects.filter(groups__name='Scholarship Chair')
+    scholarship = User.objects.filter(groups__name="Scholarship Chair")
     if not scholarship.exists():
         return
     scholarship_chair = scholarship.first()
@@ -66,9 +66,11 @@ def study_hours_untracked(tracked_user):
     TODO: Docstring
     """
     subject = "Scholarship: Study Hours"
-    message = "Based on your academic performance," +\
-        " you are no longer required to report study hours."
-    scholarship = User.objects.filter(groups__name='Scholarship Chair')
+    message = (
+        "Based on your academic performance,"
+        + " you are no longer required to report study hours."
+    )
+    scholarship = User.objects.filter(groups__name="Scholarship Chair")
     if not scholarship.exists():
         return
     scholarship_chair = scholarship.first()
@@ -85,9 +87,11 @@ def social_probation(tracked_user):
     TODO: Docstring
     """
     subject = "Scholarship: Social Probation"
-    message = "You have been placed on social probation" +\
-        " for failing to complete study hours."
-    scholarship = User.objects.filter(groups__name='Scholarship Chair')
+    message = (
+        "You have been placed on social probation"
+        + " for failing to complete study hours."
+    )
+    scholarship = User.objects.filter(groups__name="Scholarship Chair")
     if not scholarship.exists():
         return
     scholarship_chair = scholarship.first()

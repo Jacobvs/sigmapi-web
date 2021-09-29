@@ -16,6 +16,7 @@ class CreateUserError(Exception):
     """
     Exception raised by create_user.
     """
+
     def __init__(self, message):
         super(CreateUserError, self).__init__(message)
         print(message)
@@ -50,9 +51,9 @@ def create_user(username, first_name, last_name, major, year):
     try:
         user_obj = User.objects.create(username=username)
     except IntegrityError:
-        raise CreateUserError('Username already taken')
+        raise CreateUserError("Username already taken")
     except ValueError:
-        raise CreateUserError('Invalid username')
+        raise CreateUserError("Invalid username")
 
     try:
         user_obj.email = username + "@wpi.edu"
@@ -67,7 +68,7 @@ def create_user(username, first_name, last_name, major, year):
 
         user_obj.save()
         # Add the Pledge group by default
-        Group.objects.get(name='Pledges').user_set.add(user_obj)
+        Group.objects.get(name="Pledges").user_set.add(user_obj)
         user_info_obj.save()
 
         if not settings.DEBUG:
@@ -75,7 +76,7 @@ def create_user(username, first_name, last_name, major, year):
     except (ValueError, ValidationError):
         if user_obj:
             user_obj.delete()
-        raise CreateUserError('Invalid name, major, or year')
+        raise CreateUserError("Invalid name, major, or year")
 
 
 def send_mail_to_new_user(username, email, password):
@@ -87,14 +88,17 @@ def send_mail_to_new_user(username, email, password):
         email (str)
         password (str)
     """
-    subject = 'Welcome to the Sigma Pi Gamma Iota Website'
+    subject = "Welcome to the Sigma Pi Gamma Iota Website"
     message = (
-        'Welcome to the Sigma Pi Gamma Iota website.'
-        ' An account has been created for you.  Your username is: ' +
-        username + '. Your password is: ' + password + '. ' +
-        'You may acess the website at: https://sigmapigammaiota.org. ' +
-        'It is highly reccommended that you change your password upon ' +
-        'logging in.'
+        "Welcome to the Sigma Pi Gamma Iota website."
+        " An account has been created for you.  Your username is: "
+        + username
+        + ". Your password is: "
+        + password
+        + ". "
+        + "You may acess the website at: https://sigmapigammaiota.org. "
+        + "It is highly reccommended that you change your password upon "
+        + "logging in."
     )
     send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [email])
 
@@ -125,13 +129,16 @@ def send_mail_reset_password(username, email, password):
         email (str)
         password (str)
     """
-    subject = 'Your Password has been Reset'
+    subject = "Your Password has been Reset"
     message = (
-        'Your password for the Sigma Pi Gamma Iota website has been reset.' +
-        ' Your username is: ' +
-        username + '. Your new password is: ' + password + '. ' +
-        'You may acess the website at: https://sigmapigammaiota.org. ' +
-        'It is highly reccommended that you change your password upon ' +
-        'logging in.'
+        "Your password for the Sigma Pi Gamma Iota website has been reset."
+        + " Your username is: "
+        + username
+        + ". Your new password is: "
+        + password
+        + ". "
+        + "You may acess the website at: https://sigmapigammaiota.org. "
+        + "It is highly reccommended that you change your password upon "
+        + "logging in."
     )
     send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [email])

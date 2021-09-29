@@ -18,21 +18,18 @@ import apps.PartyList.models
 @login_required
 @permission_required("PartyListV2.view_parties")
 def index(request):
-    """ Index page for partylist. """
+    """Index page for partylist."""
 
     parties = Party.objects.all().order_by("party_start")
     old_parties = apps.PartyList.models.Party.objects.all().order_by("date")
-    context = {
-        'all_parties': parties,
-        'old_parties': old_parties
-    }
-    return render(request, 'partiesv2/all.html', context)
+    context = {"all_parties": parties, "old_parties": old_parties}
+    return render(request, "partiesv2/all.html", context)
 
 
 @login_required
 @permission_required("PartyListV2.view_parties")
 def guests(request, party_id):
-    """ Get list of party guests. """
+    """Get list of party guests."""
 
     try:
         requested_party = Party.objects.get(pk=party_id)
@@ -41,25 +38,24 @@ def guests(request, party_id):
 
     brothers = [
         (user.username, user.get_full_name())
-        for user in
-        User.objects.filter(
-            groups__name__in=['Brothers', 'Pledges']
-        ).order_by('first_name')
+        for user in User.objects.filter(
+            groups__name__in=["Brothers", "Pledges"]
+        ).order_by("first_name")
     ]
     context = {
-        'party': requested_party,
-        'brothers': brothers,
+        "party": requested_party,
+        "brothers": brothers,
     }
-    return render(request, 'partiesv2/guests.html', context)
+    return render(request, "partiesv2/guests.html", context)
 
 
 @login_required
-@permission_required('PartyListV2.manage_parties', login_url='pub-permission_denied')
+@permission_required("PartyListV2.manage_parties", login_url="pub-permission_denied")
 def delete_party(request, party_id):
     """
-        Deletes the party with the ID that is sent in the post request
-        """
-    if request.method == 'POST':
+    Deletes the party with the ID that is sent in the post request
+    """
+    if request.method == "POST":
         try:
             party = Party.objects.get(pk=party_id)
         except Party.DoesNotExist:
@@ -70,9 +66,9 @@ def delete_party(request, party_id):
 
 
 @login_required
-@permission_required('PartyListV2.manage_parties', login_url='pub-permission_denied')
+@permission_required("PartyListV2.manage_parties", login_url="pub-permission_denied")
 def edit_party(request, party_id):
-    """ Edit existing party details. """
+    """Edit existing party details."""
 
     try:
         requested_party = Party.objects.get(pk=party_id)
@@ -81,10 +77,9 @@ def edit_party(request, party_id):
 
     messages = []
     error_messages = []
-    if request.method == 'POST':
+    if request.method == "POST":
         # If this is a POST request, the form has been submitted
-        form = EditPartyForm(request.POST, request.FILES,
-                             instance=requested_party)
+        form = EditPartyForm(request.POST, request.FILES, instance=requested_party)
 
         if form.is_valid():  # Check that form is valid
             requested_party = form.save()
@@ -95,53 +90,49 @@ def edit_party(request, party_id):
         form = EditPartyForm(instance=requested_party)
 
     context = {
-        'adding_new': False,
-        'form': form,
-        'requested_party': requested_party,
-        'errors': form.errors,
-        'message': messages,
-        'error_messages': error_messages
+        "adding_new": False,
+        "form": form,
+        "requested_party": requested_party,
+        "errors": form.errors,
+        "message": messages,
+        "error_messages": error_messages,
     }
 
-    return render(request, 'partiesv2/edit.html', context)
+    return render(request, "partiesv2/edit.html", context)
 
 
 @login_required
-@permission_required('PartyListV2.manage_parties', login_url='pub-permission_denied')
+@permission_required("PartyListV2.manage_parties", login_url="pub-permission_denied")
 def manage_parties(request):
-    """ Manage listed parties. """
+    """Manage listed parties."""
 
     all_parties = Party.objects.all().order_by("party_start")
     context = {
-        'all_parties': all_parties,
+        "all_parties": all_parties,
     }
-    return render(request, 'partiesv2/manage.html', context)
+    return render(request, "partiesv2/manage.html", context)
 
 
 @login_required
-@permission_required('PartyListV2.manage_parties', login_url='pub-permission_denied')
+@permission_required("PartyListV2.manage_parties", login_url="pub-permission_denied")
 def add_party(request):
-    """ Add party to system. """
+    """Add party to system."""
 
-    context = {
-        'message': [],
-        'adding_new': True,
-        'form': EditPartyForm()
-    }
+    context = {"message": [], "adding_new": True, "form": EditPartyForm()}
 
-    if request.method == 'POST':
+    if request.method == "POST":
         form = EditPartyForm(request.POST, request.FILES)
         if form.is_valid():
             party = form.save()
-            context['message'].append(party.name + " successfully added.")
+            context["message"].append(party.name + " successfully added.")
         else:
-            context['message'].append("Error adding party.")
+            context["message"].append("Error adding party.")
 
-    return render(request, 'partiesv2/edit.html', context)
+    return render(request, "partiesv2/edit.html", context)
 
 
 def remove_graylisting(request, gl_id):
-    """ Remove guest from graylist. """
+    """Remove guest from graylist."""
 
     guest = RestrictedGuest.objects.get(pk=gl_id, graylisted=True)
 
@@ -152,7 +143,7 @@ def remove_graylisting(request, gl_id):
 
 
 def remove_blacklisting(request, bl_id):
-    """ Remove guest from blacklist. """
+    """Remove guest from blacklist."""
 
     guest = RestrictedGuest.objects.get(pk=bl_id, graylisted=False)
 
@@ -163,18 +154,20 @@ def remove_blacklisting(request, bl_id):
 
 
 def manage_restricted_lists(request):
-    """ Manage a specified restricted list. """
+    """Manage a specified restricted list."""
     return None
 
 
-@permission_required('PartyListV2.view_restricted_guests', login_url='pub-permission_denied')
+@permission_required(
+    "PartyListV2.view_restricted_guests", login_url="pub-permission_denied"
+)
 def restricted_lists(request):
     """
     Get restricted list specified in the request.
     """
 
     if request.method == "POST":
-        if request.POST.get('blacklist') is not None:
+        if request.POST.get("blacklist") is not None:
             blacklist_form = RestrictedGuestForm(request.POST)
             if blacklist_form.is_valid():
                 blacklisted_guest = blacklist_form.save(commit=False)
@@ -197,23 +190,23 @@ def restricted_lists(request):
         graylist_form = RestrictedGuestForm()
 
     context = {
-        'blacklist': [
-            (
-                guest,
-                guest.can_be_deleted_by(request.user)
+        "blacklist": [
+            (guest, guest.can_be_deleted_by(request.user))
+            for guest in RestrictedGuest.objects.filter(graylisted=False).order_by(
+                "name"
             )
-            for guest in RestrictedGuest.objects.filter(graylisted=False).order_by('name')],
-        'graylist': [
-            (
-                guest,
-                guest.can_be_deleted_by(request.user)
+        ],
+        "graylist": [
+            (guest, guest.can_be_deleted_by(request.user))
+            for guest in RestrictedGuest.objects.filter(graylisted=True).order_by(
+                "name"
             )
-            for guest in RestrictedGuest.objects.filter(graylisted=True).order_by('name')],
-        'blacklist_form': blacklist_form,
-        'graylist_form': graylist_form
+        ],
+        "blacklist_form": blacklist_form,
+        "graylist_form": graylist_form,
     }
 
-    return render(request, 'partiesv2/restricted_lists.html', context)
+    return render(request, "partiesv2/restricted_lists.html", context)
 
 
 @login_required
@@ -228,11 +221,6 @@ def download_jobs(request, party_id):
         path = party.jobs.path
         _, extension = os.path.splitext(path)
         name = party.name + " - Jobs" + extension
-        return sendfile(
-            request,
-            path,
-            attachment=True,
-            attachment_filename=name
-        )
+        return sendfile(request, path, attachment=True, attachment_filename=name)
     except (ValueError, Party.DoesNotExist):
         return redirect("partylist-index")

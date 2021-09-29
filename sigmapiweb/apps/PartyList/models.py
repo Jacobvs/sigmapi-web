@@ -11,7 +11,7 @@ from common.mixins import ModelMixin
 from common.utils import get_id_or_sentinel, get_full_name_or_deleted
 
 
-def _time_stamp_filename(fname, fmt='%Y-%m-%d_{fname}'):
+def _time_stamp_filename(fname, fmt="%Y-%m-%d_{fname}"):
     """
     Utility function to add a timestamp to names of uploaded files.
 
@@ -47,9 +47,8 @@ def user_can_delete_greylisting(user, greylisting):
 
     Returns: bool
     """
-    return (
-        greylisting.addedBy == user or
-        user.has_perm('PartyList.can_delete_any_greylisted_guest')
+    return greylisting.addedBy == user or user.has_perm(
+        "PartyList.can_delete_any_greylisted_guest"
     )
 
 
@@ -57,6 +56,7 @@ class Party(ModelMixin, models.Model):
     """
     Model to represent a party.
     """
+
     name = models.CharField(max_length=100)
     date = models.DateField()
     guycount = models.IntegerField(default=0)
@@ -68,11 +68,7 @@ class Party(ModelMixin, models.Model):
 
     # TODO: In the future, this path should be changed to be in
     # protected file space so it is not accessible to the public.
-    jobs = models.FileField(
-        upload_to=get_party_jobs_path,
-        blank=True,
-        null=True
-    )
+    jobs = models.FileField(upload_to=get_party_jobs_path, blank=True, null=True)
 
     def __str__(self):
         return self.name
@@ -83,12 +79,7 @@ class Party(ModelMixin, models.Model):
 
         Returns: bool
         """
-        close_datetime = datetime(
-            self.date.year,
-            self.date.month,
-            self.date.day,
-            20
-        )
+        close_datetime = datetime(self.date.year, self.date.month, self.date.day, 20)
         return close_datetime < datetime.now()
 
     class Meta:
@@ -106,10 +97,9 @@ class BlacklistedGuest(ModelMixin, models.Model):
 
     Does NOT use the Guest model; just simply stores a name and details.
     """
+
     name = models.CharField(max_length=100, db_index=True)
-    details = models.TextField(
-        default="(No identifying details provided)"
-    )
+    details = models.TextField(default="(No identifying details provided)")
     reason = models.TextField(default="(No reason provided)")
 
     MIN_MATCH_RATIO = 70
@@ -126,8 +116,8 @@ class BlacklistedGuest(ModelMixin, models.Model):
 
         Returns: int
         """
-        check_name = ''.join(c.lower() for c in to_check if not c.isspace())
-        bl_name = ''.join(c.lower() for c in self.name if not c.isspace())
+        check_name = "".join(c.lower() for c in to_check if not c.isspace())
+        bl_name = "".join(c.lower() for c in self.name if not c.isspace())
         match_ratio = fuzz.ratio(check_name, bl_name)
         return match_ratio if match_ratio >= self.MIN_MATCH_RATIO else 0
 
@@ -138,15 +128,13 @@ class BlacklistedGuest(ModelMixin, models.Model):
         Returns: dict
         """
         return {
-            'name': self.name,
-            'details': self.details,
-            'reason': self.reason,
+            "name": self.name,
+            "details": self.details,
+            "reason": self.reason,
         }
 
     class Meta:
-        permissions = (
-            ("manage_blacklist", "Can manage the blacklist"),
-        )
+        permissions = (("manage_blacklist", "Can manage the blacklist"),)
 
 
 class GreylistedGuest(ModelMixin, models.Model):
@@ -155,6 +143,7 @@ class GreylistedGuest(ModelMixin, models.Model):
 
     Does NOT use the Guest model; just simply stores a name and details.
     """
+
     name = models.CharField(max_length=100, db_index=True)
     addedBy = models.ForeignKey(
         User,
@@ -163,9 +152,7 @@ class GreylistedGuest(ModelMixin, models.Model):
         on_delete=models.SET_NULL,
         default=None,
     )
-    details = models.TextField(
-        default="(No identifying details provided)"
-    )
+    details = models.TextField(default="(No identifying details provided)")
     reason = models.TextField(default="(No reason provided)")
 
     MIN_MATCH_RATIO = 70
@@ -182,8 +169,8 @@ class GreylistedGuest(ModelMixin, models.Model):
 
         Returns: (GreylistedGuest|NoneType)s
         """
-        check_name = ''.join(c.lower() for c in to_check if not c.isspace())
-        gl_name = ''.join(c.lower() for c in self.name if not c.isspace())
+        check_name = "".join(c.lower() for c in to_check if not c.isspace())
+        gl_name = "".join(c.lower() for c in self.name if not c.isspace())
         match_ratio = fuzz.ratio(check_name, gl_name)
         return match_ratio if match_ratio >= self.MIN_MATCH_RATIO else 0
 
@@ -194,17 +181,17 @@ class GreylistedGuest(ModelMixin, models.Model):
         Returns: dict
         """
         return {
-            'name': self.name,
-            'addedBy': get_full_name_or_deleted(self.addedBy),
-            'details': self.details,
-            'reason': self.reason,
+            "name": self.name,
+            "addedBy": get_full_name_or_deleted(self.addedBy),
+            "details": self.details,
+            "reason": self.reason,
         }
 
     class Meta:
         permissions = (
             (
-                'can_delete_any_greylisted_guest',
-                'Can delete any greylsted guest',
+                "can_delete_any_greylisted_guest",
+                "Can delete any greylsted guest",
             ),
         )
 
@@ -213,6 +200,7 @@ class Guest(ModelMixin, models.Model):
     """
     Model to represent a guest, not specific to any party.
     """
+
     name = models.CharField(max_length=100, db_index=True)
     birthDate = models.DateField(blank=True, auto_now=True)
     gender = models.CharField(max_length=100)
@@ -240,6 +228,7 @@ class PartyGuest(ModelMixin, models.Model):
     """
     Model to represent a guest for a specific party.
     """
+
     party = models.ForeignKey(
         Party,
         related_name="party_for_guest",
@@ -292,8 +281,7 @@ class PartyGuest(ModelMixin, models.Model):
     class Meta:
         verbose_name_plural = "Party Guests"
         verbose_name = "Party Guest"
-        permissions = (("can_destroy_any_party_guest",
-                        "Can Remove Any Party Guest"),)
+        permissions = (("can_destroy_any_party_guest", "Can Remove Any Party Guest"),)
 
     def to_json(self):
         """
@@ -302,30 +290,25 @@ class PartyGuest(ModelMixin, models.Model):
         Returns: dict
         """
         data = {}
-        data['id'] = self.id
-        data['name'] = self.guest.name
-        data['addedBy'] = {
-            'name': get_full_name_or_deleted(self.addedBy),
-            'id': get_id_or_sentinel(self.addedBy),
-            'username': self.addedBy.username if self.addedBy else None,
+        data["id"] = self.id
+        data["name"] = self.guest.name
+        data["addedBy"] = {
+            "name": get_full_name_or_deleted(self.addedBy),
+            "id": get_id_or_sentinel(self.addedBy),
+            "username": self.addedBy.username if self.addedBy else None,
         }
-        data['signedIn'] = self.signedIn
-        data['wasVouchedFor'] = self.wasVouchedFor
-        data['potentialBlacklisting'] = (
-            self.potentialBlacklisting.to_json()
-            if self.potentialBlacklisting
-            else None
+        data["signedIn"] = self.signedIn
+        data["wasVouchedFor"] = self.wasVouchedFor
+        data["potentialBlacklisting"] = (
+            self.potentialBlacklisting.to_json() if self.potentialBlacklisting else None
         )
-        data['potentialGreylisting'] = (
-            self.potentialGreylisting.to_json()
-            if self.potentialGreylisting
-            else None
+        data["potentialGreylisting"] = (
+            self.potentialGreylisting.to_json() if self.potentialGreylisting else None
         )
 
-        data['everSignedIn'] = self.everSignedIn
+        data["everSignedIn"] = self.everSignedIn
 
         if self.everSignedIn:
-            data['timeFirstSignedIn'] = \
-                self.timeFirstSignedIn.strftime("%I:%M %p")
+            data["timeFirstSignedIn"] = self.timeFirstSignedIn.strftime("%I:%M %p")
 
         return data

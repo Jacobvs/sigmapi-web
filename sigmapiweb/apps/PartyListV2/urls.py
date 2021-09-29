@@ -9,143 +9,135 @@ from . import views, api
 
 urlpatterns = [
     url(
-        regex=r'^$',
-        view=RedirectView.as_view(pattern_name='partylist-index'),
-        name='partylist-index-redirect',
+        regex=r"^$",
+        view=RedirectView.as_view(pattern_name="partylist-index"),
+        name="partylist-index-redirect",
     ),
     url(
-        regex=r'^all/$',
+        regex=r"^all/$",
         view=views.index,
-        name='partylist-index',
+        name="partylist-index",
     ),
     url(
-        regex=r'^add/$',
+        regex=r"^add/$",
         view=views.add_party,
-        name='partylist-add_party',
+        name="partylist-add_party",
     ),
     url(
-        regex=r'^restricted-guests/$',
+        regex=r"^restricted-guests/$",
         view=views.restricted_lists,
-        name='partylist-restricted_lists',
+        name="partylist-restricted_lists",
     ),
     url(
-        regex=r'^restricted-guests/blacklist/remove/(?P<bl_id>[\d]+)/$',
+        regex=r"^restricted-guests/blacklist/remove/(?P<bl_id>[\d]+)/$",
         view=views.remove_blacklisting,
-        name='partylist-remove_blacklisting',
+        name="partylist-remove_blacklisting",
     ),
     url(
-        regex=r'^restricted-guests/graylist/remove/(?P<gl_id>[\d]+)/$',
+        regex=r"^restricted-guests/graylist/remove/(?P<gl_id>[\d]+)/$",
         view=views.remove_graylisting,
-        name='partylist-remove_graylisting',
+        name="partylist-remove_graylisting",
     ),
     url(
-        regex=r'^manage/$',
+        regex=r"^manage/$",
         view=views.manage_parties,
-        name='partylist-manage_parties',
+        name="partylist-manage_parties",
     ),
     url(
-        regex=r'^edit/(?P<party_id>[\d]+)/$',
+        regex=r"^edit/(?P<party_id>[\d]+)/$",
         view=views.edit_party,
-        name='partylist-edit_party',
+        name="partylist-edit_party",
     ),
     url(
-        regex=r'^delete/(?P<party_id>[\d]+)/$',
+        regex=r"^delete/(?P<party_id>[\d]+)/$",
         view=views.delete_party,
-        name='partylist-delete_party',
+        name="partylist-delete_party",
     ),
     url(
-        regex=r'^view/(?P<party_id>[\d]+)/guests/$',
+        regex=r"^view/(?P<party_id>[\d]+)/guests/$",
         view=views.guests,
-        name='partylist-guests',
+        name="partylist-guests",
     ),
     url(
-        regex=r'^view/(?P<party_id>[\d]+)/jobs/$',
+        regex=r"^view/(?P<party_id>[\d]+)/jobs/$",
         view=views.download_jobs,
-        name='partylist-download_jobs',
+        name="partylist-download_jobs",
     ),
-
     # API ENDPOINTS #
-
     url(
-        regex=r'^api/(?P<party_id>[\d]+)/details/$',
+        regex=r"^api/(?P<party_id>[\d]+)/details/$",
         view=api.get_details,
-        name='partylist-api-details',
+        name="partylist-api-details",
     ),
     url(
-        regex=r'^api/(?P<party_id>[\d]+)/guests/create/$',
+        regex=r"^api/(?P<party_id>[\d]+)/guests/create/$",
         view=api.create_guest,
-        name='partylist-api-create',
+        name="partylist-api-create",
     ),
     url(
         regex=(
-            r'^api/(?P<party_id>[\d]+)/guests/destroy/'
-            r'(?P<party_guest_id>[\d]+)/$'
+            r"^api/(?P<party_id>[\d]+)/guests/destroy/" r"(?P<party_guest_id>[\d]+)/$"
         ),
         view=api.destroy_guest,
-        name='partlist-api-destroy',
+        name="partlist-api-destroy",
     ),
     url(
         regex=(
-            r'^api/(?P<party_id>[\d]+)/guests/signIn/'
-            r'(?P<party_guest_id>[\d]+)/$'
+            r"^api/(?P<party_id>[\d]+)/guests/signIn/" r"(?P<party_guest_id>[\d]+)/$"
         ),
         view=api.sign_in,
-        name='partylist-api-signin',
+        name="partylist-api-signin",
     ),
     url(
         regex=(
-            r'^api/(?P<party_id>[\d]+)/guests/signOut/'
-            r'(?P<party_guest_id>[\d]+)/$'
+            r"^api/(?P<party_id>[\d]+)/guests/signOut/" r"(?P<party_guest_id>[\d]+)/$"
         ),
         view=api.sign_out,
-        name='partylist-api-signout',
+        name="partylist-api-signout",
     ),
     url(
-        regex=r'^api/(?P<party_id>[\d]+)/guests/export/$',
+        regex=r"^api/(?P<party_id>[\d]+)/guests/export/$",
         view=api.export_list,
-        name='partylist-api-export_list',
+        name="partylist-api-export_list",
     ),
     url(
-        regex=(
-            r'^api/(?P<party_id>[\d]+)/guests/$'
-        ),
+        regex=(r"^api/(?P<party_id>[\d]+)/guests/$"),
         view=api.get_guests,
-        name='partylist-api-get_all',
+        name="partylist-api-get_all",
     ),
     url(
-        regex=r'^api/(?P<party_id>[\d]+)/restricted/$',
+        regex=r"^api/(?P<party_id>[\d]+)/restricted/$",
         view=api.get_restricted_guests,
-        name='partylist-api-restricted_guests',
+        name="partylist-api-restricted_guests",
     ),
     url(
-        regex=r'^api/(?P<party_id>[\d]+)/permissions/$',
+        regex=r"^api/(?P<party_id>[\d]+)/permissions/$",
         view=api.get_permissions,
-        name='partylist-api-get_permissions',
+        name="partylist-api-get_permissions",
     ),
     url(
-        regex=r'^api/(?P<party_id>[\d]+)/pulse/$',
+        regex=r"^api/(?P<party_id>[\d]+)/pulse/$",
         view=api.party_pulse,
-        name='partylist-api-pulse',
+        name="partylist-api-pulse",
     ),
     url(
-        regex=r'^api/(?P<party_id>[\d]+)/guests/'
-        r'delta/(?P<update_counter>[\d]+)',
+        regex=r"^api/(?P<party_id>[\d]+)/guests/" r"delta/(?P<update_counter>[\d]+)",
         view=api.get_delta_guests,
-        name='partylist-api-delta_guests',
+        name="partylist-api-delta_guests",
     ),
     url(
-        regex=r'^api/(?P<party_id>[\d]+)/partyCount',
+        regex=r"^api/(?P<party_id>[\d]+)/partyCount",
         view=api.modify_party_count,
-        name='partylist-api-modify_party_count',
+        name="partylist-api-modify_party_count",
     ),
     url(
-        regex=r'^api/refresh-guest-json',
+        regex=r"^api/refresh-guest-json",
         view=api.refresh_guest_json,
-        name='partylist-api-refresh_guest_json',
+        name="partylist-api-refresh_guest_json",
     ),
     url(
-        regex=r'^api/(?P<party_id>[\d]+)/countHistory',
+        regex=r"^api/(?P<party_id>[\d]+)/countHistory",
         view=api.get_counts_history,
-        name='partylist-api-counts_history',
+        name="partylist-api-counts_history",
     ),
 ]
