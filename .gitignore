@@ -14,3 +14,4 @@ sigmapiweb/common/settings/local.py
 Pipfile
 
 devl_settings.json
+.tool-versions
