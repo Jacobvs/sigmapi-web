@@ -202,6 +202,7 @@ class CourseSection(ModelMixin, models.Model):
 
     catalog_course = models.ForeignKey(Course, on_delete=models.CASCADE)
     term = models.CharField(max_length=10)
+    year = models.CharField(max_length=2)
     professor = models.CharField(max_length=100)
     participants = models.ManyToManyField(User)
     

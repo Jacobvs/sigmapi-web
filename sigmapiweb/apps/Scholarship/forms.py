@@ -92,7 +92,7 @@ class CourseForm(forms.ModelForm):
 class CourseSectionForm(forms.ModelForm):
     class Meta:
         model = CourseSection
-        fields = ['catalog_course', 'term', 'professor']
+        fields = ['catalog_course', 'term', 'year', 'professor']
 
 class ReviewForm(forms.ModelForm):
     class Meta:

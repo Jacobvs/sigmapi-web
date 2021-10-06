@@ -44,7 +44,7 @@
 {% endfor %}
 {% endif %}
 
-<h3>View sections.</h3>
+<h3>{{course}}.</h3>
 
 <div class="actions">
   <ul class="nav nav-pills">
@@ -57,23 +57,23 @@
 </div>
 
 
-{% if sections %}
+{% if rows %}
 <div class="table-responsive">
   <table class="table dataTable-nosort">
     <thead>
       <tr>
-        <th>Catalog Code</th>
+        <th>Brother</th>
         <th>Term</th>
         <th>Professor</th>
       </tr>
     </thead>
     <tbody>
-      {% for section in sections %}
-      <tr>
-        <td>{{section.catalog_course}}</td>
-        <td>{{section.term}}</td>
-        <td>{{section.professor}}</td>
-      </tr>
+      {% for row in rows %}
+          <tr>
+            <td>{{row.brother}}</td>
+            <td>{{row.term}}</td>
+            <td>{{row.professor}}</td>
+          </tr>
       {% endfor %}
     </tbody>
   </table>

@@ -11,6 +11,7 @@ from django.shortcuts import render, redirect
 from django.views.decorators.http import require_GET, require_POST
 from django.utils.datastructures import MultiValueDict
 from django_downloadview import sendfile
+from django.core.exceptions import ObjectDoesNotExist
 
 from . import notify
 from .models import (
@@ -611,8 +612,13 @@ def add_course_section(request):
     """
     add_course_section_form = CourseSectionForm(request.POST)
     if add_course_section_form.is_valid():
-        course_section_record = add_course_section_form.save(commit=False)
-        course_section_record.save()
+        course = add_course_section_form.save(commit=False)
+        print(course)
+        print(request.user)
+
+        # Get the section that exists or create a new one
+        addedSection, created = CourseSection.objects.get_or_create(term=course.term, catalog_course=course.catalog_course, year=course.year, professor=course.professor)
+        addedSection.participants.add(request.user)
 
         message = 'Course Section successfully recorded.'
         messages.info(request, message, extra_tags='report')
@@ -694,8 +700,17 @@ def sections(request, catalog_code=None):
     else:
         all_sections = CourseSection.objects.order_by('-catalog_course')
 
+    print(all_sections)
+
+    rows = []
+    for section in all_sections:
+        print(section.professor)
+        for user in section.participants.all():
+            rows.append({'brother' : user, 'term': section.term, 'professor': section.professor})
+
     context = {
-        'sections': all_sections
+        'course': catalog_code,
+        'rows' : rows
     }
 
     return render(request, 'scholarship/sections.html', context)
