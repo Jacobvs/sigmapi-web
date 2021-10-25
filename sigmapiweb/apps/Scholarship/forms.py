@@ -14,6 +14,7 @@ from .models import (
     Review,
 )
 
+
 class CustomModelChoiceField(forms.ModelChoiceField):
     """
     TODO: Docstring.
@@ -77,22 +78,22 @@ class LibraryItemForm(forms.ModelForm):
 
     class Meta:
         model = LibraryItem
-        fields = ['title', 'isbn_number', 'course', 'edition', 'item_pdf']
+        fields = ["title", "isbn_number", "course", "edition", "item_pdf"]
 
 
 class CourseForm(forms.ModelForm):
     class Meta:
         model = Course
-        fields = ['catalog_code', 'title']
+        fields = ["catalog_code", "title"]
 
 
 class CourseSectionForm(forms.ModelForm):
     class Meta:
         model = CourseSection
-        fields = ['catalog_course', 'term', 'year', 'professor']
+        fields = ["catalog_course", "term", "year", "professor"]
+
 
 class ReviewForm(forms.ModelForm):
     class Meta:
         model = Review
-        fields = ['stars', 'text']
-
+        fields = ["stars", "text"]

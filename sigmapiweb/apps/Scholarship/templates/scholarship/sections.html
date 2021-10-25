@@ -1,84 +1,67 @@
-{% extends 'scholarship/_base.html' %} 
-
-{% block title %}Sigma Pi Secure -Sections {% endblock %} 
-
-{% load static %} 
+{% extends 'scholarship/_base.html' %}
+{% block title %}Sigma Pi Secure -Sections{% endblock %}
+{% load static %}
 {% block module_includes %}
-<script
-  type="text/javascript"
-  src='{% static "js/lib/jquery.dataTables.min.js" %}'
-></script>
-<script
-  type="text/javascript"
-  src='{% static "js/secure/autotable.js" %}'
-></script>
-
-<!-- Async file upload library -->
-<script
-  type="text/javascript"
-  src='{% static "js/lib/jquery.ui.widget.js" %}'
-></script>
-<script
-  type="text/javascript"
-  src='{% static "js/lib/jquery.iframe-transport.js" %}'
-></script>
-<script
-  type="text/javascript"
-  src='{% static "js/lib/jquery.fileupload.js" %}'
-></script>
-{% endblock %} 
-
+    <script type="text/javascript"
+            src='{% static "js/lib/jquery.dataTables.min.js" %}'></script>
+    <script type="text/javascript" src='{% static "js/secure/autotable.js" %}'></script>
+    <!-- Async file upload library -->
+    <script type="text/javascript"
+            src='{% static "js/lib/jquery.ui.widget.js" %}'></script>
+    <script type="text/javascript"
+            src='{% static "js/lib/jquery.iframe-transport.js" %}'></script>
+    <script type="text/javascript"
+            src='{% static "js/lib/jquery.fileupload.js" %}'></script>
+{% endblock %}
 {% block content %}
-
-{% if messages %}
-{% for message in messages %}
-{% if message.level == 40 %}
-<div class="alert alert-danger">
-	<strong>Error! </strong>
-{% else %}
-<div class="alert alert-info">
-	<strong>Info! </strong>
-{% endif %}
-	{{ message }}
-</div>
-{% endfor %}
-{% endif %}
-
-<h3>{{course}}.</h3>
-
-<div class="actions">
-  <ul class="nav nav-pills">
-    <li>
-      <a href="#" data-toggle="modal" data-target="#upload-item">
-        <span class="glyphicon glyphicon-plus"></span> Upload New Item
-      </a>
-    </li>
-  </ul>
-</div>
-
-
-{% if rows %}
-<div class="table-responsive">
-  <table class="table dataTable-nosort">
-    <thead>
-      <tr>
-        <th>Brother</th>
-        <th>Term</th>
-        <th>Professor</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for row in rows %}
-          <tr>
-            <td>{{row.brother}}</td>
-            <td>{{row.term}}</td>
-            <td>{{row.professor}}</td>
-          </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-</div>
-{% else %}
-<p>There are no sections added. Check back later.</p>
-
-{% endif %} {% endblock %}
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.level == 40 %}
+                <div class="alert alert-danger">
+                    <strong>Error!</strong>
+                {% else %}
+                    <div class="alert alert-info">
+                        <strong>Info!</strong>
+                    {% endif %}
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        <h3>{{ course }}.</h3>
+        <div class="actions">
+            <ul class="nav nav-pills">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#upload-item">
+                        <span class="glyphicon glyphicon-plus"></span>
+                        Upload New Item
+                    </a>
+                </li>
+            </ul>
+        </div>
+        {% if rows %}
+            <div class="table-responsive">
+                <table class="table dataTable-nosort">
+                    <thead>
+                        <tr>
+                            <th>Brother</th>
+                            <th>Term</th>
+                            <th>Professor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in rows %}
+                            <tr>
+                                <td>{{ row.brother }}</td>
+                                <td>{{ row.term }}</td>
+                                <td>{{ row.professor }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <p>
+                There are no sections added. Check back later.
+            </p>
+        {% endif %}
+    {% endblock %}

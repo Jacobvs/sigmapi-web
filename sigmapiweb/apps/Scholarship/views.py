@@ -566,8 +566,8 @@ def decline_libraryitem(request, item):
     else:
         item_obj.item_pdf.delete()  # Delete actual file
         item_obj.delete()
-        messages.info(request, 'Item declined successfully.')
-    return redirect('scholarship-approve')
+        messages.info(request, "Item declined successfully.")
+    return redirect("scholarship-approve")
 
 
 @login_required
@@ -581,15 +581,15 @@ def add_course(request):
         course_record = add_course_form.save(commit=False)
         course_record.save()
 
-        message = 'Course successfully recorded.'
-        messages.info(request, message, extra_tags='report')
+        message = "Course successfully recorded."
+        messages.info(request, message, extra_tags="report")
     else:
         message = (
-            'The Course was messed up in some way or '+
-            'another idk im still workin on this -amrit'
+            "The Course was messed up in some way or "
+            + "another idk im still workin on this -amrit"
         )
-        messages.error(request, message, extra_tags='report')
-    return redirect('scholarship-courses')
+        messages.error(request, message, extra_tags="report")
+    return redirect("scholarship-courses")
 
 
 @login_required
@@ -605,18 +605,24 @@ def add_course_section(request):
         print(request.user)
 
         # Get the section that exists or create a new one
-        addedSection, created = CourseSection.objects.get_or_create(term=course.term, catalog_course=course.catalog_course, year=course.year, professor=course.professor)
+        addedSection, created = CourseSection.objects.get_or_create(
+            term=course.term,
+            catalog_course=course.catalog_course,
+            year=course.year,
+            professor=course.professor,
+        )
         addedSection.participants.add(request.user)
 
-        message = 'Course Section successfully recorded.'
-        messages.info(request, message, extra_tags='report')
+        message = "Course Section successfully recorded."
+        messages.info(request, message, extra_tags="report")
     else:
         message = (
-            'The course section was messed up in some way or '+
-            'another idk im still workin on this -amrit'
+            "The course section was messed up in some way or "
+            + "another idk im still workin on this -amrit"
         )
-        messages.error(request, message, extra_tags='report')
-    return redirect('scholarship-courses')
+        messages.error(request, message, extra_tags="report")
+    return redirect("scholarship-courses")
+
 
 @login_required
 @require_POST
@@ -630,22 +636,21 @@ def record_review(request):
         review_record.reviewer = request.user
         review_record.save()
 
-        message = 'Review successfully reported.'
-        messages.info(request, message, extra_tags='report')
+        message = "Review successfully reported."
+        messages.info(request, message, extra_tags="report")
     else:
-        message = (
-            'The Review was invalid? what did you do'
-        )
-        messages.error(request, message, extra_tags='report')
-    return redirect('scholarship-record_review')
+        message = "The Review was invalid? what did you do"
+        messages.error(request, message, extra_tags="report")
+    return redirect("scholarship-record_review")
+
 
 @login_required
 @require_GET
 def courses(request):
     """
-        View for seeing all courses
+    View for seeing all courses
     """
-    all_courses = Course.objects.order_by('-catalog_code')
+    all_courses = Course.objects.order_by("-catalog_code")
 
     error = None
     msg = None
@@ -656,37 +661,40 @@ def courses(request):
     add_course_section_form = CourseSectionForm()
 
     try:
-        error = request.session['scholarship_course_error']
-        del request.session['scholarship_course_error']
+        error = request.session["scholarship_course_error"]
+        del request.session["scholarship_course_error"]
     except KeyError:
         pass
 
     try:
-        msg = request.session['scholarship_course_msg']
-        del request.session['scholarship_course_msg']
+        msg = request.session["scholarship_course_msg"]
+        del request.session["scholarship_course_msg"]
     except KeyError:
         pass
 
     context = {
-        'all_courses': all_courses,
-        'error': error,
-        'msg': msg,
-        "add_course_form":add_course_form,
-        "add_course_section_form":add_course_section_form
+        "all_courses": all_courses,
+        "error": error,
+        "msg": msg,
+        "add_course_form": add_course_form,
+        "add_course_section_form": add_course_section_form,
     }
 
-    return render(request, 'scholarship/courses.html', context)
+    return render(request, "scholarship/courses.html", context)
+
 
 @login_required
 @require_GET
 def sections(request, catalog_code=None):
     """
-        View for seeing the sections of selected course
+    View for seeing the sections of selected course
     """
     if catalog_code:
-        all_sections = CourseSection.objects.filter(catalog_course__catalog_code=catalog_code)
+        all_sections = CourseSection.objects.filter(
+            catalog_course__catalog_code=catalog_code
+        )
     else:
-        all_sections = CourseSection.objects.order_by('-catalog_course')
+        all_sections = CourseSection.objects.order_by("-catalog_course")
 
     print(all_sections)
 
@@ -694,12 +702,10 @@ def sections(request, catalog_code=None):
     for section in all_sections:
         print(section.professor)
         for user in section.participants.all():
-            rows.append({'brother' : user, 'term': section.term, 'professor': section.professor})
+            rows.append(
+                {"brother": user, "term": section.term, "professor": section.professor}
+            )
 
-    context = {
-        'course': catalog_code,
-        'rows' : rows
-    }
+    context = {"course": catalog_code, "rows": rows}
 
-    return render(request, 'scholarship/sections.html', context)
-
+    return render(request, "scholarship/sections.html", context)

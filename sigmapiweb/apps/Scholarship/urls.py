@@ -24,23 +24,22 @@ urlpatterns = [
         name="scholarship-resources",
     ),
     url(
-        regex=r'^courses/$',
+        regex=r"^courses/$",
         view=views.courses,
-        name='scholarship-courses',
+        name="scholarship-courses",
     ),
     url(
-        regex=r'^sections/(?P<catalog_code>[\w]+)/$',
+        regex=r"^sections/(?P<catalog_code>[\w]+)/$",
         view=views.sections,
-        name='scholarship-section',
+        name="scholarship-section",
     ),
     url(
-        regex=r'^sections/$',
+        regex=r"^sections/$",
         view=views.sections,
-        name='scholarship-sections-all',
+        name="scholarship-sections-all",
     ),
     url(
-        regex=r'^library/$',
-
+        regex=r"^library/$",
         view=views.library,
         name="scholarship-library",
     ),
@@ -129,13 +128,13 @@ urlpatterns = [
         name="scholarship-upload_libraryitem",
     ),
     url(
-        regex=r'^courses/add-course/$',
+        regex=r"^courses/add-course/$",
         view=views.add_course,
-        name='scholarship-add_course',
+        name="scholarship-add_course",
     ),
     url(
-        regex=r'^courses/add-course-section/$',
+        regex=r"^courses/add-course-section/$",
         view=views.add_course_section,
-        name='scholarship-add_course_section',
+        name="scholarship-add_course_section",
     ),
 ]
