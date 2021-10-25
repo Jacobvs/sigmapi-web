@@ -62,9 +62,6 @@
               content="{% static 'img/favicon/ms-icon-144x144.png' %}">
         <meta name="theme-color" content="#ffffff">
         <!-- Include Response.js to enable media queries/responsive design for IE 8 and below -->
-        <!--[if lt IE 9]>
-                	<script src='{% static "js/lib/respond.min.js" %}'></script>
-                <![endif]-->
         {% block local_includes %}<!-- include on child templates to add page specific js and css files -->{% endblock %}
         <title>
             {% block title %}{% endblock %}
