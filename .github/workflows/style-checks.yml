@@ -30,7 +30,7 @@ jobs:
         if [ -f sigmapiweb/requirements/github.txt ]; then pip install -r sigmapiweb/requirements/github.txt; fi
     - name: Run Black check
       run: |
-        black --check .
+        python3 black --check .
     - name: Run djlint check
       run: |
-        djlint --check --quiet .
+        python3 djlint --check --quiet .
