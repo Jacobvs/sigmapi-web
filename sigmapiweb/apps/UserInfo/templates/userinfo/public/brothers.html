@@ -2,83 +2,77 @@
 {% block title %}Sigma Pi Gamma Iota - Brothers{% endblock %}
 {% load sass_tags %}
 {% block module_includes %}
-  {{ block.super }}
-  {% load static %}
-  <link rel="stylesheet" type="text/css" href='{% sass_src "css/public/brothers.scss" %}?v=1' />
+    {{ block.super }}
+    {% load static %}
+    <link rel="stylesheet"
+          type="text/css"
+          href='{% sass_src "css/public/brothers.scss" %}?v=1'/>
 {% endblock %}
-
-{% block content_title %}
-  Brothers
-{% endblock %}
+{% block content_title %}Brothers{% endblock %}
 {% block content %}
-  <div class="family-tree-fab">
-    <a class="inner" href="{% url 'userinfo-family_tree_dashbaord' %}">
-      View Family Tree
-    </a>
-  </div>
-  {% for group in brother_groups %}
-    {% if group.count > 0 %}
-      <div class="user-group-header">
-        <div class="container">
-          <h1>{{ group.group_title }}</h1>
-        </div>
-      </div>
-      <div class="container">
-        <div class="row">
-          {% for brother in group.brothers %}
-            {% if brother %}
-            <div class="user-panel col-md-6 col-lg-4 mx-auto">
-              <div class="panel-body">
-                <div class="user-header">
-                  {% if brother.title %}
-                    <h3 class="position-title">{{ brother.title }}</h3>
-                  {% endif %}
-                  <h3 class="name-title">{{ brother.first_name }} {{ brother.last_name }}</h3>
+    <div class="family-tree-fab">
+        <a class="inner" href="{% url 'userinfo-family_tree_dashbaord' %}">View Family Tree</a>
+    </div>
+    {% for group in brother_groups %}
+        {% if group.count > 0 %}
+            <div class="user-group-header">
+                <div class="container">
+                    <h1>{{ group.group_title }}</h1>
                 </div>
-
-                <div class="user-image-wrapper">
-                  <img src="{{ brother.userinfo.picture|profile_image }}">
-                </div>
-                <div class="content">
-                  <div class="tags">
-                    <div class="nameval tag">
-                      <div class="name">Class:</div>
-                      <div class="value">{{ brother.userinfo.pledgeClass.name }}</div>
-                    </div>
-                    <div class="nameval tag">
-                      <div class="name">Year:</div>
-                      <div class="value">{{ brother.userinfo.graduationYear }}</div>
-                    </div>
-                    <div class="nameval tag">
-                      <div class="name">Major:</div>
-                      <div class="value">{{ brother.userinfo.major }}</div>
-                    </div>
-                  </div>
-                  <div class="info">
-                    <div class="nameval">
-                      <div class="name">Hometown:</div>
-                      <div class="value">{{ brother.userinfo.hometown }}</div>
-                    </div>
-                    <div class="nameval">
-                      <div class="name">Activities:</div>
-                      <div class="value">{{ brother.userinfo.activities }}</div>
-                    </div>
-                    <div class="nameval">
-                      <div class="name">Interests:</div>
-                      <div class="value">{{ brother.userinfo.interests }}</div>
-                    </div>
-                    <div class="nameval">
-                      <div class="name">Favorite Memory:</div>
-                      <div class="value">{{ brother.userinfo.favoriteMemory }}</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
-            {% endif %}
-          {% endfor %}
-        </div>
-      </div>
-    {% endif %}
-  {% endfor %}
+            <div class="container">
+                <div class="row">
+                    {% for brother in group.brothers %}
+                        {% if brother %}
+                            <div class="user-panel col-md-6 col-lg-4 mx-auto">
+                                <div class="panel-body">
+                                    <div class="user-header">
+                                        {% if brother.title %}<h3 class="position-title">{{ brother.title }}</h3>{% endif %}
+                                        <h3 class="name-title">{{ brother.first_name }} {{ brother.last_name }}</h3>
+                                    </div>
+                                    <div class="user-image-wrapper">
+                                        <img src="{{ brother.userinfo.picture|profile_image }}">
+                                    </div>
+                                    <div class="content">
+                                        <div class="tags">
+                                            <div class="nameval tag">
+                                                <div class="name">Class:</div>
+                                                <div class="value">{{ brother.userinfo.pledgeClass.name }}</div>
+                                            </div>
+                                            <div class="nameval tag">
+                                                <div class="name">Year:</div>
+                                                <div class="value">{{ brother.userinfo.graduationYear }}</div>
+                                            </div>
+                                            <div class="nameval tag">
+                                                <div class="name">Major:</div>
+                                                <div class="value">{{ brother.userinfo.major }}</div>
+                                            </div>
+                                        </div>
+                                        <div class="info">
+                                            <div class="nameval">
+                                                <div class="name">Hometown:</div>
+                                                <div class="value">{{ brother.userinfo.hometown }}</div>
+                                            </div>
+                                            <div class="nameval">
+                                                <div class="name">Activities:</div>
+                                                <div class="value">{{ brother.userinfo.activities }}</div>
+                                            </div>
+                                            <div class="nameval">
+                                                <div class="name">Interests:</div>
+                                                <div class="value">{{ brother.userinfo.interests }}</div>
+                                            </div>
+                                            <div class="nameval">
+                                                <div class="name">Favorite Memory:</div>
+                                                <div class="value">{{ brother.userinfo.favoriteMemory }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
 {% endblock %}

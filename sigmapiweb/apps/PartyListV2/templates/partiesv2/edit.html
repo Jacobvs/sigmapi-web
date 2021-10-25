@@ -1,65 +1,72 @@
 {% extends 'partiesv2/_base.html' %}
 {% block title %}Sigma Pi Secure - Add Party{% endblock %}
-
 {% load static %}
 {% block module_includes %}
-	<script type="text/javascript" src='{% static "js/lib/moment.min.js" %}'></script>
-	<script type="text/javascript" src='{% static "js/lib/bootstrap-datetimepicker.min.js" %}'></script>
-	<link rel="stylesheet" type="text/css" href='{% static "css/lib/bootstrap-datetimepicker.min.css" %}'/>
-
+    <script type="text/javascript" src='{% static "js/lib/moment.min.js" %}'></script>
+    <script type="text/javascript"
+            src='{% static "js/lib/bootstrap-datetimepicker.min.js" %}'></script>
+    <link rel="stylesheet"
+          type="text/css"
+          href='{% static "css/lib/bootstrap-datetimepicker.min.css" %}'/>
     <script src='{% static "js/lib/jquery.timepicker.min.js" %}'></script>
-    <link rel="stylesheet" type="text/css" href='{% static "css/lib/jquery.timepicker.min.css" %}'/>
+    <link rel="stylesheet"
+          type="text/css"
+          href='{% static "css/lib/jquery.timepicker.min.css" %}'/>
 {% endblock %}
-
 {% block content %}
-<h3>
-{% if adding_new %}
-    Add a new party.
-{% else %}
-    Edit Party
-{% endif %}
-</h3>
-
-<form enctype="multipart/form-data" method="post" action="{% if adding_new %}{% url 'partylist-add_party' %}{% else %} {% url 'partylist-edit_party' requested_party.pk%}{% endif %}" role="form" class="centered medium v2form">
-	{% csrf_token %}
-	{% if message %}
-	<div class="alert alert-info">
-		{% for msg in message %}
-		<p>{{ msg }}</p>
-		{% endfor %}
-	</div>
-  {% if error_messages %}
-  <div class="alert alert-danger">
-    {% for error in error_messages %}
-    <p>{{ error }}</p>
-    {% endfor %}
-  </div>
-  {% endif %}
-	{% endif %}
-    {% for field in form %}
-        <div class="field_wrapper" id="wrapper_{{ field.id_for_label }}">
-            {{ field.label_tag }}
-            {{ field }}
-            {% if field.errors %}
-              <div class="alert alert-danger">
-                {{ field.errors }}
-              </div>
-            {% endif %}
-        </div>
-    {% endfor %}
-    <button type="submit" class="btn btn-primary pull-right">
+    <h3>
         {% if adding_new %}
-        Add Party
+            Add a new party.
         {% else %}
-        Save
+            Edit Party
         {% endif %}
-    </button>
-</form>
+    </h3>
+    <form enctype="multipart/form-data"
+          method="post"
+          action="{% if adding_new %}
+                      {% url 'partylist-add_party' %}
+                  {% else %}
+                      {% url 'partylist-edit_party' requested_party.pk %}
+                  {% endif %}"
+          role="form"
+          class="centered medium v2form">
+        {% csrf_token %}
+        {% if message %}
+            <div class="alert alert-info">
+                {% for msg in message %}
+                    <p>
+                        {{ msg }}
+                    </p>
+                {% endfor %}
+            </div>
+            {% if error_messages %}
+                <div class="alert alert-danger">
+                    {% for error in error_messages %}
+                        <p>
+                            {{ error }}
+                        </p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endif %}
+        {% for field in form %}
+            <div class="field_wrapper" id="wrapper_{{ field.id_for_label }}">
+                {{ field.label_tag }}
+                {{ field }}
+                {% if field.errors %}<div class="alert alert-danger">{{ field.errors }}</div>{% endif %}
+            </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary pull-right">
+            {% if adding_new %}
+                Add Party
+            {% else %}
+                Save
+            {% endif %}
+        </button>
+    </form>
 {% endblock %}
-
 {% block embedded_js %}
-
-<script type="text/javascript">
+    <script type="text/javascript">
 	// Initialize all date pickers on the page.
 
 
@@ -125,6 +132,5 @@
     }).change();
 
 	slideDuration = 400;
-</script>
-
+    </script>
 {% endblock %}

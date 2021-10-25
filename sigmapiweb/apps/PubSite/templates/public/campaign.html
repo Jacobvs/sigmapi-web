@@ -1,59 +1,64 @@
 {% extends 'public/_article_base.html' %}
 {% load static %}
-
-
 {% block module_includes %}
     {% load sass_tags %}
-    <link rel='stylesheet' type='text/css' href='{% sass_src "css/public/rush.scss" %}?v=1.2' />
+    <link rel='stylesheet'
+          type='text/css'
+          href='{% sass_src "css/public/rush.scss" %}?v=1.2'/>
 {% endblock %}
-
-{% block title %}Sigma Pi Gamma Iota - Campaign
-{% endblock %}
-  {% load static %} {% block content_title %} Donation Campaign
-{% endblock %}
-
+{% block title %}Sigma Pi Gamma Iota - Campaign{% endblock %}
+{% load static %}
+{% block content_title %}Donation Campaign{% endblock %}
 {% block article %}
-
-<div class="container content-top-margin">
-    <div class="row">
-        <div class="col">
-            <img src="{% static 'img/home/mountain.png' %}" class="img-fluid" alt="Responsive image" style="padding-bottom: 2rem">
-            <p>
-                The undergraduate brothers of Sigma Pi are running a fundraising campaign to solve the two most prominent issues facing our chapter. Those being: the financial struggle the active brothers will have to overcome this upcoming school year and our disconnect from many chapter alumni. 
-            </p>
-            <p>
-                Like many, we undergraduates were affected by the COVID-19 pandemic. Unfortunately, it has created much more financial hardship when trying to pay dues. That being said, it is a necessity to raise these funds to help the brothers in need this upcoming year. Increased rent and inability to fill the chapter house have placed us in a challenging position that this campaign will aid in resolving.
-            </p> 
-            <p>
-                So, we’ve devised a plan to do just that while reconnecting with alumni at the same time. The funds raised would be put towards subsidizing brothers struggling to pay dues, rebuilding the chapter emergency fund, and chapter hosted alumni events.
-            </p> 
-            <p>
-                Those events would hopefully include Alumni Dinners, Alumni Reunions, and other various events to reconnect the undergraduates to the network of talent that came before them. Please consider donating towards this campaign and future campaigns to further the progress of this brotherhood as a whole!
-            </p> 
-            <p>
-                For more information on our current situation or this fundraising campaign please email
-                <a href="mailto:gr-sigmapi@wpi.edu">gr-sigmapi@wpi.edu</a> 
-                or our chapter Sage, Alex Boucher Jr. at 
-                <a href="mailto:arboucher@wpi.edu">arboucher@wpi.edu</a>
-                , for more details.
-            </p>
-        </div>      
-    </div>
-    <hr style="padding-bottom: 1rem">
+    <div class="container content-top-margin">
+        <div class="row">
+            <div class="col">
+                <img src="{% static 'img/home/mountain.png' %}"
+                     class="img-fluid"
+                     alt="Responsive image"
+                     style="padding-bottom: 2rem">
+                <p>
+                    The undergraduate brothers of Sigma Pi are running a fundraising campaign to solve the two most prominent issues facing our chapter. Those being: the financial struggle the active brothers will have to overcome this upcoming school year and our disconnect from many chapter alumni.
+                </p>
+                <p>
+                    Like many, we undergraduates were affected by the COVID-19 pandemic. Unfortunately, it has created much more financial hardship when trying to pay dues. That being said, it is a necessity to raise these funds to help the brothers in need this upcoming year. Increased rent and inability to fill the chapter house have placed us in a challenging position that this campaign will aid in resolving.
+                </p>
+                <p>
+                    So, we’ve devised a plan to do just that while reconnecting with alumni at the same time. The funds raised would be put towards subsidizing brothers struggling to pay dues, rebuilding the chapter emergency fund, and chapter hosted alumni events.
+                </p>
+                <p>
+                    Those events would hopefully include Alumni Dinners, Alumni Reunions, and other various events to reconnect the undergraduates to the network of talent that came before them. Please consider donating towards this campaign and future campaigns to further the progress of this brotherhood as a whole!
+                </p>
+                <p>
+                    For more information on our current situation or this fundraising campaign please email
+                    <a href="mailto:gr-sigmapi@wpi.edu">gr-sigmapi@wpi.edu</a>
+                    or our chapter Sage, Alex Boucher Jr. at
+                    <a href="mailto:arboucher@wpi.edu">arboucher@wpi.edu</a>
+                    , for more details.
+                </p>
+            </div>
+        </div>
+        <hr style="padding-bottom: 1rem">
         <div class="row">
             <div class="col-md-8">
-                <iframe id="givebutterIframe" src="https://givebutter.com/embed/c/dxQLB9" width="100%" height="100%" style="max-width: 100%;" name="givebutter" frameborder="0"
+                <iframe id="givebutterIframe"
+                        src="https://givebutter.com/embed/c/dxQLB9"
+                        width="100%"
+                        height="100%"
+                        style="max-width: 100%;"
+                        name="givebutter"
+                        frameborder="0"
                         scrolling="no"
-                         seamless allowpaymentrequest></iframe>
-                    <script src="https://givebutter.com/js/widget.js"></script>
+                        seamless
+                        allowpaymentrequest></iframe>
+                <script src="https://givebutter.com/js/widget.js"></script>
             </div>
-            <div id="donorlist" class="col-md-4 card" style="background-color: #f7f9fa; border-radius: 4px;">
+            <div id="donorlist"
+                 class="col-md-4 card"
+                 style="background-color: #f7f9fa;
+                        border-radius: 4px;">
                 <h2 class="card-title" style="padding-top: 1rem;">Donor List</h2>
-                {% if transactions %}
-                <h4 class="card-subtitle">
-                     Thank you to all {{num_txs}} donors! 
-                </h4>
-                {% endif %} 
+                {% if transactions %}<h4 class="card-subtitle">Thank you to all {{ num_txs }} donors!</h4>{% endif %}
                 <h4 class="card-subtitle" style="padding-bottom: 1rem">
                     The top 20 donors will receive recognition with a plaque in the chapter house for their generous contributions.
                 </h4>
@@ -66,29 +71,23 @@
                                         {% ifequal tx.amount 0 %}
                                             $-----
                                         {% else %}
-                                            ${{tx.amount}}
+                                            ${{ tx.amount }}
                                         {% endifequal %}
                                     </h4>
-                                    <h4 class="list-group-item-heading">
-                                        {{tx.name}}
-                                    </h4>
-                                    {% if tx.message %}
-                                        <h6 class="list-group-item-text" style="color: #666">{{tx.message}}</h6>
-                                    {% endif %}
+                                    <h4 class="list-group-item-heading">{{ tx.name }}</h4>
+                                    {% if tx.message %}<h6 class="list-group-item-text" style="color: #666">{{ tx.message }}</h6>{% endif %}
                                 </a>
                             {% endfor %}
                         {% else %}
-                        <h4 class="list-group-item-text" style="padding-top: 2rem; color: #666">No Donations Processed!</h4>
+                            <h4 class="list-group-item-text" style="padding-top: 2rem; color: #666">No Donations Processed!</h4>
                         {% endif %}
                     </div>
                 </div>
             </div>
         </div>
     </div>
-  <div class="text-block">
-  </div>
-
-  <!-- <script>
+    <div class="text-block"></div>
+    <!-- <script>
     function setHeight(){
         console.log("Set Height function")
         document.getElementById("donorlist").style.maxHeight = document.querySelector(".collect-donate-border").style.height;
@@ -98,5 +97,5 @@
         document.querySelector(".collect-donate-border").addEventListener("resize", setHeight);
         setHeight();
     })
-    </script> -->
+            </script> -->
 {% endblock %}
