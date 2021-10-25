@@ -3,5 +3,6 @@ from django.apps import AppConfig
 
 
 class Partylistv2Config(AppConfig):
-    """ Configuration for the PartyList V2 app """
-    name = 'PartyListV2'
+    """Configuration for the PartyList V2 app"""
+
+    name = "PartyListV2"

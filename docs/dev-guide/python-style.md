@@ -3,8 +3,10 @@
 [_(Back to developer guide)_](https://github.com/sigmapi-gammaiota/sigmapi-web/tree/master/docs/dev-guide/index.md)
 
 ## Impetus
+
 Following a strict style guide has several benefits:
-* Having well-styled code makes it easier for new developers, both internal and open-source, to get familiar with the project and start contributing.
+
+* Having well-styled code makes it easier for new developers to get familiar with the project and start contributing.
 * It's easier to spot bugs in well-styled code.
 * While code styling quality and code robustness do not _always_ go hand-in-hand, there tends to be a correlation between the two properties.
 * Future constributers will not feel the need to "clean up" code in their PRs, making future PRs simpler.
@@ -12,24 +14,27 @@ Following a strict style guide has several benefits:
 * It's more professional-looking, in case you want to point potential employers to your work here.
 
 ## Tools
-* We use PEP8 to verify that our code conforms with Python community style standards.
+
+* We use `black` to simplify the process of formatting code. It's opinionated, and PEP8 compliant.
+* Install `black` through pip using:
+
 ```bash
-make pep8   # Checks all files
-pep8 <path> # Checks a single file or directory
+pip install black #Or use whatever pip alias you have
 ```
-* We use Pylint to verify that the code follows best practices, to a certain extent at least.
+
+* Run `black` by executing the following command in the top level of the repo
+* Do this before all commits
+
 ```bash
-make pylint   # Lints all files
-pylint <path> # Lints a single file or directory.
+black . #Run Black on the repo
 ```
-* There are rules in this guide that neither of the above tools check. Please be cognizant of them anyway.
+
+* There are rules in this guide that `black` doesn't check. Please be cognizant of them anyway.
 
 ## Style Guide
 
-### PEP 8
-First, follow [PEP 8](https://www.python.org/dev/peps/pep-0008/). If something in this guide conflicts with PEP 8, defer to this guide.
-
 ### Imports
+
 * Imports should be separated into four blocks:
   1. Python standard library imports
   2. Third-party library (e.g., Django) imports
@@ -38,7 +43,7 @@ First, follow [PEP 8](https://www.python.org/dev/peps/pep-0008/). If something i
 * Each block should be alphabetized
 * One blank line should be between each block
 * For absolute imports:
-  * `import a` is s__good__
+  * `import a` is __good__
   * `from a import b` is __good__
   * `from a import *` is __bad__
 * For relative imports:
@@ -47,6 +52,7 @@ First, follow [PEP 8](https://www.python.org/dev/peps/pep-0008/). If something i
   * `from ..a import b` is __okay__
   * `from a import *` is __bad__
 * For long imports:
+
 ```python
 # This is good:
 from a import (
@@ -67,7 +73,9 @@ from a import b, c, \
 ```
 
 ### Docstrings
+
 * Every module should have a docstring in the following format:
+
 ```python
 """
 One-line description of module.
@@ -76,7 +84,9 @@ One-line description of module.
 ...
 """
 ```
+
 * Every class should have a docstring in the following format:
+
 ```python
 class A(object):
     """
@@ -89,7 +99,9 @@ class A(object):
     ...
     ...
 ```
+
 * Every function should have a docstring in the following format:
+
 ```python
 def f(...):
     """
@@ -110,6 +122,8 @@ def f(...):
 ```
 
 ### Expressions
+
+For the most part, `black` should be taking care of these issues. Still, avoid writing difficult to read code.
 
 ```python
 # Single-line expressions are okay as long as they do not exceed column 80:
@@ -150,7 +164,9 @@ function_result_2 = f(
 ```
 
 ### Declarative style
-We prefer declarative- to imperative-style expressions whenever reasonable. For example:
+
+We **_prefer_** declarative- to imperative-style expressions whenever reasonable. For example:
+
 ```python
 # Instead of this:
 if b:
@@ -183,7 +199,3 @@ for key in keys:
 # Do this:
 d = {get_value(key) for key in keys if keep_key(key)}
 ```
-
-### Strings
-* Double quotes for docstrings
-* Single quotes for all other strings

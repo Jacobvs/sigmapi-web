@@ -24,9 +24,9 @@ def index(request):
     """
     parties = Party.objects.all().order_by("date")
     context = {
-        'all_parties': parties,
+        "all_parties": parties,
     }
-    return render(request, 'parties/view.html', context)
+    return render(request, "parties/view.html", context)
 
 
 @login_required
@@ -41,18 +41,17 @@ def guests(request, party_id):
     party_mode = requested_party.is_party_mode()
     vouchers = [
         (user.username, user.get_full_name())
-        for user in
-        User.objects.filter(
-            groups__name__in=['Brothers', 'Pledges']
-        ).order_by('first_name')
+        for user in User.objects.filter(
+            groups__name__in=["Brothers", "Pledges"]
+        ).order_by("first_name")
     ]
     context = {
-        'party': requested_party,
-        'partymode': party_mode,
-        'vouchers': vouchers,
-        'can_modify_count': request.user.has_perm('Party.can_modify_count'),
+        "party": requested_party,
+        "partymode": party_mode,
+        "vouchers": vouchers,
+        "can_modify_count": request.user.has_perm("Party.can_modify_count"),
     }
-    return render(request, 'parties/guests.html', context)
+    return render(request, "parties/guests.html", context)
 
 
 @login_required
@@ -60,10 +59,8 @@ def view_blacklist(request):
     """
     View for viewing blacklist.
     """
-    context = {
-        'blacklist': BlacklistedGuest.objects.all()
-    }
-    return render(request, 'parties/blacklist/view.html', context)
+    context = {"blacklist": BlacklistedGuest.objects.all()}
+    return render(request, "parties/blacklist/view.html", context)
 
 
 @login_required
@@ -71,130 +68,126 @@ def view_greylist(request):
     """
     View for viewing greylist.
     """
-    context = {
-        'greylist': GreylistedGuest.objects.all()
-    }
-    return render(request, 'parties/greylist/view.html', context)
+    context = {"greylist": GreylistedGuest.objects.all()}
+    return render(request, "parties/greylist/view.html", context)
 
 
 @permission_required(
-    'PartyList.manage_blacklist',
-    login_url='pub-permission_denied',
+    "PartyList.manage_blacklist",
+    login_url="pub-permission_denied",
 )
 def manage_blacklist(request):
     """
     View for managing blacklist.
     """
     message = None
-    if request.method == 'POST':
+    if request.method == "POST":
         form = BlacklistForm(request.POST)
         if form.is_valid():
             # Set details to empty string if blank
             new_blacklisted_guest = form.save(commit=False)
             new_blacklisted_guest.save()
-            message = 'Successfully added entry to blacklist'
+            message = "Successfully added entry to blacklist"
         else:
-            message = 'Error adding entry to blacklist'
+            message = "Error adding entry to blacklist"
     else:
         form = BlacklistForm()
     context = {
-        'blacklist': BlacklistedGuest.objects.all(),
-        'message': message,
-        'form': form,
+        "blacklist": BlacklistedGuest.objects.all(),
+        "message": message,
+        "form": form,
     }
-    return render(request, 'parties/blacklist/manage.html', context)
+    return render(request, "parties/blacklist/manage.html", context)
 
 
 @permission_required(
-    'PartyList.add_greylistedguest',
-    login_url='pub-permission_denied',
+    "PartyList.add_greylistedguest",
+    login_url="pub-permission_denied",
 )
 def manage_greylist(request):
     """
     View for managing greylist.
     """
     message = None
-    if request.method == 'POST':
+    if request.method == "POST":
         form = GreylistForm(request.POST)
         if form.is_valid():
             # Set details to empty string if blank
             new_greylisted_guest = form.save(commit=False)
             new_greylisted_guest.addedBy = request.user
             new_greylisted_guest.save()
-            message = 'Successfully added entry to greylist'
+            message = "Successfully added entry to greylist"
         else:
-            message = 'Error adding entry to greylist'
+            message = "Error adding entry to greylist"
     else:
         form = GreylistForm()
     context = {
-        'greylist': [
+        "greylist": [
             (
                 greylisting,
                 user_can_delete_greylisting(request.user, greylisting),
             )
-            for greylisting in GreylistedGuest.objects.all().order_by('name')
+            for greylisting in GreylistedGuest.objects.all().order_by("name")
         ],
-        'message': message,
-        'form': form,
+        "message": message,
+        "form": form,
     }
-    return render(request, 'parties/greylist/manage.html', context)
+    return render(request, "parties/greylist/manage.html", context)
 
 
 @permission_required(
-    'PartyList.manage_blacklist',
-    login_url='pub-permission_denied',
+    "PartyList.manage_blacklist",
+    login_url="pub-permission_denied",
 )
 def remove_blacklisting(request, bl_id):
     """
     View for removing a blacklisted guest.
     """
-    if request.method == 'POST':
+    if request.method == "POST":
         bl_guest = BlacklistedGuest.objects.get(pk=bl_id)
         bl_guest.delete()
-    return redirect('partylist-manage_blacklist')
+    return redirect("partylist-manage_blacklist")
 
 
 @permission_required(
-    'PartyList.delete_greylistedguest',
-    login_url='pub-permission_denied',
+    "PartyList.delete_greylistedguest",
+    login_url="pub-permission_denied",
 )
 def remove_greylisting(request, gl_id):
     """
     View for removing a greylisted guest.
     """
-    if request.method == 'POST':
+    if request.method == "POST":
         gl_guest = GreylistedGuest.objects.get(pk=gl_id)
         if user_can_delete_greylisting(request.user, gl_guest):
             gl_guest.delete()
         else:
-            return redirect('pub-permission_denied')
-    return redirect('partylist-manage_greylist')
+            return redirect("pub-permission_denied")
+    return redirect("partylist-manage_greylist")
 
 
 @permission_required(
-    'PartyList.manage_parties',
-    login_url='pub-permission_denied',
+    "PartyList.manage_parties",
+    login_url="pub-permission_denied",
 )
 def add_party(request):
     """
     View for adding a party.
     """
-    context = {
-        'message': []
-    }
-    if request.method == 'POST':
+    context = {"message": []}
+    if request.method == "POST":
         form = PartyForm(request.POST)
         if form.is_valid():
             party = form.save()
-            context['message'].append(party.name + " successfully added.")
+            context["message"].append(party.name + " successfully added.")
         else:
-            context['message'].append("Error adding party.")
-    return render(request, 'parties/add.html', context)
+            context["message"].append("Error adding party.")
+    return render(request, "parties/add.html", context)
 
 
 @permission_required(
-    'PartyList.manage_parties',
-    login_url='pub-permission_denied',
+    "PartyList.manage_parties",
+    login_url="pub-permission_denied",
 )
 def manage_parties(request):
     """
@@ -202,14 +195,14 @@ def manage_parties(request):
     """
     all_parties = Party.objects.all().order_by("date").reverse()
     context = {
-        'all_parties': all_parties,
+        "all_parties": all_parties,
     }
-    return render(request, 'parties/manage.html', context)
+    return render(request, "parties/manage.html", context)
 
 
 @permission_required(
-    'PartyList.manage_parties',
-    login_url='pub-permission_denied',
+    "PartyList.manage_parties",
+    login_url="pub-permission_denied",
 )
 def edit_party(request, party_id):
     """
@@ -221,10 +214,9 @@ def edit_party(request, party_id):
     except Party.DoesNotExist:
         return redirect("partylist-manage_parties")
 
-    if request.method == 'POST':
+    if request.method == "POST":
         # If this is a POST request, the form has been submitted
-        form = EditPartyInfoForm(request.POST, request.FILES,
-                                 instance=requested_party)
+        form = EditPartyInfoForm(request.POST, request.FILES, instance=requested_party)
 
         if form.is_valid():  # Check that form is valid
             form.save()
@@ -232,23 +224,19 @@ def edit_party(request, party_id):
     else:
         form = EditPartyInfoForm(instance=requested_party)
 
-    context = {
-        'requested_party': requested_party,
-        'form': form,
-        'error': form.errors
-    }
-    return render(request, 'parties/edit.html', context)
+    context = {"requested_party": requested_party, "form": form, "error": form.errors}
+    return render(request, "parties/edit.html", context)
 
 
 @permission_required(
-    'PartyList.manage_parties',
-    login_url='pub-permission_denied',
+    "PartyList.manage_parties",
+    login_url="pub-permission_denied",
 )
 def delete_party(request, party_id):
     """
     Deletes the party with the ID that is sent in the post request
     """
-    if request.method == 'POST':
+    if request.method == "POST":
         try:
             party = Party.objects.get(pk=party_id)
         except Party.DoesNotExist:
@@ -259,14 +247,14 @@ def delete_party(request, party_id):
 
 
 @permission_required(
-    'PartyList.manage_parties',
-    login_url='pub-permission_denied',
+    "PartyList.manage_parties",
+    login_url="pub-permission_denied",
 )
 def refresh_party_listings(request, party_id):
     """
     Re-check all party guests against the blacklist/greylist.
     """
-    if request.method != 'POST':
+    if request.method != "POST":
         return HttpResponse("Endpoint supports POST method only", status=405)
     try:
         party = Party.objects.get(pk=party_id)
@@ -274,10 +262,12 @@ def refresh_party_listings(request, party_id):
         raise Http404("Party with id {0} not found".format(party_id))
     for party_guest in PartyGuest.objects.filter(party=party):
         party_guest.potentialBlacklisting = check_bad_guest_list(
-            BlacklistedGuest, party_guest.guest.name,
+            BlacklistedGuest,
+            party_guest.guest.name,
         )
         party_guest.potentialGreylisting = check_bad_guest_list(
-            GreylistedGuest, party_guest.guest.name,
+            GreylistedGuest,
+            party_guest.guest.name,
         )
         party_guest.save()
     return redirect("partylist-guests", party_id=party_id)

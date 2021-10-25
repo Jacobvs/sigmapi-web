@@ -10,7 +10,7 @@ from django.core.mail import EmailMessage
 from common.mixins import ModelMixin
 from django.db import models
 
-DELETED_STRING = '[deleted]'
+DELETED_STRING = "[deleted]"
 NONE_SENTINEL_ID = -1
 
 
@@ -33,16 +33,14 @@ def register_model_admins(*model_classes: Tuple[ModelMixin, ...]):
         ]
 
         model_admin_fields = {
-            'list_display': tuple(display_fields),
-            'search_fields': model_class.admin_search_fields
+            "list_display": tuple(display_fields),
+            "search_fields": model_class.admin_search_fields,
         }
         if model_class.admin_form is not None:
-            model_admin_fields['form'] = model_class.admin_form
+            model_admin_fields["form"] = model_class.admin_form
 
         model_admin_class = type(
-            model_class.__name__ + 'Admin',
-            (admin.ModelAdmin,),
-            model_admin_fields
+            model_class.__name__ + "Admin", (admin.ModelAdmin,), model_admin_fields
         )
         admin.site.register(model_class, model_admin_class)
 
@@ -56,11 +54,7 @@ def get_full_name_or_deleted(user):
 
     Returns: str
     """
-    return (
-        user.get_full_name()
-        if user
-        else DELETED_STRING
-    )
+    return user.get_full_name() if user else DELETED_STRING
 
 
 def get_formal_name_or_deleted(user):
@@ -73,9 +67,7 @@ def get_formal_name_or_deleted(user):
     Returns: str
     """
     return (
-        '{0}, {1}'.format(user.last_name, user.first_name)
-        if user
-        else DELETED_STRING
+        "{0}, {1}".format(user.last_name, user.first_name) if user else DELETED_STRING
     )
 
 

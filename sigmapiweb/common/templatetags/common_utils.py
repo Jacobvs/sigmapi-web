@@ -23,9 +23,7 @@ def full_name(model, user_field_name):
         Either the full name, or '[deleted]' if the user is None
         or not a field on model.
     """
-    return get_full_name_or_deleted(
-        getattr(model, user_field_name, None)
-    )
+    return get_full_name_or_deleted(getattr(model, user_field_name, None))
 
 
 @register.filter

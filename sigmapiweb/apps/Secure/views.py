@@ -16,12 +16,12 @@ def index(request):
     """
 
     context = {
-        'title': 'Sigma Pi - Secure',
-        'secure_index': True,
-        'calendar_name_url_pairs': get_name_url_pairs(request),
+        "title": "Sigma Pi - Secure",
+        "secure_index": True,
+        "calendar_name_url_pairs": get_name_url_pairs(request),
     }
 
-    return render(request, 'calendar/view.html', context)
+    return render(request, "calendar/view.html", context)
 
 
 def get_name_url_pairs(request):
@@ -35,12 +35,13 @@ def get_name_url_pairs(request):
 
     Returns: (str, str)
     """
+
     def append_pair(pairs, group):
         """
         Given a list of (group name, group calendar URL) pairs and a group,
         if there is a calendar key for the group, add to the list.
         """
-        url_template = 'https://teamup.com/%s?view=l&sidepanel=c'
+        url_template = "https://teamup.com/%s?view=l&sidepanel=c"
         try:
             cal_key = CalendarKey.objects.get(group=group)
             pairs.append((group.name, url_template % cal_key.key))
@@ -55,17 +56,17 @@ def get_name_url_pairs(request):
     #   excluding Brothers and Pledges
     name_url_pairs = []
     for group in request.user.groups.all():
-        if group.name not in ['Brothers', 'Pledges']:
+        if group.name not in ["Brothers", "Pledges"]:
             append_pair(name_url_pairs, group)
 
     # If the user is in the Brothers or Pledges group, add the corresponding
     # key to the list
     try:
-        bros_group = request.user.groups.get(name='Brothers')
+        bros_group = request.user.groups.get(name="Brothers")
     except Group.DoesNotExist:
         bros_group = None
     try:
-        pledges_group = request.user.groups.get(name='Pledges')
+        pledges_group = request.user.groups.get(name="Pledges")
     except Group.DoesNotExist:
         pledges_group = None
     if not (bros_group and append_pair(name_url_pairs, bros_group)):

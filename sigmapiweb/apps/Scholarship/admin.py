@@ -13,7 +13,6 @@ from .models import (
     Review,
 )
 
-
 register_model_admins(
     AcademicResource,
     LibraryItem,
