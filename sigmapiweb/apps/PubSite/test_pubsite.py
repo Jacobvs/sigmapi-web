@@ -87,9 +87,9 @@ class PublicViewTests(TestCase):
 
         # print(returned_num_brothers)
         # print(grad_years)
-        
-        #TODO: broken
-        '''
+
+        # TODO: broken
+        """
         for key in class_to_year_mappings:
             try:
                 self.assertEqual(
@@ -98,6 +98,6 @@ class PublicViewTests(TestCase):
             except KeyError as e:
                 print("Year not in any user infos: ", e)
                 
-        '''
-        
+        """
+
         self.assertEqual(response.status_code, 200)
