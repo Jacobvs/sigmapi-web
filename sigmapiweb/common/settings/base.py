@@ -153,7 +153,7 @@ PUBLIC_PAGES = [
     {"title": "About", "view": "pub-about"},
     {"title": "Service & Activities", "view": "pub-service"},
     # {"title": "Campaign", "view": "pub-campaign"},
-    {'title': 'Rush Sigma Pi', 'view': 'pub-rush'},
+    {"title": "Rush Sigma Pi", "view": "pub-rush"},
     {"title": "Brothers", "view": "userinfo-users"},
     {
         "title": "Donate",
