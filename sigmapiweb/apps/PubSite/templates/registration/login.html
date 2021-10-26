@@ -1,69 +1,73 @@
 {% extends 'common/public_base_header.html' %}
-
 {% load sass_tags %}
-
 {% block module_includes %}
-	<link rel="stylesheet" href="{% sass_src 'css/public/login.scss' %}?v=1">
+    <link rel="stylesheet" href="{% sass_src 'css/public/login.scss' %}?v=1">
 {% endblock %}
-
 {% block title %}Sigma Pi Gamma Iota - Login{% endblock %}
-
 {% load static %}
-
 {% block content_title %}
-  {% if user.is_authenticated %}
-    Already Logged In
-  {% else %}
-    Log In
-  {% endif %}
-{% endblock %}
-
-{% block content %}
-  <div class="login-page">
     {% if user.is_authenticated %}
-      <p class="already-in">
-        You cannot log in again because you are already logged in.<br>
-        Did you mean to <a href="{% url 'pub-logout' %}">logout?</a>
-      </p>
+        Already Logged In
     {% else %}
-      <p>To access restricted sections of the website, please enter your credentials below.
-
-        If you do not have access and believe that you should, please contact the webmaster.</p>
-      <div class="login-inner">
-        {% if form.errors %}
-          <div class="alert alert-warning">
-            <strong>Error!</strong>
-            Incorrect username or password. Try again.
-          </div>
-        {% endif %}
-
-        <form role="form" class="form-horizontal" method="post" action="{% url 'pub-login' %}">
-          {% csrf_token %}
-          <div class="form-group">
-            {#          <label for="id_username">Username</label>#}
-            <input id="id_username" maxlength="254" placeholder="Username" name="username" type="text"
-                   class="text-field" autofocus>
-          </div>
-          <div class="form-group">
-            {#          <label for="id_password">Password</label>#}
-            <input id="id_password" placeholder="Password" name="password" type="password" class="text-field">
-          </div>
-          <div>
-            <input type="hidden" name="next" value="{{ next }}" style="display:none;"/>
-            <button type="submit">Sign in</button>
-          </div>
-          <div class="form-group">
-            <p>
-             <a href="{% url 'password_reset' %}">Reset Password</a>
-            </p>
-          </div>
-        </form>
-      </div>
+        Log In
     {% endif %}
-  </div>
 {% endblock %}
-
-{% block embedded_js %}
-
+{% block content %}
+    <div class="login-page">
+        {% if user.is_authenticated %}
+            <p class="already-in">
+                You cannot log in again because you are already logged in.
+                <br>
+                Did you mean to
+                <a href="{% url 'pub-logout' %}">logout?</a>
+            </p>
+        {% else %}
+            <p>
+                To access restricted sections of the website, please enter your credentials below.
+                If you do not have access and believe that you should, please contact the webmaster.
+            </p>
+            <div class="login-inner">
+                {% if form.errors %}
+                    <div class="alert alert-warning">
+                        <strong>Error!</strong>
+                        Incorrect username or password. Try again.
+                    </div>
+                {% endif %}
+                <form role="form"
+                      class="form-horizontal"
+                      method="post"
+                      action="{% url 'pub-login' %}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        {#          <label for="id_username">Username</label>#}
+                        <input id="id_username"
+                               maxlength="254"
+                               placeholder="Username"
+                               name="username"
+                               type="text"
+                               class="text-field"
+                               autofocus>
+                    </div>
+                    <div class="form-group">
+                        {#          <label for="id_password">Password</label>#}
+                        <input id="id_password"
+                               placeholder="Password"
+                               name="password"
+                               type="password"
+                               class="text-field">
+                    </div>
+                    <div>
+                        <input type="hidden" name="next" value="{{ next }}" style="display:none;"/>
+                        <button type="submit">Sign in</button>
+                    </div>
+                    <div class="form-group">
+                        <p>
+                            <a href="{% url 'password_reset' %}">Reset Password</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        {% endif %}
+    </div>
 {% endblock %}
-
+{% block embedded_js %}{% endblock %}

@@ -1,180 +1,260 @@
 {% extends 'partiesv2/_base.html' %}
-
 {% block title %}Sigma Pi Secure - {{ party.name }}{% endblock %}
-
 {% load sass_tags %}
 {% load static %}
 {% block module_includes %}
-	<script type="text/javascript" src="{% static 'js/secure/party.guest.v4.js' %}"></script>
-	<link rel='stylesheet' type='text/css' href='{% sass_src "css/secure/party-guests_v1.scss" %}' />
+    <script type="text/javascript"
+            src="{% static 'js/secure/party.guest.v4.js' %}"></script>
+    <link rel='stylesheet'
+          type='text/css'
+          href='{% sass_src "css/secure/party-guests_v1.scss" %}'/>
 {% endblock %}
-
 {% block content %}
-
-{% if not can_modify_count %}
-	<style type="text/css">
+    {% if not can_modify_count %}
+        <style type="text/css">
 		.party-count-toggles {
 			visibility: hidden;
 		}
-	</style>
-{% endif %}
-
-<h3>{{ party.name }} - {{ party.date }} Guest List</h3>
-
-{% with listname='blacklist' listprefix='bl'%}
-	{% include 'parties/bad_guest_modals.html' %}
-{% endwith %}
-
-{% with listname='greylist' listprefix='gl'%}
-	{% include 'parties/bad_guest_modals.html' %}
-{% endwith %}
-
-<!-- Action navigation -->
-<div class="actions">
-	<ul class="nav nav-pills">
-		<li>
-			<a href="{% url 'partylist-old-api-export_list' party.pk %}">
-				<span class="glyphicon glyphicon-download"></span> Export List
-			</a>
-		</li>
-	</ul>
+	
+        </style>
+    {% endif %}
+    <h3>{{ party.name }} - {{ party.date }} Guest List</h3>
+    {% with listname='blacklist' listprefix='bl' %}
+        {% include 'parties/bad_guest_modals.html' %}
+    {% endwith %}
+    {% with listname='greylist' listprefix='gl' %}
+        {% include 'parties/bad_guest_modals.html' %}
+    {% endwith %}
+    <!-- Action navigation -->
+    <div class="actions">
+        <ul class="nav nav-pills">
+            <li>
+                <a href="{% url 'partylist-old-api-export_list' party.pk %}">
+                    <span class="glyphicon glyphicon-download"></span>
+                    Export List
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- Navigation and Counter -->
+    <div class="navbar-fixed-bottom">
+        <ul class="section">
+            <li id="message-ux" style="display:none;"></li>
+            <li>
+                <a href="#"
+                   id="listed-guests"
+                   title="Click to view only potential blacklistees/greylistees">
+                    <span class="badge">!</span>
+                </a>
+            </li>
+            {% if partymode %}
+                <li class="party-count-highlighted">
+                    <span>
+                        In the Party
+                        <span class="badge">
+                            T:
+                            <span id="in-the-party-guests-count">0</span>
+                        </span>
+                        <span class="badge">
+                            M:
+                            <span id="in-the-party-male-count">0</span>
+                        </span>
+                        <span class="badge">
+                            F:
+                            <span id="in-the-party-female-count">0</span>
+                        </span>
+                    </span>
+                </li>
+                <li class="party-count">
+                    <span>
+                        Ever Checked In
+                        <span class="badge">
+                            T:
+                            <span id="ever-checked-in-guests-count">0</span>
+                        </span>
+                        <span class="badge">
+                            M:
+                            <span id="ever-checked-in-male-count">0</span>
+                        </span>
+                        <span class="badge">
+                            F:
+                            <span id="ever-checked-in-female-count">0</span>
+                        </span>
+                    </span>
+                </li>
+                <li class="party-count-highlighted">
+                    <span>
+                        On the List
+                    {% else %}
+                        <li class="active">
+                            <a href="#" id="all-guests">
+                                All Guests
+                            {% endif %}
+                            <span class="badge">
+                                T:
+                                <span id="all-guests-count">0</span>
+                            </span>
+                            <span class="badge">
+                                M:
+                                <span id="all-male-count">0</span>
+                            </span>
+                            <span class="badge">
+                                F:
+                                <span id="all-female-count">0</span>
+                            </span>
+                            {% if partymode %}
+                            </span>
+                        </li>
+                        <li class="party-count-toggles">
+                            <button type="button"
+                                    class="btn btn-default btn-sm sub-count btn-male"
+                                    id="M">
+                                <span class="glyphicon glyphicon-minus"></span>
+                            </button>
+                            <button type="button"
+                                    class="btn btn-default btn-sm add-count btn-male"
+                                    id="M">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </li>
+                        <li class="party-count-toggles">
+                            <button type="button"
+                                    class="btn btn-default btn-sm sub-count btn-female"
+                                    id="F">
+                                <span class="glyphicon glyphicon-minus"></span>
+                            </button>
+                            <button type="button"
+                                    class="btn btn-default btn-sm add-count btn-female"
+                                    id="F">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </li>
+                    {% else %}
+                    </a>
+                </li>
+                <li>
+                    <a href="#" id="my-guests">
+                        My Guests
+                        <span class="badge">
+                            T:
+                            <span id="my-guests-count">0</span>
+                        </span>
+                        <span class="badge">
+                            M:
+                            <span id="my-male-count">0</span>
+                        </span>
+                        <span class="badge">
+                            F:
+                            <span id="my-female-count">0</span>
+                        </span>
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+    <!-- Search all guests -->
+    <div role="form" class="search-box">
+        <label class="sr-only" for="searchbox">Guest or Brother Name</label>
+        <input type="text"
+               class="form-control"
+               id="search-box"
+               placeholder="Search by Guest or Brother Name"/>
+        <button type="submit" class="btn btn-primary" id="search-btn">Search</button>
+    </div>
+    <!-- Guest List -->
+    <div id="guests-container" class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <h4>Male Guests</h4>
+                <div class="add-guest-form">
+                    <input type="text"
+                           class="form-control"
+                           style="width: auto;"
+                           id="add-male-name"
+                           placeholder="Add Male Guest"/>
+                    <button type="submit" class="btn btn-default" id="add-male-btn">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                    {% if partymode %}
+                        <select name="voucher"
+                                class="form-control"
+                                style="width: auto;"
+                                id="voucher-male"/>
+                        <option value="">
+                            (Select Voucher)
+                        </option>
+                        {% for voucher in vouchers %}
+                            <option value="{{ voucher.0 }}">
+                                {{ voucher.1 }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                {% endif %}
+            </div>
+            <div class="loader" id="M">
+                <p>
+                    Loading Guest List...
+                </p>
+            </div>
+            <div class="guest-list male" id="M"></div>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <h4>
+                Female Guests
+            </h4>
+            <div class="add-guest-form">
+                <input type="text"
+                       class="form-control"
+                       style="width: auto;"
+                       id="add-female-name"
+                       placeholder="Add Female Guest"/>
+                <button type="submit" class="btn btn-default" id="add-female-btn">
+                    <span class="glyphicon glyphicon-plus">
+                    </span>
+                </button>
+                {% if partymode %}
+                    <select name="voucher"
+                            class="form-control"
+                            style="width: auto;"
+                            id="voucher-female"/>
+                    <option value="">
+                        (Select Voucher)
+                    </option>
+                    {% for voucher in vouchers %}
+                        <option value="{{ voucher.0 }}">
+                            {{ voucher.1 }}
+                        </option>
+                    {% endfor %}
+                </select>
+            {% endif %}
+        </div>
+        <div class="loader" id="F">
+            <p>
+                Loading Guest List...
+            </p>
+        </div>
+        <div class="guest-list female" id="F">
+        </div>
+    </div>
 </div>
-
-<!-- Navigation and Counter -->
-<div class="navbar-fixed-bottom">
-	<ul class="section">
-		<li id="message-ux" style="display:none;"></li>
-		<li>
-			<a href="#" id="listed-guests" title="Click to view only potential blacklistees/greylistees">
-				<span class="badge">!</span>
-			</a>
-		</li>
-		{% if partymode %}
-		<li class="party-count-highlighted">
-			<span>In the Party
-				<span class="badge">T: <span id="in-the-party-guests-count">0</span></span>
-				<span class="badge">M: <span id="in-the-party-male-count">0</span></span>
-				<span class="badge">F: <span id="in-the-party-female-count">0</span></span>
-			</span>
-		</li>
-		<li class="party-count">
-			<span>Ever Checked In
-				<span class="badge">T: <span id="ever-checked-in-guests-count">0</span></span>
-				<span class="badge">M: <span id="ever-checked-in-male-count">0</span></span>
-				<span class="badge">F: <span id="ever-checked-in-female-count">0</span></span>
-			</span>
-		</li>
-		<li class="party-count-highlighted">
-			<span>On the List
-		{% else %}
-		<li class="active">
-			<a href="#" id="all-guests">All Guests
-		{% endif %}
-				<span class="badge">T: <span id="all-guests-count">0</span></span>
-				<span class="badge">M: <span id="all-male-count">0</span></span>
-				<span class="badge">F: <span id="all-female-count">0</span></span>
-		{% if partymode %}
-			</span>
-		</li>
-		<li class="party-count-toggles">
-			<button type="button" class="btn btn-default btn-sm sub-count btn-male" id="M">
-				<span class="glyphicon glyphicon-minus"></span>
-			</button>
-			<button type="button" class="btn btn-default btn-sm add-count btn-male" id="M">
-			 	<span class="glyphicon glyphicon-plus"></span>
-			 </button>
-		</li>
-		<li class="party-count-toggles">
-			<button type="button" class="btn btn-default btn-sm sub-count btn-female" id="F">
-				<span class="glyphicon glyphicon-minus"></span>
-			</button>
-			<button type="button" class="btn btn-default btn-sm add-count btn-female" id="F">
-			 	<span class="glyphicon glyphicon-plus"></span>
-			 </button>
-		</li>
-		{% else %}
-			</a>
-		</li>
-		<li>
-			<a href="#" id="my-guests">My Guests
-				<span class="badge">T: <span id="my-guests-count">0</span></span>
-				<span class="badge">M: <span id="my-male-count">0</span></span>
-				<span class="badge">F: <span id="my-female-count">0</span></span>
-			</a>
-		</li>
-		{% endif %}
-	</ul>
 </div>
-
-<!-- Search all guests -->
-<div role="form" class="search-box">
-	<label class="sr-only" for="searchbox">Guest or Brother Name</label>
-	<input type="text" class="form-control" id="search-box" placeholder="Search by Guest or Brother Name"/>
-	<button type="submit" class="btn btn-primary" id="search-btn">Search</button>
-</div>
-
-<!-- Guest List -->
-<div id="guests-container" class="container-fluid">
-	<div class="row">
-		<div class="col-xs-12 col-sm-6">
-			<h4>Male Guests</h4>
-			<div class="add-guest-form">
-				<input type="text" class="form-control" style="width: auto;" id="add-male-name" placeholder="Add Male Guest"/>
-				<button type="submit" class="btn btn-default" id="add-male-btn">
-					<span class="glyphicon glyphicon-plus"></span>
-				</button>
-				{% if partymode %}
-				<select name="voucher" class="form-control" style="width: auto;" id="voucher-male"/>
-					<option value="">(Select Voucher)</option>
-					{% for voucher in vouchers %}
-					<option value="{{voucher.0}}">{{voucher.1}}</option>
-					{% endfor %}
-				</select>
-				{% endif %}
-			</div>
-
-			<div class="loader" id="M">
-				<p>Loading Guest List...</p>
-			</div>
-			<div class="guest-list male" id="M">
-			</div>
-		</div>
-
-		<div class="col-xs-12 col-sm-6">
-			<h4>Female Guests</h4>
-			<div class="add-guest-form">
-				<input type="text" class="form-control" style="width: auto;" id="add-female-name" placeholder="Add Female Guest"/>
-				<button type="submit" class="btn btn-default" id="add-female-btn">
-					<span class="glyphicon glyphicon-plus"></span>
-				</button>
-				{% if partymode %}
-				<select name="voucher" class="form-control" style="width: auto;" id="voucher-female"/>
-					<option value="">(Select Voucher)</option>
-					{% for voucher in vouchers %}
-					<option value="{{voucher.0}}">{{voucher.1}}</option>
-					{% endfor %}
-				</select>
-				{% endif %}
-			</div>
-			<div class="loader" id="F">
-				<p>Loading Guest List...</p>
-			</div>
-			<div class="guest-list female" id="F">
-			</div>
-		</div>
-	</div>
-</div>
-
 <!-- Hacky way to add guests from the client side on the fly without hardcoding the html and css in javascript. Replace this with the use of a front end MVC library such as Ember or Backbone. -->
 <div id="guest-template" class="guest hidden">
-	{% if partymode %}
-	<span class="glyphicon glyphicon-ok status checked-in"></span>
-	{% else %}
-	<span class="glyphicon glyphicon-remove status present remove-guest"></span>
-	{% endif %}
-	<div class="badge list-warning">!</div>
-	<div class="name"></div>
-	<div class="details"></div>
-    <span class="checked-in-time"></span>
+    {% if partymode %}
+        <span class="glyphicon glyphicon-ok status checked-in">
+        </span>
+    {% else %}
+        <span class="glyphicon glyphicon-remove status present remove-guest">
+        </span>
+    {% endif %}
+    <div class="badge list-warning">
+        !
+    </div>
+    <div class="name">
+    </div>
+    <div class="details">
+    </div>
+    <span class="checked-in-time">
+    </span>
 </div>
 {% endblock %}

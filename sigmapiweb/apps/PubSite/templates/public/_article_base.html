@@ -1,14 +1,11 @@
 {% extends 'common/public_base_header.html' %}
-
 {% load sass_tags %}
 {% block module_includes %}
-	<link rel="stylesheet" href="{% sass_src 'css/public/article.scss' %}?v=1">
-  {% block article_includes %}{% endblock %}
+    <link rel="stylesheet" href="{% sass_src 'css/public/article.scss' %}?v=1">
+    {% block article_includes %}{% endblock %}
 {% endblock %}
-
 {% block content %}
-  <div class="article">
-    {% block article %}
-    {% endblock %}
-  </div>
+    <div class="article">
+        {% block article %}{% endblock %}
+    </div>
 {% endblock %}
