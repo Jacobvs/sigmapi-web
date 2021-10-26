@@ -7,6 +7,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views.decorators.http import require_GET
+from django.views.decorators.clickjacking import xframe_options_sameorigin
 from django_downloadview import sendfile
 
 from apps.PartyListV2.forms import EditPartyForm, RestrictedGuestForm
@@ -17,6 +18,7 @@ import apps.PartyList.models
 
 @login_required
 @permission_required("PartyListV2.view_parties")
+@xframe_options_sameorigin
 def index(request):
     """Index page for partylist."""
 
