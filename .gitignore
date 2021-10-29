@@ -17,3 +17,4 @@ venvbinactivate
 Pipfile
 
 devl_settings.json
+.tool-versions

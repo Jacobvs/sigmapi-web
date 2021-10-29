@@ -18,40 +18,37 @@ from apps.PubSite import views as public_views
 admin.autodiscover()
 
 # Turns deprecation warnings into errors
-warnings.simplefilter('error', DeprecationWarning)
+warnings.simplefilter("error", DeprecationWarning)
 
 urlpatterns = [
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(
-        regex=r'^admin/',
+        regex=r"^admin/",
         view=admin.site.urls,
     ),
     url(
-        regex=r'^users/',
+        regex=r"^users/",
         view=include(userinfo_urls),
     ),
     url(
-        regex=r'^brothers/',
+        regex=r"^brothers/",
         view=include(userinfo_urls),
     ),
     url(
-        regex=r'^secure/',
+        regex=r"^secure/",
         view=include(secure_urls),
     ),
     url(
-        regex=r'^slack/',
+        regex=r"^slack/",
         view=include(slack_urls),
     ),
     url(
-        regex=r'^',
+        regex=r"^",
         view=include(public_urls),
     ),
-    url(
-        regex=r'^404/$',
-        view=public_views.handler404
-    )
+    url(regex=r"^404/$", view=public_views.handler404),
 ]
-handler404 = 'apps.PubSite.views.handler404'
+handler404 = "apps.PubSite.views.handler404"
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

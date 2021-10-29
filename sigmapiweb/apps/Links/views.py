@@ -11,7 +11,7 @@ from .forms import LinkForm
 from .models import Link
 
 
-@permission_required('Links.access_link', login_url='pub-permission_denied')
+@permission_required("Links.access_link", login_url="pub-permission_denied")
 def view_all(request):
     """
     Displays all of the links in the system.
@@ -25,16 +25,17 @@ def view_all(request):
         'general_links': general_links,
         'promoted_links': promoted_links,
         'archived_links' : archived_links,
+
     }
-    return render(request, 'links/view.html', context)
+    return render(request, "links/view.html", context)
 
 
-@permission_required('Links.add_link', login_url='pub-permission_denied')
+@permission_required("Links.add_link", login_url="pub-permission_denied")
 def add_link(request):
     """
     Creates a new link to add to the system
     """
-    if request.method == 'POST':
+    if request.method == "POST":
         form = LinkForm(request.POST)
 
         if form.is_valid():
@@ -42,21 +43,21 @@ def add_link(request):
             link.poster = request.user
             link.date = datetime.now()
 
-            if not request.user.has_perm('Links.promote_link'):
+            if not request.user.has_perm("Links.promote_link"):
                 link.promoted = False
             link.save()
 
-        return redirect('links-view_all')
+        return redirect("links-view_all")
 
-    return redirect('pub-permission_denied')
+    return redirect("pub-permission_denied")
 
 
-@permission_required('Links.delete_link', login_url='pub-permission_denied')
+@permission_required("Links.delete_link", login_url="pub-permission_denied")
 def delete_link(request, link):
     """
     Deletes a link.
     """
-    if request.method == 'POST':
+    if request.method == "POST":
         try:
             desired_link = Link.objects.get(pk=link)
         except Link.DoesNotExist:
@@ -70,6 +71,6 @@ def delete_link(request, link):
             try:
                 desired_link.delete()
             except PermissionDenied:
-                return redirect('pub-permission_denied')
-        return redirect('links-view_all')
-    return redirect('pub-permission_denied')
+                return redirect("pub-permission_denied")
+        return redirect("links-view_all")
+    return redirect("pub-permission_denied")

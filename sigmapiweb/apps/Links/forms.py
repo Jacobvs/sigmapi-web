@@ -11,10 +11,11 @@ class LinkForm(ModelForm):
     """
     Form for adding a link
     """
+
     title = forms.CharField(max_length=50)
     url = forms.URLField(max_length=200)
     promoted = forms.BooleanField(required=False)
 
     class Meta:
         model = Link
-        fields = ['title', 'url', 'promoted']
+        fields = ["title", "url", "promoted"]

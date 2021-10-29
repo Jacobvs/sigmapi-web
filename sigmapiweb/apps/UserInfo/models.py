@@ -19,6 +19,7 @@ class PledgeClass(ModelMixin, models.Model):
     """
     Model for pledge class.
     """
+
     name = models.CharField(max_length=100, default="Lambda")
     dateInitiated = models.DateField(blank=True)
 
@@ -28,7 +29,7 @@ class PledgeClass(ModelMixin, models.Model):
     class Meta:
         verbose_name_plural = "Pledge Classes"
         verbose_name = "Pledge Class"
-        ordering = ['dateInitiated']
+        ordering = ["dateInitiated"]
 
 
 class UserInfo(ModelMixin, models.Model):
@@ -36,6 +37,7 @@ class UserInfo(ModelMixin, models.Model):
     Model for site-specific user info.
     Complements the built in User models
     """
+
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     picture = models.FileField(upload_to=filepath, null=True, blank=True)
     phoneNumber = models.CharField(default="", max_length=100, blank=True)
@@ -51,13 +53,10 @@ class UserInfo(ModelMixin, models.Model):
         default=None,
         null=True,
         blank=True,
-        on_delete=models.SET_DEFAULT
+        on_delete=models.SET_DEFAULT,
     )
     pledgeClass = models.ForeignKey(
-        PledgeClass,
-        default=1,
-        on_delete=models.SET_DEFAULT,
-        blank=True
+        PledgeClass, default=1, on_delete=models.SET_DEFAULT, blank=True
     )
 
     def __str__(self):
@@ -66,6 +65,4 @@ class UserInfo(ModelMixin, models.Model):
     class Meta:
         verbose_name_plural = "User Info"
         verbose_name = "User Info"
-        permissions = (
-            ("manage_users", "Can manage users."),
-        )
+        permissions = (("manage_users", "Can manage users."),)

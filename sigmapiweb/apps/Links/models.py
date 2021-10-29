@@ -11,6 +11,7 @@ class Link(ModelMixin, models.Model):
     """
     Model for a single link that a person may submit
     """
+
     poster = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
     date = models.DateTimeField()
     title = models.CharField(max_length=50)
@@ -25,5 +26,5 @@ class Link(ModelMixin, models.Model):
         verbose_name_plural = "Links"
         permissions = (
             ("promote_link", "Can promote links."),
-            ("access_link", "Can access links.")
+            ("access_link", "Can access links."),
         )

@@ -16,36 +16,36 @@ from . import views
 
 urlpatterns = [
     url(
-        regex=r'^$',
+        regex=r"^$",
         view=views.index,
-        name='secure-index',
+        name="secure-index",
     ),
     url(
-        regex=r'^archives/',
+        regex=r"^archives/",
         view=include(archive_urls),
     ),
     url(
-        regex=r'^parties-old/',
+        regex=r"^parties-old/",
         view=include(old_parties_urls),
     ),
     url(
-        regex=r'^parties/',
+        regex=r"^parties/",
         view=include(parties_urls),
     ),
     url(
-        regex=r'^users/',
+        regex=r"^users/",
         view=include(userinfo_urls),
     ),
     url(
-        regex=r'^links/',
+        regex=r"^links/",
         view=include(links_urls),
     ),
     url(
-        regex=r'^standards/',
+        regex=r"^standards/",
         view=include(standards_urls),
     ),
     url(
-        regex=r'^scholarship/',
+        regex=r"^scholarship/",
         view=include(scholarship_urls),
     ),
 ]

@@ -14,10 +14,7 @@ class CalendarKey(ModelMixin, models.Model):
 
     # The group which has access to this key.
     group = models.ForeignKey(
-        Group,
-        related_name="calendar_key",
-        default=1,
-        on_delete=models.CASCADE
+        Group, related_name="calendar_key", default=1, on_delete=models.CASCADE
     )
 
     # The calendar key.

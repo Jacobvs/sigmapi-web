@@ -12,70 +12,70 @@ from . import views
 
 
 urlpatterns = [
+    url(r"^password_reset/$", views.ResetPassword.as_view(), name="password_reset"),
     url(
-        r'^password_reset/$',
-        views.ResetPassword.as_view(),
-        name='password_reset'
-    ),
-    url(
-        r'^password_reset/done/$',
+        r"^password_reset/done/$",
         views.ResetPasswordDone.as_view(),
-        name='password_reset_done'
+        name="password_reset_done",
     ),
-    path('password_reset/<uidb64>/<token>', views.ResetPasswordConfirm.as_view(), name='password_reset_confirm'),
+    path(
+        "password_reset/<uidb64>/<token>",
+        views.ResetPasswordConfirm.as_view(),
+        name="password_reset_confirm",
+    ),
     url(
-        r'^password_reset/complete/$',
+        r"^password_reset/complete/$",
         views.ResetPasswordComplete.as_view(),
-        name='password_reset_complete'
+        name="password_reset_complete",
     ),
     url(
-        regex=r'^login',
+        regex=r"^login",
         view=dsl.LoginView.as_view(),
-        name='pub-login',
+        name="pub-login",
     ),
     url(
-        regex=r'^logout',
+        regex=r"^logout",
         view=dsl.logout_then_login,
-        name='pub-logout',
+        name="pub-logout",
     ),
     url(
-        regex=r'^$',
+        regex=r"^$",
         view=views.index,
-        name='pub-index',
+        name="pub-index",
     ),
     url(
-        regex=r'^history[/]$',
-        view=RedirectView.as_view(pattern_name='pub-about'),
-        name='pub-history',
+        regex=r"^history[/]$",
+        view=RedirectView.as_view(pattern_name="pub-about"),
+        name="pub-history",
     ),
     url(
-        regex=r'^about[/]$',
+        regex=r"^about[/]$",
         view=views.about,
-        name='pub-about',
+        name="pub-about",
     ),
     url(
-        regex=r'^service[/]$',
-        view=RedirectView.as_view(pattern_name='pub-activities'),
-        name='pub-service',
+        regex=r"^service[/]$",
+        view=RedirectView.as_view(pattern_name="pub-activities"),
+        name="pub-service",
     ),
     url(
-        regex=r'^activities[/]$',
+        regex=r"^activities[/]$",
         view=views.activities,
-        name='pub-activities',
+        name="pub-activities",
     ),
     url(
-        regex=r'^rush[/]$',
+        regex=r"^rush[/]$",
         view=views.rush,
-        name='pub-rush',
+        name="pub-rush",
     ),
+    # url(
+    #     regex=r"^campaign[/]$",
+    #     view=views.campaign,
+    #     name="pub-campaign",
+    # ),
     url(
-        regex=r'^campaign[/]$',
-        view=views.campaign,
-        name='pub-campaign',
-    ),
-    url(
-        regex=r'^403/',
+        regex=r"^403/",
         view=views.permission_denied,
-        name='pub-permission_denied',
+        name="pub-permission_denied",
     ),
 ]

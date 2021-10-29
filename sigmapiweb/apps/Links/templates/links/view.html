@@ -1,13 +1,12 @@
 {% extends 'common/secure_base.html' %}
-
-{% block title %}Sigma Pi Secure - Links {% endblock %}
-
+{% block title %}Sigma Pi Secure - Links{% endblock %}
 {% load sass_tags %}
 {% block module_includes %}
-{% load static %}
-<link rel='stylesheet' type='text/css' href='{% sass_src "css/secure/links_v0.scss" %}' />
+    {% load static %}
+    <link rel='stylesheet'
+          type='text/css'
+          href='{% sass_src "css/secure/links_v0.scss" %}'/>
 {% endblock %}
-
 {% block content %}
 <h3>View links posted by the Brotherhood.</h3>
 
@@ -61,7 +60,6 @@
 {% endif %}
 
 {% endblock %}
-
 {% if perms.Links.add_link %}
 {% block toplevel_content %}
 <div class="modal" id="add-link">
