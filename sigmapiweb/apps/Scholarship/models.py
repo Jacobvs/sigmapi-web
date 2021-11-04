@@ -5,6 +5,7 @@ import datetime
 import re
 
 from django.contrib.auth.models import User
+from django.utils.translation import gettext_lazy as _
 from django.core.exceptions import ValidationError
 from django.db import models
 
@@ -208,9 +209,22 @@ class CourseSection(ModelMixin, models.Model):
     """
     Holds info for a single instance of the course.
     """
+    class Term(models.TextChoices):
+        A = 'A', _('A')
+        B = 'B', _('B')
+        C = 'C', _('C')
+        D = 'D', _('D')
+        E = 'E', _('E')
+        S = 'S', _('S')
+        F = 'F', _('F')
 
     catalog_course = models.ForeignKey(Course, on_delete=models.CASCADE)
-    term = models.CharField(max_length=10)
+    term = models.CharField(
+        max_length=1,
+        choices=Term.choices,
+        default=Term.A
+    )
+    
     year = models.CharField(max_length=2)
     professor = models.CharField(max_length=100)
     participants = models.ManyToManyField(User)

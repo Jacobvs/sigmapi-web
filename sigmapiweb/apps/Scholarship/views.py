@@ -601,8 +601,6 @@ def add_course_section(request):
     add_course_section_form = CourseSectionForm(request.POST)
     if add_course_section_form.is_valid():
         course = add_course_section_form.save(commit=False)
-        print(course)
-        print(request.user)
 
         # Get the section that exists or create a new one
         addedSection, created = CourseSection.objects.get_or_create(
@@ -617,8 +615,7 @@ def add_course_section(request):
         messages.info(request, message, extra_tags="report")
     else:
         message = (
-            "The course section was messed up in some way or "
-            + "another idk im still workin on this -amrit"
+            'Required fields were not filled out'
         )
         messages.error(request, message, extra_tags="report")
     return redirect("scholarship-courses")
@@ -702,10 +699,11 @@ def sections(request, catalog_code=None):
     for section in all_sections:
         print(section.professor)
         for user in section.participants.all():
-            rows.append(
-                {"brother": user, "term": section.term, "professor": section.professor}
-            )
+            rows.append({'brother' : user, 'term': section.term, 'year': section.year, 'professor': section.professor})
 
-    context = {"course": catalog_code, "rows": rows}
+    context = {
+        'course': catalog_code,
+        'rows' : rows
+    }
 
     return render(request, "scholarship/sections.html", context)
