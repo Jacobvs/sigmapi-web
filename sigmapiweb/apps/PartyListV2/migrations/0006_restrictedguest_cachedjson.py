@@ -8,13 +8,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("PartyListV2", "0005_auto_20180509_1414"),
+        ('PartyListV2', '0005_auto_20180509_1414'),
     ]
 
     operations = [
         migrations.AddField(
-            model_name="restrictedguest",
-            name="cachedJSON",
-            field=models.TextField(blank=True, default=""),
+            model_name='restrictedguest',
+            name='cachedJSON',
+            field=models.TextField(blank=True, default=''),
         ),
     ]

@@ -57,8 +57,11 @@ class Party(ModelMixin, models.Model):
 
     guycount = models.IntegerField(default=0)
     girlcount = models.IntegerField(default=0)
+    nonbinarycount = models.IntegerField(default=0)
+
     guys_ever_signed_in = models.IntegerField(default=0)
     girls_ever_signed_in = models.IntegerField(default=0)
+    non_binary_ever_signed_in = models.IntegerField(default=0)
 
     last_updated = models.DateTimeField(auto_now=True)
 
@@ -80,8 +83,10 @@ class Party(ModelMixin, models.Model):
         "max_preparty_invites",
         "guycount",
         "girlcount",
+        "nonbinarycount",
         "guys_ever_signed_in",
         "girls_ever_signed_in",
+        "non_binary_ever_signed_in",
         "last_updated",
         "guest_update_counter",
     )
@@ -179,14 +184,19 @@ class Party(ModelMixin, models.Model):
         """Sign guest into party."""
 
         if party_guest.signed_in is False:
+
             if party_guest.gender == "M":
                 self.guycount += 1
                 if party_guest.ever_signed_in is False:
                     self.guys_ever_signed_in += 1
-            else:
+            elif party_guest.gender == "F":
                 self.girlcount += 1
                 if party_guest.ever_signed_in is False:
                     self.girls_ever_signed_in += 1
+            elif party_guest.gender == "NB":
+                self.nonbinarycount += 1
+                if party_guest.ever_signed_in is False:
+                    self.non_binary_ever_signed_in += 1
 
             party_guest.signed_in = True
             self.create_partycount_entry()
@@ -197,8 +207,10 @@ class Party(ModelMixin, models.Model):
         if party_guest.signed_in is True:
             if party_guest.gender == "M":
                 self.guycount -= 1
-            else:
+            elif party_guest.gender == "F":
                 self.girlcount -= 1
+            elif party_guest.gender == "NB":
+                self.nonbinarycount -= 1
 
             party_guest.signed_in = False
             self.create_partycount_entry()
@@ -220,6 +232,13 @@ class Party(ModelMixin, models.Model):
                 self.girlcount = max(self.girlcount - 1, 0)
             else:
                 return "Invalid sign (must be 1 or -1)"
+        elif gender == "NB":
+            if sign == "1":
+                self.nonbinarycount += 1
+            elif sign == "-1":
+                self.nonbinarycount = max(self.nonbinarycount - 1, 0)
+            else:
+                return "Invalid sign (must be 1 or -1)"
         else:
             return "Invalid gender supplied"
 
@@ -235,8 +254,10 @@ class Party(ModelMixin, models.Model):
             party=self,
             guycount=self.guycount,
             girlcount=self.girlcount,
+            nonbinarycount=self.nonbinarycount,
             guysever=self.guys_ever_signed_in,
             girlsever=self.girls_ever_signed_in,
+            nonbinaryever=self.non_binary_ever_signed_in,
         ).save()
 
     def update_timestamp(self):
@@ -255,6 +276,7 @@ class Party(ModelMixin, models.Model):
             "girlCount": self.girlcount,
             "guysEverSignedIn": self.guys_ever_signed_in,
             "girlsEverSignedIn": self.girls_ever_signed_in,
+            "nonBinaryEverSignedIn": self.non_binary_ever_signed_in,
             "minLevenshteinDist": RestrictedGuest.MIN_LEVENSHTEIN_DIST,
             "hasPrepartyInviteLimits": self.has_preparty_invite_limits,
             "hasPartyInviteLimits": self.has_party_invite_limits,
@@ -287,8 +309,10 @@ class PartyCountRecord(ModelMixin, models.Model):
     )
     guycount = models.IntegerField()
     girlcount = models.IntegerField()
+    nonbinarycount = models.IntegerField()
     guysever = models.IntegerField()
     girlsever = models.IntegerField()
+    nonbinaryever = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True, db_index=True)
 
     def to_json(self):
@@ -297,8 +321,10 @@ class PartyCountRecord(ModelMixin, models.Model):
         return {
             "guyCount": self.guycount,
             "girlCount": self.girlcount,
+            "nonBinaryCount": self.nonbinarycount,
             "guysEverSignedIn": self.guysever,
             "girlsEverSignedIn": self.girlsever,
+            "nonBinaryEverSignedIn": self.nonbinaryever,
             "timeStamp": self.created_at.isoformat(),
         }
 
@@ -308,7 +334,8 @@ class PartyGuestAdminForm(forms.ModelForm):
         super(PartyGuestAdminForm, self).__init__(*args, **kwargs)
 
     gender = forms.ChoiceField(
-        widget=forms.Select, choices=(("M", "Male"), ("F", "Female"))
+        widget=forms.Select,
+        choices=(("M", "Male"), ("F", "Female"), ("NB", "Non-binary")),
     )
 
 
@@ -316,7 +343,7 @@ class PartyGuest(ModelMixin, models.Model):
     """Class to represent a party guest."""
 
     name = models.CharField(max_length=100, db_index=True)
-    gender = models.CharField(max_length=5)
+    gender = models.CharField(max_length=10)
 
     party = models.ForeignKey(
         Party,

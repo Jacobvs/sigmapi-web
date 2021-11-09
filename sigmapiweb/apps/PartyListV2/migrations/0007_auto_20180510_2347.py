@@ -8,27 +8,16 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("PartyListV2", "0006_restrictedguest_cachedjson"),
+        ('PartyListV2', '0006_restrictedguest_cachedjson'),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name="restrictedguest",
-            options={
-                "default_permissions": [],
-                "permissions": (
-                    (
-                        "view_restricted_guests",
-                        "Can view the Restricted Guests List (Black/Gray)",
-                    ),
-                    ("manage_blacklist", "Can manage the Blacklist"),
-                    ("add_graylist", "Can add to the Graylist"),
-                    ("manage_graylist", "Can manage any Graylisted Guest"),
-                ),
-            },
+            name='restrictedguest',
+            options={'default_permissions': [], 'permissions': (('view_restricted_guests', 'Can view the Restricted Guests List (Black/Gray)'), ('manage_blacklist', 'Can manage the Blacklist'), ('add_graylist', 'Can add to the Graylist'), ('manage_graylist', 'Can manage any Graylisted Guest'))},
         ),
         migrations.RemoveField(
-            model_name="restrictedguest",
-            name="cachedJSON",
+            model_name='restrictedguest',
+            name='cachedJSON',
         ),
     ]

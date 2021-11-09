@@ -8,18 +8,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("PartyListV2", "0010_partyguest__cached_json"),
+        ('PartyListV2', '0010_partyguest__cached_json'),
     ]
 
     operations = [
         migrations.AddField(
-            model_name="party",
-            name="guest_update_counter",
+            model_name='party',
+            name='guest_update_counter',
             field=models.IntegerField(default=0),
         ),
         migrations.AddField(
-            model_name="partyguest",
-            name="update_counter",
+            model_name='partyguest',
+            name='update_counter',
             field=models.IntegerField(default=0),
         ),
     ]

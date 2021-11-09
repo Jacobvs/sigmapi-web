@@ -12,49 +12,31 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ("PartyListV2", "0008_auto_20181016_1123"),
+        ('PartyListV2', '0008_auto_20181016_1123'),
     ]
 
     operations = [
         migrations.CreateModel(
-            name="SearchLogEntry",
+            name='SearchLogEntry',
             fields=[
-                (
-                    "id",
-                    models.AutoField(
-                        auto_created=True,
-                        primary_key=True,
-                        serialize=False,
-                        verbose_name="ID",
-                    ),
-                ),
-                ("search", models.TextField()),
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('search', models.TextField()),
             ],
             bases=(common.mixins.ModelMixin, models.Model),
         ),
         migrations.AddField(
-            model_name="party",
-            name="last_updated",
+            model_name='party',
+            name='last_updated',
             field=models.DateTimeField(auto_now=True),
         ),
         migrations.AddField(
-            model_name="searchlogentry",
-            name="party",
-            field=models.ForeignKey(
-                default=1,
-                on_delete=django.db.models.deletion.CASCADE,
-                related_name="party_for_search",
-                to="PartyListV2.Party",
-            ),
+            model_name='searchlogentry',
+            name='party',
+            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, related_name='party_for_search', to='PartyListV2.Party'),
         ),
         migrations.AddField(
-            model_name="searchlogentry",
-            name="user",
-            field=models.ForeignKey(
-                default=None,
-                null=True,
-                on_delete=django.db.models.deletion.SET_NULL,
-                to=settings.AUTH_USER_MODEL,
-            ),
+            model_name='searchlogentry',
+            name='user',
+            field=models.ForeignKey(default=None, null=True, on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL),
         ),
     ]

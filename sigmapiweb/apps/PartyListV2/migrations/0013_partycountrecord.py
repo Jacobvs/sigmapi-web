@@ -10,36 +10,20 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("PartyListV2", "0012_auto_20181022_0058"),
+        ('PartyListV2', '0012_auto_20181022_0058'),
     ]
 
     operations = [
         migrations.CreateModel(
-            name="PartyCountRecord",
+            name='PartyCountRecord',
             fields=[
-                (
-                    "id",
-                    models.AutoField(
-                        auto_created=True,
-                        primary_key=True,
-                        serialize=False,
-                        verbose_name="ID",
-                    ),
-                ),
-                ("guycount", models.IntegerField()),
-                ("girlcount", models.IntegerField()),
-                ("guysever", models.IntegerField()),
-                ("girlsever", models.IntegerField()),
-                ("created_at", models.DateTimeField(auto_now_add=True, db_index=True)),
-                (
-                    "party",
-                    models.ForeignKey(
-                        default=1,
-                        on_delete=django.db.models.deletion.CASCADE,
-                        related_name="related_party",
-                        to="PartyListV2.Party",
-                    ),
-                ),
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('guycount', models.IntegerField()),
+                ('girlcount', models.IntegerField()),
+                ('guysever', models.IntegerField()),
+                ('girlsever', models.IntegerField()),
+                ('created_at', models.DateTimeField(auto_now_add=True, db_index=True)),
+                ('party', models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, related_name='related_party', to='PartyListV2.Party')),
             ],
             bases=(common.mixins.ModelMixin, models.Model),
         ),
