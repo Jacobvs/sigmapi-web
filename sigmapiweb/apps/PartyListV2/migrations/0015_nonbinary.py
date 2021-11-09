@@ -6,35 +6,35 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('PartyListV2', '0014_alter_admin_form'),
+        ("PartyListV2", "0014_alter_admin_form"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='party',
-            name='non_binary_ever_signed_in',
+            model_name="party",
+            name="non_binary_ever_signed_in",
             field=models.IntegerField(default=0),
         ),
         migrations.AddField(
-            model_name='party',
-            name='nonbinarycount',
+            model_name="party",
+            name="nonbinarycount",
             field=models.IntegerField(default=0),
         ),
         migrations.AddField(
-            model_name='partycountrecord',
-            name='nonbinarycount',
+            model_name="partycountrecord",
+            name="nonbinarycount",
             field=models.IntegerField(default=0),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='partycountrecord',
-            name='nonbinaryever',
+            model_name="partycountrecord",
+            name="nonbinaryever",
             field=models.IntegerField(default=0),
             preserve_default=False,
         ),
         migrations.AlterField(
-            model_name='partyguest',
-            name='gender',
+            model_name="partyguest",
+            name="gender",
             field=models.CharField(max_length=10),
         ),
     ]

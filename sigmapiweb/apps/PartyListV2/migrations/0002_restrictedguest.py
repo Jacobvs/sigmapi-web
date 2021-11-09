@@ -12,23 +12,48 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('PartyListV2', '0001_initial'),
+        ("PartyListV2", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='RestrictedGuest',
+            name="RestrictedGuest",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100)),
-                ('details', models.TextField(default='(No identifying details provided)')),
-                ('reason', models.TextField(default='(No reason provided)')),
-                ('graylisted', models.BooleanField(default=False)),
-                ('addedBy', models.ForeignKey(default=None, null=True, on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100)),
+                (
+                    "details",
+                    models.TextField(default="(No identifying details provided)"),
+                ),
+                ("reason", models.TextField(default="(No reason provided)")),
+                ("graylisted", models.BooleanField(default=False)),
+                (
+                    "addedBy",
+                    models.ForeignKey(
+                        default=None,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
             options={
-                'permissions': (('view_blacklist', 'Can view the Blacklist'), ('manage_blacklist', 'Can manage the Blacklist'), ('view_graylist', 'Can view the Graylist'), ('add_graylist', 'Can add to the Graylist'), ('manage_graylist', 'Can manage any Graylisted Guest')),
-                'default_permissions': [],
+                "permissions": (
+                    ("view_blacklist", "Can view the Blacklist"),
+                    ("manage_blacklist", "Can manage the Blacklist"),
+                    ("view_graylist", "Can view the Graylist"),
+                    ("add_graylist", "Can add to the Graylist"),
+                    ("manage_graylist", "Can manage any Graylisted Guest"),
+                ),
+                "default_permissions": [],
             },
             bases=(common.mixins.ModelMixin, models.Model),
         ),

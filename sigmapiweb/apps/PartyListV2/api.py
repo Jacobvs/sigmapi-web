@@ -454,7 +454,7 @@ def export_list(_request, party_id):
                 str(party_guest.formatted_time_first_signed_in()),
             ]
         )
-        
+
     writer.writerow(["Non-Binary Guests"])
     writer.writerow(["Name", "Signed In", "Time First Signed In"])
     non_binary_guests = party_guests.filter(gender__exact="NB")
