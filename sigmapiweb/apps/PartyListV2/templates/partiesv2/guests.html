@@ -58,6 +58,8 @@
                 :guests="maleGuests" :party="party" title="Male" name="male" code="M"></party-column>
                 <party-column
                 :guests="femaleGuests" :party="party" title="Female" name="female" code="F"></party-column>
+                <party-column
+                :guests="nonBinaryGuests" :party="party" title="Non-Binary" name="non-binary" code="NB"></party-column>
             </div>
         </div>
         <div id="party-footer">
@@ -69,17 +71,17 @@
                 </span>
             </div>
             <div id="footer-counters" class="footer-section">
-                <party-counter v-if="party.listClosed===true" :male-count="party.guyCount" :female-count="party.girlCount" :show-colors="true">
+                <party-counter v-if="party.listClosed===true" :male-count="party.guyCount" :female-count="party.girlCount" :non-binary-count="party.nonBinaryCount" :show-colors="true">
                 In the Party
                 </party-counter>
-                <party-counter v-if="party.listClosed===true" :male-count="party.guysEverSignedIn" :female-count="party.girlsEverSignedIn">
+                <party-counter v-if="party.listClosed===true" :male-count="party.guysEverSignedIn" :female-count="party.girlsEverSignedIn" :non-binary-count="party.nonBinaryEverSignedin">
                 Ever Checked In
                 </party-counter>
-                <party-counter :male-count="maleGuests.length" :female-count="femaleGuests.length">
+                <party-counter :male-count="maleGuests.length" :female-count="femaleGuests.length" :non-binary-count="nonBinaryGuests.length">
                 On the List
                 </party-counter>
                 <party-counter :class="{'clickable': true, 'show-mobile': true, 'active': guestFilter === userFullName}" v-if="party.listClosed===false" :male-count="myMaleGuests.length"
-                :female-count="myFemaleGuests.length" @click="toggleMyFilter()">
+                :female-count="myFemaleGuests.length" :non-binary-count="myNonBinaryGuests.length" @click="toggleMyFilter()">
                 My Guests
                 </party-counter>
             </div>
@@ -110,6 +112,18 @@
                         <span class="glyphicon glyphicon-plus"></span>
                     </button>
                 </div>
+                <div class="toggles-group">
+                    <button @click="modListCount('NB', -1)"
+                            class="btn btn-default btn-sm btn-non-binary"
+                            id="decrement-m">
+                        <span class="glyphicon glyphicon-minus"></span>
+                    </button>
+                    <button @click="modListCount('NB', 1)"
+                            class="btn btn-default btn-sm btn-non-binary"
+                            id="increment-m">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                </div>
             </div>
         </div>
         <party-modal v-if="modal" :data="modal" @primary-click="modal.primaryAction && modal.primaryAction(); modal = null;"
@@ -117,10 +131,10 @@
         />
     </div>
     <!-- Templates -->
-    <!-- Vue Template for the male / female party list columns -->
+    <!-- Vue Template for the male / female / nonbinary party list columns -->
     <script id="party-column-template" type="text/x-template">
     {% verbatim %}
-    <div class="col-xs-12 col-sm-6 party-column" :id="`party-column-${name}`">
+    <div class="col-xs-12 col-sm-4 party-column" :id="`party-column-${name}`">
       <h4>{{ title }} Guests</h4>
       <div v-if="showAddBox" class="add-guest-form container-fluid">
         <div class="row">
@@ -142,7 +156,7 @@
             </select>
           </div>
           <div class="col-xs-12 col-md-5 add-guest-btn">
-            <button @click="addGuest" class="btn btn-default">Add Guest</button>
+            <button @click="addGuest" class="btn btn-default">Add</button>
           </div>
         </div>
       </div>
@@ -250,6 +264,7 @@
         T: <span class="counter-total">{{ totalCount }}</span></span>
       <span class="counter-bubble badge bubble-male">M: <span class="counter-male">{{ maleCount }}</span></span>
       <span class="counter-bubble badge bubble-female">F: <span class="counter-female">{{ femaleCount }}</span></span>
+      <span class="counter-bubble badge bubble-non-binary">NB: <span class="counter-non-binary">{{ nonBinaryCount }}</span></span>
     </div>
     {% endverbatim %}
     </script>

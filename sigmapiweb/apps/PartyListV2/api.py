@@ -264,7 +264,7 @@ def create_guest(request, party_id):
 
     # Retrieve the new guest's gender
     guest_gender = request.POST.get("gender")
-    if guest_gender is None or guest_gender not in ("M", "F"):
+    if guest_gender is None or guest_gender not in ("M", "F", "NB"):
         return HttpResponse('Guest gender must be "M" or "F".', status=400)
 
     # Check if the guest is already on the list
@@ -447,6 +447,18 @@ def export_list(_request, party_id):
     writer.writerow(["Name", "Signed In", "Time First Signed In"])
     male_guests = party_guests.filter(gender__exact="M")
     for party_guest in male_guests:
+        writer.writerow(
+            [
+                party_guest.name,
+                str(party_guest.signed_in),
+                str(party_guest.formatted_time_first_signed_in()),
+            ]
+        )
+        
+    writer.writerow(["Non-Binary Guests"])
+    writer.writerow(["Name", "Signed In", "Time First Signed In"])
+    non_binary_guests = party_guests.filter(gender__exact="NB")
+    for party_guest in non_binary_guests:
         writer.writerow(
             [
                 party_guest.name,
