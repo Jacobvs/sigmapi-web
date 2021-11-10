@@ -274,6 +274,7 @@ class Party(ModelMixin, models.Model):
             "partyMode": self.is_party_mode(),
             "guyCount": self.guycount,
             "girlCount": self.girlcount,
+            "nonBinaryCount": self.nonbinarycount,
             "guysEverSignedIn": self.guys_ever_signed_in,
             "girlsEverSignedIn": self.girls_ever_signed_in,
             "nonBinaryEverSignedIn": self.non_binary_ever_signed_in,

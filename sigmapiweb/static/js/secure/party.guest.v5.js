@@ -135,7 +135,7 @@ $(document).ready(() => {
         template: "#party-counter-template",
         computed: {
             totalCount: function () {
-                return this.maleCount + this.femaleCount;
+                return this.maleCount + this.femaleCount + this.nonBinaryCount;
             },
             totalColor: function () {
                 if (this.totalCount > 275)
@@ -474,8 +474,10 @@ $(document).ready(() => {
                 perpartyMode: null,
                 girlCount: 0,
                 guyCount: 0,
+                nonBinaryCount: 0,
                 girlsEverSignedIn: 0,
                 guysEverSignedIn: 0,
+                nonBinarySignedin: 0,
                 hasPrepartyInviteLimits: null,
                 hasPartyInviteLimits: null,
             },
@@ -589,7 +591,8 @@ $(document).ready(() => {
                 return this.guests
                     .filter(guest => guest.gender === "F")
                     .sort(sortByName);
-            }, nonBinaryGuests: function () {
+            },
+            nonBinaryGuests: function () {
                 return this.guests
                     .filter(guest => guest.gender === "NB")
                     .sort(sortByName);
@@ -601,7 +604,8 @@ $(document).ready(() => {
             myFemaleGuests: function () {
                 return this.femaleGuests
                     .filter(guest => guest.addedBy.username === userName);
-            }, myNonBinaryGuests: function () {
+            },
+            myNonBinaryGuests: function () {
                 return this.nonBinaryGuests
                     .filter(guest => guest.addedBy.username === userName);
             },

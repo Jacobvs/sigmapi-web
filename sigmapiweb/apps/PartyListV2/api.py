@@ -265,7 +265,7 @@ def create_guest(request, party_id):
     # Retrieve the new guest's gender
     guest_gender = request.POST.get("gender")
     if guest_gender is None or guest_gender not in ("M", "F", "NB"):
-        return HttpResponse('Guest gender must be "M" or "F".', status=400)
+        return HttpResponse('Guest gender must be "M" or "F" or "NB".', status=400)
 
     # Check if the guest is already on the list
     exists = (
