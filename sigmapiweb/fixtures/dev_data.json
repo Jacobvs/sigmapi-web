@@ -2035,8 +2035,10 @@
     "max_preparty_invites": 3,
     "guycount": 0,
     "girlcount": 0,
+    "nonbinarycount": 0,
     "guys_ever_signed_in": 0,
     "girls_ever_signed_in": 0,
+    "non_binary_ever_signed_in": 0,
     "last_updated": "2020-09-23T17:24:16.010",
     "guest_update_counter": 0,
     "jobs": ""
