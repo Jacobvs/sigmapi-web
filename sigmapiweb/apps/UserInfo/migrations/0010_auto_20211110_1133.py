@@ -7,13 +7,18 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('UserInfo', '0009_merge_20190327_1727'),
+        ("UserInfo", "0009_merge_20190327_1727"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='userinfo',
-            name='pledgeClass',
-            field=models.ForeignKey(blank=True, default=1, on_delete=django.db.models.deletion.SET_DEFAULT, to='UserInfo.pledgeclass'),
+            model_name="userinfo",
+            name="pledgeClass",
+            field=models.ForeignKey(
+                blank=True,
+                default=1,
+                on_delete=django.db.models.deletion.SET_DEFAULT,
+                to="UserInfo.pledgeclass",
+            ),
         ),
     ]
