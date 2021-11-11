@@ -585,8 +585,8 @@ def add_course(request):
         messages.info(request, message, extra_tags="report")
     else:
         message = (
-            "The Course was messed up in some way or "
-            + "another idk im still workin on this -amrit"
+            "Please enter a valid course code (ie CS3733) "
+            + "and ensure an entry does not already exist"
         )
         messages.error(request, message, extra_tags="report")
     return redirect("scholarship-courses")
@@ -615,7 +615,7 @@ def add_course_section(request):
         messages.info(request, message, extra_tags="report")
     else:
         message = (
-            'Required fields were not filled out'
+            'Required fields were not filled out or some field was malformed'
         )
         messages.error(request, message, extra_tags="report")
     return redirect("scholarship-courses")
@@ -689,20 +689,20 @@ def sections(request, catalog_code=None):
     if catalog_code:
         all_sections = CourseSection.objects.filter(
             catalog_course__catalog_code=catalog_code
-        )
+        ).order_by("-year", "term")
     else:
-        all_sections = CourseSection.objects.order_by("-catalog_course")
+        all_sections = CourseSection.objects.order_by("-year", "term")
 
-    print(all_sections)
+    add_course_section_form = CourseSectionForm(initial={"catalog_course": catalog_code})
 
     rows = []
     for section in all_sections:
-        print(section.professor)
         for user in section.participants.all():
             rows.append({'brother' : user, 'term': section.term, 'year': section.year, 'professor': section.professor})
 
     context = {
         'course': catalog_code,
+        "add_course_section_form": add_course_section_form,
         'rows' : rows
     }
 

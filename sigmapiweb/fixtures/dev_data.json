@@ -2141,7 +2141,7 @@
       "model": "Scholarship.coursesection",
       "pk": 1,
       "fields": {
-        "catalog_course": 1,
+        "catalog_course": "CS3733",
         "term": "A21",
         "professor": "Willy Wong",
         "participants": [
@@ -2164,7 +2164,7 @@
       "model": "Scholarship.coursesection",
       "pk": 2,
       "fields": {
-        "catalog_course": 5,
+        "catalog_course": "CS3013",
         "term": "B20",
         "professor": "Walls",
         "participants": [

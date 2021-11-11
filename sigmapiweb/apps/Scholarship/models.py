@@ -5,10 +5,11 @@ import datetime
 import re
 
 from django.contrib.auth.models import User
+from django.core import validators
 from django.utils.translation import gettext_lazy as _
 from django.core.exceptions import ValidationError
 from django.db import models
-
+from django.core.validators import RegexValidator, validate_integer
 
 from common.mixins import ModelMixin
 
@@ -198,7 +199,7 @@ class Course(ModelMixin, models.Model):
     Holds information about a WPI Catalog Course, i.e. CS1004.
     """
 
-    catalog_code = models.CharField(max_length=10)
+    catalog_code = models.CharField(max_length=10, validators=[RegexValidator(regex=r'[A-Z]+[0-9]+')], unique=True)
     title = models.CharField(max_length=100)
 
     def __str__(self):
@@ -218,14 +219,14 @@ class CourseSection(ModelMixin, models.Model):
         S = 'S', _('S')
         F = 'F', _('F')
 
-    catalog_course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    catalog_course = models.ForeignKey(Course, on_delete=models.CASCADE, to_field='catalog_code')
     term = models.CharField(
         max_length=1,
         choices=Term.choices,
         default=Term.A
     )
     
-    year = models.CharField(max_length=2)
+    year = models.PositiveIntegerField(validators=[validators.MaxValueValidator(99)])
     professor = models.CharField(max_length=100)
     participants = models.ManyToManyField(User)
 
