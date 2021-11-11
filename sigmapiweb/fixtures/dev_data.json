@@ -2142,7 +2142,8 @@
       "pk": 1,
       "fields": {
         "catalog_course": "CS3733",
-        "term": "A21",
+        "term": "A",
+        "year": 21,
         "professor": "Willy Wong",
         "participants": [
           [
@@ -2165,7 +2166,8 @@
       "pk": 2,
       "fields": {
         "catalog_course": "CS3013",
-        "term": "B20",
+        "term": "B",
+        "year": 20,
         "professor": "Walls",
         "participants": [
           [
@@ -2178,7 +2180,61 @@
             "bacchair"
           ]
         ]
-      }
+      }     
+    },
+    {
+      "model": "Scholarship.coursesection",
+      "pk": 2,
+      "fields": {
+        "catalog_course": "CS3013",
+        "term": "C",
+        "year": 19,
+        "professor": "Bob",
+        "participants": [
+          [
+            "rushchair"
+          ],
+          [
+            "first"
+          ]
+        ]
+      }     
+    },
+    {
+      "model": "Scholarship.coursesection",
+      "pk": 2,
+      "fields": {
+        "catalog_course": "CS3013",
+        "term": "D",
+        "year": 20,
+        "professor": "Jow",
+        "participants": [
+          [
+            "third"
+          ],
+          [
+            "first"
+          ]
+        ]
+      }     
+    },
+    {
+      "model": "Scholarship.coursesection",
+      "pk": 2,
+      "fields": {
+        "catalog_course": "RBE1001",
+        "term": "A",
+        "year": 20,
+        "professor": "Prof",
+        "participants": [
+          [
+            "alumnichair"
+          ],
+          [
+            "third"
+          ]
+        ]
+      }     
     }
     ]
     
