@@ -37,7 +37,8 @@
 				<th class="two wide">Date Posted</th>
 				<th class="three wide">Title</th>
 				<th class="five wide">Description</th>
-				<th class="two wide">View</th>
+                <th class="two wide">Preview</th>
+				<th class="two wide">Download</th>
 				{% if perms.Archive.delete_guide %} <th class="one wide">Delete</th> {% endif %}
 			</tr>
 		</thead>
@@ -47,6 +48,11 @@
 				<td>{{ guide.datePosted }}</td>
 				<td>{{ guide.name }}</td>
 				<td>{{ guide.description }}</td>
+                <td>
+                        <a onclick="showHideRow('hidden_row_{{ guide.pk }}')">
+                            Preview
+                        </a>
+                </td>
 				<td>
 					<a href="{% url 'archive-download_guides' guide.pk %}">View</a>
 				</td>
@@ -60,6 +66,14 @@
 				</td>
 				{% endif %}
 			</tr>
+            <tr class="sub_row ">
+                <td colspan="6" style="display: none; background-color: #e7e7e7; padding: 0.2vh;">
+                    {# Add interior div for animation purposes #}
+                    <div id='hidden_row_{{ guide.pk }}' style="display:none;">
+                        <embed src="{{ guide.filepath.url }}#pagemode=thumbs&scrollbar=1&zoom=90&view=Fit" width="100%" height="500vh">
+                    </div>
+                </td>
+             </tr>
 			{% endfor %}
 		</tbody>
 	</table>
