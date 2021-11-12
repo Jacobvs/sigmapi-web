@@ -29,12 +29,12 @@ def _get_context(page_name):
 #     """
 #     return render(request, 'public/home.html', _get_context('Home'))
 
-# For having a campaign, renders copy of index.html
+
 def index(request):
     """
     View for the static index page
     """
-    return render(request, "public/home-campaign.html", _get_context("Home"))
+    return render(request, "public/home.html", _get_context("Home"))
 
 
 def about(request):
@@ -68,7 +68,7 @@ def rush(request):
 
 def campaign(request):
     """
-    View for the static chapter service page.
+    View for the campaign service page.
     """
 
     # Overrride requests Session authentication handling
