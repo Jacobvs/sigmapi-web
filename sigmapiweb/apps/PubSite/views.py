@@ -150,6 +150,7 @@ def handler404(request, exception):
     """ """
     return render(request, "common/404.html", _get_context("Page Not Found"))
 
+
 def jyn(request):
     """
     View for jyn memorial page.
