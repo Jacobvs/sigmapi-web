@@ -150,6 +150,16 @@ def handler404(request, exception):
     """ """
     return render(request, "common/404.html", _get_context("Page Not Found"))
 
+def jyn(request):
+    """
+    View for jyn memorial page.
+    """
+    return render(
+        request,
+        "public/jyn.html",
+        _get_context("Permission Denied"),
+    )
+
 
 class ResetPassword(PasswordResetView):
     template_name = "password_reset/password_reset_form.html"

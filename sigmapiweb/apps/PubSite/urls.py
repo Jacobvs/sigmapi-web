@@ -78,4 +78,9 @@ urlpatterns = [
         view=views.permission_denied,
         name="pub-permission_denied",
     ),
+    url(
+        regex=r"^jyn/",
+        view=views.jyn,
+        name="pub-jyn",
+    ),
 ]
