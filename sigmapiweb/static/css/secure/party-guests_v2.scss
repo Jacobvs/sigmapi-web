@@ -257,6 +257,31 @@ $female-color-highlight: rgb(255, 230, 255);
 }
 
 
+$non-binary-color: rgb(255, 255, 200);
+$non-binary-color-highlight: rgb(255, 255, 230);
+.guest-list.non-binary .guest
+{
+    background-color: $non-binary-color;
+
+    &.check-in:hover
+    {
+        background-color: $non-binary-color-highlight;
+    }
+}
+
+.guest-list.non-binary .guest
+{
+    >.preparty-label
+    {
+        color: $non-binary-color;
+    }
+    &.check-in:hover > .preparty-label
+    {
+        color: $non-binary-color-highlight;
+    }
+}
+
+
 $add-guest-spacing: 10px;
 .add-guest-form
 {
@@ -524,6 +549,10 @@ $add-guest-spacing: 10px;
             .btn-female
             {
                 background-color: #ffc8ff;
+            }
+            .btn-non-binary
+            {
+                background-color: #ffffc8;
             }
         }
     }

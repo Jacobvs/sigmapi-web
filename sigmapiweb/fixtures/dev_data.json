@@ -1,2240 +1,2239 @@
 [
-    {
-      "model": "auth.group",
-      "pk": 1,
-      "fields": {
-        "name": "Brothers",
-        "permissions": [
-          [
-            "access_bylaws",
-            "Archive",
-            "bylaws"
-          ],
-          [
-            "access_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "change_blacklistedguest",
-            "PartyList",
-            "blacklistedguest"
-          ],
-          [
-            "delete_blacklistedguest",
-            "PartyList",
-            "blacklistedguest"
-          ],
-          [
-            "manage_blacklist",
-            "PartyList",
-            "blacklistedguest"
-          ],
-          [
-            "change_greylistedguest",
-            "PartyList",
-            "greylistedguest"
-          ],
-          [
-            "can_modify_count",
-            "PartyList",
-            "party"
-          ],
-          [
-            "change_party",
-            "PartyList",
-            "party"
-          ],
-          [
-            "change_partyguest",
-            "PartyList",
-            "partyguest"
-          ],
-          [
-            "add_summonsrequest",
-            "Standards",
-            "summonsrequest"
-          ]
+  {
+    "model": "auth.group",
+    "pk": 1,
+    "fields": {
+      "name": "Brothers",
+      "permissions": [
+        [
+          "access_bylaws",
+          "Archive",
+          "bylaws"
+        ],
+        [
+          "access_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "change_blacklistedguest",
+          "PartyList",
+          "blacklistedguest"
+        ],
+        [
+          "delete_blacklistedguest",
+          "PartyList",
+          "blacklistedguest"
+        ],
+        [
+          "manage_blacklist",
+          "PartyList",
+          "blacklistedguest"
+        ],
+        [
+          "change_greylistedguest",
+          "PartyList",
+          "greylistedguest"
+        ],
+        [
+          "can_modify_count",
+          "PartyList",
+          "party"
+        ],
+        [
+          "change_party",
+          "PartyList",
+          "party"
+        ],
+        [
+          "change_partyguest",
+          "PartyList",
+          "partyguest"
+        ],
+        [
+          "add_summonsrequest",
+          "Standards",
+          "summonsrequest"
         ]
-      }
-    },
-    {
-      "model": "auth.group",
-      "pk": 2,
-      "fields": {
-        "name": "1st Counselor",
-        "permissions": [
-          [
-            "access_bylaws",
-            "Archive",
-            "bylaws"
-          ],
-          [
-            "access_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "add_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "change_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "delete_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "change_link",
-            "Links",
-            "link"
-          ],
-          [
-            "change_blacklistedguest",
-            "PartyList",
-            "blacklistedguest"
-          ],
-          [
-            "delete_blacklistedguest",
-            "PartyList",
-            "blacklistedguest"
-          ],
-          [
-            "manage_blacklist",
-            "PartyList",
-            "blacklistedguest"
-          ],
-          [
-            "add_greylistedguest",
-            "PartyList",
-            "greylistedguest"
-          ],
-          [
-            "change_greylistedguest",
-            "PartyList",
-            "greylistedguest"
-          ],
-          [
-            "add_guest",
-            "PartyList",
-            "guest"
-          ],
-          [
-            "change_guest",
-            "PartyList",
-            "guest"
-          ],
-          [
-            "delete_guest",
-            "PartyList",
-            "guest"
-          ],
-          [
-            "add_party",
-            "PartyList",
-            "party"
-          ],
-          [
-            "can_modify_count",
-            "PartyList",
-            "party"
-          ],
-          [
-            "change_party",
-            "PartyList",
-            "party"
-          ],
-          [
-            "delete_party",
-            "PartyList",
-            "party"
-          ],
-          [
-            "manage_parties",
-            "PartyList",
-            "party"
-          ],
-          [
-            "add_partyguest",
-            "PartyList",
-            "partyguest"
-          ],
-          [
-            "change_partyguest",
-            "PartyList",
-            "partyguest"
-          ]
+      ]
+    }
+  },
+  {
+    "model": "auth.group",
+    "pk": 2,
+    "fields": {
+      "name": "1st Counselor",
+      "permissions": [
+        [
+          "access_bylaws",
+          "Archive",
+          "bylaws"
+        ],
+        [
+          "access_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "add_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "change_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "delete_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "change_link",
+          "Links",
+          "link"
+        ],
+        [
+          "change_blacklistedguest",
+          "PartyList",
+          "blacklistedguest"
+        ],
+        [
+          "delete_blacklistedguest",
+          "PartyList",
+          "blacklistedguest"
+        ],
+        [
+          "manage_blacklist",
+          "PartyList",
+          "blacklistedguest"
+        ],
+        [
+          "add_greylistedguest",
+          "PartyList",
+          "greylistedguest"
+        ],
+        [
+          "change_greylistedguest",
+          "PartyList",
+          "greylistedguest"
+        ],
+        [
+          "add_guest",
+          "PartyList",
+          "guest"
+        ],
+        [
+          "change_guest",
+          "PartyList",
+          "guest"
+        ],
+        [
+          "delete_guest",
+          "PartyList",
+          "guest"
+        ],
+        [
+          "add_party",
+          "PartyList",
+          "party"
+        ],
+        [
+          "can_modify_count",
+          "PartyList",
+          "party"
+        ],
+        [
+          "change_party",
+          "PartyList",
+          "party"
+        ],
+        [
+          "delete_party",
+          "PartyList",
+          "party"
+        ],
+        [
+          "manage_parties",
+          "PartyList",
+          "party"
+        ],
+        [
+          "add_partyguest",
+          "PartyList",
+          "partyguest"
+        ],
+        [
+          "change_partyguest",
+          "PartyList",
+          "partyguest"
         ]
-      }
-    },
-    {
-      "model": "auth.group",
-      "pk": 3,
-      "fields": {
-        "name": "2nd Counselor",
-        "permissions": [
-          [
-            "access_bylaws",
-            "Archive",
-            "bylaws"
-          ],
-          [
-            "add_bylaws",
-            "Archive",
-            "bylaws"
-          ],
-          [
-            "change_bylaws",
-            "Archive",
-            "bylaws"
-          ],
-          [
-            "delete_bylaws",
-            "Archive",
-            "bylaws"
-          ],
-          [
-            "access_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "add_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "change_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "delete_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "change_link",
-            "Links",
-            "link"
-          ],
-          [
-            "change_blacklistedguest",
-            "PartyList",
-            "blacklistedguest"
-          ],
-          [
-            "delete_blacklistedguest",
-            "PartyList",
-            "blacklistedguest"
-          ],
-          [
-            "manage_blacklist",
-            "PartyList",
-            "blacklistedguest"
-          ],
-          [
-            "add_greylistedguest",
-            "PartyList",
-            "greylistedguest"
-          ],
-          [
-            "change_greylistedguest",
-            "PartyList",
-            "greylistedguest"
-          ],
-          [
-            "add_guest",
-            "PartyList",
-            "guest"
-          ],
-          [
-            "change_guest",
-            "PartyList",
-            "guest"
-          ],
-          [
-            "delete_guest",
-            "PartyList",
-            "guest"
-          ],
-          [
-            "add_party",
-            "PartyList",
-            "party"
-          ],
-          [
-            "can_modify_count",
-            "PartyList",
-            "party"
-          ],
-          [
-            "change_party",
-            "PartyList",
-            "party"
-          ],
-          [
-            "delete_party",
-            "PartyList",
-            "party"
-          ],
-          [
-            "manage_parties",
-            "PartyList",
-            "party"
-          ],
-          [
-            "add_partyguest",
-            "PartyList",
-            "partyguest"
-          ],
-          [
-            "change_partyguest",
-            "PartyList",
-            "partyguest"
-          ]
+      ]
+    }
+  },
+  {
+    "model": "auth.group",
+    "pk": 3,
+    "fields": {
+      "name": "2nd Counselor",
+      "permissions": [
+        [
+          "access_bylaws",
+          "Archive",
+          "bylaws"
+        ],
+        [
+          "add_bylaws",
+          "Archive",
+          "bylaws"
+        ],
+        [
+          "change_bylaws",
+          "Archive",
+          "bylaws"
+        ],
+        [
+          "delete_bylaws",
+          "Archive",
+          "bylaws"
+        ],
+        [
+          "access_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "add_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "change_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "delete_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "change_link",
+          "Links",
+          "link"
+        ],
+        [
+          "change_blacklistedguest",
+          "PartyList",
+          "blacklistedguest"
+        ],
+        [
+          "delete_blacklistedguest",
+          "PartyList",
+          "blacklistedguest"
+        ],
+        [
+          "manage_blacklist",
+          "PartyList",
+          "blacklistedguest"
+        ],
+        [
+          "add_greylistedguest",
+          "PartyList",
+          "greylistedguest"
+        ],
+        [
+          "change_greylistedguest",
+          "PartyList",
+          "greylistedguest"
+        ],
+        [
+          "add_guest",
+          "PartyList",
+          "guest"
+        ],
+        [
+          "change_guest",
+          "PartyList",
+          "guest"
+        ],
+        [
+          "delete_guest",
+          "PartyList",
+          "guest"
+        ],
+        [
+          "add_party",
+          "PartyList",
+          "party"
+        ],
+        [
+          "can_modify_count",
+          "PartyList",
+          "party"
+        ],
+        [
+          "change_party",
+          "PartyList",
+          "party"
+        ],
+        [
+          "delete_party",
+          "PartyList",
+          "party"
+        ],
+        [
+          "manage_parties",
+          "PartyList",
+          "party"
+        ],
+        [
+          "add_partyguest",
+          "PartyList",
+          "partyguest"
+        ],
+        [
+          "change_partyguest",
+          "PartyList",
+          "partyguest"
         ]
-      }
-    },
-    {
-      "model": "auth.group",
-      "pk": 4,
-      "fields": {
-        "name": "3rd Counselor",
-        "permissions": [
-          [
-            "access_bylaws",
-            "Archive",
-            "bylaws"
-          ],
-          [
-            "access_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "add_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "change_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "delete_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "change_link",
-            "Links",
-            "link"
-          ],
-          [
-            "change_blacklistedguest",
-            "PartyList",
-            "blacklistedguest"
-          ],
-          [
-            "delete_blacklistedguest",
-            "PartyList",
-            "blacklistedguest"
-          ],
-          [
-            "manage_blacklist",
-            "PartyList",
-            "blacklistedguest"
-          ],
-          [
-            "add_greylistedguest",
-            "PartyList",
-            "greylistedguest"
-          ],
-          [
-            "change_greylistedguest",
-            "PartyList",
-            "greylistedguest"
-          ]
+      ]
+    }
+  },
+  {
+    "model": "auth.group",
+    "pk": 4,
+    "fields": {
+      "name": "3rd Counselor",
+      "permissions": [
+        [
+          "access_bylaws",
+          "Archive",
+          "bylaws"
+        ],
+        [
+          "access_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "add_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "change_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "delete_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "change_link",
+          "Links",
+          "link"
+        ],
+        [
+          "change_blacklistedguest",
+          "PartyList",
+          "blacklistedguest"
+        ],
+        [
+          "delete_blacklistedguest",
+          "PartyList",
+          "blacklistedguest"
+        ],
+        [
+          "manage_blacklist",
+          "PartyList",
+          "blacklistedguest"
+        ],
+        [
+          "add_greylistedguest",
+          "PartyList",
+          "greylistedguest"
+        ],
+        [
+          "change_greylistedguest",
+          "PartyList",
+          "greylistedguest"
         ]
-      }
-    },
-    {
-      "model": "auth.group",
-      "pk": 5,
-      "fields": {
-        "name": "4th Counselor",
-        "permissions": [
-          [
-            "access_bylaws",
-            "Archive",
-            "bylaws"
-          ],
-          [
-            "add_bylaws",
-            "Archive",
-            "bylaws"
-          ],
-          [
-            "change_bylaws",
-            "Archive",
-            "bylaws"
-          ],
-          [
-            "delete_bylaws",
-            "Archive",
-            "bylaws"
-          ],
-          [
-            "access_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "add_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "change_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "delete_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "access_link",
-            "Links",
-            "link"
-          ],
-          [
-            "change_blacklistedguest",
-            "PartyList",
-            "blacklistedguest"
-          ],
-          [
-            "delete_blacklistedguest",
-            "PartyList",
-            "blacklistedguest"
-          ],
-          [
-            "manage_blacklist",
-            "PartyList",
-            "blacklistedguest"
-          ],
-          [
-            "add_greylistedguest",
-            "PartyList",
-            "greylistedguest"
-          ],
-          [
-            "change_greylistedguest",
-            "PartyList",
-            "greylistedguest"
-          ],
-          [
-            "add_summons",
-            "Standards",
-            "summons"
-          ],
-          [
-            "change_summonsrequest",
-            "Standards",
-            "summonsrequest"
-          ],
-          [
-            "delete_summonsrequest",
-            "Standards",
-            "summonsrequest"
-          ],
-          [
-            "add_userinfo",
-            "UserInfo",
-            "userinfo"
-          ],
-          [
-            "change_userinfo",
-            "UserInfo",
-            "userinfo"
-          ],
-          [
-            "delete_userinfo",
-            "UserInfo",
-            "userinfo"
-          ],
-          [
-            "manage_users",
-            "UserInfo",
-            "userinfo"
-          ]
+      ]
+    }
+  },
+  {
+    "model": "auth.group",
+    "pk": 5,
+    "fields": {
+      "name": "4th Counselor",
+      "permissions": [
+        [
+          "access_bylaws",
+          "Archive",
+          "bylaws"
+        ],
+        [
+          "add_bylaws",
+          "Archive",
+          "bylaws"
+        ],
+        [
+          "change_bylaws",
+          "Archive",
+          "bylaws"
+        ],
+        [
+          "delete_bylaws",
+          "Archive",
+          "bylaws"
+        ],
+        [
+          "access_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "add_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "change_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "delete_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "access_link",
+          "Links",
+          "link"
+        ],
+        [
+          "change_blacklistedguest",
+          "PartyList",
+          "blacklistedguest"
+        ],
+        [
+          "delete_blacklistedguest",
+          "PartyList",
+          "blacklistedguest"
+        ],
+        [
+          "manage_blacklist",
+          "PartyList",
+          "blacklistedguest"
+        ],
+        [
+          "add_greylistedguest",
+          "PartyList",
+          "greylistedguest"
+        ],
+        [
+          "change_greylistedguest",
+          "PartyList",
+          "greylistedguest"
+        ],
+        [
+          "add_summons",
+          "Standards",
+          "summons"
+        ],
+        [
+          "change_summonsrequest",
+          "Standards",
+          "summonsrequest"
+        ],
+        [
+          "delete_summonsrequest",
+          "Standards",
+          "summonsrequest"
+        ],
+        [
+          "add_userinfo",
+          "UserInfo",
+          "userinfo"
+        ],
+        [
+          "change_userinfo",
+          "UserInfo",
+          "userinfo"
+        ],
+        [
+          "delete_userinfo",
+          "UserInfo",
+          "userinfo"
+        ],
+        [
+          "manage_users",
+          "UserInfo",
+          "userinfo"
         ]
-      }
-    },
-    {
-      "model": "auth.group",
-      "pk": 6,
-      "fields": {
-        "name": "Alumni",
-        "permissions": []
-      }
-    },
-    {
-      "model": "auth.group",
-      "pk": 7,
-      "fields": {
-        "name": "Alumni Relations Chair",
-        "permissions": [
-          [
-            "access_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "add_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "change_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "change_link",
-            "Links",
-            "link"
-          ]
+      ]
+    }
+  },
+  {
+    "model": "auth.group",
+    "pk": 6,
+    "fields": {
+      "name": "Alumni",
+      "permissions": []
+    }
+  },
+  {
+    "model": "auth.group",
+    "pk": 7,
+    "fields": {
+      "name": "Alumni Relations Chair",
+      "permissions": [
+        [
+          "access_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "add_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "change_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "change_link",
+          "Links",
+          "link"
         ]
-      }
-    },
-    {
-      "model": "auth.group",
-      "pk": 8,
-      "fields": {
-        "name": "BAC Chair",
-        "permissions": [
-          [
-            "access_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "add_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "change_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "change_link",
-            "Links",
-            "link"
-          ]
+      ]
+    }
+  },
+  {
+    "model": "auth.group",
+    "pk": 8,
+    "fields": {
+      "name": "BAC Chair",
+      "permissions": [
+        [
+          "access_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "add_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "change_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "change_link",
+          "Links",
+          "link"
         ]
-      }
-    },
-    {
-      "model": "auth.group",
-      "pk": 9,
-      "fields": {
-        "name": "Herald",
-        "permissions": [
-          [
-            "change_link",
-            "Links",
-            "link"
-          ]
+      ]
+    }
+  },
+  {
+    "model": "auth.group",
+    "pk": 9,
+    "fields": {
+      "name": "Herald",
+      "permissions": [
+        [
+          "change_link",
+          "Links",
+          "link"
         ]
-      }
-    },
-    {
-      "model": "auth.group",
-      "pk": 10,
-      "fields": {
-        "name": "House Manager",
-        "permissions": [
-          [
-            "access_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "add_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "change_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "change_link",
-            "Links",
-            "link"
-          ]
+      ]
+    }
+  },
+  {
+    "model": "auth.group",
+    "pk": 10,
+    "fields": {
+      "name": "House Manager",
+      "permissions": [
+        [
+          "access_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "add_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "change_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "change_link",
+          "Links",
+          "link"
         ]
-      }
-    },
-    {
-      "model": "auth.group",
-      "pk": 11,
-      "fields": {
-        "name": "Parliamentarian",
-        "permissions": [
-          [
-            "access_bylaws",
-            "Archive",
-            "bylaws"
-          ],
-          [
-            "add_bylaws",
-            "Archive",
-            "bylaws"
-          ],
-          [
-            "change_bylaws",
-            "Archive",
-            "bylaws"
-          ],
-          [
-            "delete_bylaws",
-            "Archive",
-            "bylaws"
-          ],
-          [
-            "access_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "add_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "change_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "access_link",
-            "Links",
-            "link"
-          ],
-          [
-            "change_link",
-            "Links",
-            "link"
-          ],
-          [
-            "delete_link",
-            "Links",
-            "link"
-          ],
-          [
-            "promote_link",
-            "Links",
-            "link"
-          ],
-          [
-            "change_blacklistedguest",
-            "PartyList",
-            "blacklistedguest"
-          ],
-          [
-            "change_greylistedguest",
-            "PartyList",
-            "greylistedguest"
-          ],
-          [
-            "can_modify_count",
-            "PartyList",
-            "party"
-          ],
-          [
-            "change_party",
-            "PartyList",
-            "party"
-          ],
-          [
-            "add_summons",
-            "Standards",
-            "summons"
-          ],
-          [
-            "change_summons",
-            "Standards",
-            "summons"
-          ],
-          [
-            "delete_summons",
-            "Standards",
-            "summons"
-          ],
-          [
-            "add_summonshistoryrecord",
-            "Standards",
-            "summonshistoryrecord"
-          ],
-          [
-            "change_summonshistoryrecord",
-            "Standards",
-            "summonshistoryrecord"
-          ]
+      ]
+    }
+  },
+  {
+    "model": "auth.group",
+    "pk": 11,
+    "fields": {
+      "name": "Parliamentarian",
+      "permissions": [
+        [
+          "access_bylaws",
+          "Archive",
+          "bylaws"
+        ],
+        [
+          "add_bylaws",
+          "Archive",
+          "bylaws"
+        ],
+        [
+          "change_bylaws",
+          "Archive",
+          "bylaws"
+        ],
+        [
+          "delete_bylaws",
+          "Archive",
+          "bylaws"
+        ],
+        [
+          "access_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "add_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "change_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "access_link",
+          "Links",
+          "link"
+        ],
+        [
+          "change_link",
+          "Links",
+          "link"
+        ],
+        [
+          "delete_link",
+          "Links",
+          "link"
+        ],
+        [
+          "promote_link",
+          "Links",
+          "link"
+        ],
+        [
+          "change_blacklistedguest",
+          "PartyList",
+          "blacklistedguest"
+        ],
+        [
+          "change_greylistedguest",
+          "PartyList",
+          "greylistedguest"
+        ],
+        [
+          "can_modify_count",
+          "PartyList",
+          "party"
+        ],
+        [
+          "change_party",
+          "PartyList",
+          "party"
+        ],
+        [
+          "add_summons",
+          "Standards",
+          "summons"
+        ],
+        [
+          "change_summons",
+          "Standards",
+          "summons"
+        ],
+        [
+          "delete_summons",
+          "Standards",
+          "summons"
+        ],
+        [
+          "add_summonshistoryrecord",
+          "Standards",
+          "summonshistoryrecord"
+        ],
+        [
+          "change_summonshistoryrecord",
+          "Standards",
+          "summonshistoryrecord"
         ]
-      }
-    },
-    {
-      "model": "auth.group",
-      "pk": 12,
-      "fields": {
-        "name": "Philanthropy Chair",
-        "permissions": [
-          [
-            "access_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "add_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "change_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "change_link",
-            "Links",
-            "link"
-          ]
+      ]
+    }
+  },
+  {
+    "model": "auth.group",
+    "pk": 12,
+    "fields": {
+      "name": "Philanthropy Chair",
+      "permissions": [
+        [
+          "access_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "add_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "change_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "change_link",
+          "Links",
+          "link"
         ]
-      }
-    },
-    {
-      "model": "auth.group",
-      "pk": 13,
-      "fields": {
-        "name": "Pledges",
-        "permissions": [
-          [
-            "can_modify_count",
-            "PartyList",
-            "party"
-          ],
-          [
-            "change_party",
-            "PartyList",
-            "party"
-          ],
-          [
-            "change_partyguest",
-            "PartyList",
-            "partyguest"
-          ]
+      ]
+    }
+  },
+  {
+    "model": "auth.group",
+    "pk": 13,
+    "fields": {
+      "name": "Pledges",
+      "permissions": [
+        [
+          "can_modify_count",
+          "PartyList",
+          "party"
+        ],
+        [
+          "change_party",
+          "PartyList",
+          "party"
+        ],
+        [
+          "change_partyguest",
+          "PartyList",
+          "partyguest"
         ]
-      }
-    },
-    {
-      "model": "auth.group",
-      "pk": 14,
-      "fields": {
-        "name": "PR Chair",
-        "permissions": [
-          [
-            "access_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "add_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "change_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "change_link",
-            "Links",
-            "link"
-          ]
+      ]
+    }
+  },
+  {
+    "model": "auth.group",
+    "pk": 14,
+    "fields": {
+      "name": "PR Chair",
+      "permissions": [
+        [
+          "access_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "add_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "change_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "change_link",
+          "Links",
+          "link"
         ]
-      }
-    },
-    {
-      "model": "auth.group",
-      "pk": 15,
-      "fields": {
-        "name": "Rush Chair",
-        "permissions": [
-          [
-            "access_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "add_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "change_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "change_link",
-            "Links",
-            "link"
-          ],
-          [
-            "change_blacklistedguest",
-            "PartyList",
-            "blacklistedguest"
-          ],
-          [
-            "delete_blacklistedguest",
-            "PartyList",
-            "blacklistedguest"
-          ],
-          [
-            "add_greylistedguest",
-            "PartyList",
-            "greylistedguest"
-          ],
-          [
-            "change_greylistedguest",
-            "PartyList",
-            "greylistedguest"
-          ]
+      ]
+    }
+  },
+  {
+    "model": "auth.group",
+    "pk": 15,
+    "fields": {
+      "name": "Rush Chair",
+      "permissions": [
+        [
+          "access_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "add_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "change_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "change_link",
+          "Links",
+          "link"
+        ],
+        [
+          "change_blacklistedguest",
+          "PartyList",
+          "blacklistedguest"
+        ],
+        [
+          "delete_blacklistedguest",
+          "PartyList",
+          "blacklistedguest"
+        ],
+        [
+          "add_greylistedguest",
+          "PartyList",
+          "greylistedguest"
+        ],
+        [
+          "change_greylistedguest",
+          "PartyList",
+          "greylistedguest"
         ]
-      }
-    },
-    {
-      "model": "auth.group",
-      "pk": 16,
-      "fields": {
-        "name": "Sage",
-        "permissions": [
-          [
-            "access_bylaws",
-            "Archive",
-            "bylaws"
-          ],
-          [
-            "add_bylaws",
-            "Archive",
-            "bylaws"
-          ],
-          [
-            "change_bylaws",
-            "Archive",
-            "bylaws"
-          ],
-          [
-            "delete_bylaws",
-            "Archive",
-            "bylaws"
-          ],
-          [
-            "access_guide",
-            "Archive",
-            "guide"
-          ],
-          [
-            "add_guide",
-            "Archive",
-            "guide"
-          ],
-          [
-            "change_guide",
-            "Archive",
-            "guide"
-          ],
-          [
-            "delete_guide",
-            "Archive",
-            "guide"
-          ],
-          [
-            "access_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "add_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "change_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "delete_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "access_link",
-            "Links",
-            "link"
-          ],
-          [
-            "change_link",
-            "Links",
-            "link"
-          ],
-          [
-            "delete_link",
-            "Links",
-            "link"
-          ],
-          [
-            "promote_link",
-            "Links",
-            "link"
-          ],
-          [
-            "change_blacklistedguest",
-            "PartyList",
-            "blacklistedguest"
-          ],
-          [
-            "delete_blacklistedguest",
-            "PartyList",
-            "blacklistedguest"
-          ],
-          [
-            "manage_blacklist",
-            "PartyList",
-            "blacklistedguest"
-          ],
-          [
-            "add_greylistedguest",
-            "PartyList",
-            "greylistedguest"
-          ],
-          [
-            "change_greylistedguest",
-            "PartyList",
-            "greylistedguest"
-          ],
-          [
-            "add_guest",
-            "PartyList",
-            "guest"
-          ],
-          [
-            "change_guest",
-            "PartyList",
-            "guest"
-          ],
-          [
-            "delete_guest",
-            "PartyList",
-            "guest"
-          ],
-          [
-            "add_party",
-            "PartyList",
-            "party"
-          ],
-          [
-            "can_modify_count",
-            "PartyList",
-            "party"
-          ],
-          [
-            "change_party",
-            "PartyList",
-            "party"
-          ],
-          [
-            "delete_party",
-            "PartyList",
-            "party"
-          ],
-          [
-            "manage_parties",
-            "PartyList",
-            "party"
-          ],
-          [
-            "add_partyguest",
-            "PartyList",
-            "partyguest"
-          ],
-          [
-            "change_partyguest",
-            "PartyList",
-            "partyguest"
-          ],
-          [
-            "add_summons",
-            "Standards",
-            "summons"
-          ],
-          [
-            "change_summons",
-            "Standards",
-            "summons"
-          ],
-          [
-            "delete_summons",
-            "Standards",
-            "summons"
-          ],
-          [
-            "add_summonshistoryrecord",
-            "Standards",
-            "summonshistoryrecord"
-          ],
-          [
-            "change_summonshistoryrecord",
-            "Standards",
-            "summonshistoryrecord"
-          ],
-          [
-            "add_userinfo",
-            "UserInfo",
-            "userinfo"
-          ],
-          [
-            "change_userinfo",
-            "UserInfo",
-            "userinfo"
-          ],
-          [
-            "delete_userinfo",
-            "UserInfo",
-            "userinfo"
-          ],
-          [
-            "manage_users",
-            "UserInfo",
-            "userinfo"
-          ],
-          [
-            "add_user",
-            "auth",
-            "user"
-          ],
-          [
-            "change_user",
-            "auth",
-            "user"
-          ],
-          [
-            "delete_user",
-            "auth",
-            "user"
-          ]
+      ]
+    }
+  },
+  {
+    "model": "auth.group",
+    "pk": 16,
+    "fields": {
+      "name": "Sage",
+      "permissions": [
+        [
+          "access_bylaws",
+          "Archive",
+          "bylaws"
+        ],
+        [
+          "add_bylaws",
+          "Archive",
+          "bylaws"
+        ],
+        [
+          "change_bylaws",
+          "Archive",
+          "bylaws"
+        ],
+        [
+          "delete_bylaws",
+          "Archive",
+          "bylaws"
+        ],
+        [
+          "access_guide",
+          "Archive",
+          "guide"
+        ],
+        [
+          "add_guide",
+          "Archive",
+          "guide"
+        ],
+        [
+          "change_guide",
+          "Archive",
+          "guide"
+        ],
+        [
+          "delete_guide",
+          "Archive",
+          "guide"
+        ],
+        [
+          "access_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "add_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "change_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "delete_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "access_link",
+          "Links",
+          "link"
+        ],
+        [
+          "change_link",
+          "Links",
+          "link"
+        ],
+        [
+          "delete_link",
+          "Links",
+          "link"
+        ],
+        [
+          "promote_link",
+          "Links",
+          "link"
+        ],
+        [
+          "change_blacklistedguest",
+          "PartyList",
+          "blacklistedguest"
+        ],
+        [
+          "delete_blacklistedguest",
+          "PartyList",
+          "blacklistedguest"
+        ],
+        [
+          "manage_blacklist",
+          "PartyList",
+          "blacklistedguest"
+        ],
+        [
+          "add_greylistedguest",
+          "PartyList",
+          "greylistedguest"
+        ],
+        [
+          "change_greylistedguest",
+          "PartyList",
+          "greylistedguest"
+        ],
+        [
+          "add_guest",
+          "PartyList",
+          "guest"
+        ],
+        [
+          "change_guest",
+          "PartyList",
+          "guest"
+        ],
+        [
+          "delete_guest",
+          "PartyList",
+          "guest"
+        ],
+        [
+          "add_party",
+          "PartyList",
+          "party"
+        ],
+        [
+          "can_modify_count",
+          "PartyList",
+          "party"
+        ],
+        [
+          "change_party",
+          "PartyList",
+          "party"
+        ],
+        [
+          "delete_party",
+          "PartyList",
+          "party"
+        ],
+        [
+          "manage_parties",
+          "PartyList",
+          "party"
+        ],
+        [
+          "add_partyguest",
+          "PartyList",
+          "partyguest"
+        ],
+        [
+          "change_partyguest",
+          "PartyList",
+          "partyguest"
+        ],
+        [
+          "add_summons",
+          "Standards",
+          "summons"
+        ],
+        [
+          "change_summons",
+          "Standards",
+          "summons"
+        ],
+        [
+          "delete_summons",
+          "Standards",
+          "summons"
+        ],
+        [
+          "add_summonshistoryrecord",
+          "Standards",
+          "summonshistoryrecord"
+        ],
+        [
+          "change_summonshistoryrecord",
+          "Standards",
+          "summonshistoryrecord"
+        ],
+        [
+          "add_userinfo",
+          "UserInfo",
+          "userinfo"
+        ],
+        [
+          "change_userinfo",
+          "UserInfo",
+          "userinfo"
+        ],
+        [
+          "delete_userinfo",
+          "UserInfo",
+          "userinfo"
+        ],
+        [
+          "manage_users",
+          "UserInfo",
+          "userinfo"
+        ],
+        [
+          "add_user",
+          "auth",
+          "user"
+        ],
+        [
+          "change_user",
+          "auth",
+          "user"
+        ],
+        [
+          "delete_user",
+          "auth",
+          "user"
         ]
-      }
-    },
-    {
-      "model": "auth.group",
-      "pk": 17,
-      "fields": {
-        "name": "Scholarship Chair",
-        "permissions": [
-          [
-            "access_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "add_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "change_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "change_link",
-            "Links",
-            "link"
-          ],
-          [
-            "add_academicresource",
-            "Scholarship",
-            "academicresource"
-          ],
-          [
-            "change_academicresource",
-            "Scholarship",
-            "academicresource"
-          ],
-          [
-            "delete_academicresource",
-            "Scholarship",
-            "academicresource"
-          ],
-          [
-            "delete_summonshistoryrecord",
-            "Standards",
-            "summonshistoryrecord"
-          ],
-          [
-            "add_summonsrequest",
-            "Standards",
-            "summonsrequest"
-          ],
-          [
-            "change_summonsrequest",
-            "Standards",
-            "summonsrequest"
-          ],
-          [
-            "delete_summonsrequest",
-            "Standards",
-            "summonsrequest"
-          ]
+      ]
+    }
+  },
+  {
+    "model": "auth.group",
+    "pk": 17,
+    "fields": {
+      "name": "Scholarship Chair",
+      "permissions": [
+        [
+          "access_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "add_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "change_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "change_link",
+          "Links",
+          "link"
+        ],
+        [
+          "add_academicresource",
+          "Scholarship",
+          "academicresource"
+        ],
+        [
+          "change_academicresource",
+          "Scholarship",
+          "academicresource"
+        ],
+        [
+          "delete_academicresource",
+          "Scholarship",
+          "academicresource"
+        ],
+        [
+          "delete_summonshistoryrecord",
+          "Standards",
+          "summonshistoryrecord"
+        ],
+        [
+          "add_summonsrequest",
+          "Standards",
+          "summonsrequest"
+        ],
+        [
+          "change_summonsrequest",
+          "Standards",
+          "summonsrequest"
+        ],
+        [
+          "delete_summonsrequest",
+          "Standards",
+          "summonsrequest"
         ]
-      }
-    },
-    {
-      "model": "auth.group",
-      "pk": 18,
-      "fields": {
-        "name": "Social Chair",
-        "permissions": [
-          [
-            "access_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "add_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "change_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "change_link",
-            "Links",
-            "link"
-          ],
-          [
-            "add_guest",
-            "PartyList",
-            "guest"
-          ],
-          [
-            "change_guest",
-            "PartyList",
-            "guest"
-          ],
-          [
-            "delete_guest",
-            "PartyList",
-            "guest"
-          ],
-          [
-            "add_party",
-            "PartyList",
-            "party"
-          ],
-          [
-            "can_modify_count",
-            "PartyList",
-            "party"
-          ],
-          [
-            "change_party",
-            "PartyList",
-            "party"
-          ],
-          [
-            "delete_party",
-            "PartyList",
-            "party"
-          ],
-          [
-            "manage_parties",
-            "PartyList",
-            "party"
-          ],
-          [
-            "add_partyguest",
-            "PartyList",
-            "partyguest"
-          ],
-          [
-            "change_partyguest",
-            "PartyList",
-            "partyguest"
-          ]
+      ]
+    }
+  },
+  {
+    "model": "auth.group",
+    "pk": 18,
+    "fields": {
+      "name": "Social Chair",
+      "permissions": [
+        [
+          "access_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "add_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "change_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "change_link",
+          "Links",
+          "link"
+        ],
+        [
+          "add_guest",
+          "PartyList",
+          "guest"
+        ],
+        [
+          "change_guest",
+          "PartyList",
+          "guest"
+        ],
+        [
+          "delete_guest",
+          "PartyList",
+          "guest"
+        ],
+        [
+          "add_party",
+          "PartyList",
+          "party"
+        ],
+        [
+          "can_modify_count",
+          "PartyList",
+          "party"
+        ],
+        [
+          "change_party",
+          "PartyList",
+          "party"
+        ],
+        [
+          "delete_party",
+          "PartyList",
+          "party"
+        ],
+        [
+          "manage_parties",
+          "PartyList",
+          "party"
+        ],
+        [
+          "add_partyguest",
+          "PartyList",
+          "partyguest"
+        ],
+        [
+          "change_partyguest",
+          "PartyList",
+          "partyguest"
         ]
-      }
-    },
-    {
-      "model": "auth.group",
-      "pk": 19,
-      "fields": {
-        "name": "Steward",
-        "permissions": [
-          [
-            "access_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "add_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "change_houserules",
-            "Archive",
-            "houserules"
-          ],
-          [
-            "change_link",
-            "Links",
-            "link"
-          ]
+      ]
+    }
+  },
+  {
+    "model": "auth.group",
+    "pk": 19,
+    "fields": {
+      "name": "Steward",
+      "permissions": [
+        [
+          "access_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "add_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "change_houserules",
+          "Archive",
+          "houserules"
+        ],
+        [
+          "change_link",
+          "Links",
+          "link"
         ]
-      }
-    },
-    {
-      "model": "auth.user",
-      "pk": 1,
-      "fields": {
-        "password": "pbkdf2_sha256$216000$jDRxOpvuhwLU$grA80QFtZn+EPiOENpy36MasxA0I4Pgxb0Yfx500/Mw=",
-        "last_login": "2021-03-07T13:23:41.466",
-        "is_superuser": true,
-        "username": "admin",
-        "first_name": "Admin",
-        "last_name": "",
-        "email": "admin@local.dev",
-        "is_staff": true,
-        "is_active": true,
-        "date_joined": "2016-08-17T10:33:19",
-        "groups": [],
-        "user_permissions": []
-      }
-    },
-    {
-      "model": "auth.user",
-      "pk": 2,
-      "fields": {
-        "password": "pbkdf2_sha256$15000$FhzM91OiCl3H$jId1a7urHjVBZTNIToWvnozBfcB1YCMrVFrIHePrs+U=",
-        "last_login": "2016-09-12T01:32:25.840",
-        "is_superuser": false,
-        "username": "brother",
-        "first_name": "Brother",
-        "last_name": "Brother",
-        "email": "brother@local.dev",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2016-08-17T10:59:40",
-        "groups": [
-          [
-            "Brothers"
-          ]
+      ]
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$216000$jDRxOpvuhwLU$grA80QFtZn+EPiOENpy36MasxA0I4Pgxb0Yfx500/Mw=",
+      "last_login": "2021-03-07T13:23:41.466",
+      "is_superuser": true,
+      "username": "admin",
+      "first_name": "Admin",
+      "last_name": "",
+      "email": "admin@local.dev",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2016-08-17T10:33:19",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$15000$FhzM91OiCl3H$jId1a7urHjVBZTNIToWvnozBfcB1YCMrVFrIHePrs+U=",
+      "last_login": "2016-09-12T01:32:25.840",
+      "is_superuser": false,
+      "username": "brother",
+      "first_name": "Brother",
+      "last_name": "Brother",
+      "email": "brother@local.dev",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2016-08-17T10:59:40",
+      "groups": [
+        [
+          "Brothers"
+        ]
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$15000$bw1IivZeMHh8$re6/uY1AynAKGdeXnzDvVdY8TCLIC2giS+AVO4KVXWQ=",
+      "last_login": "2016-08-17T11:54:22",
+      "is_superuser": false,
+      "username": "first",
+      "first_name": "First",
+      "last_name": "First",
+      "email": "first@local.dev",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2016-08-17T11:54:22",
+      "groups": [
+        [
+          "Brothers"
         ],
-        "user_permissions": []
-      }
-    },
-    {
-      "model": "auth.user",
-      "pk": 3,
-      "fields": {
-        "password": "pbkdf2_sha256$15000$bw1IivZeMHh8$re6/uY1AynAKGdeXnzDvVdY8TCLIC2giS+AVO4KVXWQ=",
-        "last_login": "2016-08-17T11:54:22",
-        "is_superuser": false,
-        "username": "first",
-        "first_name": "First",
-        "last_name": "First",
-        "email": "first@local.dev",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2016-08-17T11:54:22",
-        "groups": [
-          [
-            "Brothers"
-          ],
-          [
-            "1st Counselor"
-          ]
+        [
+          "1st Counselor"
+        ]
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 4,
+    "fields": {
+      "password": "pbkdf2_sha256$15000$alpIwtAEuuoO$DcUVp2jy6EzMw0dFzFa37CX0W5LpB7UX9XROHIZUaVU=",
+      "last_login": "2016-08-17T11:55:24",
+      "is_superuser": false,
+      "username": "second",
+      "first_name": "Second",
+      "last_name": "Second",
+      "email": "second@local.dev",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2016-08-17T11:55:24",
+      "groups": [
+        [
+          "Brothers"
         ],
-        "user_permissions": []
-      }
-    },
-    {
-      "model": "auth.user",
-      "pk": 4,
-      "fields": {
-        "password": "pbkdf2_sha256$15000$alpIwtAEuuoO$DcUVp2jy6EzMw0dFzFa37CX0W5LpB7UX9XROHIZUaVU=",
-        "last_login": "2016-08-17T11:55:24",
-        "is_superuser": false,
-        "username": "second",
-        "first_name": "Second",
-        "last_name": "Second",
-        "email": "second@local.dev",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2016-08-17T11:55:24",
-        "groups": [
-          [
-            "Brothers"
-          ],
-          [
-            "2nd Counselor"
-          ]
+        [
+          "2nd Counselor"
+        ]
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 5,
+    "fields": {
+      "password": "pbkdf2_sha256$15000$pzW6XBateaJO$ONAQ/ee/ysCSQpCm/I8KEjTSAj2XHgehcPiqmhxMOh0=",
+      "last_login": "2016-08-17T11:56:50",
+      "is_superuser": false,
+      "username": "third",
+      "first_name": "Third",
+      "last_name": "Third",
+      "email": "third@local.dev",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2016-08-17T11:56:50",
+      "groups": [
+        [
+          "Brothers"
         ],
-        "user_permissions": []
-      }
-    },
-    {
-      "model": "auth.user",
-      "pk": 5,
-      "fields": {
-        "password": "pbkdf2_sha256$15000$pzW6XBateaJO$ONAQ/ee/ysCSQpCm/I8KEjTSAj2XHgehcPiqmhxMOh0=",
-        "last_login": "2016-08-17T11:56:50",
-        "is_superuser": false,
-        "username": "third",
-        "first_name": "Third",
-        "last_name": "Third",
-        "email": "third@local.dev",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2016-08-17T11:56:50",
-        "groups": [
-          [
-            "Brothers"
-          ],
-          [
-            "3rd Counselor"
-          ]
+        [
+          "3rd Counselor"
+        ]
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 6,
+    "fields": {
+      "password": "pbkdf2_sha256$36000$FShSJ2yeXrXU$jrHpr0+WC3LEZrfKNddeWF4Aj9HlInFyXCVYQc/1H8E=",
+      "last_login": "2019-12-16T17:41:22.039",
+      "is_superuser": false,
+      "username": "fourth",
+      "first_name": "Fourth",
+      "last_name": "Fourth",
+      "email": "fourth@local.dev",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2016-08-17T11:57:52",
+      "groups": [
+        [
+          "Brothers"
         ],
-        "user_permissions": []
-      }
-    },
-    {
-      "model": "auth.user",
-      "pk": 6,
-      "fields": {
-        "password": "pbkdf2_sha256$36000$FShSJ2yeXrXU$jrHpr0+WC3LEZrfKNddeWF4Aj9HlInFyXCVYQc/1H8E=",
-        "last_login": "2019-12-16T17:41:22.039",
-        "is_superuser": false,
-        "username": "fourth",
-        "first_name": "Fourth",
-        "last_name": "Fourth",
-        "email": "fourth@local.dev",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2016-08-17T11:57:52",
-        "groups": [
-          [
-            "Brothers"
-          ],
-          [
-            "4th Counselor"
-          ]
+        [
+          "4th Counselor"
+        ]
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 7,
+    "fields": {
+      "password": "pbkdf2_sha256$15000$0d3SJTwMrSLG$bM4Gs4CdYxLRI2IDAxJyOvl67BgHser/MZ0yvYWmvq8=",
+      "last_login": "2016-08-17T11:59:02",
+      "is_superuser": false,
+      "username": "alumnichair",
+      "first_name": "Alumni",
+      "last_name": "Chair",
+      "email": "alumnichair@local.dev",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2016-08-17T11:59:02",
+      "groups": [
+        [
+          "Brothers"
         ],
-        "user_permissions": []
-      }
-    },
-    {
-      "model": "auth.user",
-      "pk": 7,
-      "fields": {
-        "password": "pbkdf2_sha256$15000$0d3SJTwMrSLG$bM4Gs4CdYxLRI2IDAxJyOvl67BgHser/MZ0yvYWmvq8=",
-        "last_login": "2016-08-17T11:59:02",
-        "is_superuser": false,
-        "username": "alumnichair",
-        "first_name": "Alumni",
-        "last_name": "Chair",
-        "email": "alumnichair@local.dev",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2016-08-17T11:59:02",
-        "groups": [
-          [
-            "Brothers"
-          ],
-          [
-            "Alumni Relations Chair"
-          ]
+        [
+          "Alumni Relations Chair"
+        ]
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 8,
+    "fields": {
+      "password": "pbkdf2_sha256$15000$jp8GQojmbkov$+JI6XwpFjN9FjxCVNMbDYvKL+KvJfpslW82FkFs0Vko=",
+      "last_login": "2016-08-17T12:00:43",
+      "is_superuser": false,
+      "username": "newmember",
+      "first_name": "New",
+      "last_name": "Member",
+      "email": "newmember@local.dev",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2016-08-17T12:00:43",
+      "groups": [
+        [
+          "Pledges"
+        ]
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 9,
+    "fields": {
+      "password": "pbkdf2_sha256$36000$Q2W5iOLAzRNX$OrekZI4xfwmbsUdPAF4+eE3tQLLN9VvjO0LuxACtG/U=",
+      "last_login": "2019-12-16T15:38:40",
+      "is_superuser": false,
+      "username": "bacchair",
+      "first_name": "BAC",
+      "last_name": "Chair",
+      "email": "bacchair@local.dev",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2016-08-17T12:01:33",
+      "groups": [
+        [
+          "Brothers"
         ],
-        "user_permissions": []
-      }
-    },
-    {
-      "model": "auth.user",
-      "pk": 8,
-      "fields": {
-        "password": "pbkdf2_sha256$15000$jp8GQojmbkov$+JI6XwpFjN9FjxCVNMbDYvKL+KvJfpslW82FkFs0Vko=",
-        "last_login": "2016-08-17T12:00:43",
-        "is_superuser": false,
-        "username": "newmember",
-        "first_name": "New",
-        "last_name": "Member",
-        "email": "newmember@local.dev",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2016-08-17T12:00:43",
-        "groups": [
-          [
-            "Pledges"
-          ]
+        [
+          "BAC Chair"
+        ]
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 10,
+    "fields": {
+      "password": "pbkdf2_sha256$15000$F71faHfwmdSb$DBldaGJ1908OXwuwraVGTNhdnr1DI6HUAyp+dW5O9yw=",
+      "last_login": "2016-08-17T12:02:30",
+      "is_superuser": false,
+      "username": "housemanager",
+      "first_name": "House",
+      "last_name": "Manager",
+      "email": "housemanager@local.dev",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2016-08-17T12:02:30",
+      "groups": [
+        [
+          "Brothers"
         ],
-        "user_permissions": []
-      }
-    },
-    {
-      "model": "auth.user",
-      "pk": 9,
-      "fields": {
-        "password": "pbkdf2_sha256$36000$Q2W5iOLAzRNX$OrekZI4xfwmbsUdPAF4+eE3tQLLN9VvjO0LuxACtG/U=",
-        "last_login": "2019-12-16T15:38:40",
-        "is_superuser": false,
-        "username": "bacchair",
-        "first_name": "BAC",
-        "last_name": "Chair",
-        "email": "bacchair@local.dev",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2016-08-17T12:01:33",
-        "groups": [
-          [
-            "Brothers"
-          ],
-          [
-            "BAC Chair"
-          ]
+        [
+          "House Manager"
+        ]
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 11,
+    "fields": {
+      "password": "pbkdf2_sha256$15000$s4qG03dB5H24$aODYIKGdjc7UFBE/agwZ5T2HqLqESDiLa/SsnncSQ2s=",
+      "last_login": "2016-08-17T12:03:16",
+      "is_superuser": false,
+      "username": "parliamentarian",
+      "first_name": "Parliamentarian",
+      "last_name": "",
+      "email": "parliamentarian@local.dev",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2016-08-17T12:03:16",
+      "groups": [
+        [
+          "Brothers"
         ],
-        "user_permissions": []
-      }
-    },
-    {
-      "model": "auth.user",
-      "pk": 10,
-      "fields": {
-        "password": "pbkdf2_sha256$15000$F71faHfwmdSb$DBldaGJ1908OXwuwraVGTNhdnr1DI6HUAyp+dW5O9yw=",
-        "last_login": "2016-08-17T12:02:30",
-        "is_superuser": false,
-        "username": "housemanager",
-        "first_name": "House",
-        "last_name": "Manager",
-        "email": "housemanager@local.dev",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2016-08-17T12:02:30",
-        "groups": [
-          [
-            "Brothers"
-          ],
-          [
-            "House Manager"
-          ]
+        [
+          "Parliamentarian"
+        ]
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 12,
+    "fields": {
+      "password": "pbkdf2_sha256$36000$HEuJgJgSQunt$rnC2h8l/eUVDh4DRvU2dsflTvuXx5t47ToMvB9lkFvQ=",
+      "last_login": "2019-12-16T16:56:22.450",
+      "is_superuser": false,
+      "username": "prchair",
+      "first_name": "PR",
+      "last_name": "Chair",
+      "email": "prchair@local.dev",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2016-08-17T12:03:43",
+      "groups": [
+        [
+          "Brothers"
         ],
-        "user_permissions": []
-      }
-    },
-    {
-      "model": "auth.user",
-      "pk": 11,
-      "fields": {
-        "password": "pbkdf2_sha256$15000$s4qG03dB5H24$aODYIKGdjc7UFBE/agwZ5T2HqLqESDiLa/SsnncSQ2s=",
-        "last_login": "2016-08-17T12:03:16",
-        "is_superuser": false,
-        "username": "parliamentarian",
-        "first_name": "Parliamentarian",
-        "last_name": "",
-        "email": "parliamentarian@local.dev",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2016-08-17T12:03:16",
-        "groups": [
-          [
-            "Brothers"
-          ],
-          [
-            "Parliamentarian"
-          ]
+        [
+          "PR Chair"
+        ]
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 13,
+    "fields": {
+      "password": "pbkdf2_sha256$15000$vvFUPVXWbbjd$xmrArWEsFcUkcVhKlTCRs3pZEuIskkR3K2dcnX1ATrQ=",
+      "last_login": "2016-08-17T12:05:03",
+      "is_superuser": false,
+      "username": "philanthropychair",
+      "first_name": "Philanthropy",
+      "last_name": "Chair",
+      "email": "philanthropychair@local.dev",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2016-08-17T12:05:03",
+      "groups": [
+        [
+          "Brothers"
         ],
-        "user_permissions": []
-      }
-    },
-    {
-      "model": "auth.user",
-      "pk": 12,
-      "fields": {
-        "password": "pbkdf2_sha256$36000$HEuJgJgSQunt$rnC2h8l/eUVDh4DRvU2dsflTvuXx5t47ToMvB9lkFvQ=",
-        "last_login": "2019-12-16T16:56:22.450",
-        "is_superuser": false,
-        "username": "prchair",
-        "first_name": "PR",
-        "last_name": "Chair",
-        "email": "prchair@local.dev",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2016-08-17T12:03:43",
-        "groups": [
-          [
-            "Brothers"
-          ],
-          [
-            "PR Chair"
-          ]
+        [
+          "Philanthropy Chair"
+        ]
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 14,
+    "fields": {
+      "password": "pbkdf2_sha256$15000$FEqcFQoeeGJA$vUtCepZ+/S97E2PErfq1yWsQnjepkhcNvktGiKG1viQ=",
+      "last_login": "2016-08-17T12:05:53",
+      "is_superuser": false,
+      "username": "rushchair",
+      "first_name": "Rush",
+      "last_name": "Chair",
+      "email": "rushchair@local.dev",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2016-08-17T12:05:53",
+      "groups": [
+        [
+          "Brothers"
         ],
-        "user_permissions": []
-      }
-    },
-    {
-      "model": "auth.user",
-      "pk": 13,
-      "fields": {
-        "password": "pbkdf2_sha256$15000$vvFUPVXWbbjd$xmrArWEsFcUkcVhKlTCRs3pZEuIskkR3K2dcnX1ATrQ=",
-        "last_login": "2016-08-17T12:05:03",
-        "is_superuser": false,
-        "username": "philanthropychair",
-        "first_name": "Philanthropy",
-        "last_name": "Chair",
-        "email": "philanthropychair@local.dev",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2016-08-17T12:05:03",
-        "groups": [
-          [
-            "Brothers"
-          ],
-          [
-            "Philanthropy Chair"
-          ]
+        [
+          "Rush Chair"
+        ]
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 15,
+    "fields": {
+      "password": "pbkdf2_sha256$15000$SaRvNMjAH0Pb$mmZvOBUafUYovzOQcHeLyeN4D/sil1jBr8ow9O+GCG0=",
+      "last_login": "2016-08-17T12:09:02",
+      "is_superuser": false,
+      "username": "sage",
+      "first_name": "Sage",
+      "last_name": "Sage",
+      "email": "sage@local.dev",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2016-08-17T12:09:02",
+      "groups": [
+        [
+          "Brothers"
         ],
-        "user_permissions": []
-      }
-    },
-    {
-      "model": "auth.user",
-      "pk": 14,
-      "fields": {
-        "password": "pbkdf2_sha256$15000$FEqcFQoeeGJA$vUtCepZ+/S97E2PErfq1yWsQnjepkhcNvktGiKG1viQ=",
-        "last_login": "2016-08-17T12:05:53",
-        "is_superuser": false,
-        "username": "rushchair",
-        "first_name": "Rush",
-        "last_name": "Chair",
-        "email": "rushchair@local.dev",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2016-08-17T12:05:53",
-        "groups": [
-          [
-            "Brothers"
-          ],
-          [
-            "Rush Chair"
-          ]
+        [
+          "Sage"
+        ]
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 16,
+    "fields": {
+      "password": "pbkdf2_sha256$15000$1W1k5qK23XUB$skda/DF8L8695JaqooAMqzHs3PKPTG6B5WmoDbpJav0=",
+      "last_login": "2016-08-17T12:10:10",
+      "is_superuser": false,
+      "username": "scholarshipchair",
+      "first_name": "Scholarship",
+      "last_name": "Chair",
+      "email": "scholarshipchair@local.dev",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2016-08-17T12:10:10",
+      "groups": [
+        [
+          "Brothers"
         ],
-        "user_permissions": []
-      }
-    },
-    {
-      "model": "auth.user",
-      "pk": 15,
-      "fields": {
-        "password": "pbkdf2_sha256$15000$SaRvNMjAH0Pb$mmZvOBUafUYovzOQcHeLyeN4D/sil1jBr8ow9O+GCG0=",
-        "last_login": "2016-08-17T12:09:02",
-        "is_superuser": false,
-        "username": "sage",
-        "first_name": "Sage",
-        "last_name": "Sage",
-        "email": "sage@local.dev",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2016-08-17T12:09:02",
-        "groups": [
-          [
-            "Brothers"
-          ],
-          [
-            "Sage"
-          ]
+        [
+          "Scholarship Chair"
+        ]
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 17,
+    "fields": {
+      "password": "pbkdf2_sha256$15000$eUpcKfUYyFlB$wO46gb/hQmZWd5LhgI3uDHxMBFNWI3+vEnDKDy2UCt0=",
+      "last_login": "2016-08-17T12:10:55",
+      "is_superuser": false,
+      "username": "socialchair",
+      "first_name": "Social",
+      "last_name": "Chair",
+      "email": "socialchair@local.dev",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2016-08-17T12:10:55",
+      "groups": [
+        [
+          "Brothers"
         ],
-        "user_permissions": []
-      }
-    },
-    {
-      "model": "auth.user",
-      "pk": 16,
-      "fields": {
-        "password": "pbkdf2_sha256$15000$1W1k5qK23XUB$skda/DF8L8695JaqooAMqzHs3PKPTG6B5WmoDbpJav0=",
-        "last_login": "2016-08-17T12:10:10",
-        "is_superuser": false,
-        "username": "scholarshipchair",
-        "first_name": "Scholarship",
-        "last_name": "Chair",
-        "email": "scholarshipchair@local.dev",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2016-08-17T12:10:10",
-        "groups": [
-          [
-            "Brothers"
-          ],
-          [
-            "Scholarship Chair"
-          ]
+        [
+          "Social Chair"
+        ]
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 18,
+    "fields": {
+      "password": "pbkdf2_sha256$15000$uS2wNGk2KwjM$R7C0o/yvHxlSi8yEh3Ci2bDCCP8LsfOU+A33ayQqB7k=",
+      "last_login": "2016-08-17T12:11:43",
+      "is_superuser": false,
+      "username": "steward",
+      "first_name": "Steward",
+      "last_name": "",
+      "email": "steward@local.dev",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2016-08-17T12:11:43",
+      "groups": [
+        [
+          "Brothers"
         ],
-        "user_permissions": []
-      }
-    },
-    {
-      "model": "auth.user",
-      "pk": 17,
-      "fields": {
-        "password": "pbkdf2_sha256$15000$eUpcKfUYyFlB$wO46gb/hQmZWd5LhgI3uDHxMBFNWI3+vEnDKDy2UCt0=",
-        "last_login": "2016-08-17T12:10:55",
-        "is_superuser": false,
-        "username": "socialchair",
-        "first_name": "Social",
-        "last_name": "Chair",
-        "email": "socialchair@local.dev",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2016-08-17T12:10:55",
-        "groups": [
-          [
-            "Brothers"
-          ],
-          [
-            "Social Chair"
-          ]
-        ],
-        "user_permissions": []
-      }
-    },
-    {
-      "model": "auth.user",
-      "pk": 18,
-      "fields": {
-        "password": "pbkdf2_sha256$15000$uS2wNGk2KwjM$R7C0o/yvHxlSi8yEh3Ci2bDCCP8LsfOU+A33ayQqB7k=",
-        "last_login": "2016-08-17T12:11:43",
-        "is_superuser": false,
-        "username": "steward",
-        "first_name": "Steward",
-        "last_name": "",
-        "email": "steward@local.dev",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2016-08-17T12:11:43",
-        "groups": [
-          [
-            "Brothers"
-          ],
-          [
-            "Steward"
-          ]
-        ],
-        "user_permissions": []
-      }
-    },
-    {
-      "model": "sessions.session",
-      "pk": "02mgmjl6kdml0limj62h0tzxfadmi2ua",
-      "fields": {
-        "session_data": ".eJxVjEEOwiAQRe_C2pACZaAu3fcMZJgZpWpoUtqV8e7apAvd_vfef6mE21rS1mRJE6uzMur0u2Wkh9Qd8B3rbdY013WZst4VfdCmx5nleTncv4OCrXxrixa8Y4givRETEcANFKyBnPnquuBJPGA0JtIA1HsQF5i4Yy8ZJav3B9U7ODQ:1lBjmL:Goc_0bGsr4QdFu-i5z91vZGk9DVBVtPQ_NZyjeP2bAg",
-        "expire_date": "2021-03-01T14:43:29.543"
-      }
-    },
-    {
-      "model": "sessions.session",
-      "pk": "4489z9sgl06x4lkuqgcij63cby84dp8i",
-      "fields": {
-        "session_data": "NWE0M2E5NDgwOGU3ODZiZGMwZTJiMzhiZjgzMGY2YThiZjllOTBjODp7Il9hdXRoX3VzZXJfaWQiOiIxMiIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiZjY0YWQ1ZWM3Y2FjNjhkZTgzZTA5M2M1NzBkN2NjYWEyNmJkZGUwOSJ9",
-        "expire_date": "2019-12-30T17:40:54.876"
-      }
-    },
-    {
-      "model": "sessions.session",
-      "pk": "be0yezt26f8gou35sf4gcn97prh9jmdc",
-      "fields": {
-        "session_data": "NTdhMjc0MDg0MDA1YjQ0YWM0ZmUwODdkNGI5YzExZTU5M2Y2YzExZjp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJjZGNlZDQ1OTIyODA3OWQ4NjMzNmU0ZmNlNzljNmIzOTZkYzBjNDE1In0=",
-        "expire_date": "2019-12-30T17:43:34.362"
-      }
-    },
-    {
-      "model": "sessions.session",
-      "pk": "czluig5nf8a1p7hbzkdtm63vt8zwhzs7",
-      "fields": {
-        "session_data": ".eJxVjEEOwiAQRe_C2pACZaAu3fcMZJgZpWpoUtqV8e7apAvd_vfef6mE21rS1mRJE6uzMur0u2Wkh9Qd8B3rbdY013WZst4VfdCmx5nleTncv4OCrXxrixa8Y4givRETEcANFKyBnPnquuBJPGA0JtIA1HsQF5i4Yy8ZJav3B9U7ODQ:1lBKGW:cmIsKl4-6uTbkWnWUO6NIhdnIkv-C91UY_t1ElQ8LGI",
-        "expire_date": "2021-02-28T11:28:56.144"
-      }
-    },
-    {
-      "model": "sessions.session",
-      "pk": "gbde1zi1sui65mcnp0cf3c9i2le5o1dd",
-      "fields": {
-        "session_data": ".eJxVjEEOwiAQRe_C2pACZaAu3fcMZJgZpWpoUtqV8e7apAvd_vfef6mE21rS1mRJE6uzMur0u2Wkh9Qd8B3rbdY013WZst4VfdCmx5nleTncv4OCrXxrixa8Y4givRETEcANFKyBnPnquuBJPGA0JtIA1HsQF5i4Yy8ZJav3B9U7ODQ:1lIy45:XruFFzKVoGa03icpIHg-_KutXqIvN5v4GlyEfKn1Rn0",
-        "expire_date": "2021-03-21T13:23:41.471"
-      }
-    },
-    {
-      "model": "sessions.session",
-      "pk": "hn1ey337ma9aweggrh5vs8m70mfzpnyd",
-      "fields": {
-        "session_data": ".eJxVjEEOwiAQRe_C2pACZaAu3fcMZJgZpWpoUtqV8e7apAvd_vfef6mE21rS1mRJE6uzMur0u2Wkh9Qd8B3rbdY013WZst4VfdCmx5nleTncv4OCrXxrixa8Y4givRETEcANFKyBnPnquuBJPGA0JtIA1HsQF5i4Yy8ZJav3B9U7ODQ:1kdGUX:qnrcXqB4JCOlbTbPNNWmZ-AM7ZREfJ3hCNq0vKfIqVM",
-        "expire_date": "2020-11-26T12:34:37.512"
-      }
-    },
-    {
-      "model": "sessions.session",
-      "pk": "in3yj66zts49dp7dz43m6c20vji8facv",
-      "fields": {
-        "session_data": ".eJxVjEEOwiAQRe_C2hBmhHZw6b5nIDNApWpoUtqV8e7apAvd_vfef6nA21rC1vISpqQuCtTpdxOOj1x3kO5cb7OOc12XSfSu6IM2PcwpP6-H-3dQuJVvLdYwJjIdoBDhmRzCiGJ7A8n56BwT9eRHgRwRO_As0vncA1tIDKLeH7l5NzQ:1kLCEl:N88JNO0bEayBdm0CGvHbgVFBb0YcoqlP6KvyZ83oCZ4",
-        "expire_date": "2020-10-07T17:23:39.742"
-      }
-    },
-    {
-      "model": "sessions.session",
-      "pk": "qrkftgze87yo4egni314z8tdq479fkn0",
-      "fields": {
-        "session_data": ".eJxVjEEOwiAQRe_C2pACZaAu3fcMZJgZpWpoUtqV8e7apAvd_vfef6mE21rS1mRJE6uzMur0u2Wkh9Qd8B3rbdY013WZst4VfdCmx5nleTncv4OCrXxrixa8Y4givRETEcANFKyBnPnquuBJPGA0JtIA1HsQF5i4Yy8ZJav3B9U7ODQ:1kjPP8:Lsi6iFw-RMjifuBYFJm3avellcIVgifp-FiGKNeqhVY",
-        "expire_date": "2020-12-13T11:18:26.187"
-      }
-    },
-    {
-      "model": "sessions.session",
-      "pk": "s21cc12wdlx2wzgsacuxndx54g38kj4y",
-      "fields": {
-        "session_data": ".eJxVjEsOwjAMRO-SNYrsNHZUluw5Q2U3hhZQIvWzQtydVuoCNLt5b-btOlmXoVtnm7oxu7NDd_rtVPqnlR3kh5R79X0tyzSq3xV_0Nlfa7bX5XD_DgaZh23dGDGoYoO3oJgSB2BjwBgTSgyZtaWWE6lCNtoiTEq9BFCKCOA-X7rRNu4:1kSTVQ:pr_V0X1Lku09KK5pY1ZHlQ5UlNkXmUs9VxAC2ZL0iN8",
-        "expire_date": "2020-10-27T19:14:56.080"
-      }
-    },
-    {
-      "model": "sites.site",
-      "pk": 1,
-      "fields": {
-        "domain": "example.com",
-        "name": "example.com"
-      }
-    },
-    {
-      "model": "UserInfo.pledgeclass",
-      "pk": 1,
-      "fields": {
-        "name": "Omega",
-        "dateInitiated": "2000-01-01"
-      }
-    },
-    {
-      "model": "UserInfo.pledgeclass",
-      "pk": 2,
-      "fields": {
-        "name": "Pi",
-        "dateInitiated": "2018-02-23"
-      }
-    },
-    {
-      "model": "UserInfo.pledgeclass",
-      "pk": 3,
-      "fields": {
-        "name": "Rho",
-        "dateInitiated": "2019-02-25"
-      }
-    },
-    {
-      "model": "UserInfo.pledgeclass",
-      "pk": 4,
-      "fields": {
-        "name": "Sigma",
-        "dateInitiated": "2020-02-24"
-      }
-    },
-    {
-      "model": "UserInfo.pledgeclass",
-      "pk": 5,
-      "fields": {
-        "name": "Tau",
-        "dateInitiated": "2021-02-26"
-      }
-    },
-    {
-      "model": "UserInfo.userinfo",
-      "pk": 1,
-      "fields": {
-        "user": [
-          "scholarshipchair"
-        ],
-        "picture": "",
-        "phoneNumber": "(839)910-4785",
-        "graduationYear": 2022,
-        "major": "ECE",
-        "hometown": "Burlington, VT",
-        "activities": "Hockey",
-        "interests": "Canada",
-        "favoriteMemory": "Maple syrup",
-        "bigBrother": [
-          "third"
-        ],
-        "pledgeClass": 3
-      }
-    },
-    {
-      "model": "UserInfo.userinfo",
-      "pk": 2,
-      "fields": {
-        "user": [
-          "brother"
-        ],
-        "picture": "",
-        "phoneNumber": "(666)666-6666",
-        "graduationYear": 2022,
-        "major": "CHE",
-        "hometown": "Worcester, MA",
-        "activities": "Balls",
-        "interests": "Rick and tortelini",
-        "favoriteMemory": "sd",
-        "bigBrother": null,
-        "pledgeClass": 4
-      }
-    },
-    {
-      "model": "UserInfo.userinfo",
-      "pk": 3,
-      "fields": {
-        "user": [
-          "first"
-        ],
-        "picture": "",
-        "phoneNumber": "(111)111-1111",
-        "graduationYear": 2021,
-        "major": "RBE",
-        "hometown": "San Antonio, TX",
-        "activities": "Chess Club",
-        "interests": "Achoo",
-        "favoriteMemory": "Sneezing on a chess board",
-        "bigBrother": [
-          "prchair"
-        ],
-        "pledgeClass": 3
-      }
-    },
-    {
-      "model": "UserInfo.userinfo",
-      "pk": 4,
-      "fields": {
-        "user": [
-          "fourth"
-        ],
-        "picture": "",
-        "phoneNumber": "(389)389-2895",
-        "graduationYear": 2021,
-        "major": "CS",
-        "hometown": "Provincetown",
-        "activities": "Programming",
-        "interests": "Making a django site",
-        "favoriteMemory": "The django site worked",
-        "bigBrother": null,
-        "pledgeClass": 2
-      }
-    },
-    {
-      "model": "UserInfo.userinfo",
-      "pk": 5,
-      "fields": {
-        "user": [
-          "sage"
-        ],
-        "picture": "",
-        "phoneNumber": "",
-        "graduationYear": 2023,
-        "major": "ME",
-        "hometown": "Boston",
-        "activities": "Water Bottles",
-        "interests": "Biking",
-        "favoriteMemory": "Waterbottle holder on a bike",
-        "bigBrother": [
-          "socialchair"
-        ],
-        "pledgeClass": 4
-      }
-    },
-    {
-      "model": "UserInfo.userinfo",
-      "pk": 6,
-      "fields": {
-        "user": [
+        [
+          "Steward"
+        ]
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "02mgmjl6kdml0limj62h0tzxfadmi2ua",
+    "fields": {
+      "session_data": ".eJxVjEEOwiAQRe_C2pACZaAu3fcMZJgZpWpoUtqV8e7apAvd_vfef6mE21rS1mRJE6uzMur0u2Wkh9Qd8B3rbdY013WZst4VfdCmx5nleTncv4OCrXxrixa8Y4givRETEcANFKyBnPnquuBJPGA0JtIA1HsQF5i4Yy8ZJav3B9U7ODQ:1lBjmL:Goc_0bGsr4QdFu-i5z91vZGk9DVBVtPQ_NZyjeP2bAg",
+      "expire_date": "2021-03-01T14:43:29.543"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "4489z9sgl06x4lkuqgcij63cby84dp8i",
+    "fields": {
+      "session_data": "NWE0M2E5NDgwOGU3ODZiZGMwZTJiMzhiZjgzMGY2YThiZjllOTBjODp7Il9hdXRoX3VzZXJfaWQiOiIxMiIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiZjY0YWQ1ZWM3Y2FjNjhkZTgzZTA5M2M1NzBkN2NjYWEyNmJkZGUwOSJ9",
+      "expire_date": "2019-12-30T17:40:54.876"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "be0yezt26f8gou35sf4gcn97prh9jmdc",
+    "fields": {
+      "session_data": "NTdhMjc0MDg0MDA1YjQ0YWM0ZmUwODdkNGI5YzExZTU5M2Y2YzExZjp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJjZGNlZDQ1OTIyODA3OWQ4NjMzNmU0ZmNlNzljNmIzOTZkYzBjNDE1In0=",
+      "expire_date": "2019-12-30T17:43:34.362"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "czluig5nf8a1p7hbzkdtm63vt8zwhzs7",
+    "fields": {
+      "session_data": ".eJxVjEEOwiAQRe_C2pACZaAu3fcMZJgZpWpoUtqV8e7apAvd_vfef6mE21rS1mRJE6uzMur0u2Wkh9Qd8B3rbdY013WZst4VfdCmx5nleTncv4OCrXxrixa8Y4givRETEcANFKyBnPnquuBJPGA0JtIA1HsQF5i4Yy8ZJav3B9U7ODQ:1lBKGW:cmIsKl4-6uTbkWnWUO6NIhdnIkv-C91UY_t1ElQ8LGI",
+      "expire_date": "2021-02-28T11:28:56.144"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "gbde1zi1sui65mcnp0cf3c9i2le5o1dd",
+    "fields": {
+      "session_data": ".eJxVjEEOwiAQRe_C2pACZaAu3fcMZJgZpWpoUtqV8e7apAvd_vfef6mE21rS1mRJE6uzMur0u2Wkh9Qd8B3rbdY013WZst4VfdCmx5nleTncv4OCrXxrixa8Y4givRETEcANFKyBnPnquuBJPGA0JtIA1HsQF5i4Yy8ZJav3B9U7ODQ:1lIy45:XruFFzKVoGa03icpIHg-_KutXqIvN5v4GlyEfKn1Rn0",
+      "expire_date": "2021-03-21T13:23:41.471"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "hn1ey337ma9aweggrh5vs8m70mfzpnyd",
+    "fields": {
+      "session_data": ".eJxVjEEOwiAQRe_C2pACZaAu3fcMZJgZpWpoUtqV8e7apAvd_vfef6mE21rS1mRJE6uzMur0u2Wkh9Qd8B3rbdY013WZst4VfdCmx5nleTncv4OCrXxrixa8Y4givRETEcANFKyBnPnquuBJPGA0JtIA1HsQF5i4Yy8ZJav3B9U7ODQ:1kdGUX:qnrcXqB4JCOlbTbPNNWmZ-AM7ZREfJ3hCNq0vKfIqVM",
+      "expire_date": "2020-11-26T12:34:37.512"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "in3yj66zts49dp7dz43m6c20vji8facv",
+    "fields": {
+      "session_data": ".eJxVjEEOwiAQRe_C2hBmhHZw6b5nIDNApWpoUtqV8e7apAvd_vfef6nA21rC1vISpqQuCtTpdxOOj1x3kO5cb7OOc12XSfSu6IM2PcwpP6-H-3dQuJVvLdYwJjIdoBDhmRzCiGJ7A8n56BwT9eRHgRwRO_As0vncA1tIDKLeH7l5NzQ:1kLCEl:N88JNO0bEayBdm0CGvHbgVFBb0YcoqlP6KvyZ83oCZ4",
+      "expire_date": "2020-10-07T17:23:39.742"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "qrkftgze87yo4egni314z8tdq479fkn0",
+    "fields": {
+      "session_data": ".eJxVjEEOwiAQRe_C2pACZaAu3fcMZJgZpWpoUtqV8e7apAvd_vfef6mE21rS1mRJE6uzMur0u2Wkh9Qd8B3rbdY013WZst4VfdCmx5nleTncv4OCrXxrixa8Y4givRETEcANFKyBnPnquuBJPGA0JtIA1HsQF5i4Yy8ZJav3B9U7ODQ:1kjPP8:Lsi6iFw-RMjifuBYFJm3avellcIVgifp-FiGKNeqhVY",
+      "expire_date": "2020-12-13T11:18:26.187"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "s21cc12wdlx2wzgsacuxndx54g38kj4y",
+    "fields": {
+      "session_data": ".eJxVjEsOwjAMRO-SNYrsNHZUluw5Q2U3hhZQIvWzQtydVuoCNLt5b-btOlmXoVtnm7oxu7NDd_rtVPqnlR3kh5R79X0tyzSq3xV_0Nlfa7bX5XD_DgaZh23dGDGoYoO3oJgSB2BjwBgTSgyZtaWWE6lCNtoiTEq9BFCKCOA-X7rRNu4:1kSTVQ:pr_V0X1Lku09KK5pY1ZHlQ5UlNkXmUs9VxAC2ZL0iN8",
+      "expire_date": "2020-10-27T19:14:56.080"
+    }
+  },
+  {
+    "model": "sites.site",
+    "pk": 1,
+    "fields": {
+      "domain": "example.com",
+      "name": "example.com"
+    }
+  },
+  {
+    "model": "UserInfo.pledgeclass",
+    "pk": 1,
+    "fields": {
+      "name": "Omega",
+      "dateInitiated": "2000-01-01"
+    }
+  },
+  {
+    "model": "UserInfo.pledgeclass",
+    "pk": 2,
+    "fields": {
+      "name": "Pi",
+      "dateInitiated": "2018-02-23"
+    }
+  },
+  {
+    "model": "UserInfo.pledgeclass",
+    "pk": 3,
+    "fields": {
+      "name": "Rho",
+      "dateInitiated": "2019-02-25"
+    }
+  },
+  {
+    "model": "UserInfo.pledgeclass",
+    "pk": 4,
+    "fields": {
+      "name": "Sigma",
+      "dateInitiated": "2020-02-24"
+    }
+  },
+  {
+    "model": "UserInfo.pledgeclass",
+    "pk": 5,
+    "fields": {
+      "name": "Tau",
+      "dateInitiated": "2021-02-26"
+    }
+  },
+  {
+    "model": "UserInfo.userinfo",
+    "pk": 1,
+    "fields": {
+      "user": [
+        "scholarshipchair"
+      ],
+      "picture": "",
+      "phoneNumber": "(839)910-4785",
+      "graduationYear": 2022,
+      "major": "ECE",
+      "hometown": "Burlington, VT",
+      "activities": "Hockey",
+      "interests": "Canada",
+      "favoriteMemory": "Maple syrup",
+      "bigBrother": [
+        "third"
+      ],
+      "pledgeClass": 3
+    }
+  },
+  {
+    "model": "UserInfo.userinfo",
+    "pk": 2,
+    "fields": {
+      "user": [
+        "brother"
+      ],
+      "picture": "",
+      "phoneNumber": "(666)666-6666",
+      "graduationYear": 2022,
+      "major": "CHE",
+      "hometown": "Worcester, MA",
+      "activities": "Balls",
+      "interests": "Rick and tortelini",
+      "favoriteMemory": "sd",
+      "bigBrother": null,
+      "pledgeClass": 4
+    }
+  },
+  {
+    "model": "UserInfo.userinfo",
+    "pk": 3,
+    "fields": {
+      "user": [
+        "first"
+      ],
+      "picture": "",
+      "phoneNumber": "(111)111-1111",
+      "graduationYear": 2021,
+      "major": "RBE",
+      "hometown": "San Antonio, TX",
+      "activities": "Chess Club",
+      "interests": "Achoo",
+      "favoriteMemory": "Sneezing on a chess board",
+      "bigBrother": [
+        "prchair"
+      ],
+      "pledgeClass": 3
+    }
+  },
+  {
+    "model": "UserInfo.userinfo",
+    "pk": 4,
+    "fields": {
+      "user": [
+        "fourth"
+      ],
+      "picture": "",
+      "phoneNumber": "(389)389-2895",
+      "graduationYear": 2021,
+      "major": "CS",
+      "hometown": "Provincetown",
+      "activities": "Programming",
+      "interests": "Making a django site",
+      "favoriteMemory": "The django site worked",
+      "bigBrother": null,
+      "pledgeClass": 2
+    }
+  },
+  {
+    "model": "UserInfo.userinfo",
+    "pk": 5,
+    "fields": {
+      "user": [
+        "sage"
+      ],
+      "picture": "",
+      "phoneNumber": "",
+      "graduationYear": 2023,
+      "major": "ME",
+      "hometown": "Boston",
+      "activities": "Water Bottles",
+      "interests": "Biking",
+      "favoriteMemory": "Waterbottle holder on a bike",
+      "bigBrother": [
+        "socialchair"
+      ],
+      "pledgeClass": 4
+    }
+  },
+  {
+    "model": "UserInfo.userinfo",
+    "pk": 6,
+    "fields": {
+      "user": [
+        "second"
+      ],
+      "picture": "",
+      "phoneNumber": "",
+      "graduationYear": 2021,
+      "major": "RBE",
+      "hometown": "Ware, MA",
+      "activities": "Video Games (MarioKart)",
+      "interests": "Spaghetti",
+      "favoriteMemory": "Pizza Burrito",
+      "bigBrother": null,
+      "pledgeClass": 2
+    }
+  },
+  {
+    "model": "UserInfo.userinfo",
+    "pk": 7,
+    "fields": {
+      "user": [
+        "third"
+      ],
+      "picture": "",
+      "phoneNumber": "(590)109-3902",
+      "graduationYear": 2021,
+      "major": "AREN",
+      "hometown": "Fort Worth, TX",
+      "activities": "None",
+      "interests": "Uninteresting things",
+      "favoriteMemory": "Mango chutney",
+      "bigBrother": [
+        "steward"
+      ],
+      "pledgeClass": 1
+    }
+  },
+  {
+    "model": "UserInfo.userinfo",
+    "pk": 8,
+    "fields": {
+      "user": [
+        "bacchair"
+      ],
+      "picture": "",
+      "phoneNumber": "(666)672-7809",
+      "graduationYear": 2022,
+      "major": "CS",
+      "hometown": "Danbury",
+      "activities": "Basketball",
+      "interests": "Eating salt pork sandwiches",
+      "favoriteMemory": "Clipping Bill Clinton's fingernails",
+      "bigBrother": [
+        "second"
+      ],
+      "pledgeClass": 3
+    }
+  },
+  {
+    "model": "UserInfo.userinfo",
+    "pk": 8,
+    "fields": {
+      "user": [
+        "housemanager"
+      ],
+      "picture": "",
+      "phoneNumber": "",
+      "graduationYear": 2020,
+      "major": "MIS",
+      "hometown": "Milbury, MA",
+      "activities": "Cleaning socks",
+      "interests": "Clean socks",
+      "favoriteMemory": "When I saw my first sock, freshly cleaned",
+      "bigBrother": [
+        "bacchair"
+      ],
+      "pledgeClass": 3
+    }
+  },
+  {
+    "model": "UserInfo.userinfo",
+    "pk": 9,
+    "fields": {
+      "user": [
+        "newmember"
+      ],
+      "picture": "",
+      "phoneNumber": "",
+      "graduationYear": 2024,
+      "major": "CHE",
+      "hometown": "Ontario, Canada",
+      "activities": "Singing the canadian national anthem",
+      "interests": "Maple and leafs, and also the Toronto Maple Leafs",
+      "favoriteMemory": "Going to see a Red Sox game",
+      "bigBrother": [
+        "parliamentarian"
+      ],
+      "pledgeClass": 5
+    }
+  },
+  {
+    "model": "PartyListV2.party",
+    "pk": 1,
+    "fields": {
+      "name": "Super Party",
+      "party_start": "2020-09-25T22:00:00",
+      "has_party_invite_limits": true,
+      "max_party_invites": 5,
+      "has_preparty": true,
+      "preparty_start": "21:00:00",
+      "has_preparty_invite_limits": true,
+      "max_preparty_invites": 3,
+      "guycount": 0,
+      "girlcount": 0,
+      "guys_ever_signed_in": 0,
+      "girls_ever_signed_in": 0,
+      "last_updated": "2020-09-23T17:24:16.010",
+      "guest_update_counter": 0,
+      "jobs": ""
+    }
+  },
+  {
+    "model": "Scholarship.libraryitem",
+    "pk": 2,
+    "fields": {
+      "title": "All the answers to CS Major",
+      "isbn_number": "69",
+      "course": "CS4342",
+      "edition": "1",
+      "item_pdf": "protected/scholarship/library/Assignment_5.pdf",
+      "submittedBy": [
+        "admin"
+      ],
+      "approved": true
+    }
+  },
+  {
+    "model": "Scholarship.libraryitem",
+    "pk": 3,
+    "fields": {
+      "title": "Book for Crypto",
+      "isbn_number": "420",
+      "course": "CS4801",
+      "edition": "2",
+      "item_pdf": "protected/scholarship/library/chapter3_StreamCiphers_LFSR.pdf",
+      "submittedBy": [
+        "admin"
+      ],
+      "approved": true
+    }
+  },
+  {
+    "model": "Scholarship.libraryitem",
+    "pk": 4,
+    "fields": {
+      "title": "MyTitle",
+      "isbn_number": "20",
+      "course": "CS2223",
+      "edition": "-1",
+      "item_pdf": "protected/scholarship/library/Algorithhms_4th_Edition_by_Robert_Sedgewick_Kevin_Wayne.pdf",
+      "submittedBy": [
+        "admin"
+      ],
+      "approved": true
+    }
+  },
+  {
+    "model": "Scholarship.libraryitem",
+    "pk": 5,
+    "fields": {
+      "title": "RoboticsTextbook",
+      "isbn_number": "69",
+      "course": "RBE3001",
+      "edition": "2",
+      "item_pdf": "protected/scholarship/library/2008_Book_SpringerHandbookOfRobotics.pdf",
+      "submittedBy": [
+        "admin"
+      ],
+      "approved": true
+    }
+  },
+  {
+    "model": "Scholarship.libraryitem",
+    "pk": 6,
+    "fields": {
+      "title": "TestUniqueISBNEdition",
+      "isbn_number": "69",
+      "course": "ME001",
+      "edition": "1",
+      "item_pdf": "protected/scholarship/library/ECE4802_B20-1-Intro.pdf",
+      "submittedBy": [
+        "admin"
+      ],
+      "approved": true
+    }
+  },
+  {
+    "model": "Scholarship.course",
+    "pk": 1,
+    "fields": {
+      "catalog_code": "CS3733",
+      "title": "Software Engineering"
+    }
+  },
+  {
+    "model": "Scholarship.course",
+    "pk": 2,
+    "fields": {
+      "catalog_code": "CS3013",
+      "title": "Operating Systems"
+    }
+  },
+  {
+    "model": "Scholarship.course",
+    "pk": 3,
+    "fields": {
+      "catalog_code": "RBE1001",
+      "title": "Stafford's dream"
+    }
+  },
+  {
+    "model": "Scholarship.course",
+    "pk": 4,
+    "fields": {
+      "catalog_code": "ECE2010",
+      "title": "Stick Fork in outlet 2000"
+    }
+  },
+  {
+    "model": "Scholarship.course",
+    "pk": 5,
+    "fields": {
+      "catalog_code": "ME1800",
+      "title": "CAD"
+    }
+  },
+  {
+    "model": "Scholarship.course",
+    "pk": 6,
+    "fields": {
+      "catalog_code": "ID2050",
+      "title": "Prof Make"
+    }
+  },
+  {
+    "model": "Scholarship.course",
+    "pk": 7,
+    "fields": {
+      "catalog_code": "ECE2049",
+      "title": "Embedded"
+    }
+  },
+  {
+    "model": "Scholarship.coursesection",
+    "pk": 1,
+    "fields": {
+      "catalog_course": "CS3733",
+      "term": "A",
+      "year": 21,
+      "professor": "Willy Wong",
+      "participants": [
+        [
           "second"
         ],
-        "picture": "",
-        "phoneNumber": "",
-        "graduationYear": 2021,
-        "major": "RBE",
-        "hometown": "Ware, MA",
-        "activities": "Video Games (MarioKart)",
-        "interests": "Spaghetti",
-        "favoriteMemory": "Pizza Burrito",
-        "bigBrother": null,
-        "pledgeClass": 2
-      }
-    },
-    {
-      "model": "UserInfo.userinfo",
-      "pk": 7,
-      "fields": {
-        "user": [
+        [
           "third"
         ],
-        "picture": "",
-        "phoneNumber": "(590)109-3902",
-        "graduationYear": 2021,
-        "major": "AREN",
-        "hometown": "Fort Worth, TX",
-        "activities": "None",
-        "interests": "Uninteresting things",
-        "favoriteMemory": "Mango chutney",
-        "bigBrother": [
-          "steward"
-        ],
-        "pledgeClass": 1
-      }
-    },
-    {
-      "model": "UserInfo.userinfo",
-      "pk": 8,
-      "fields": {
-        "user": [
-          "bacchair"
-        ],
-        "picture": "",
-        "phoneNumber": "(666)672-7809",
-        "graduationYear": 2022,
-        "major": "CS",
-        "hometown": "Danbury",
-        "activities": "Basketball",
-        "interests": "Eating salt pork sandwiches",
-        "favoriteMemory": "Clipping Bill Clinton's fingernails",
-        "bigBrother": [
-          "second"
-        ],
-        "pledgeClass": 3
-      }
-    },
-    {
-      "model": "UserInfo.userinfo",
-      "pk": 8,
-      "fields": {
-        "user": [
+        [
           "housemanager"
         ],
-        "picture": "",
-        "phoneNumber": "",
-        "graduationYear": 2020,
-        "major": "MIS",
-        "hometown": "Milbury, MA",
-        "activities": "Cleaning socks",
-        "interests": "Clean socks",
-        "favoriteMemory": "When I saw my first sock, freshly cleaned",
-        "bigBrother": [
-          "bacchair"
-        ],
-        "pledgeClass": 3
-      }
-    },
-    {
-      "model": "UserInfo.userinfo",
-      "pk": 9,
-      "fields": {
-        "user": [
-          "newmember"
-        ],
-        "picture": "",
-        "phoneNumber": "",
-        "graduationYear": 2024,
-        "major": "CHE",
-        "hometown": "Ontario, Canada",
-        "activities": "Singing the canadian national anthem",
-        "interests": "Maple and leafs, and also the Toronto Maple Leafs",
-        "favoriteMemory": "Going to see a Red Sox game",
-        "bigBrother": [
-          "parliamentarian"
-        ],
-        "pledgeClass": 5
-      }
-    },
-    {
-      "model": "PartyListV2.party",
-      "pk": 1,
-      "fields": {
-        "name": "Super Party",
-        "party_start": "2020-09-25T22:00:00",
-        "has_party_invite_limits": true,
-        "max_party_invites": 5,
-        "has_preparty": true,
-        "preparty_start": "21:00:00",
-        "has_preparty_invite_limits": true,
-        "max_preparty_invites": 3,
-        "guycount": 0,
-        "girlcount": 0,
-        "guys_ever_signed_in": 0,
-        "girls_ever_signed_in": 0,
-        "last_updated": "2020-09-23T17:24:16.010",
-        "guest_update_counter": 0,
-        "jobs": ""
-      }
-    },
-    {
-      "model": "Scholarship.libraryitem",
-      "pk": 2,
-      "fields": {
-        "title": "All the answers to CS Major",
-        "isbn_number": "69",
-        "course": "CS4342",
-        "edition": "1",
-        "item_pdf": "protected/scholarship/library/Assignment_5.pdf",
-        "submittedBy": [
-          "admin"
-        ],
-        "approved": true
-      }
-    },
-    {
-      "model": "Scholarship.libraryitem",
-      "pk": 3,
-      "fields": {
-        "title": "Book for Crypto",
-        "isbn_number": "420",
-        "course": "CS4801",
-        "edition": "2",
-        "item_pdf": "protected/scholarship/library/chapter3_StreamCiphers_LFSR.pdf",
-        "submittedBy": [
-          "admin"
-        ],
-        "approved": true
-      }
-    },
-    {
-      "model": "Scholarship.libraryitem",
-      "pk": 4,
-      "fields": {
-        "title": "MyTitle",
-        "isbn_number": "20",
-        "course": "CS2223",
-        "edition": "-1",
-        "item_pdf": "protected/scholarship/library/Algorithhms_4th_Edition_by_Robert_Sedgewick_Kevin_Wayne.pdf",
-        "submittedBy": [
-          "admin"
-        ],
-        "approved": true
-      }
-    },
-    {
-      "model": "Scholarship.libraryitem",
-      "pk": 5,
-      "fields": {
-        "title": "RoboticsTextbook",
-        "isbn_number": "69",
-        "course": "RBE3001",
-        "edition": "2",
-        "item_pdf": "protected/scholarship/library/2008_Book_SpringerHandbookOfRobotics.pdf",
-        "submittedBy": [
-          "admin"
-        ],
-        "approved": true
-      }
-    },
-    {
-      "model": "Scholarship.libraryitem",
-      "pk": 6,
-      "fields": {
-        "title": "TestUniqueISBNEdition",
-        "isbn_number": "69",
-        "course": "ME001",
-        "edition": "1",
-        "item_pdf": "protected/scholarship/library/ECE4802_B20-1-Intro.pdf",
-        "submittedBy": [
-          "admin"
-        ],
-        "approved": true
-      }
-    },
-    {
-      "model": "Scholarship.course",
-      "pk": 1,
-      "fields": {
-        "catalog_code": "CS3733",
-        "title": "Software Engineering"
-      }
-    },
-    {
-      "model": "Scholarship.course",
-      "pk": 2,
-      "fields": {
-        "catalog_code": "CS3013",
-        "title": "Operating Systems"
-      }
-    },
-    {
-      "model": "Scholarship.course",
-      "pk": 3,
-      "fields": {
-        "catalog_code": "RBE1001",
-        "title": "Stafford's dream"
-      }
-    },
-    {
-      "model": "Scholarship.course",
-      "pk": 4,
-      "fields": {
-        "catalog_code": "ECE2010",
-        "title": "Stick Fork in outlet 2000"
-      }
-    },
-    {
-      "model": "Scholarship.course",
-      "pk": 5,
-      "fields": {
-        "catalog_code": "ME1800",
-        "title": "CAD"
-      }
-    },
-    {
-      "model": "Scholarship.course",
-      "pk": 6,
-      "fields": {
-        "catalog_code": "ID2050",
-        "title": "Prof Make"
-      }
-    },
-    {
-      "model": "Scholarship.course",
-      "pk": 7,
-      "fields": {
-        "catalog_code": "ECE2049",
-        "title": "Embedded"
-      }
-    },
-    {
-      "model": "Scholarship.coursesection",
-      "pk": 1,
-      "fields": {
-        "catalog_course": "CS3733",
-        "term": "A",
-        "year": 21,
-        "professor": "Willy Wong",
-        "participants": [
-          [
-            "second"
-          ],
-          [
-            "third"
-          ],
-          [
-            "housemanager"
-          ],
-          [
-            "socialchair"
-          ]
+        [
+          "socialchair"
         ]
-      }
-    },
-    {
-      "model": "Scholarship.coursesection",
-      "pk": 2,
-      "fields": {
-        "catalog_course": "CS3013",
-        "term": "B",
-        "year": 20,
-        "professor": "Walls",
-        "participants": [
-          [
-            "brother"
-          ],
-          [
-            "first"
-          ],
-          [
-            "bacchair"
-          ]
-        ]
-      }     
-    },
-    {
-      "model": "Scholarship.coursesection",
-      "pk": 2,
-      "fields": {
-        "catalog_course": "CS3013",
-        "term": "C",
-        "year": 19,
-        "professor": "Bob",
-        "participants": [
-          [
-            "rushchair"
-          ],
-          [
-            "first"
-          ]
-        ]
-      }     
-    },
-    {
-      "model": "Scholarship.coursesection",
-      "pk": 2,
-      "fields": {
-        "catalog_course": "CS3013",
-        "term": "D",
-        "year": 20,
-        "professor": "Jow",
-        "participants": [
-          [
-            "third"
-          ],
-          [
-            "first"
-          ]
-        ]
-      }     
-    },
-    {
-      "model": "Scholarship.coursesection",
-      "pk": 2,
-      "fields": {
-        "catalog_course": "RBE1001",
-        "term": "A",
-        "year": 20,
-        "professor": "Prof",
-        "participants": [
-          [
-            "alumnichair"
-          ],
-          [
-            "third"
-          ]
-        ]
-      }     
+      ]
     }
-    ]
-    
+  },
+  {
+    "model": "Scholarship.coursesection",
+    "pk": 2,
+    "fields": {
+      "catalog_course": "CS3013",
+      "term": "B",
+      "year": 20,
+      "professor": "Walls",
+      "participants": [
+        [
+          "brother"
+        ],
+        [
+          "first"
+        ],
+        [
+          "bacchair"
+        ]
+      ]
+    }
+  },
+  {
+    "model": "Scholarship.coursesection",
+    "pk": 2,
+    "fields": {
+      "catalog_course": "CS3013",
+      "term": "C",
+      "year": 19,
+      "professor": "Bob",
+      "participants": [
+        [
+          "rushchair"
+        ],
+        [
+          "first"
+        ]
+      ]
+    }
+  },
+  {
+    "model": "Scholarship.coursesection",
+    "pk": 2,
+    "fields": {
+      "catalog_course": "CS3013",
+      "term": "D",
+      "year": 20,
+      "professor": "Jow",
+      "participants": [
+        [
+          "third"
+        ],
+        [
+          "first"
+        ]
+      ]
+    }
+  },
+  {
+    "model": "Scholarship.coursesection",
+    "pk": 2,
+    "fields": {
+      "catalog_course": "RBE1001",
+      "term": "A",
+      "year": 20,
+      "professor": "Prof",
+      "participants": [
+        [
+          "alumnichair"
+        ],
+        [
+          "third"
+        ]
+      ]
+    }
+  }
+]
