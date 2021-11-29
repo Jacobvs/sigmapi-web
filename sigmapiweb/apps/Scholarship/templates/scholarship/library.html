@@ -17,170 +17,180 @@
           href='{% static "css/lib/jquery.fileupload.css" %}'/>
 {% endblock %}
 {% block content %}
-    <h3>View items currently in the library.</h3>
-    <div class="actions">
-        <ul class="nav nav-pills">
-            <li>
-                <a href="#" data-toggle="modal" data-target="#upload-item">
-                    <span class="glyphicon glyphicon-plus"></span>
-                    Upload New Item
-                </a>
-            </li>
-        </ul>
-    </div>
-    {% if messages %}
-        {% for message in messages %}
-            {% if message.level == 40 %}
-                <div class="alert alert-danger">
-                    <strong>Error!</strong>
-                {% else %}
-                    <div class="alert alert-info">
-                        <strong>Info!</strong>
+
+<h3>View items currently in the library.</h3>
+
+<div class="actions">
+	<ul class="nav nav-pills">
+		<li>
+			<a href="#" data-toggle="modal" data-target="#upload-item">
+				<span class="glyphicon glyphicon-plus"></span> Upload New Item
+			</a>
+		</li>
+	</ul>
+</div>
+
+{% if messages %}
+{% for message in messages %}
+{% if message.level == 40 %}
+<div class="alert alert-danger">
+	<strong>Error! </strong>
+	{% else %}
+	<div class="alert alert-info">
+		<strong>Info! </strong>
+		{% endif %}
+		{{ message }}
+	</div>
+	{% endfor %}
+	{% endif %}
+
+	{% if items %}
+	<div class="table-responsive">
+		<table class="table dataTable-nosort">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>ISBN</th>
+					<th>Course</th>
+					<th>Edition</th>
+                    <th>Toggle Preview</th>
+					<th>Download PDF</th>
+					{% if is_scholarship_head %}
+					<th>Delete</th>
+					{% endif %}
+				</tr>
+			</thead>
+			<tbody>
+				{% for item in items %}
+				<tr>
+					<td>{{item.title}}</td>
+					<td>{{item.isbn_number}}</td>
+					<td>{{item.course}}</td>
+					<td>{{item.edition}}</td>
+                    <td>
+                        <a onclick="showHideRow('hidden_row_{{ item.pk }}')">
+                            Preview
+                        </a>
+                    </td>
+					<td>
+						<a href="{% url 'scholarship-download_libraryitem' item.pk %}">
+							Download
+						</a>
+					</td>
+					{% if is_scholarship_head %}
+					<td>
+						<form type="multipart/form-data" method="post"
+							action="{% url 'scholarship-delete_libraryitem' item.pk %}" id="delete-{{item.pk}}">
+							{% csrf_token %}
+							<a href="#" onclick="$('#delete-{{item.pk}}').submit();">
+								Delete
+							</a>
+						</form>
+					</td>
+					{% endif %}
+				</tr>
+                <tr class="sub_row ">
+                    {% if is_scholarship_head %}
+                    <td colspan="7" style="display: none; background-color: #e7e7e7; padding: 0.2vh;">
+                    {% else %}
+                    <td colspan="6" style="display: none; background-color: #e7e7e7; padding: 0.2vh;">
                     {% endif %}
-                    {{ message }}
-                </div>
-            {% endfor %}
-        {% endif %}
-        {% if items %}
-            <div class="table-responsive">
-                <table class="table dataTable-nosort">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>ISBN Number</th>
-                            <th>Course</th>
-                            <th>Edition</th>
-                            <th>PDF</th>
-                            {% if is_scholarship_head %}<th>Delete</th>{% endif %}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for item in items %}
-                            <tr>
-                                <td>{{ item.title }}</td>
-                                <td>{{ item.isbn_number }}</td>
-                                <td>{{ item.course }}</td>
-                                <td>{{ item.edition }}</td>
-                                <td>
-                                    <a href="{% url 'scholarship-download_libraryitem' item.pk %}">Download</a>
-                                </td>
-                                {% if is_scholarship_head %}
-                                    <td>
-                                        <form type="multipart/form-data"
-                                              method="post"
-                                              action="{% url 'scholarship-delete_libraryitem' item.pk %}"
-                                              id="delete-{{ item.pk }}">
-                                            {% csrf_token %}
-                                            <a href="#" onclick="$('#delete-{{ item.pk }}').submit();">Delete</a>
-                                        </form>
-                                    </td>
-                                {% endif %}
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-        {% else %}
-            <p>
-                There are no library items uploaded. Check back later.
-            </p>
-        {% endif %}
-    {% endblock %}
-    {% block toplevel_content %}
-        <!-- Modify Points Form -->
-        <div class="modal" id="upload-item">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">
-                            <span aria-hidden="true">&times;</span>
-                            <span class="sr-only">Close</span>
-                        </button>
-                        <h4 class="modal-title">Upload Library Item</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form enctype="multipart/form-data"
-                              method="post"
-                              action="{% url 'scholarship-upload_libraryitem' %}"
-                              id="upload-item-form">
-                            {% csrf_token %}
-                            <div class="form-group">
-                                <label class="control-label">Title*</label>
-                                {{ upload_item_form.title }}
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label">ISBN Number*</label>
-                                {{ upload_item_form.isbn_number }}
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label">
-                                    Course
-                                </label>
-                                {{ upload_item_form.course }}
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label">
-                                    Edition*
-                                </label>
-                                {{ upload_item_form.edition }}
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label">
-                                    PDF*
-                                </label>
-                                <div>
-                                    <div class="btn btn-success fileinput-button"
-                                         style="display:inline-block;">
-                                        <span>
-                                            Select File...
-                                        </span>
-                                        <!-- The file input field used as target for the file upload widget -->
-                                        {{ upload_item_form.item_pdf }}
-                                    </div>
-                                    <span id="file-pdf-name">
-                                    </span>
-                                </div>
-                            </div>
-                            <p>
-                                {% if is_scholarship_head %}
-                                    Note: Your submission will be visible immediately to all users.
-                                {% else %}
-                                    Note: Your submission will not be accessible until it is approved by the Scholarship Chair.
-                                {% endif %}
-                            </p>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <div class="progress hidden" id="upload-progress">
-                            <div class="progress-bar"
-                                 id="upload-progress-bar"
-                                 role="progressbar"
-                                 aria-valuenow="60"
-                                 aria-valuemin="0"
-                                 aria-valuemax="100"
-                                 style="width: 0%;">
-                                0%
-                            </div>
+                        {# Add interior div for animation purposes #}
+                        <div id='hidden_row_{{ item.pk }}' style="display:none;">
+                            <embed src="{{ item.item_pdf.url }}#pagemode=thumbs&scrollbar=1&zoom=90&view=Fit" width="100%" height="500vh">
                         </div>
-                        <div id="upload-btns">
-                            <button type="button"
-                                    class="btn btn-default"
-                                    id="cancel-btn"
-                                    data-dismiss="modal">
-                                Cancel
-                            </button>
-                            <button type="button" class="btn btn-primary" id="submit-btn">
-                                Submit Item
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    {% endblock %}
-    {% block embedded_js %}
-        <!-- Async file upload page specific script -->
-        <script type="text/javascript">
+                    </td>
+                 </tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	{% else %}
+	<p>
+		There are no library items uploaded. Check back later.
+	</p>
+
+	{% endif %}
+
+	{% endblock %}
+
+	{% block toplevel_content %}
+	<!-- Modify Points Form -->
+	<div class="modal" id="upload-item">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span>
+						<span class="sr-only">Close</span>
+					</button>
+					<h4 class="modal-title">Upload Library Item</h4>
+				</div>
+				<div class="modal-body">
+					<form enctype="multipart/form-data" method="post"
+						action="{% url 'scholarship-upload_libraryitem' %}" id="upload-item-form">
+						{% csrf_token %}
+						<div class="form-group">
+							<label class="control-label">Title*</label>
+							{{ upload_item_form.title }}
+						</div>
+
+						<div class="form-group">
+							<label class="control-label">ISBN Number*</label>
+							{{ upload_item_form.isbn_number }}
+						</div>
+						<div class="form-group">
+							<label class="control-label">Course</label>
+							{{ upload_item_form.course }}
+						</div>
+						<div class="form-group">
+							<label class="control-label">Edition*</label>
+							{{ upload_item_form.edition }}
+						</div>
+
+						<div class="form-group">
+							<label class="control-label">PDF*</label>
+							<div>
+								<div class="btn btn-success fileinput-button" style="display:inline-block;">
+									<span>Select File...</span>
+									<!-- The file input field used as target for the file upload widget -->
+									{{ upload_item_form.item_pdf }}
+								</div>
+								<span id="file-pdf-name"></span>
+							</div>
+						</div>
+						<p>
+							{% if is_scholarship_head %}
+							Note: Your submission will be visible immediately to all users.
+							{% else %}
+							Note: Your submission will not be accessible until it is approved by the Scholarship Chair.
+							{% endif %}
+						</p>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<div class="progress hidden" id="upload-progress">
+						<div class="progress-bar" id="upload-progress-bar" role="progressbar" aria-valuenow="60"
+							aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+							0%
+						</div>
+					</div>
+					<div id="upload-btns">
+						<button type="button" class="btn btn-default" id="cancel-btn"
+							data-dismiss="modal">Cancel</button>
+						<button type="button" class="btn btn-primary" id="submit-btn">Submit Item</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% endblock %}
+
+	{% block embedded_js %}
+
+	<!-- Async file upload page specific script -->
+	<script type="text/javascript">
+
 		// Initialize file uploader.
 		$("#id_item_pdf").fileupload({
 			url: './upload/',
@@ -224,6 +234,6 @@
 		$("#id_isbn_number").val("");
 		$("#id_edition").val("");
 		$("#id_item_pdf").val("");
-	
+
         </script>
     {% endblock %}

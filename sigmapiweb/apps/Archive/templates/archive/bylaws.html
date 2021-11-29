@@ -7,64 +7,83 @@
     <script type='text/javascript' src='{% static "js/secure/autotable.js" %}'></script>
 {% endblock %}
 {% block content %}
-    <h3>View the Chapter's bylaws.</h3>
-    {% if perms.Archive.add_bylaws %}
-        <div class="actions">
-            <ul class="nav nav-pills">
-                <li>
-                    <a href="#" data-toggle="modal" data-target="#add-bylaws">
-                        <span class="glyphicon glyphicon-plus"></span>
-                        Update Bylaws
-                    </a>
-                </li>
-            </ul>
-        </div>
-    {% endif %}
-    {% if latest %}
-        <p>
-            The most recent version of the bylaws may be viewed
-            <a href="{% url 'archive-download_bylaw' latest.pk %}">here.</a>
-        </p>
-    {% endif %}
-    {% if bylaws %}
-        <p>
-            An archive of past bylaws may be viewed below.
-        </p>
-        <div class="table-responsive">
-            <table class="dataTable-nosort table">
-                <thead>
-                    <tr>
-                        <th class="ten wide">Date</th>
-                        <th class="two wide">View</th>
-                        {% if perms.Archive.delete_bylaws %}<th class="one wide">Delete</th>{% endif %}
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for bylaw in bylaws %}
-                        <tr>
-                            <td>{{ bylaw.date }}</td>
-                            <td>
-                                <a href="{% url 'archive-download_bylaw' bylaw.pk %}">View</a>
-                            </td>
-                            {% if perms.Archive.delete_bylaws %}
-                                <td>
-                                    <form method="post" action="{% url 'archive-delete_bylaw' %}">
-                                        {% csrf_token %}
-                                        <a href="#" onclick="$(this).closest('form').submit()">Delete</a>
-                                        <input type="hidden" name="post_id" value="{{ bylaw.pk }}" />
-                                    </form>
-                                </td>
-                            {% endif %}
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-    {% else %}
-        <p>
-            No bylaws found. Check back later.
-        </p>
-    {% endif %}
+<h3>View the Chapter's bylaws.</h3>
+
+{% if perms.Archive.add_bylaws %}
+<div class="actions">
+	<ul class="nav nav-pills">
+		<li>
+			<a href="#" data-toggle="modal" data-target="#add-bylaws">
+				<span class="glyphicon glyphicon-plus"></span> Update Bylaws
+			</a>
+		</li>
+	</ul>
+</div>
+{% endif %}
+
+{% if latest %}
+<p>
+	Current Bylaws can be viewed below. Click <a href="{% url 'archive-download_bylaw' latest.pk %}">here</a> to download a copy.
+</p>
+<embed src="{{ latest.filepath.url }}#pagemode=thumbs&scrollbar=1&zoom=100" width="100%" height="500vh">
+{% endif %}
+{% if bylaws %}
+<p>
+	An archive of past bylaws may be viewed below.
+</p>
+<div class="table-responsive">
+	<table class="dataTable-nosort table">
+		<thead>
+			<tr>
+				<th class="eight wide">Date</th>
+				<th class="two wide">Toggle Preview</th>
+                <th class="two wide">Download</th>
+				{% if perms.Archive.delete_bylaws %} <th class="one wide">Delete</th> {% endif %}
+			</tr>
+		</thead>
+		<tbody>
+			{% for bylaw in bylaws %}
+			<tr>
+				<td>{{ bylaw.date }}</td>
+                <td>
+                        <a onclick="showHideRow('hidden_row_{{ bylaw.pk }}')">
+                            Preview
+                        </a>
+                </td>
+				<td>
+					<a href="{% url 'archive-download_bylaw' bylaw.pk %}">Download</a>
+				</td>
+				{% if perms.Archive.delete_bylaws %}
+				<td>
+					<form method="post" action="{% url 'archive-delete_bylaw' %}">
+						{% csrf_token %}
+						<a href="#" onclick="$(this).closest('form').submit()">Delete</a>
+						<input type="hidden" name="post_id" value="{{ bylaw.pk }}" />
+					</form>
+				</td>
+				{% endif %}
+			</tr>
+            <tr class="sub_row ">
+                {% if perms.Archive.delete_bylaws %}
+                <td colspan="4" style="display: none; background-color: #e7e7e7; padding: 0.2vh;">
+                {% else %}
+                <td colspan="3" style="display: none; background-color: #e7e7e7; padding: 0.2vh;">
+                {% endif %}
+                    {# Add interior div for animation purposes #}
+                    <div id='hidden_row_{{ bylaw.pk }}' style="display:none;">
+                        <embed src="{{ bylaw.filepath.url }}#pagemode=thumbs&scrollbar=1&zoom=90&view=Fit" width="100%" height="500vh">
+                    </div>
+                </td>
+             </tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+{% else %}
+<p>
+	No bylaws found. Check back later.
+</p>
+{% endif %}
 {% endblock %}
 {% if perms.Archive.add_bylaws %}
     {% block toplevel_content %}
