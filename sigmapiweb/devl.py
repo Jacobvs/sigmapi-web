@@ -248,11 +248,13 @@ def r_requirements():
     format_and_call("{PIP} install -r " + devreqs)
 
 
-@describe("Load fixture data files from fixture directory to database. To ignore a json file, prepend with '.' to hide")
+@describe(
+    "Load fixture data files from fixture directory to database. To ignore a json file, prepend with '.' to hide. To load files in order, prepend 'dev_data...' with the next index starting from 1."
+)
 def r_loaddata():
-    files = os.listdir(user_variables["DEV_DATA_DIR"])
+    files = sorted(os.listdir(user_variables["DEV_DATA_DIR"]), key=os.path.basename)
     for f in files:
-        if (f.endswith(".json") and not f.startswith(".")):
+        if f.endswith(".json") and not f.startswith("."):
             format_and_call("{MANAGE} loaddata " + os.path.join("fixtures", f))
 
 
