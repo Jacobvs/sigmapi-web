@@ -16,6 +16,7 @@ from apps.Slack import urls as slack_urls
 from apps.PubSite import views as public_views
 
 admin.autodiscover()
+admin.site.enable_nav_sidebar = False
 
 # Turns deprecation warnings into errors
 warnings.simplefilter("error", DeprecationWarning)
