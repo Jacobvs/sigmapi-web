@@ -2,18 +2,30 @@
 {% load static %}
 {% load sass_tags %}
 {% block local_includes %}
-    <script type='text/javascript'
-            src='{% static "js/lib/jquery-1.11.1.min.js" %}'></script>
-    <script type="text/javascript"
-            src='{% static "bootstrap/js/bootstrap.min.js" %}'></script>
-    <link rel="stylesheet"
-          type="text/css"
-          href='{% static "bootstrap/css/bootstrap.min.css" %}'/>
-    <link rel="stylesheet"
-          type="text/css"
-          href='{% sass_src "css/secure/base_v0.scss" %}'/>
+    <script type='text/javascript' src='{% static "js/lib/jquery-1.11.1.min.js" %}'></script>
+    <script type="text/javascript" src='{% static "bootstrap/js/bootstrap.min.js" %}'></script>
+
+    <link rel="stylesheet" type="text/css" href='{% static "bootstrap/css/bootstrap.min.css" %}'/>
+    <link rel="stylesheet" type="text/css" href='{% sass_src "css/secure/base_v0.scss" %}'/>
     <script type="text/javascript" src="{% static 'js/secure/common.js' %}"></script>
-    {% block module_includes %}{% endblock %}
+    <script type="text/javascript">
+        // Used for toggling sub-rows (for document previews)
+        function showHideRow(div) {
+            div = $("#" + div);
+            if (div.css('display') === 'none' || div.css("visibility") === "hidden") {
+                // Div is hidden, set td (parent) to visible, then do show animation.
+                div.parent().show();
+                div.show("slow");
+            } else {
+                // Div is shown, run hide div animation then hide td
+                div.hide("slow", function () {
+                    $(this).parent().hide();
+                });
+            }
+        }
+    </script>
+  {% block module_includes %}
+  {% endblock %}
 {% endblock %}
 {% block body %}
     <!-- Block included for any content that must be rendered at the top level of the body -->

@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 
 class StudyHoursTest(TestCase):
-    fixtures = ["dev_data"]
+    fixtures = ["0_dev_data_auth"]
 
     def setUp(self):
         userA = User.objects.get(username="brother")

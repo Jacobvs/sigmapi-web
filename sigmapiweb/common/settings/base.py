@@ -77,6 +77,8 @@ MIDDLEWARE = (
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 )
 
+X_FRAME_OPTIONS = "SAMEORIGIN"
+
 DOWNLOADVIEW_RULES = [
     {
         "destination_dir": "lightpd-optimized-by-middleware",

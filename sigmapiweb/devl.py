@@ -41,7 +41,7 @@ user_variables = {
     "PYTHON": "python3",
     "PIP": "sudo pip3",
     "MANAGE": "python3 manage.py",
-    "DEV_DATA": os.path.join("fixtures", "dev_data.json"),
+    "DEV_DATA_DIR": "fixtures",
     "PORT": "8000",
 }
 
@@ -248,9 +248,14 @@ def r_requirements():
     format_and_call("{PIP} install -r " + devreqs)
 
 
-@describe("Load fixture data to database")
+@describe(
+    "Load fixture data files from fixture directory to database. To ignore a json file, prepend with '.' to hide. To load files in order, prepend 'dev_data...' with the next index starting from 1."
+)
 def r_loaddata():
-    format_and_call("{MANAGE} loaddata {DEV_DATA}")
+    files = sorted(os.listdir(user_variables["DEV_DATA_DIR"]), key=os.path.basename)
+    for f in files:
+        if f.endswith(".json") and not f.startswith("."):
+            format_and_call("{MANAGE} loaddata " + os.path.join("fixtures", f))
 
 
 @describe("Write current database as a fixture")
