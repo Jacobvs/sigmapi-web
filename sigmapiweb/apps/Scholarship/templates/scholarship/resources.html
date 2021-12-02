@@ -17,186 +17,210 @@
           href='{% static "css/lib/jquery.fileupload.css" %}'/>
 {% endblock %}
 {% block content %}
-<h3>View academic resources.</h3>
-
-<div class="actions">
-	<ul class="nav nav-pills">
-		<li>
-			<a href="#" data-toggle="modal" data-target="#upload-resource">
-				<span class="glyphicon glyphicon-plus"></span> Upload Academic Resource
-			</a>
-		</li>
-	</ul>
-</div>
-
-{% if messages %}
-{% for message in messages %}
-{% if message.level == 40 %}
-<div class="alert alert-danger">
-	<strong>Error! </strong>
-	{% else %}
-	<div class="alert alert-info">
-		<strong>Info! </strong>
-		{% endif %}
-		{{ message }}
-	</div>
-	{% endfor %}
-	{% endif %}
-
-	{% if resources %}
-	<div class="table-responsive">
-		<table class="table dataTable-nosort">
-			<thead>
-				<tr>
-					<th>Resource Name</th>
-					<th>Course Number</th>
-					<th>Professor</th>
-					<th>Year</th>
-					<th>Term</th>
-                    <th>Toggle Preview</th>
-					<th>Download PDF</th>
-					{% if is_scholarship_head %}
-					<th>Delete</th>
-					{% endif %}
-				</tr>
-			</thead>
-			<tbody>
-				{% for resource in resources %}
-				<tr>
-					<td>{{resource.resource_name}}</td>
-					<td>{{resource.course_number}}</td>
-					<td>{{resource.professor_name}}</td>
-					<td>{{resource.year}}</td>
-					<td>{{resource.term}}</td>
-                    <td>
-                        <a onclick="showHideRow('hidden_row_{{ resource.pk }}')">
-                            Preview
-                        </a>
-                    </td>
-					<td>
-						<a href="{% url 'scholarship-download_resource' resource.pk %}">
-							Download
-						</a>
-					</td>
-					{% if is_scholarship_head %}
-					<td>
-						<form type="multipart/form-data" method="post"
-							action="{% url 'scholarship-delete_resource' resource.pk %}" id="delete-{{resource.pk}}">
-							{% csrf_token %}
-							<a href="#" onclick="$('#delete-{{resource.pk}}').submit();">
-								Delete
-							</a>
-						</form>
-					</td>
-					{% endif %}
-				</tr>
-                <tr class="sub_row ">
-                    {% if is_scholarship_head %}
-                    <td colspan="8" style="display: none; background-color: #e7e7e7; padding: 0.2vh;">
-                    {% else %}
-                    <td colspan="7" style="display: none; background-color: #e7e7e7; padding: 0.2vh;">
+    <h3>View academic resources.</h3>
+    <div class="actions">
+        <ul class="nav nav-pills">
+            <li>
+                <a href="#" data-toggle="modal" data-target="#upload-resource">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    Upload Academic Resource
+                </a>
+            </li>
+        </ul>
+    </div>
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.level == 40 %}
+                <div class="alert alert-danger">
+                    <strong>Error!</strong>
+                {% else %}
+                    <div class="alert alert-info">
+                        <strong>Info!</strong>
                     {% endif %}
-                        {# Add interior div for animation purposes #}
-                        <div id='hidden_row_{{ resource.pk }}' style="display:none;">
-                            <embed src="{{ resource.resource_pdf.url }}#pagemode=thumbs&scrollbar=1&zoom=90&view=Fit" width="100%" height="500vh">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        {% if resources %}
+            <div class="table-responsive">
+                <table class="table dataTable-nosort">
+                    <thead>
+                        <tr>
+                            <th>Resource Name</th>
+                            <th>Course Number</th>
+                            <th>Professor</th>
+                            <th>Year</th>
+                            <th>Term</th>
+                            <th>Toggle Preview</th>
+                            <th>Download PDF</th>
+                            {% if is_scholarship_head %}<th>Delete</th>{% endif %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for resource in resources %}
+                            <tr>
+                                <td>{{ resource.resource_name }}</td>
+                                <td>{{ resource.course_number }}</td>
+                                <td>{{ resource.professor_name }}</td>
+                                <td>{{ resource.year }}</td>
+                                <td>{{ resource.term }}</td>
+                                <td>
+                                    <a onclick="showHideRow('hidden_row_{{ resource.pk }}')">Preview</a>
+                                </td>
+                                <td>
+                                    <a href="{% url 'scholarship-download_resource' resource.pk %}">Download</a>
+                                </td>
+                                {% if is_scholarship_head %}
+                                    <td>
+                                        <form type="multipart/form-data"
+                                              method="post"
+                                              action="{% url 'scholarship-delete_resource' resource.pk %}"
+                                              id="delete-{{ resource.pk }}">
+                                            {% csrf_token %}
+                                            <a href="#" onclick="$('#delete-{{ resource.pk }}').submit();">Delete</a>
+                                        </form>
+                                    </td>
+                                {% endif %}
+                            </tr>
+                            <tr class="sub_row ">
+                                {% if is_scholarship_head %}
+                                    <td colspan="8"
+                                        style="display: none;
+                                               background-color: #e7e7e7;
+                                               padding: 0.2vh;">
+                                    {% else %}
+                                        <td colspan="7"
+                                            style="display: none;
+                                                   background-color: #e7e7e7;
+                                                   padding: 0.2vh;">
+                                        {% endif %}
+                                        {# Add interior div for animation purposes #}
+                                        <div id='hidden_row_{{ resource.pk }}' style="display:none;">
+                                            <embed src="{{ resource.resource_pdf.url }}#pagemode=thumbs&scrollbar=1&zoom=90&view=Fit"
+                                                   width="100%"
+                                                   height="500vh">
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <p>
+                    There are no resources uploaded. Check back later.
+                </p>
+            {% endif %}
+        {% endblock %}
+        {% block toplevel_content %}
+            <!-- Modify Points Form -->
+            <div class="modal" id="upload-resource">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">
+                                <span aria-hidden="true">&times;</span>
+                                <span class="sr-only">
+                                    Close
+                                </span>
+                            </button>
+                            <h4 class="modal-title">
+                                Upload Academic Resource
+                            </h4>
                         </div>
-                    </td>
-                 </tr>
-				{% endfor %}
-			</tbody>
-		</table>
-	</div>
-	{% else %}
-
-	<p>
-		There are no resources uploaded. Check back later.
-	</p>
-
-	{% endif %}
-
-	{% endblock %}
-
-	{% block toplevel_content %}
-	<!-- Modify Points Form -->
-	<div class="modal" id="upload-resource">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">
-						<span aria-hidden="true">&times;</span>
-						<span class="sr-only">Close</span>
-					</button>
-					<h4 class="modal-title">Upload Academic Resource</h4>
-				</div>
-				<div class="modal-body">
-					<form enctype="multipart/form-data" method="post" action="{% url 'scholarship-upload_resource' %}"
-						id="upload-resource-form">
-						{% csrf_token %}
-						<div class="form-group">
-							<label class="control-label">Course Number*</label>
-							{{ upload_resource_form.course_number }}
-						</div>
-
-						<div class="form-group">
-							<label class="control-label">Professor Name*</label>
-							{{ upload_resource_form.professor_name }}
-						</div>
-
-						<div class="form-group">
-							<label class="control-label">Term*</label>
-							{{ upload_resource_form.term }}
-						</div>
-
-						<div class="form-group">
-							<label class="control-label">Year*</label>
-							{{ upload_resource_form.year }}
-							<p class="help-block">Note: Must be a positive integer.</p>
-						</div>
-
-						<div class="form-group">
-							<label class="control-label">Resource Files (PDF)*</label>
-							<p class="help-block">Note: Please ensure that your files have informative names.</p>
-							<div>
-								<div class="btn btn-success fileinput-button" style="display:inline-block;">
-									<span>Select File...</span>
-									<!-- The file input field used as target for the file upload widget -->
-									{{ upload_resource_form.resource_pdf }}
-								</div>
-								<span id="file-pdf-name"></span>
-							</div>
-						</div>
-						<p>
-							{% if is_scholarship_head %}
-							Note: Your submission will be visible immediately to all users.
-							{% else %}
-							Note: Your submission will not be accessible until it is approved by the Scholarship Chair.
-							{% endif %}
-						</p>
-					</form>
-				</div>
-				<div class="modal-footer">
-					<div class="progress hidden" id="upload-progress">
-						<div class="progress-bar" id="upload-progress-bar" role="progressbar" aria-valuenow="60"
-							aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
-							0%
-						</div>
-					</div>
-					<div id="upload-btns">
-						<button type="button" class="btn btn-default" id="cancel-btn"
-							data-dismiss="modal">Cancel</button>
-						<button type="button" class="btn btn-primary" id="submit-btn">Submit Resource</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	{% endblock %}
-
-	{% block embedded_js %}
-
-	<!-- Async file upload page specific script -->
-	<script type="text/javascript">
-
+                        <div class="modal-body">
+                            <form enctype="multipart/form-data"
+                                  method="post"
+                                  action="{% url 'scholarship-upload_resource' %}"
+                                  id="upload-resource-form">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        Course Number*
+                                    </label>
+                                    {{ upload_resource_form.course_number }}
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        Professor Name*
+                                    </label>
+                                    {{ upload_resource_form.professor_name }}
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        Term*
+                                    </label>
+                                    {{ upload_resource_form.term }}
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        Year*
+                                    </label>
+                                    {{ upload_resource_form.year }}
+                                    <p class="help-block">
+                                        Note: Must be a positive integer.
+                                    </p>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        Resource Files (PDF)*
+                                    </label>
+                                    <p class="help-block">
+                                        Note: Please ensure that your files have informative names.
+                                    </p>
+                                    <div>
+                                        <div class="btn btn-success fileinput-button"
+                                             style="display:inline-block;">
+                                            <span>
+                                                Select File...
+                                            </span>
+                                            <!-- The file input field used as target for the file upload widget -->
+                                            {{ upload_resource_form.resource_pdf }}
+                                        </div>
+                                        <span id="file-pdf-name">
+                                        </span>
+                                    </div>
+                                </div>
+                                <p>
+                                    {% if is_scholarship_head %}
+                                        Note: Your submission will be visible immediately to all users.
+                                    {% else %}
+                                        Note: Your submission will not be accessible until it is approved by the Scholarship Chair.
+                                    {% endif %}
+                                </p>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="progress hidden" id="upload-progress">
+                                <div class="progress-bar"
+                                     id="upload-progress-bar"
+                                     role="progressbar"
+                                     aria-valuenow="60"
+                                     aria-valuemin="0"
+                                     aria-valuemax="100"
+                                     style="width: 0%;">
+                                    0%
+                                </div>
+                            </div>
+                            <div id="upload-btns">
+                                <button type="button"
+                                        class="btn btn-default"
+                                        id="cancel-btn"
+                                        data-dismiss="modal">
+                                    Cancel
+                                </button>
+                                <button type="button" class="btn btn-primary" id="submit-btn">
+                                    Submit Resource
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endblock %}
+        {% block embedded_js %}
+            <!-- Async file upload page specific script -->
+            <script type="text/javascript">
 		// Initialize file uploader.
 		$("#id_resource_pdf").fileupload({
 			url: './upload/',
@@ -247,5 +271,5 @@
 		$("#id_resource_pdf").val("");
 		$("#file-pdf-name").val("");
 
-        </script>
-    {% endblock %}
+            </script>
+        {% endblock %}

@@ -23,11 +23,7 @@
     </h3>
     <form enctype="multipart/form-data"
           method="post"
-          action="{% if adding_new %}
-                      {% url 'partylist-add_party' %}
-                  {% else %}
-                      {% url 'partylist-edit_party' requested_party.pk %}
-                  {% endif %}"
+          action="{% if adding_new %} {% url 'partylist-add_party' %} {% else %} {% url 'partylist-edit_party' requested_party.pk %} {% endif %}"
           role="form"
           class="centered medium v2form">
         {% csrf_token %}

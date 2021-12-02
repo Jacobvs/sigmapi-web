@@ -614,9 +614,7 @@ def add_course_section(request):
         message = "Course Section successfully recorded."
         messages.info(request, message, extra_tags="report")
     else:
-        message = (
-            'Required fields were not filled out or some field was malformed'
-        )
+        message = "Required fields were not filled out or some field was malformed"
         messages.error(request, message, extra_tags="report")
     return redirect("scholarship-courses")
 
@@ -647,6 +645,8 @@ def courses(request):
     """
     View for seeing all courses
     """
+    is_scholarship_head = request_is_from_scholarship_head(request)
+
     all_courses = Course.objects.order_by("-catalog_code")
 
     error = None
@@ -670,6 +670,7 @@ def courses(request):
         pass
 
     context = {
+        "is_scholarship_head": is_scholarship_head,
         "all_courses": all_courses,
         "error": error,
         "msg": msg,
@@ -686,6 +687,9 @@ def sections(request, catalog_code=None):
     """
     View for seeing the sections of selected course
     """
+    # Figure out if this request is from the scholarship head
+    is_scholarship_head = request_is_from_scholarship_head(request)
+
     if catalog_code:
         all_sections = CourseSection.objects.filter(
             catalog_course__catalog_code=catalog_code
@@ -693,17 +697,27 @@ def sections(request, catalog_code=None):
     else:
         all_sections = CourseSection.objects.order_by("-year", "term")
 
-    add_course_section_form = CourseSectionForm(initial={"catalog_course": catalog_code})
+    add_course_section_form = CourseSectionForm(
+        initial={"catalog_course": catalog_code}
+    )
 
     rows = []
     for section in all_sections:
         for user in section.participants.all():
-            rows.append({'brother' : user, 'term': section.term, 'year': section.year, 'professor': section.professor})
+            rows.append(
+                {
+                    "brother": user,
+                    "term": section.term,
+                    "year": section.year,
+                    "professor": section.professor,
+                }
+            )
 
     context = {
-        'course': catalog_code,
+        "is_scholarship_head": is_scholarship_head,
+        "course": catalog_code,
         "add_course_section_form": add_course_section_form,
-        'rows' : rows
+        "rows": rows,
     }
 
     return render(request, "scholarship/sections.html", context)

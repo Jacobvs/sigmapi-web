@@ -23,7 +23,7 @@
                             {% endif %}
                             <a href="{% url 'scholarship-study_hours' %}">Study Hours</a>
                         </li>
-                        {% if '/scholarship/courses/' in request.path %}
+                        {% if '/scholarship/courses/' in request.path or '/scholarship/sections/' in request.path %}
                             <li class="active">
                             {% else %}
                                 <li>
