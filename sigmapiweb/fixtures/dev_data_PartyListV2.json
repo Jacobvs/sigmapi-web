@@ -1,0 +1,25 @@
+[
+    {
+        "model": "PartyListV2.party",
+        "pk": 1,
+        "fields": {
+            "name": "Super Party",
+            "party_start": "2020-09-25T22:00:00",
+            "has_party_invite_limits": true,
+            "max_party_invites": 5,
+            "has_preparty": true,
+            "preparty_start": "21:00:00",
+            "has_preparty_invite_limits": true,
+            "max_preparty_invites": 3,
+            "guycount": 0,
+            "girlcount": 0,
+            "nonbinarycount": 0,
+            "guys_ever_signed_in": 0,
+            "girls_ever_signed_in": 0,
+            "non_binary_ever_signed_in": 0,
+            "last_updated": "2020-09-23T17:24:16.010",
+            "guest_update_counter": 0,
+            "jobs": ""
+        }
+    }
+]

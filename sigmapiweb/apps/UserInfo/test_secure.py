@@ -4,7 +4,7 @@ from django.urls import reverse
 
 
 class AddUserTest(TestCase):
-    fixtures = ["dev_data"]
+    fixtures = ["0_dev_data_auth", "dev_data_UserInfo"]
 
     def setUp(self):
         self.p_group = Group.objects.get(name="Pledges")

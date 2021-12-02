@@ -1,0 +1,298 @@
+[
+    {
+        "model": "UserInfo.pledgeclass",
+        "pk": 1,
+        "fields": {
+            "name": "Omega",
+            "dateInitiated": "2000-01-01"
+        }
+    },
+    {
+        "model": "UserInfo.userinfo",
+        "pk": 1,
+        "fields": {
+            "user": [
+                "scholarshipchair"
+            ],
+            "picture": "",
+            "phoneNumber": "(839)910-4785",
+            "graduationYear": 2022,
+            "major": "EN/AR",
+            "hometown": "Scholarsville, MD",
+            "activities": "Scholarship",
+            "interests": "Chairs",
+            "favoriteMemory": "Django",
+            "bigBrother": [
+                "third"
+            ],
+            "pledgeClass": 1
+        }
+    },
+    {
+        "model": "UserInfo.userinfo",
+        "pk": 2,
+        "fields": {
+            "user": [
+                "brother"
+            ],
+            "picture": "",
+            "phoneNumber": "(666)666-6666",
+            "graduationYear": 2022,
+            "major": "CHE",
+            "hometown": "Worcester, MA",
+            "activities": "Balls",
+            "interests": "Rick and tortellini",
+            "favoriteMemory": "Richard and Mortimer",
+            "bigBrother": [
+                "socialchair"
+            ],
+            "pledgeClass": 1
+        }
+    },
+    {
+        "model": "UserInfo.userinfo",
+        "pk": 3,
+        "fields": {
+            "user": [
+                "first"
+            ],
+            "picture": "",
+            "phoneNumber": "(111)111-1111",
+            "graduationYear": 2021,
+            "major": "MA/RBE",
+            "hometown": "Portland, OR",
+            "activities": "gaming",
+            "interests": "gaming",
+            "favoriteMemory": "gaming",
+            "bigBrother": null,
+            "pledgeClass": 1
+        }
+    },
+    {
+        "model": "UserInfo.userinfo",
+        "pk": 4,
+        "fields": {
+            "user": [
+                "fourth"
+            ],
+            "picture": "",
+            "phoneNumber": "(389)389-2895",
+            "graduationYear": 2021,
+            "major": "IMGD/RBE",
+            "hometown": "Worcester, UK",
+            "activities": "Being British",
+            "interests": "Init",
+            "favoriteMemory": "1776",
+            "bigBrother": null,
+            "pledgeClass": 1
+        }
+    },
+    {
+        "model": "UserInfo.userinfo",
+        "pk": 5,
+        "fields": {
+            "user": [
+                "sage"
+            ],
+            "picture": "",
+            "phoneNumber": "(290)298-2929",
+            "graduationYear": 2024,
+            "major": "RBE/CHE",
+            "hometown": "Arlington, VA",
+            "activities": "Boolin'",
+            "interests": "Schoolin'",
+            "favoriteMemory": "Droolin'",
+            "bigBrother": [
+                "scholarshipchair"
+            ],
+            "pledgeClass": 1
+        }
+    },
+    {
+        "model": "UserInfo.userinfo",
+        "pk": 6,
+        "fields": {
+            "user": [
+                "second"
+            ],
+            "picture": "",
+            "phoneNumber": "(907)902-6902",
+            "graduationYear": 2023,
+            "major": "BCB/BME",
+            "hometown": "Denver, CO",
+            "activities": "Skiing and stuff",
+            "interests": "Snowboarding and stuff",
+            "favoriteMemory": "Sharknado",
+            "bigBrother": null,
+            "pledgeClass": 1
+        }
+    },
+    {
+        "model": "UserInfo.userinfo",
+        "pk": 7,
+        "fields": {
+            "user": [
+                "third"
+            ],
+            "picture": "",
+            "phoneNumber": "(590)109-3902",
+            "graduationYear": 2021,
+            "major": "AREN",
+            "hometown": "Fort Worth, TX",
+            "activities": "None",
+            "interests": "Uninteresting things",
+            "favoriteMemory": "Mango chutney",
+            "bigBrother": [
+                "steward"
+            ],
+            "pledgeClass": 1
+        }
+    },
+    {
+        "model": "UserInfo.userinfo",
+        "pk": 8,
+        "fields": {
+            "user": [
+                "bacchair"
+            ],
+            "picture": "",
+            "phoneNumber": "(666)672-7809",
+            "graduationYear": 2022,
+            "major": "ME",
+            "hometown": "Worcester, MA",
+            "activities": "Drinking",
+            "interests": "Books",
+            "favoriteMemory": "Cheese",
+            "bigBrother": [
+                "sage"
+            ],
+            "pledgeClass": 1
+        }
+    },
+    {
+        "model": "UserInfo.userinfo",
+        "pk": 9,
+        "fields": {
+            "user": [
+                "parliamentarian"
+            ],
+            "picture": "",
+            "phoneNumber": "(420)789-6687",
+            "graduationYear": 2022,
+            "major": "CS",
+            "hometown": "Plymouth, MA",
+            "activities": "CS",
+            "interests": "CS",
+            "favoriteMemory": "Computer",
+            "bigBrother": [
+                "housemanager"
+            ],
+            "pledgeClass": 1
+        }
+    },
+    {
+        "model": "UserInfo.userinfo",
+        "pk": 10,
+        "fields": {
+            "user": [
+                "steward"
+            ],
+            "picture": "",
+            "phoneNumber": "(867)530-9999",
+            "graduationYear": 2021,
+            "major": "BME",
+            "hometown": "San Diego, CA",
+            "activities": "Surfing",
+            "interests": "Water",
+            "favoriteMemory": "Sand",
+            "bigBrother": [
+                "third"
+            ],
+            "pledgeClass": 1
+        }
+    },
+    {
+        "model": "UserInfo.userinfo",
+        "pk": 11,
+        "fields": {
+            "user": [
+                "alumnichair"
+            ],
+            "picture": "",
+            "phoneNumber": "(999)999-9999",
+            "graduationYear": 2022,
+            "major": "ME",
+            "hometown": "Florida, FL",
+            "activities": "Alligators",
+            "interests": "Ball",
+            "favoriteMemory": "Coding",
+            "bigBrother": [
+                "philanthropychair"
+            ],
+            "pledgeClass": 1
+        }
+    },
+    {
+        "model": "UserInfo.userinfo",
+        "pk": 12,
+        "fields": {
+            "user": [
+                "prchair"
+            ],
+            "picture": "",
+            "phoneNumber": "(870)674-6748",
+            "graduationYear": 2024,
+            "major": "ECE",
+            "hometown": "Boston, MA",
+            "activities": "Reading",
+            "interests": "Books",
+            "favoriteMemory": "Being a nerd",
+            "bigBrother": [
+                "socialchair"
+            ],
+            "pledgeClass": 1
+        }
+    },
+    {
+        "model": "UserInfo.userinfo",
+        "pk": 13,
+        "fields": {
+            "user": [
+                "philanthropychair"
+            ],
+            "picture": "",
+            "phoneNumber": "(342)111-2222",
+            "graduationYear": 2023,
+            "major": "MA",
+            "hometown": "Concord, NH",
+            "activities": "Math",
+            "interests": "Calculus",
+            "favoriteMemory": "Drumming",
+            "bigBrother": [
+                "housemanager"
+            ],
+            "pledgeClass": 1
+        }
+    },
+    {
+        "model": "UserInfo.userinfo",
+        "pk": 14,
+        "fields": {
+            "user": [
+                "rushchair"
+            ],
+            "picture": "",
+            "phoneNumber": "(111)222-3333",
+            "graduationYear": 2021,
+            "major": "CS",
+            "hometown": "Hartford, CT",
+            "activities": "Working out",
+            "interests": "Lifting",
+            "favoriteMemory": "Gym",
+            "bigBrother": [
+                "second"
+            ],
+            "pledgeClass": 1
+        }
+    }
+]

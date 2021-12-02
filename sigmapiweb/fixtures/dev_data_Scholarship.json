@@ -1,0 +1,95 @@
+[
+    {
+        "model": "Scholarship.academicresource",
+        "pk": 1,
+        "fields": {
+            "resource_name": "Answers to the BIG TEST",
+            "course_number": "CS1001",
+            "professor_name": "Beck",
+            "resource_pdf": "protected/scholarship/resources/Minutes_02_09.pdf",
+            "submittedBy": [
+                "socialchair"
+            ],
+            "approved": true,
+            "year": 2020,
+            "term": "A"
+        }
+    },
+    {
+        "model": "Scholarship.academicresource",
+        "pk": 2,
+        "fields": {
+            "resource_name": "My Homework",
+            "course_number": "CS4501",
+            "professor_name": "Cuneo",
+            "resource_pdf": "protected/scholarship/resources/Minutes_02_09_qFtT52P.pdf",
+            "submittedBy": [
+                "socialchair"
+            ],
+            "approved": false,
+            "year": 2018,
+            "term": "B"
+        }
+    },
+    {
+        "model": "Scholarship.academicresource",
+        "pk": 3,
+        "fields": {
+            "resource_name": "Final Exam #3",
+            "course_number": "ME1800",
+            "professor_name": "James",
+            "resource_pdf": "protected/scholarship/resources/Minutes_02_09_0Lv2L8O.pdf",
+            "submittedBy": [
+                "second"
+            ],
+            "approved": false,
+            "year": 2019,
+            "term": "D"
+        }
+    },
+    {
+        "model": "Scholarship.libraryitem",
+        "pk": 1,
+        "fields": {
+            "title": "Book1",
+            "isbn_number": "933903",
+            "course": "CS1001",
+            "edition": "1",
+            "item_pdf": "protected/scholarship/library/Agenda_2_5_2021.pdf",
+            "submittedBy": [
+                "first"
+            ],
+            "approved": true
+        }
+    },
+    {
+        "model": "Scholarship.libraryitem",
+        "pk": 2,
+        "fields": {
+            "title": "Data and Computer Communications",
+            "isbn_number": "290153",
+            "course": "ME3403",
+            "edition": "4",
+            "item_pdf": "protected/scholarship/library/William_Stallings_-_Data_and_Computer_Communications-Pearson_2013.pdf",
+            "submittedBy": [
+                "socialchair"
+            ],
+            "approved": true
+        }
+    },
+    {
+        "model": "Scholarship.libraryitem",
+        "pk": 3,
+        "fields": {
+            "title": "Book2",
+            "isbn_number": "3289124",
+            "course": "",
+            "edition": "2",
+            "item_pdf": "protected/scholarship/library/Agenda_2_12_2021.pdf",
+            "submittedBy": [
+                "scholarshipchair"
+            ],
+            "approved": true
+        }
+    }
+]
