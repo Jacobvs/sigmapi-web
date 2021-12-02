@@ -7,7 +7,7 @@ import sigmapiweb.apps.UserInfo
 
 
 class PublicViewTests(TestCase):
-    fixtures = ["dev_data"]
+    fixtures = ["0_dev_data_auth","dev_data_UserInfo"]
 
     def setUp(self):
         self.client = Client()
