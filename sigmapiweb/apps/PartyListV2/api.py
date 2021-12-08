@@ -432,7 +432,7 @@ def export_list(_request, party_id):
     writer = csv.writer(response)
 
     writer.writerow(["Female Guests"])
-    writer.writerow(["Name", "Signed In", "Time First Signed In"])
+    writer.writerow(["Name", "Signed In", "Time First Signed In","Added by"])
     female_guests = party_guests.filter(gender__exact="F")
     for party_guest in female_guests:
         writer.writerow(
@@ -440,11 +440,12 @@ def export_list(_request, party_id):
                 party_guest.name,
                 str(party_guest.signed_in),
                 str(party_guest.formatted_time_first_signed_in()),
+                party_guest.added_by.username,
             ]
         )
 
     writer.writerow(["Male Guests"])
-    writer.writerow(["Name", "Signed In", "Time First Signed In"])
+    writer.writerow(["Name", "Signed In", "Time First Signed In","Added by"])
     male_guests = party_guests.filter(gender__exact="M")
     for party_guest in male_guests:
         writer.writerow(
@@ -452,11 +453,12 @@ def export_list(_request, party_id):
                 party_guest.name,
                 str(party_guest.signed_in),
                 str(party_guest.formatted_time_first_signed_in()),
+                party_guest.added_by.username,
             ]
         )
 
     writer.writerow(["Non-Binary Guests"])
-    writer.writerow(["Name", "Signed In", "Time First Signed In"])
+    writer.writerow(["Name", "Signed In", "Time First Signed In", "Added by"])
     non_binary_guests = party_guests.filter(gender__exact="NB")
     for party_guest in non_binary_guests:
         writer.writerow(
@@ -464,6 +466,7 @@ def export_list(_request, party_id):
                 party_guest.name,
                 str(party_guest.signed_in),
                 str(party_guest.formatted_time_first_signed_in()),
+                party_guest.added_by.username,
             ]
         )
 
