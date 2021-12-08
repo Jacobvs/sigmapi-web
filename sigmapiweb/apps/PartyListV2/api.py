@@ -432,7 +432,7 @@ def export_list(_request, party_id):
     writer = csv.writer(response)
 
     writer.writerow(["Female Guests"])
-    writer.writerow(["Name", "Signed In", "Time First Signed In","Added by"])
+    writer.writerow(["Name", "Signed In", "Time First Signed In", "Added by"])
     female_guests = party_guests.filter(gender__exact="F")
     for party_guest in female_guests:
         writer.writerow(
@@ -445,7 +445,7 @@ def export_list(_request, party_id):
         )
 
     writer.writerow(["Male Guests"])
-    writer.writerow(["Name", "Signed In", "Time First Signed In","Added by"])
+    writer.writerow(["Name", "Signed In", "Time First Signed In", "Added by"])
     male_guests = party_guests.filter(gender__exact="M")
     for party_guest in male_guests:
         writer.writerow(
