@@ -362,15 +362,9 @@ $(document).ready(() => {
                 of all grouped brothers, use the ones that don't have invalid ratioText
                 this might be confusing because "remove" means "remove brothers that return false in the lambda function"
                 we remove from the grouped list based on failure to meet the condition
+                we are mutating the list
                 */
-                return _.maxBy(_.remove(
-                    grouped,
-                    (b) => {
-                        return (
-                            b.ratioText !== "Infinitely Good" &&
-                            b.ratioText !== "Infinitely Bad"
-                        )
-                    }), 'ratio');
+                return _.maxBy(_.remove(grouped, (b) => { return b.ratioText !== "NaN" }), 'ratio')
             },
             countsData: function () {
                 return this.countHistory.map(entry => ({
@@ -390,11 +384,11 @@ $(document).ready(() => {
                     return "0 to 0";
                 if (maleCount > femaleCount) {
                     if (femaleCount === 0)
-                        return "Infinitely Terrible";
+                        return "NaN";
                     return `1 to ${Math.floor(maleCount / femaleCount * 10) / 10}`;
                 } else {
                     if (maleCount === 0)
-                        return "Infinitely Good";
+                        return "NaN";
                     return `${Math.floor(femaleCount / maleCount * 10) / 10} to 1`;
                 }
             },
