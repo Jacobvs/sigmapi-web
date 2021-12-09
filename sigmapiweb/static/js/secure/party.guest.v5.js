@@ -358,7 +358,19 @@ $(document).ready(() => {
                         name: brother
                     })
                 );
-                return _.maxBy(grouped, 'ratio');
+                /*
+                of all grouped brothers, use the ones that don't have invalid ratioText
+                this might be confusing because "remove" means "remove brothers that return false in the lambda function"
+                we remove from the grouped list based on failure to meet the condition
+                */
+                return _.maxBy(_.remove(
+                    grouped,
+                    (b) => {
+                        return (
+                            b.ratioText !== "Infinitely Good" &&
+                            b.ratioText !== "Infinitely Bad"
+                        )
+                    }), 'ratio');
             },
             countsData: function () {
                 return this.countHistory.map(entry => ({
