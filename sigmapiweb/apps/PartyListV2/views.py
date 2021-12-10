@@ -41,7 +41,7 @@ def guests(request, party_id):
     brothers = [
         (user.username, user.get_full_name())
         for user in User.objects.filter(
-            groups__name__in=["Brothers", "Pledges"]
+            groups__name__in=["Brothers", "Pledges", "Sweethearts"]
         ).order_by("first_name")
     ]
     context = {
