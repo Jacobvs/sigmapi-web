@@ -89,7 +89,7 @@
 					</td>
 					{% endif %}
 				</tr>
-                <tr class="sub_row ">
+                {% comment %} <tr class="sub_row ">
                     {% if is_scholarship_head %}
                     <td colspan="7" style="display: none; background-color: #e7e7e7; padding: 0.2vh;">
                     {% else %}
@@ -100,7 +100,7 @@
                             <embed src="{{ item.item_pdf.url }}#pagemode=thumbs&scrollbar=1&zoom=90&view=Fit" width="100%" height="500vh">
                         </div>
                     </td>
-                 </tr>
+                 </tr> {% endcomment %}
 				{% endfor %}
 			</tbody>
 		</table>
