@@ -10,7 +10,6 @@ from .models import (
     TrackedUser,
     Course,
     CourseSection,
-    Review,
 )
 
 register_model_admins(
@@ -20,5 +19,4 @@ register_model_admins(
     TrackedUser,
     Course,
     CourseSection,
-    Review,
 )

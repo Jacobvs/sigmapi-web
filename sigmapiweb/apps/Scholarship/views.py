@@ -21,7 +21,6 @@ from .models import (
     TrackedUser,
     Course,
     CourseSection,
-    Review,
 )
 
 from .forms import (
@@ -31,7 +30,6 @@ from .forms import (
     TrackedUserForm,
     CourseForm,
     CourseSectionForm,
-    ReviewForm,
 )
 
 

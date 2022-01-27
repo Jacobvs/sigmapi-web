@@ -11,7 +11,6 @@ from .models import (
     TrackedUser,
     Course,
     CourseSection,
-    Review,
 )
 
 
@@ -91,9 +90,3 @@ class CourseSectionForm(forms.ModelForm):
     class Meta:
         model = CourseSection
         fields = ["catalog_course", "term", "year", "professor"]
-
-
-class ReviewForm(forms.ModelForm):
-    class Meta:
-        model = Review
-        fields = ["stars", "text"]

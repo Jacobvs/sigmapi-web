@@ -231,12 +231,3 @@ class CourseSection(ModelMixin, models.Model):
     professor = models.CharField(max_length=100)
     participants = models.ManyToManyField(User)
 
-
-class Review(ModelMixin, models.Model):
-    """
-    Represents a single review for a course.
-    """
-
-    reviewer = models.ForeignKey(User, on_delete=models.CASCADE)
-    stars = models.IntegerField(validators=[validate_stars])
-    text = models.CharField(max_length=1000)
