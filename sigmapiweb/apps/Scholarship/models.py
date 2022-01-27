@@ -230,4 +230,3 @@ class CourseSection(ModelMixin, models.Model):
     year = models.PositiveIntegerField(validators=[validators.MaxValueValidator(99)])
     professor = models.CharField(max_length=100)
     participants = models.ManyToManyField(User)
-

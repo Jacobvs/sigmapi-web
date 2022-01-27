@@ -11,28 +11,80 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('Scholarship', '0005_change_on_delete'),
+        ("Scholarship", "0005_change_on_delete"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Course',
+            name="Course",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('catalog_code', models.CharField(max_length=10, unique=True, validators=[django.core.validators.RegexValidator(regex='[A-Z]+[0-9]+')])),
-                ('title', models.CharField(max_length=100)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "catalog_code",
+                    models.CharField(
+                        max_length=10,
+                        unique=True,
+                        validators=[
+                            django.core.validators.RegexValidator(regex="[A-Z]+[0-9]+")
+                        ],
+                    ),
+                ),
+                ("title", models.CharField(max_length=100)),
             ],
             bases=(common.mixins.ModelMixin, models.Model),
         ),
         migrations.CreateModel(
-            name='CourseSection',
+            name="CourseSection",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('term', models.CharField(choices=[('A', 'A'), ('B', 'B'), ('C', 'C'), ('D', 'D'), ('E', 'E'), ('S', 'S'), ('F', 'F')], default='A', max_length=1)),
-                ('year', models.PositiveIntegerField(validators=[django.core.validators.MaxValueValidator(99)])),
-                ('professor', models.CharField(max_length=100)),
-                ('catalog_course', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='Scholarship.course', to_field='catalog_code')),
-                ('participants', models.ManyToManyField(to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "term",
+                    models.CharField(
+                        choices=[
+                            ("A", "A"),
+                            ("B", "B"),
+                            ("C", "C"),
+                            ("D", "D"),
+                            ("E", "E"),
+                            ("S", "S"),
+                            ("F", "F"),
+                        ],
+                        default="A",
+                        max_length=1,
+                    ),
+                ),
+                (
+                    "year",
+                    models.PositiveIntegerField(
+                        validators=[django.core.validators.MaxValueValidator(99)]
+                    ),
+                ),
+                ("professor", models.CharField(max_length=100)),
+                (
+                    "catalog_course",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="Scholarship.course",
+                        to_field="catalog_code",
+                    ),
+                ),
+                ("participants", models.ManyToManyField(to=settings.AUTH_USER_MODEL)),
             ],
             bases=(common.mixins.ModelMixin, models.Model),
         ),
