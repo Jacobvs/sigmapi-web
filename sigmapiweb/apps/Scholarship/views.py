@@ -609,7 +609,7 @@ def add_course_section(request):
             professor=course.professor,
         )
 
-        if (not created):
+        if not created:
             message = "Course Section already exists"
             messages.error(request, message, extra_tags="report")
 
