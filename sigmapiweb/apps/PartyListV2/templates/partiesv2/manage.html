@@ -22,16 +22,39 @@
                                 <a href="{% url 'partylist-edit_party' party.pk %}">Edit</a>
                             </td>
                             <td>
-                                <form method="POST" action="{% url 'partylist-delete_party' party.pk %}">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#test_modal" data-bs-href="https://google.com">
+                                    Test
+                                </button>
+                                {% comment %} <form method="POST" action="{% url 'partylist-delete_party' party.pk %}">
                                     {% csrf_token %}
                                     <a href="#" onclick="$(this).closest('form').submit()">Delete</a>
-                                </form>
+                                </form> {% endcomment %}
                             </td>
                         </tr>
                     {% endfor %}
                 </tbody>
             </table>
+            <div class="modal fade" id="test_modal" tabindex="-1">
+                <a id="test_anchor">Test</a>
+            </div>
         </div>
+        <script>
+            var testModal = document.getElementById('test_modal')
+            testModal.addEventListener('show.bs.modal', function (event) {
+            // Button that triggered the modal
+            var button = event.relatedTarget
+            // Extract info from data-bs-* attributes
+            var link = button.getAttribute('data-bs-href')
+            // If necessary, you could initiate an AJAX request here
+            // and then do the updating in a callback.
+            //
+            // Update the modal's content.
+            var modalLink = document.getElementById('test_anchor')
+
+            modalLink.href = link
+            })
+
+        </script>
     {% else %}
         <p>
             No parties exist.
