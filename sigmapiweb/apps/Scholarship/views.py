@@ -611,9 +611,12 @@ def add_course_section(request):
 
         message = "Course Section successfully recorded."
         messages.info(request, message, extra_tags="report")
+        return redirect("scholarship-section", catalog_code=course.catalog_course)
+
     else:
         message = "Required fields were not filled out or some field was malformed"
         messages.error(request, message, extra_tags="report")
+        
     return redirect("scholarship-courses")
 
 
