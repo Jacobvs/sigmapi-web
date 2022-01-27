@@ -3,6 +3,7 @@ Views for Scholarship app.
 """
 import csv
 import os
+from venv import create
 
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required, permission_required
@@ -607,10 +608,17 @@ def add_course_section(request):
             year=course.year,
             professor=course.professor,
         )
-        addedSection.participants.add(request.user)
 
-        message = "Course Section successfully recorded."
-        messages.info(request, message, extra_tags="report")
+        if (not created):
+            message = "Course Section already exists"
+            messages.error(request, message, extra_tags="report")
+
+        else:
+            addedSection.participants.add(request.user)
+
+            message = "Course Section successfully recorded."
+            messages.info(request, message, extra_tags="report")
+
         return redirect("scholarship-section", catalog_code=course.catalog_course)
 
     else:
