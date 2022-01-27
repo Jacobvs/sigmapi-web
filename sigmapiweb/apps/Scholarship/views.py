@@ -616,7 +616,7 @@ def add_course_section(request):
     else:
         message = "Required fields were not filled out or some field was malformed"
         messages.error(request, message, extra_tags="report")
-        
+
     return redirect("scholarship-courses")
 
 
