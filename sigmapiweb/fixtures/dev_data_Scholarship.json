@@ -91,5 +91,160 @@
             ],
             "approved": true
         }
+    },
+    {
+        "model": "Scholarship.course",
+        "pk": 1,
+        "fields": {
+            "catalog_code": "CS3733",
+            "title": "Software Engineering"
+        }
+    },
+    {
+        "model": "Scholarship.course",
+        "pk": 2,
+        "fields": {
+            "catalog_code": "CS3013",
+            "title": "Operating Systems"
+        }
+    },
+    {
+        "model": "Scholarship.course",
+        "pk": 3,
+        "fields": {
+            "catalog_code": "RBE1001",
+            "title": "Stafford's dream"
+        }
+    },
+    {
+        "model": "Scholarship.course",
+        "pk": 4,
+        "fields": {
+            "catalog_code": "ECE2010",
+            "title": "Stick Fork in outlet 2000"
+        }
+    },
+    {
+        "model": "Scholarship.course",
+        "pk": 5,
+        "fields": {
+            "catalog_code": "ME1800",
+            "title": "CAD"
+        }
+    },
+    {
+        "model": "Scholarship.course",
+        "pk": 6,
+        "fields": {
+            "catalog_code": "ID2050",
+            "title": "Prof Make"
+        }
+    },
+    {
+        "model": "Scholarship.course",
+        "pk": 7,
+        "fields": {
+            "catalog_code": "ECE2049",
+            "title": "Embedded"
+        }
+    },
+    {
+        "model": "Scholarship.coursesection",
+        "pk": 1,
+        "fields": {
+            "catalog_course": "CS3733",
+            "term": "A",
+            "year": 21,
+            "professor": "Willy Wong",
+            "participants": [
+                [
+                    "second"
+                ],
+                [
+                    "third"
+                ],
+                [
+                    "housemanager"
+                ],
+                [
+                    "socialchair"
+                ]
+            ]
+        }
+    },
+    {
+        "model": "Scholarship.coursesection",
+        "pk": 2,
+        "fields": {
+            "catalog_course": "CS3013",
+            "term": "B",
+            "year": 20,
+            "professor": "Walls",
+            "participants": [
+                [
+                    "brother"
+                ],
+                [
+                    "first"
+                ],
+                [
+                    "bacchair"
+                ]
+            ]
+        }
+    },
+    {
+        "model": "Scholarship.coursesection",
+        "pk": 2,
+        "fields": {
+            "catalog_course": "CS3013",
+            "term": "C",
+            "year": 19,
+            "professor": "Bob",
+            "participants": [
+                [
+                    "rushchair"
+                ],
+                [
+                    "first"
+                ]
+            ]
+        }
+    },
+    {
+        "model": "Scholarship.coursesection",
+        "pk": 2,
+        "fields": {
+            "catalog_course": "CS3013",
+            "term": "D",
+            "year": 20,
+            "professor": "Jow",
+            "participants": [
+                [
+                    "third"
+                ],
+                [
+                    "first"
+                ]
+            ]
+        }
+    },
+    {
+        "model": "Scholarship.coursesection",
+        "pk": 2,
+        "fields": {
+            "catalog_course": "RBE1001",
+            "term": "A",
+            "year": 20,
+            "professor": "Prof",
+            "participants": [
+                [
+                    "alumnichair"
+                ],
+                [
+                    "third"
+                ]
+            ]
+        }
     }
 ]

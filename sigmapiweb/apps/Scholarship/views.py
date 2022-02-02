@@ -3,6 +3,7 @@ Views for Scholarship app.
 """
 import csv
 import os
+from venv import create
 
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required, permission_required
@@ -11,6 +12,7 @@ from django.shortcuts import render, redirect
 from django.views.decorators.http import require_GET, require_POST
 from django.utils.datastructures import MultiValueDict
 from django_downloadview import sendfile
+from django.core.exceptions import ObjectDoesNotExist
 
 from . import notify
 from .models import (
@@ -18,12 +20,17 @@ from .models import (
     LibraryItem,
     StudyHoursRecord,
     TrackedUser,
+    Course,
+    CourseSection,
 )
+
 from .forms import (
     AcademicResourceForm,
     LibraryItemForm,
     StudyHoursRecordForm,
     TrackedUserForm,
+    CourseForm,
+    CourseSectionForm,
 )
 
 
@@ -560,3 +567,166 @@ def decline_libraryitem(request, item):
         item_obj.delete()
         messages.info(request, "Item declined successfully.")
     return redirect("scholarship-approve")
+
+
+@login_required
+@require_POST
+def add_course(request):
+    """
+    TODO: Docstring
+    """
+    add_course_form = CourseForm(request.POST)
+    if add_course_form.is_valid():
+        course_record = add_course_form.save(commit=False)
+        course_record.save()
+
+        message = "Course successfully recorded."
+        messages.info(request, message, extra_tags="report")
+    else:
+        message = (
+            "Please enter a valid course code (ie CS3733) "
+            + "and ensure an entry does not already exist"
+        )
+        messages.error(request, message, extra_tags="report")
+    return redirect("scholarship-courses")
+
+
+@login_required
+@require_POST
+def add_course_section(request):
+    """
+    TODO: Docstring
+    """
+    add_course_section_form = CourseSectionForm(request.POST)
+    if add_course_section_form.is_valid():
+        course = add_course_section_form.save(commit=False)
+
+        # Get the section that exists or create a new one
+        addedSection, created = CourseSection.objects.get_or_create(
+            term=course.term,
+            catalog_course=course.catalog_course,
+            year=course.year,
+            professor=course.professor,
+        )
+
+        if not created:
+            message = "Course Section already exists"
+            messages.error(request, message, extra_tags="report")
+
+        else:
+            addedSection.participants.add(request.user)
+
+            message = "Course Section successfully recorded."
+            messages.info(request, message, extra_tags="report")
+
+        return redirect("scholarship-section", catalog_code=course.catalog_course)
+
+    else:
+        message = "Required fields were not filled out or some field was malformed"
+        messages.error(request, message, extra_tags="report")
+
+    return redirect("scholarship-courses")
+
+
+@login_required
+@require_POST
+def record_review(request):
+    """
+    TODO: Docstring
+    """
+    record_review_form = ReviewForm(request.POST)
+    if record_review_form.is_valid():
+        review_record = record_review_form.save(commit=False)
+        review_record.reviewer = request.user
+        review_record.save()
+
+        message = "Review successfully reported."
+        messages.info(request, message, extra_tags="report")
+    else:
+        message = "The Review was invalid? what did you do"
+        messages.error(request, message, extra_tags="report")
+    return redirect("scholarship-record_review")
+
+
+@login_required
+@require_GET
+def courses(request):
+    """
+    View for seeing all courses
+    """
+    is_scholarship_head = request_is_from_scholarship_head(request)
+
+    all_courses = Course.objects.order_by("-catalog_code")
+
+    error = None
+    msg = None
+
+    add_course_form = None
+    add_course_form = CourseForm()
+    add_course_section_form = None
+    add_course_section_form = CourseSectionForm()
+
+    try:
+        error = request.session["scholarship_course_error"]
+        del request.session["scholarship_course_error"]
+    except KeyError:
+        pass
+
+    try:
+        msg = request.session["scholarship_course_msg"]
+        del request.session["scholarship_course_msg"]
+    except KeyError:
+        pass
+
+    context = {
+        "is_scholarship_head": is_scholarship_head,
+        "all_courses": all_courses,
+        "error": error,
+        "msg": msg,
+        "add_course_form": add_course_form,
+        "add_course_section_form": add_course_section_form,
+    }
+
+    return render(request, "scholarship/courses.html", context)
+
+
+@login_required
+@require_GET
+def sections(request, catalog_code=None):
+    """
+    View for seeing the sections of selected course
+    """
+    # Figure out if this request is from the scholarship head
+    is_scholarship_head = request_is_from_scholarship_head(request)
+
+    if catalog_code:
+        all_sections = CourseSection.objects.filter(
+            catalog_course__catalog_code=catalog_code
+        ).order_by("-year", "term")
+    else:
+        all_sections = CourseSection.objects.order_by("-year", "term")
+
+    add_course_section_form = CourseSectionForm(
+        initial={"catalog_course": catalog_code}
+    )
+
+    rows = []
+    for section in all_sections:
+        for user in section.participants.all():
+            rows.append(
+                {
+                    "brother": user,
+                    "term": section.term,
+                    "year": section.year,
+                    "professor": section.professor,
+                }
+            )
+
+    context = {
+        "is_scholarship_head": is_scholarship_head,
+        "course": catalog_code,
+        "add_course_section_form": add_course_section_form,
+        "rows": rows,
+    }
+
+    return render(request, "scholarship/sections.html", context)

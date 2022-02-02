@@ -23,15 +23,25 @@
                             {% endif %}
                             <a href="{% url 'scholarship-study_hours' %}">Study Hours</a>
                         </li>
-                        {% if is_scholarship_head %}
-                            {% if '/scholarship/approve/' in request.path %}
-                                <li class="active">
-                                {% else %}
-                                    <li>
-                                    {% endif %}
-                                    <a href="{% url 'scholarship-approve' %}">Approve Content</a>
-                                </li>
-                            {% endif %}
-                        </ul>
-                    </div>
-                {% endblock %}
+                        {% if '/scholarship/courses/' in request.path or '/scholarship/sections/' in request.path %}
+                            <li class="active">
+                            {% else %}
+                                <li>
+                                {% endif %}
+                                <a href="{% url 'scholarship-courses' %}">Courses</a>
+                            </li>
+                            <!--
+				specific to login
+-->
+                            {% if is_scholarship_head %}
+                                {% if '/scholarship/approve/' in request.path %}
+                                    <li class="active">
+                                    {% else %}
+                                        <li>
+                                        {% endif %}
+                                        <a href="{% url 'scholarship-approve' %}">Approve Content</a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    {% endblock %}

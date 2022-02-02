@@ -4,7 +4,14 @@ Forms for Scholarship app.
 from django import forms
 from django.contrib.auth.models import User
 
-from .models import AcademicResource, LibraryItem, StudyHoursRecord, TrackedUser
+from .models import (
+    AcademicResource,
+    LibraryItem,
+    StudyHoursRecord,
+    TrackedUser,
+    Course,
+    CourseSection,
+)
 
 
 class CustomModelChoiceField(forms.ModelChoiceField):
@@ -71,3 +78,15 @@ class LibraryItemForm(forms.ModelForm):
     class Meta:
         model = LibraryItem
         fields = ["title", "isbn_number", "course", "edition", "item_pdf"]
+
+
+class CourseForm(forms.ModelForm):
+    class Meta:
+        model = Course
+        fields = ["catalog_code", "title"]
+
+
+class CourseSectionForm(forms.ModelForm):
+    class Meta:
+        model = CourseSection
+        fields = ["catalog_course", "term", "year", "professor"]

@@ -5,11 +5,25 @@ import datetime
 import re
 
 from django.contrib.auth.models import User
+from django.core import validators
+from django.utils.translation import gettext_lazy as _
 from django.core.exceptions import ValidationError
 from django.db import models
-
+from django.core.validators import RegexValidator, validate_integer
 
 from common.mixins import ModelMixin
+
+
+def validate_stars(number):
+    """
+    Raises a validation error if the given number is <1 or >5.
+    Arguments:
+        number (int)
+    """
+    if number < 1:
+        raise ValidationError("The stars given cannot be below 1.")
+    elif number > 5:
+        raise ValidationError("The stars given cannot be above 5.")
 
 
 def validate_date(date):
@@ -178,3 +192,41 @@ class LibraryItem(ModelMixin, models.Model):
     item_pdf = models.FileField(upload_to="protected/scholarship/library")
     submittedBy = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
     approved = models.BooleanField(default=False)
+
+
+class Course(ModelMixin, models.Model):
+    """
+    Holds information about a WPI Catalog Course, i.e. CS1004.
+    """
+
+    catalog_code = models.CharField(
+        max_length=10, validators=[RegexValidator(regex=r"[A-Z]+[0-9]+")], unique=True
+    )
+    title = models.CharField(max_length=100)
+
+    def __str__(self):
+        return str(self.catalog_code)
+
+
+class CourseSection(ModelMixin, models.Model):
+    """
+    Holds info for a single instance of the course.
+    """
+
+    class Term(models.TextChoices):
+        A = "A", _("A")
+        B = "B", _("B")
+        C = "C", _("C")
+        D = "D", _("D")
+        E = "E", _("E")
+        S = "S", _("S")
+        F = "F", _("F")
+
+    catalog_course = models.ForeignKey(
+        Course, on_delete=models.CASCADE, to_field="catalog_code"
+    )
+    term = models.CharField(max_length=1, choices=Term.choices, default=Term.A)
+
+    year = models.PositiveIntegerField(validators=[validators.MaxValueValidator(99)])
+    professor = models.CharField(max_length=100)
+    participants = models.ManyToManyField(User)
