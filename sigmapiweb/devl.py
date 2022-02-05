@@ -76,7 +76,17 @@ def format_and_call(space_separated, **kwargs):
     """
     cmdstr = vformat(space_separated)
     print(cmdstr)
-    return subprocess.run(cmdstr.split(" "), **kwargs)
+    args = []
+    for s in cmdstr.split(" "):
+        if s == "/Users/jacob/Library/Mobile":
+            continue
+        elif s == "Documents/com~apple~CloudDocs/git/sigmapi-web/venv/bin/python3":
+            args.append(
+                "/Users/jacob/Library/Mobile Documents/com~apple~CloudDocs/git/sigmapi-web/venv/bin/python3"
+            )
+        else:
+            args.append(s)
+    return subprocess.run(args, **kwargs)
 
 
 def just_call(complete_arguments, **kwargs):

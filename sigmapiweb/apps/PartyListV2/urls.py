@@ -106,6 +106,11 @@ urlpatterns = [
         name="partylist-api-get_all",
     ),
     url(
+        regex=(r"^api/latest/guests/$"),
+        view=api.get_latest_party_guests,
+        name="partylist-api-get_latest_party_guests",
+    ),
+    url(
         regex=r"^api/(?P<party_id>[\d]+)/restricted/$",
         view=api.get_restricted_guests,
         name="partylist-api-restricted_guests",

@@ -191,6 +191,21 @@ def get_guests(request, party_id):
     response = {"guests": [guest.cached_json for guest in guests]}
     return JsonResponse(response)
 
+@permission_required("PartyListV2.view_parties")
+def get_latest_party_guests(request):
+    """
+    Get list of guests on the partylist.
+    """
+
+    guests = (
+        # get highest Party ID
+        PartyGuest.objects.filter(party__id=Party.objects.all().order_by("id").last().id)
+        .order_by(Lower("name"))
+        .only("_cached_json")
+    )
+    response = {"guests": [guest.cached_json for guest in guests]}
+    return JsonResponse(response)
+
 
 @permission_required("PartyListV2.view_parties")
 def get_delta_guests(request, party_id, update_counter):
