@@ -54,6 +54,8 @@
     border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
     margin-bottom: 3px;
+    display: flex;
+    flex-wrap: wrap;
   }
 
   .info {
