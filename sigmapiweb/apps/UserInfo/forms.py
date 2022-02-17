@@ -18,6 +18,7 @@ class EditUserInfoForm(ModelForm):
     activities = forms.CharField(widget=forms.Textarea, required=False)
     interests = forms.CharField(widget=forms.Textarea, required=False)
     favoriteMemory = forms.CharField(widget=forms.Textarea, required=False)
+    linkedIn = forms.CharField(max_length=100, required=False)
 
     class Meta:
         model = UserInfo
@@ -29,4 +30,5 @@ class EditUserInfoForm(ModelForm):
             "interests",
             "favoriteMemory",
             "pledgeClass",
+            "linkedIn"
         ]

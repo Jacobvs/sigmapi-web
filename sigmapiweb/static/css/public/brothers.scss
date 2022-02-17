@@ -55,6 +55,7 @@
     border-bottom: 1px solid #ddd;
     margin-bottom: 3px;
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
   }
 
@@ -86,6 +87,14 @@
     div {
       display: inline;
     }
+
+    svg.linkhover{
+      fill: gray;
+      :hover {
+        fill:#3f3a5f;
+      }
+    }
+
   }
 }
 
