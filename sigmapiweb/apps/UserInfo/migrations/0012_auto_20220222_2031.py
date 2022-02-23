@@ -7,13 +7,16 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('UserInfo', '0011_userinfo_linkedin'),
+        ("UserInfo", "0011_userinfo_linkedin"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='userinfo',
-            name='linkedIn',
-            field=models.TextField(blank=True, validators=[django.core.validators.RegexValidator(regex='^\\w*$')]),
+            model_name="userinfo",
+            name="linkedIn",
+            field=models.TextField(
+                blank=True,
+                validators=[django.core.validators.RegexValidator(regex="^\\w*$")],
+            ),
         ),
     ]
