@@ -48,7 +48,9 @@ class UserInfo(ModelMixin, models.Model):
     activities = models.TextField(blank=True)
     interests = models.TextField(blank=True)
     favoriteMemory = models.TextField(blank=True)
-    linkedIn = models.TextField(blank=True, validators=[RegexValidator(regex=r"^\w*$")])
+    linkedIn = models.TextField(
+        blank=True, validators=[RegexValidator(regex=r"^[\w\d\-]*$")]
+    )
     bigBrother = models.ForeignKey(
         User,
         related_name="big_brother",
