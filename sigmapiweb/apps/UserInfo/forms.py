@@ -30,5 +30,5 @@ class EditUserInfoForm(ModelForm):
             "interests",
             "favoriteMemory",
             "pledgeClass",
-            "linkedIn"
+            "linkedIn",
         ]
