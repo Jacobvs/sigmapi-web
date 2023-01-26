@@ -112,10 +112,15 @@
 	// Only show party invite limit if the party invite is checked
 	$("#id_has_party_invite_limits").change(function()
     {
-        if($(this).is(":checked"))
+        if($(this).is(":checked")) {
             $("#wrapper_id_max_party_invites").slideDown(slideDuration);
-        else
+            $("#wrapper_id_max_guy_party_invites").slideDown(slideDuration);
+            $("#wrapper_id_max_girl_party_invites").slideDown(slideDuration);
+        } else {
             $("#wrapper_id_max_party_invites").slideUp(slideDuration);
+            $("#wrapper_id_max_guy_party_invites").slideUp(slideDuration);
+            $("#wrapper_id_max_girl_party_invites").slideUp(slideDuration);
+        }
     }).change();
 
 	// Only show pre-party invite limit if the checkbox is checked
