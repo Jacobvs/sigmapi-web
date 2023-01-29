@@ -295,7 +295,7 @@ def create_guest(request, party_id):
         preparty_access = request.POST.get("prepartyAccess") == "true"
 
         limit_check = __check_invite_limit(
-            preparty_access, party, selected_brother, request
+            preparty_access, party, selected_brother, request, guest_gender
         )
         if limit_check:
             return limit_check  # User reached some type of invite limit, return the message
@@ -355,7 +355,11 @@ def create_guest(request, party_id):
 
 
 def __check_invite_limit(
-    preparty_access: bool, party: Party, selected_brother: User, request: HttpRequest
+    preparty_access: bool,
+    party: Party,
+    selected_brother: User,
+    request: HttpRequest,
+    guest_gender: str,
 ):
     if preparty_access:
         # Check to make sure the user hasn't reached their limit (and the person they are
@@ -392,6 +396,18 @@ def __check_invite_limit(
                         " from has reached their party invite limit.",
                         status=403,
                     )
+                if party.user_reached_guy_limit(selected_brother):
+                    return HttpResponse(
+                        "The brother you are trying to borrow invites"
+                        " from has reached their guy invite limit.",
+                        status=403,
+                    )
+                if party.user_reached_girl_limit(selected_brother):
+                    return HttpResponse(
+                        "The brother you are trying to borrow invites"
+                        " from has reached their girl invite limit.",
+                        status=403,
+                    )
                 if party.user_reached_preparty_limit(selected_brother):
                     return HttpResponse(
                         "The brother you are trying to borrow invites"
@@ -401,6 +417,18 @@ def __check_invite_limit(
     if party.has_party_invite_limits:
         if selected_brother is None and party.user_reached_party_limit(request.user):
             return HttpResponse("You have reached your party invite limit.", status=403)
+        if (
+            selected_brother is None
+            and guest_gender == "M"
+            and party.user_reached_guy_limit(request.user)
+        ):
+            return HttpResponse("You have reached your guy invite limit.", status=403)
+        if (
+            selected_brother is None
+            and guest_gender == "F"
+            and party.user_reached_girl_limit(request.user)
+        ):
+            return HttpResponse("You have reached your girl invite limit.", status=403)
         if selected_brother is not None and party.user_reached_party_limit(
             selected_brother
         ):

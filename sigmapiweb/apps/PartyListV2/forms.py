@@ -35,6 +35,8 @@ class EditPartyForm(ModelForm):
             "party_start",
             "has_party_invite_limits",
             "max_party_invites",
+            "max_guy_party_invites",
+            "max_girl_party_invites",
             "has_preparty",
             "preparty_start",
             "has_preparty_invite_limits",
@@ -43,6 +45,8 @@ class EditPartyForm(ModelForm):
         )
         labels = {
             "max_party_invites": "Max Party Invites:",
+            "max_guy_party_invites": "Max Guy Party Invites:",
+            "max_girl_party_invites": "Max Girl Party Invites:",
             "has_preparty": "Does this event have a pre-party check-in?",
             "max_preparty_invites": "Max Preparty Invites:",
             "has_party_invite_limits": "Does the party have limited invites?",
