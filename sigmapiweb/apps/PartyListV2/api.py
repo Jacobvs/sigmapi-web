@@ -298,9 +298,7 @@ def create_guest(request, party_id):
             preparty_access, party, selected_brother, request, guest_gender
         )
         if limit_check:
-            return (
-                limit_check
-            )  # User reached some type of invite limit, return the message
+            return limit_check  # User reached some type of invite limit, return the message
 
         if selected_brother is not None and selected_brother.id == request.user.id:
             return HttpResponse(
