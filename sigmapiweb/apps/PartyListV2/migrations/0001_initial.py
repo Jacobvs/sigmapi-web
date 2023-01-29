@@ -34,8 +34,6 @@ class Migration(migrations.Migration):
                 ("party_start", models.DateTimeField()),
                 ("has_party_invite_limits", models.BooleanField(default=False)),
                 ("max_party_invites", models.IntegerField(default=5)),
-                ("max_guy_party_invites", models.IntegerField(default=1)),
-                ("max_girl_party_invites", models.IntegerField(default=999)),
                 ("has_preparty", models.BooleanField(default=False)),
                 ("preparty_start", models.TimeField()),
                 ("has_preparty_invite_limits", models.BooleanField(default=False)),
