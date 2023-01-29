@@ -13,5 +13,10 @@ from .models import (
 )
 
 register_model_admins(
-    AcademicResource, LibraryItem, StudyHoursRecord, TrackedUser, Course, CourseSection
+    AcademicResource,
+    LibraryItem,
+    StudyHoursRecord,
+    TrackedUser,
+    Course,
+    CourseSection,
 )

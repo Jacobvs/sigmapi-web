@@ -30,7 +30,10 @@ class Migration(migrations.Migration):
                 ("expirationDate", models.DateField()),
                 ("value", models.PositiveIntegerField(default=0)),
             ],
-            options={"verbose_name": "Bone", "verbose_name_plural": "Bones"},
+            options={
+                "verbose_name": "Bone",
+                "verbose_name_plural": "Bones",
+            },
             bases=(models.Model,),
         ),
         migrations.CreateModel(
@@ -212,7 +215,10 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={"verbose_name": "Probation", "verbose_name_plural": "Probations"},
+            options={
+                "verbose_name": "Probation",
+                "verbose_name_plural": "Probations",
+            },
             bases=(models.Model,),
         ),
         migrations.CreateModel(
@@ -254,7 +260,10 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={"verbose_name": "Summons", "verbose_name_plural": "Summonses"},
+            options={
+                "verbose_name": "Summons",
+                "verbose_name_plural": "Summonses",
+            },
             bases=(models.Model,),
         ),
         migrations.CreateModel(

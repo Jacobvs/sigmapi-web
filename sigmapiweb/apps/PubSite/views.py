@@ -16,7 +16,10 @@ logger = logging.getLogger(__name__)
 
 
 def _get_context(page_name):
-    return {"pages": settings.PUBLIC_PAGES, "current_page_name": page_name}
+    return {
+        "pages": settings.PUBLIC_PAGES,
+        "current_page_name": page_name,
+    }
 
 
 # Regular index
@@ -46,7 +49,9 @@ def activities(request):
     View for the static chapter service page.
     """
     return render(
-        request, "public/activities.html", _get_context("Service & Activities")
+        request,
+        "public/activities.html",
+        _get_context("Service & Activities"),
     )
 
 
@@ -54,7 +59,11 @@ def rush(request):
     """
     View for the static chapter service page.
     """
-    return render(request, "public/rush.html", _get_context("Rush"))
+    return render(
+        request,
+        "public/rush.html",
+        _get_context("Rush"),
+    )
 
 
 def campaign(request):
@@ -119,14 +128,22 @@ def campaign(request):
         ctx["transactions"] = transactions
         ctx["num_txs"] = len(successful_txs)
 
-    return render(request, "public/campaign.html", ctx)
+    return render(
+        request,
+        "public/campaign.html",
+        ctx,
+    )
 
 
 def permission_denied(request):
     """
     View for 403 (Permission Denied) error.
     """
-    return render(request, "common/403.html", _get_context("Permission Denied"))
+    return render(
+        request,
+        "common/403.html",
+        _get_context("Permission Denied"),
+    )
 
 
 def handler404(request, exception):

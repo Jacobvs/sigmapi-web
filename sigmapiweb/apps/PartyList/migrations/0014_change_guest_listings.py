@@ -9,11 +9,19 @@ import django.db.models.deletion
 
 class Migration(migrations.Migration):
 
-    dependencies = [("PartyList", "0013_add_list_reason")]
+    dependencies = [
+        ("PartyList", "0013_add_list_reason"),
+    ]
 
     operations = [
-        migrations.RemoveField(model_name="partyguest", name="maybeBlacklisted"),
-        migrations.RemoveField(model_name="partyguest", name="maybeGreylisted"),
+        migrations.RemoveField(
+            model_name="partyguest",
+            name="maybeBlacklisted",
+        ),
+        migrations.RemoveField(
+            model_name="partyguest",
+            name="maybeGreylisted",
+        ),
         migrations.AddField(
             model_name="partyguest",
             name="potentialBlacklisting",

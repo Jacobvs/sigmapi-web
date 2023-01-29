@@ -84,7 +84,10 @@ def create(request, party_id):
     }
 
     try:
-        guest = Guest.objects.get(name__exact=guest_name, gender__exact=guest_gender)
+        guest = Guest.objects.get(
+            name__exact=guest_name,
+            gender__exact=guest_gender,
+        )
     except Guest.DoesNotExist:
         form = GuestForm(request.POST)
         if form.is_valid():
@@ -95,14 +98,18 @@ def create(request, party_id):
                 status=500,
             )
     try:
-        party_guest = PartyGuest.objects.get(party__exact=party, guest__exact=guest)
+        party_guest = PartyGuest.objects.get(
+            party__exact=party,
+            guest__exact=guest,
+        )
     except PartyGuest.DoesNotExist:
         pass
     else:
         # if this guest is already on the list for this party
         if party_guest:
             return HttpResponse(
-                "The guest you tried to add is already on the list.", status=409
+                "The guest you tried to add is already on the list.",
+                status=409,
             )
 
     party_guest = PartyGuest(
@@ -146,7 +153,10 @@ def _get_added_by(party, requesting_user, voucher_username):
     if not voucher_username:
         return requesting_user, False
     if not party.is_party_mode():
-        return HttpResponse("Cannot vouch while not in party mode.", status=409)
+        return HttpResponse(
+            "Cannot vouch while not in party mode.",
+            status=409,
+        )
     try:
         voucher = User.objects.get(username=voucher_username)
     except User.DoesNotExist:
@@ -231,7 +241,8 @@ def sign_in(
         party_guest = PartyGuest.objects.get(pk=party_guest_id)
     except (Party.DoesNotExist, PartyGuest.DoesNotExist):
         return HttpResponse(
-            "Error signing in guest." + " Contact webmaster.", status=500
+            "Error signing in guest." + " Contact webmaster.",
+            status=500,
         )
     if not party_guest.signedIn:
         party_guest.signedIn = True
@@ -253,7 +264,11 @@ def sign_in(
 
 @login_required
 @csrf_exempt
-def sign_out(request, party_id, party_guest_id):  # pylint: disable=unused-argument
+def sign_out(
+    request,
+    party_id,  # pylint: disable=unused-argument
+    party_guest_id,
+):
     """
     Sign out a guest with given id
     """
@@ -264,7 +279,8 @@ def sign_out(request, party_id, party_guest_id):  # pylint: disable=unused-argum
         party_guest = PartyGuest.objects.get(pk=party_guest_id)
     except (Party.DoesNotExist, PartyGuest.DoesNotExist):
         return HttpResponse(
-            "Error signing out guest." + " Contact webmaster.", status=500
+            "Error signing out guest." + " Contact webmaster.",
+            status=500,
         )
     if party_guest.signedIn:
         party_guest.signedIn = False
@@ -272,13 +288,18 @@ def sign_out(request, party_id, party_guest_id):  # pylint: disable=unused-argum
         party_guest.save()
         return HttpResponse("Guest signed out.", status=200)
     return HttpResponse(
-        "Guest already signed out. Refresh to see updated list.", status=409
+        "Guest already signed out. Refresh to see updated list.",
+        status=409,
     )
 
 
 @login_required
 @csrf_exempt
-def destroy(request, party_id, party_guest_id):  # pylint: disable=unused-argument
+def destroy(
+    request,
+    party_id,  # pylint: disable=unused-argument
+    party_guest_id,
+):
     """
     Delete a guest (keyd by the supplied id),
     so long as the current user has domain over them
@@ -290,7 +311,8 @@ def destroy(request, party_id, party_guest_id):  # pylint: disable=unused-argume
         party_guest = PartyGuest.objects.get(pk=party_guest_id)
     except (Party.DoesNotExist, PartyGuest.DoesNotExist):
         return HttpResponse(
-            "Error deleting guest: guest or party does not exist.", status=409
+            "Error deleting guest: guest or party does not exist.",
+            status=409,
         )
     if user_can_edit(user=request.user, party_guest=party_guest):
         if party_guest.signedIn:
@@ -347,7 +369,9 @@ def poll(request, party_id):
     last = datetime.fromtimestamp(last_stamp / 1000.0)
     gender = request.GET.get("gender")
     guests = PartyGuest.objects.filter(
-        createdAt__gte=last, guest__gender__exact=gender, party__id__exact=party_id
+        createdAt__gte=last,
+        guest__gender__exact=gender,
+        party__id__exact=party_id,
     )
     response = {}
     response["guests"] = [guest.to_json() for guest in guests]

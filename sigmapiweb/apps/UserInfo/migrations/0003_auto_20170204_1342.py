@@ -6,7 +6,9 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [("UserInfo", "0002_auto_20161208_1712")]
+    dependencies = [
+        ("UserInfo", "0002_auto_20161208_1712"),
+    ]
 
     operations = [
         migrations.AlterModelOptions(
@@ -16,5 +18,5 @@ class Migration(migrations.Migration):
                 "verbose_name": "Pledge Class",
                 "verbose_name_plural": "Pledge Classes",
             },
-        )
+        ),
     ]

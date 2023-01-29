@@ -9,7 +9,9 @@ import django.db.models.deletion
 
 class Migration(migrations.Migration):
 
-    dependencies = [("PartyListV2", "0013_partycountrecord")]
+    dependencies = [
+        ("PartyListV2", "0013_partycountrecord"),
+    ]
 
     operations = [
         migrations.AlterField(

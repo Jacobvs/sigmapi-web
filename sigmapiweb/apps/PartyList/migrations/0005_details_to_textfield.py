@@ -6,10 +6,14 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [("PartyList", "0004_merge")]
+    dependencies = [
+        ("PartyList", "0004_merge"),
+    ]
 
     operations = [
         migrations.AlterField(
-            model_name="blacklistedguest", name="details", field=models.TextField()
-        )
+            model_name="blacklistedguest",
+            name="details",
+            field=models.TextField(),
+        ),
     ]

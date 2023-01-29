@@ -63,7 +63,7 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 "apps.PubSite.processors.menu_items",
-            ]
+            ],
         },
     }
 ]
@@ -79,7 +79,11 @@ MIDDLEWARE = (
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
 
-DOWNLOADVIEW_RULES = [{"destination_dir": "lightpd-optimized-by-middleware"}]
+DOWNLOADVIEW_RULES = [
+    {
+        "destination_dir": "lightpd-optimized-by-middleware",
+    },
+]
 
 ROOT_URLCONF = "common.urls"
 
@@ -137,7 +141,7 @@ LOGGING = {
             "handlers": ["mail_admins"],
             "level": "ERROR",
             "propagate": True,
-        }
+        },
     },
 }
 

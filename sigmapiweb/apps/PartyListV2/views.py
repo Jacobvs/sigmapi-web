@@ -44,7 +44,10 @@ def guests(request, party_id):
             groups__name__in=["Brothers", "Pledges", "Sweethearts"]
         ).order_by("first_name")
     ]
-    context = {"party": requested_party, "brothers": brothers}
+    context = {
+        "party": requested_party,
+        "brothers": brothers,
+    }
     return render(request, "partiesv2/guests.html", context)
 
 
@@ -106,7 +109,9 @@ def manage_parties(request):
     """Manage listed parties."""
 
     all_parties = Party.objects.all().order_by("party_start")
-    context = {"all_parties": all_parties}
+    context = {
+        "all_parties": all_parties,
+    }
     return render(request, "partiesv2/manage.html", context)
 
 

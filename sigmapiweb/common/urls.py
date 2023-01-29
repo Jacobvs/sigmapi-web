@@ -24,12 +24,30 @@ warnings.simplefilter("error", DeprecationWarning)
 urlpatterns = [
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-    url(regex=r"^admin/", view=admin.site.urls),
-    url(regex=r"^users/", view=include(userinfo_urls)),
-    url(regex=r"^brothers/", view=include(userinfo_urls)),
-    url(regex=r"^secure/", view=include(secure_urls)),
-    url(regex=r"^slack/", view=include(slack_urls)),
-    url(regex=r"^", view=include(public_urls)),
+    url(
+        regex=r"^admin/",
+        view=admin.site.urls,
+    ),
+    url(
+        regex=r"^users/",
+        view=include(userinfo_urls),
+    ),
+    url(
+        regex=r"^brothers/",
+        view=include(userinfo_urls),
+    ),
+    url(
+        regex=r"^secure/",
+        view=include(secure_urls),
+    ),
+    url(
+        regex=r"^slack/",
+        view=include(slack_urls),
+    ),
+    url(
+        regex=r"^",
+        view=include(public_urls),
+    ),
     url(regex=r"^404/$", view=public_views.handler404),
 ]
 handler404 = "apps.PubSite.views.handler404"

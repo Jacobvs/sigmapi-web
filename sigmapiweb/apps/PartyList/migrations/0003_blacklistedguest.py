@@ -6,7 +6,9 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [("PartyList", "0001_initial")]
+    dependencies = [
+        ("PartyList", "0001_initial"),
+    ]
 
     operations = [
         migrations.CreateModel(
@@ -27,5 +29,5 @@ class Migration(migrations.Migration):
             options={
                 "permissions": (("manage_blacklist", "Can manage the blacklist"),)
             },
-        )
+        ),
     ]

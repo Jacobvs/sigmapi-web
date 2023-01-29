@@ -9,7 +9,9 @@ import django.db.models.deletion
 
 class Migration(migrations.Migration):
 
-    dependencies = [("UserInfo", "0006_default_pledgeclass")]
+    dependencies = [
+        ("UserInfo", "0006_default_pledgeclass"),
+    ]
 
     operations = [
         migrations.AlterField(

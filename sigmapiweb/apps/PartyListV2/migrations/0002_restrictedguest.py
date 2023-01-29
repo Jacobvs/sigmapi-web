@@ -56,5 +56,5 @@ class Migration(migrations.Migration):
                 "default_permissions": [],
             },
             bases=(common.mixins.ModelMixin, models.Model),
-        )
+        ),
     ]

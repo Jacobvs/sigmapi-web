@@ -6,7 +6,9 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [("PartyList", "0001_initial")]
+    dependencies = [
+        ("PartyList", "0001_initial"),
+    ]
 
     operations = [
         migrations.AlterModelOptions(
@@ -18,5 +20,5 @@ class Migration(migrations.Migration):
                     ("can_destroy_any_party_guest", "Can Remove Any Party Guest"),
                 ),
             },
-        )
+        ),
     ]

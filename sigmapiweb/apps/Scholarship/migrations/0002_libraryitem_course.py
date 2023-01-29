@@ -7,12 +7,14 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [("Scholarship", "0001_initial")]
+    dependencies = [
+        ("Scholarship", "0001_initial"),
+    ]
 
     operations = [
         migrations.AddField(
             model_name="libraryitem",
             name="course",
             field=models.CharField(default=b"", max_length=10),
-        )
+        ),
     ]

@@ -6,7 +6,9 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [("UserInfo", "0011_userinfo_linkedin")]
+    dependencies = [
+        ("UserInfo", "0011_userinfo_linkedin"),
+    ]
 
     operations = [
         migrations.AlterField(
@@ -16,5 +18,5 @@ class Migration(migrations.Migration):
                 blank=True,
                 validators=[django.core.validators.RegexValidator(regex="^\\w*$")],
             ),
-        )
+        ),
     ]

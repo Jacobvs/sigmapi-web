@@ -13,8 +13,16 @@ urlpatterns = [
         view=RedirectView.as_view(pattern_name="partylist-index"),
         name="partylist-index-redirect",
     ),
-    url(regex=r"^all/$", view=views.index, name="partylist-index"),
-    url(regex=r"^add/$", view=views.add_party, name="partylist-add_party"),
+    url(
+        regex=r"^all/$",
+        view=views.index,
+        name="partylist-index",
+    ),
+    url(
+        regex=r"^add/$",
+        view=views.add_party,
+        name="partylist-add_party",
+    ),
     url(
         regex=r"^restricted-guests/$",
         view=views.restricted_lists,
@@ -30,7 +38,11 @@ urlpatterns = [
         view=views.remove_graylisting,
         name="partylist-remove_graylisting",
     ),
-    url(regex=r"^manage/$", view=views.manage_parties, name="partylist-manage_parties"),
+    url(
+        regex=r"^manage/$",
+        view=views.manage_parties,
+        name="partylist-manage_parties",
+    ),
     url(
         regex=r"^edit/(?P<party_id>[\d]+)/$",
         view=views.edit_party,

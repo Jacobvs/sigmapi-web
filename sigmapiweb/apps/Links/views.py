@@ -18,7 +18,9 @@ def view_all(request):
     """
     linkform = LinkForm()
     general_links = (
-        Link.objects.filter(promoted=False)
+        Link.objects.filter(
+            promoted=False,
+        )
         .order_by("-date")
         .filter(date__range=[datetime.today() - timedelta(days=365), datetime.today()])
     )

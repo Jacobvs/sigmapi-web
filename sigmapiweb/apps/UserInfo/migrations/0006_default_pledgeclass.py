@@ -6,7 +6,9 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [("UserInfo", "0005_misc")]
+    dependencies = [
+        ("UserInfo", "0005_misc"),
+    ]
 
     operations = [
         migrations.AlterField(
@@ -15,5 +17,5 @@ class Migration(migrations.Migration):
             field=models.ForeignKey(
                 default=1, to="UserInfo.PledgeClass", on_delete=models.CASCADE
             ),
-        )
+        ),
     ]

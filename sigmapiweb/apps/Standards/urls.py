@@ -15,9 +15,15 @@ urlpatterns = [
         view=RedirectView.as_view(pattern_name="standards-index"),
         name="standards-index_old",
     ),
-    url(regex=r"^overview/$", view=views.index, name="standards-index"),
     url(
-        regex=r"^summons/$", view=views.manage_summons, name="standards-manage_summons"
+        regex=r"^overview/$",
+        view=views.index,
+        name="standards-index",
+    ),
+    url(
+        regex=r"^summons/$",
+        view=views.manage_summons,
+        name="standards-manage_summons",
     ),
     url(
         regex=r"^summons/requests/$",

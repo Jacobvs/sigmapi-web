@@ -5,10 +5,14 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [("UserInfo", "0010_auto_20201203_2032")]
+    dependencies = [
+        ("UserInfo", "0010_auto_20201203_2032"),
+    ]
 
     operations = [
         migrations.AddField(
-            model_name="userinfo", name="linkedIn", field=models.TextField(blank=True)
-        )
+            model_name="userinfo",
+            name="linkedIn",
+            field=models.TextField(blank=True),
+        ),
     ]

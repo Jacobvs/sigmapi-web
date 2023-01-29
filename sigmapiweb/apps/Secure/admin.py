@@ -36,4 +36,6 @@ class LogEntryAdmin(admin.ModelAdmin):
 
 admin.site.register(LogEntry, LogEntryAdmin)
 
-register_model_admins(CalendarKey)
+register_model_admins(
+    CalendarKey,
+)

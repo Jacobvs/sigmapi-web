@@ -8,7 +8,9 @@ from .. import models as mymodels
 
 class Migration(migrations.Migration):
 
-    dependencies = [migrations.swappable_dependency(settings.AUTH_USER_MODEL)]
+    dependencies = [
+        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
+    ]
 
     operations = [
         migrations.CreateModel(
@@ -30,7 +32,10 @@ class Migration(migrations.Migration):
                 ("createdAt", models.DateTimeField(auto_now_add=True)),
                 ("updatedAt", models.DateTimeField(auto_now=True)),
             ],
-            options={"verbose_name": "Guest", "verbose_name_plural": "Guests"},
+            options={
+                "verbose_name": "Guest",
+                "verbose_name_plural": "Guests",
+            },
             bases=(models.Model,),
         ),
         migrations.CreateModel(

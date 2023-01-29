@@ -8,7 +8,9 @@ from .. import models as mymodels
 
 class Migration(migrations.Migration):
 
-    dependencies = [migrations.swappable_dependency(settings.AUTH_USER_MODEL)]
+    dependencies = [
+        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
+    ]
 
     operations = [
         migrations.CreateModel(

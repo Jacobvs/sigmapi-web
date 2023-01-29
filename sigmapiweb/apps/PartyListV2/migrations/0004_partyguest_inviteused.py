@@ -25,5 +25,5 @@ class Migration(migrations.Migration):
                 related_name="invites_used_for",
                 to=settings.AUTH_USER_MODEL,
             ),
-        )
+        ),
     ]

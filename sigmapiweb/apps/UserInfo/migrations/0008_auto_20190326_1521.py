@@ -9,7 +9,9 @@ import django.db.models.deletion
 
 class Migration(migrations.Migration):
 
-    dependencies = [("UserInfo", "0007_change_on_delete")]
+    dependencies = [
+        ("UserInfo", "0007_change_on_delete"),
+    ]
 
     operations = [
         migrations.AlterField(

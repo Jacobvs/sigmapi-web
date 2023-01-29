@@ -521,5 +521,8 @@ def describe_all_cliques():
         )
         final_string += "\n"
 
-    response = {"response_type": "ephemeral", "text": final_string}
+    response = {
+        "response_type": "ephemeral",
+        "text": final_string,
+    }
     return JsonResponse(response)

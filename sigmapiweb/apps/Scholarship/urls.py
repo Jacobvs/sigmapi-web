@@ -8,20 +8,46 @@ from . import views
 
 urlpatterns = [
     # Viewing pages
-    url(regex=r"^$", view=views.index, name="scholarship-index"),
     url(
-        regex=r"^study_hours/$", view=views.study_hours, name="scholarship-study_hours"
+        regex=r"^$",
+        view=views.index,
+        name="scholarship-index",
     ),
-    url(regex=r"^resources/$", view=views.resources, name="scholarship-resources"),
-    url(regex=r"^courses/$", view=views.courses, name="scholarship-courses"),
+    url(
+        regex=r"^study_hours/$",
+        view=views.study_hours,
+        name="scholarship-study_hours",
+    ),
+    url(
+        regex=r"^resources/$",
+        view=views.resources,
+        name="scholarship-resources",
+    ),
+    url(
+        regex=r"^courses/$",
+        view=views.courses,
+        name="scholarship-courses",
+    ),
     url(
         regex=r"^sections/(?P<catalog_code>[\w]+)/$",
         view=views.sections,
         name="scholarship-section",
     ),
-    url(regex=r"^sections/$", view=views.sections, name="scholarship-sections-all"),
-    url(regex=r"^library/$", view=views.library, name="scholarship-library"),
-    url(regex=r"^approve/$", view=views.approve, name="scholarship-approve"),
+    url(
+        regex=r"^sections/$",
+        view=views.sections,
+        name="scholarship-sections-all",
+    ),
+    url(
+        regex=r"^library/$",
+        view=views.library,
+        name="scholarship-library",
+    ),
+    url(
+        regex=r"^approve/$",
+        view=views.approve,
+        name="scholarship-approve",
+    ),
     # Approve pages
     url(
         regex=r"^approve/resource/(?P<resource>[\d]+)/$",

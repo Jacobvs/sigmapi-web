@@ -9,7 +9,9 @@ import django.db.models.deletion
 
 class Migration(migrations.Migration):
 
-    dependencies = [("Links", "0001_initial")]
+    dependencies = [
+        ("Links", "0001_initial"),
+    ]
 
     operations = [
         migrations.AlterField(
@@ -20,5 +22,5 @@ class Migration(migrations.Migration):
                 on_delete=django.db.models.deletion.SET_NULL,
                 to=settings.AUTH_USER_MODEL,
             ),
-        )
+        ),
     ]

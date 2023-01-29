@@ -13,8 +13,16 @@ urlpatterns = [
         view=RedirectView.as_view(pattern_name="partylist-old-index"),
         name="partylist-old-index",
     ),
-    url(regex=r"^all/$", view=views.index, name="partylist-old-index"),
-    url(regex=r"^add/$", view=views.add_party, name="partylist-old-add_party"),
+    url(
+        regex=r"^all/$",
+        view=views.index,
+        name="partylist-old-index",
+    ),
+    url(
+        regex=r"^add/$",
+        view=views.add_party,
+        name="partylist-old-add_party",
+    ),
     url(
         regex=r"^manage/$",
         view=views.manage_parties,

@@ -7,7 +7,11 @@ from . import views
 
 
 urlpatterns = [
-    url(regex=r"^$", view=views.users, name="userinfo-users"),
+    url(
+        regex=r"^$",
+        view=views.users,
+        name="userinfo-users",
+    ),
     url(
         regex=r"^family-tree/$",
         view=views.family_tree_dashboard,
@@ -22,6 +26,8 @@ urlpatterns = [
         name="userinfo-family_tree_data",
     ),
     url(
-        regex=r"^password/", view=views.change_password, name="userinfo-change_password"
+        regex=r"^password/",
+        view=views.change_password,
+        name="userinfo-change_password",
     ),
 ]

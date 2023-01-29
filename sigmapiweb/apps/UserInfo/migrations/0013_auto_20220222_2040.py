@@ -6,7 +6,9 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [("UserInfo", "0012_auto_20220222_2031")]
+    dependencies = [
+        ("UserInfo", "0012_auto_20220222_2031"),
+    ]
 
     operations = [
         migrations.AlterField(
@@ -18,5 +20,5 @@ class Migration(migrations.Migration):
                     django.core.validators.RegexValidator(regex="^[\\w\\d\\-]*$")
                 ],
             ),
-        )
+        ),
     ]

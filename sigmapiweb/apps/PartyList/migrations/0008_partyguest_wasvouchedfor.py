@@ -7,7 +7,9 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [("PartyList", "0007_ever_signed_in")]
+    dependencies = [
+        ("PartyList", "0007_ever_signed_in"),
+    ]
 
     operations = [
         migrations.AddField(
@@ -15,5 +17,5 @@ class Migration(migrations.Migration):
             name="wasVouchedFor",
             field=models.BooleanField(default=False),
             preserve_default=False,
-        )
+        ),
     ]

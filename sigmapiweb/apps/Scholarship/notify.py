@@ -27,7 +27,10 @@ def scholarship_content_submitted():
         return
     scholarship_chair = scholarship.first()
     send_email(
-        subject=subject, body=message, to_emails=[scholarship_chair.email], cc_emails=[]
+        subject=subject,
+        body=message,
+        to_emails=[scholarship_chair.email],
+        cc_emails=[],
     )
 
 

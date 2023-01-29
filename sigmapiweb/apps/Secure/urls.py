@@ -15,12 +15,37 @@ from . import views
 
 
 urlpatterns = [
-    url(regex=r"^$", view=views.index, name="secure-index"),
-    url(regex=r"^archives/", view=include(archive_urls)),
-    url(regex=r"^parties-old/", view=include(old_parties_urls)),
-    url(regex=r"^parties/", view=include(parties_urls)),
-    url(regex=r"^users/", view=include(userinfo_urls)),
-    url(regex=r"^links/", view=include(links_urls)),
-    url(regex=r"^standards/", view=include(standards_urls)),
-    url(regex=r"^scholarship/", view=include(scholarship_urls)),
+    url(
+        regex=r"^$",
+        view=views.index,
+        name="secure-index",
+    ),
+    url(
+        regex=r"^archives/",
+        view=include(archive_urls),
+    ),
+    url(
+        regex=r"^parties-old/",
+        view=include(old_parties_urls),
+    ),
+    url(
+        regex=r"^parties/",
+        view=include(parties_urls),
+    ),
+    url(
+        regex=r"^users/",
+        view=include(userinfo_urls),
+    ),
+    url(
+        regex=r"^links/",
+        view=include(links_urls),
+    ),
+    url(
+        regex=r"^standards/",
+        view=include(standards_urls),
+    ),
+    url(
+        regex=r"^scholarship/",
+        view=include(scholarship_urls),
+    ),
 ]

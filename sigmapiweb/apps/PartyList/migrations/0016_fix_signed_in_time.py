@@ -13,7 +13,9 @@ class Migration(migrations.Migration):
         ("PartyList", "0018_auto_20180411_1740"),
     ]
 
-    dependencies = [("PartyList", "0015_add_count_permission")]
+    dependencies = [
+        ("PartyList", "0015_add_count_permission"),
+    ]
 
     operations = [
         migrations.AlterField(

@@ -40,9 +40,15 @@ class BlacklistForm(ModelForm):
 
     name = forms.CharField(max_length=100, label="Full Name")
     details = forms.CharField(
-        max_length=1000, label="Identifying Details", required=True
+        max_length=1000,
+        label="Identifying Details",
+        required=True,
     )
-    reason = forms.CharField(max_length=1000, label="Reason", required=True)
+    reason = forms.CharField(
+        max_length=1000,
+        label="Reason",
+        required=True,
+    )
 
     class Meta:
         model = BlacklistedGuest
@@ -56,9 +62,15 @@ class GreylistForm(ModelForm):
 
     name = forms.CharField(max_length=100, label="Full Name")
     details = forms.CharField(
-        max_length=1000, label="Identifying Details", required=True
+        max_length=1000,
+        label="Identifying Details",
+        required=True,
     )
-    reason = forms.CharField(max_length=1000, label="Reason", required=True)
+    reason = forms.CharField(
+        max_length=1000,
+        label="Reason",
+        required=True,
+    )
 
     class Meta:
         model = GreylistedGuest

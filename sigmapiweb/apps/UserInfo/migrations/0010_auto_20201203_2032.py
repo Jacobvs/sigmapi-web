@@ -6,7 +6,9 @@ import django.db.models.deletion
 
 class Migration(migrations.Migration):
 
-    dependencies = [("UserInfo", "0009_merge_20190327_1727")]
+    dependencies = [
+        ("UserInfo", "0009_merge_20190327_1727"),
+    ]
 
     operations = [
         migrations.AlterField(
@@ -18,5 +20,5 @@ class Migration(migrations.Migration):
                 on_delete=django.db.models.deletion.SET_DEFAULT,
                 to="UserInfo.pledgeclass",
             ),
-        )
+        ),
     ]

@@ -127,7 +127,11 @@ class BlacklistedGuest(ModelMixin, models.Model):
 
         Returns: dict
         """
-        return {"name": self.name, "details": self.details, "reason": self.reason}
+        return {
+            "name": self.name,
+            "details": self.details,
+            "reason": self.reason,
+        }
 
     class Meta:
         permissions = (("manage_blacklist", "Can manage the blacklist"),)
@@ -142,7 +146,11 @@ class GreylistedGuest(ModelMixin, models.Model):
 
     name = models.CharField(max_length=100, db_index=True)
     addedBy = models.ForeignKey(
-        User, null=True, blank=False, on_delete=models.SET_NULL, default=None
+        User,
+        null=True,
+        blank=False,
+        on_delete=models.SET_NULL,
+        default=None,
     )
     details = models.TextField(default="(No identifying details provided)")
     reason = models.TextField(default="(No reason provided)")
@@ -181,7 +189,10 @@ class GreylistedGuest(ModelMixin, models.Model):
 
     class Meta:
         permissions = (
-            ("can_delete_any_greylisted_guest", "Can delete any greylsted guest"),
+            (
+                "can_delete_any_greylisted_guest",
+                "Can delete any greylsted guest",
+            ),
         )
 
 
@@ -219,10 +230,17 @@ class PartyGuest(ModelMixin, models.Model):
     """
 
     party = models.ForeignKey(
-        Party, related_name="party_for_guest", default=1, on_delete=models.CASCADE
+        Party,
+        related_name="party_for_guest",
+        default=1,
+        on_delete=models.CASCADE,
     )
     guest = models.ForeignKey(
-        Guest, related_name="guest", default=1, db_index=True, on_delete=models.CASCADE
+        Guest,
+        related_name="guest",
+        default=1,
+        db_index=True,
+        on_delete=models.CASCADE,
     )
     addedBy = models.ForeignKey(
         User,
@@ -238,10 +256,18 @@ class PartyGuest(ModelMixin, models.Model):
     everSignedIn = models.BooleanField(default=False)
     timeFirstSignedIn = models.DateTimeField(null=True)
     potentialBlacklisting = models.ForeignKey(
-        BlacklistedGuest, null=True, blank=True, default=None, on_delete=models.SET_NULL
+        BlacklistedGuest,
+        null=True,
+        blank=True,
+        default=None,
+        on_delete=models.SET_NULL,
     )
     potentialGreylisting = models.ForeignKey(
-        GreylistedGuest, null=True, blank=True, default=None, on_delete=models.SET_NULL
+        GreylistedGuest,
+        null=True,
+        blank=True,
+        default=None,
+        on_delete=models.SET_NULL,
     )
 
     def __str__(self):

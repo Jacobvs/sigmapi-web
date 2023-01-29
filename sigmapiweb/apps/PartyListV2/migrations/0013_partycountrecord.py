@@ -9,7 +9,9 @@ import django.db.models.deletion
 
 class Migration(migrations.Migration):
 
-    dependencies = [("PartyListV2", "0012_auto_20181022_0058")]
+    dependencies = [
+        ("PartyListV2", "0012_auto_20181022_0058"),
+    ]
 
     operations = [
         migrations.CreateModel(
@@ -40,5 +42,5 @@ class Migration(migrations.Migration):
                 ),
             ],
             bases=(common.mixins.ModelMixin, models.Model),
-        )
+        ),
     ]

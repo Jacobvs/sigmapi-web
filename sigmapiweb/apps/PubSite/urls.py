@@ -28,26 +28,54 @@ urlpatterns = [
         views.ResetPasswordComplete.as_view(),
         name="password_reset_complete",
     ),
-    url(regex=r"^login", view=dsl.LoginView.as_view(), name="pub-login"),
-    url(regex=r"^logout", view=dsl.logout_then_login, name="pub-logout"),
-    url(regex=r"^$", view=views.index, name="pub-index"),
+    url(
+        regex=r"^login",
+        view=dsl.LoginView.as_view(),
+        name="pub-login",
+    ),
+    url(
+        regex=r"^logout",
+        view=dsl.logout_then_login,
+        name="pub-logout",
+    ),
+    url(
+        regex=r"^$",
+        view=views.index,
+        name="pub-index",
+    ),
     url(
         regex=r"^history[/]$",
         view=RedirectView.as_view(pattern_name="pub-about"),
         name="pub-history",
     ),
-    url(regex=r"^about[/]$", view=views.about, name="pub-about"),
+    url(
+        regex=r"^about[/]$",
+        view=views.about,
+        name="pub-about",
+    ),
     url(
         regex=r"^service[/]$",
         view=RedirectView.as_view(pattern_name="pub-activities"),
         name="pub-service",
     ),
-    url(regex=r"^activities[/]$", view=views.activities, name="pub-activities"),
-    url(regex=r"^rush[/]$", view=views.rush, name="pub-rush"),
+    url(
+        regex=r"^activities[/]$",
+        view=views.activities,
+        name="pub-activities",
+    ),
+    url(
+        regex=r"^rush[/]$",
+        view=views.rush,
+        name="pub-rush",
+    ),
     # url(
     #     regex=r"^campaign[/]$",
     #     view=views.campaign,
     #     name="pub-campaign",
     # ),
-    url(regex=r"^403/", view=views.permission_denied, name="pub-permission_denied"),
+    url(
+        regex=r"^403/",
+        view=views.permission_denied,
+        name="pub-permission_denied",
+    ),
 ]
