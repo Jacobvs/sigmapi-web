@@ -13,58 +13,19 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name="bone",
-            name="bonee",
-        ),
-        migrations.RemoveField(
-            model_name="bone",
-            name="boner",
-        ),
-        migrations.RemoveField(
-            model_name="bonechangerecord",
-            name="bone",
-        ),
-        migrations.RemoveField(
-            model_name="bonechangerecord",
-            name="modifier",
-        ),
-        migrations.RemoveField(
-            model_name="jobrequest",
-            name="requester",
-        ),
-        migrations.RemoveField(
-            model_name="pipointschangerecord",
-            name="brother",
-        ),
-        migrations.RemoveField(
-            model_name="pipointschangerecord",
-            name="modifier",
-        ),
-        migrations.RemoveField(
-            model_name="pipointsrecord",
-            name="brother",
-        ),
-        migrations.RemoveField(
-            model_name="pipointsrequest",
-            name="requester",
-        ),
-        migrations.RemoveField(
-            model_name="probation",
-            name="giver",
-        ),
-        migrations.RemoveField(
-            model_name="probation",
-            name="recipient",
-        ),
-        migrations.RemoveField(
-            model_name="summonshistoryrecord",
-            name="boneID",
-        ),
-        migrations.RemoveField(
-            model_name="summonshistoryrecord",
-            name="hasBone",
-        ),
+        migrations.RemoveField(model_name="bone", name="bonee"),
+        migrations.RemoveField(model_name="bone", name="boner"),
+        migrations.RemoveField(model_name="bonechangerecord", name="bone"),
+        migrations.RemoveField(model_name="bonechangerecord", name="modifier"),
+        migrations.RemoveField(model_name="jobrequest", name="requester"),
+        migrations.RemoveField(model_name="pipointschangerecord", name="brother"),
+        migrations.RemoveField(model_name="pipointschangerecord", name="modifier"),
+        migrations.RemoveField(model_name="pipointsrecord", name="brother"),
+        migrations.RemoveField(model_name="pipointsrequest", name="requester"),
+        migrations.RemoveField(model_name="probation", name="giver"),
+        migrations.RemoveField(model_name="probation", name="recipient"),
+        migrations.RemoveField(model_name="summonshistoryrecord", name="boneID"),
+        migrations.RemoveField(model_name="summonshistoryrecord", name="hasBone"),
         migrations.AddField(
             model_name="summonshistoryrecord",
             name="rejected",
@@ -80,25 +41,11 @@ class Migration(migrations.Migration):
                 on_delete=models.CASCADE,
             ),
         ),
-        migrations.DeleteModel(
-            name="Bone",
-        ),
-        migrations.DeleteModel(
-            name="BoneChangeRecord",
-        ),
-        migrations.DeleteModel(
-            name="JobRequest",
-        ),
-        migrations.DeleteModel(
-            name="PiPointsChangeRecord",
-        ),
-        migrations.DeleteModel(
-            name="PiPointsRecord",
-        ),
-        migrations.DeleteModel(
-            name="PiPointsRequest",
-        ),
-        migrations.DeleteModel(
-            name="Probation",
-        ),
+        migrations.DeleteModel(name="Bone"),
+        migrations.DeleteModel(name="BoneChangeRecord"),
+        migrations.DeleteModel(name="JobRequest"),
+        migrations.DeleteModel(name="PiPointsChangeRecord"),
+        migrations.DeleteModel(name="PiPointsRecord"),
+        migrations.DeleteModel(name="PiPointsRequest"),
+        migrations.DeleteModel(name="Probation"),
     ]

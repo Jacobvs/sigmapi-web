@@ -18,12 +18,7 @@ def summons_requested(summons_request_count):
         + "https://sigmapigammaiota.org/secure/standards/summons/requests/"
     )
     fourth = User.objects.get(groups__name="4th Counselor")
-    send_email(
-        subject=subject,
-        body=message,
-        to_emails=[fourth.email],
-        cc_emails=[],
-    )
+    send_email(subject=subject, body=message, to_emails=[fourth.email], cc_emails=[])
 
 
 def summons_request_denied(summons_request):

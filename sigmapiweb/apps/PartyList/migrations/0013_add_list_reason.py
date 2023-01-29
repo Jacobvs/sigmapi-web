@@ -7,9 +7,7 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ("PartyList", "0012_rename_greylister"),
-    ]
+    dependencies = [("PartyList", "0012_rename_greylister")]
 
     operations = [
         migrations.AddField(

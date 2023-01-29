@@ -23,9 +23,7 @@ def index(request):
     View for all parties
     """
     parties = Party.objects.all().order_by("date")
-    context = {
-        "all_parties": parties,
-    }
+    context = {"all_parties": parties}
     return render(request, "parties/view.html", context)
 
 
@@ -72,10 +70,7 @@ def view_greylist(request):
     return render(request, "parties/greylist/view.html", context)
 
 
-@permission_required(
-    "PartyList.manage_blacklist",
-    login_url="pub-permission_denied",
-)
+@permission_required("PartyList.manage_blacklist", login_url="pub-permission_denied")
 def manage_blacklist(request):
     """
     View for managing blacklist.
@@ -100,10 +95,7 @@ def manage_blacklist(request):
     return render(request, "parties/blacklist/manage.html", context)
 
 
-@permission_required(
-    "PartyList.add_greylistedguest",
-    login_url="pub-permission_denied",
-)
+@permission_required("PartyList.add_greylistedguest", login_url="pub-permission_denied")
 def manage_greylist(request):
     """
     View for managing greylist.
@@ -123,10 +115,7 @@ def manage_greylist(request):
         form = GreylistForm()
     context = {
         "greylist": [
-            (
-                greylisting,
-                user_can_delete_greylisting(request.user, greylisting),
-            )
+            (greylisting, user_can_delete_greylisting(request.user, greylisting))
             for greylisting in GreylistedGuest.objects.all().order_by("name")
         ],
         "message": message,
@@ -135,10 +124,7 @@ def manage_greylist(request):
     return render(request, "parties/greylist/manage.html", context)
 
 
-@permission_required(
-    "PartyList.manage_blacklist",
-    login_url="pub-permission_denied",
-)
+@permission_required("PartyList.manage_blacklist", login_url="pub-permission_denied")
 def remove_blacklisting(request, bl_id):
     """
     View for removing a blacklisted guest.
@@ -150,8 +136,7 @@ def remove_blacklisting(request, bl_id):
 
 
 @permission_required(
-    "PartyList.delete_greylistedguest",
-    login_url="pub-permission_denied",
+    "PartyList.delete_greylistedguest", login_url="pub-permission_denied"
 )
 def remove_greylisting(request, gl_id):
     """
@@ -166,10 +151,7 @@ def remove_greylisting(request, gl_id):
     return redirect("partylist-manage_greylist")
 
 
-@permission_required(
-    "PartyList.manage_parties",
-    login_url="pub-permission_denied",
-)
+@permission_required("PartyList.manage_parties", login_url="pub-permission_denied")
 def add_party(request):
     """
     View for adding a party.
@@ -185,25 +167,17 @@ def add_party(request):
     return render(request, "parties/add.html", context)
 
 
-@permission_required(
-    "PartyList.manage_parties",
-    login_url="pub-permission_denied",
-)
+@permission_required("PartyList.manage_parties", login_url="pub-permission_denied")
 def manage_parties(request):
     """
     Provides a view to manage all of the parties in the system.
     """
     all_parties = Party.objects.all().order_by("date").reverse()
-    context = {
-        "all_parties": all_parties,
-    }
+    context = {"all_parties": all_parties}
     return render(request, "parties/manage.html", context)
 
 
-@permission_required(
-    "PartyList.manage_parties",
-    login_url="pub-permission_denied",
-)
+@permission_required("PartyList.manage_parties", login_url="pub-permission_denied")
 def edit_party(request, party_id):
     """
     Provides a view to edit a single party.
@@ -228,10 +202,7 @@ def edit_party(request, party_id):
     return render(request, "parties/edit.html", context)
 
 
-@permission_required(
-    "PartyList.manage_parties",
-    login_url="pub-permission_denied",
-)
+@permission_required("PartyList.manage_parties", login_url="pub-permission_denied")
 def delete_party(request, party_id):
     """
     Deletes the party with the ID that is sent in the post request
@@ -246,10 +217,7 @@ def delete_party(request, party_id):
     return redirect("partylist-manage_parties")
 
 
-@permission_required(
-    "PartyList.manage_parties",
-    login_url="pub-permission_denied",
-)
+@permission_required("PartyList.manage_parties", login_url="pub-permission_denied")
 def refresh_party_listings(request, party_id):
     """
     Re-check all party guests against the blacklist/greylist.
@@ -262,12 +230,10 @@ def refresh_party_listings(request, party_id):
         raise Http404("Party with id {0} not found".format(party_id))
     for party_guest in PartyGuest.objects.filter(party=party):
         party_guest.potentialBlacklisting = check_bad_guest_list(
-            BlacklistedGuest,
-            party_guest.guest.name,
+            BlacklistedGuest, party_guest.guest.name
         )
         party_guest.potentialGreylisting = check_bad_guest_list(
-            GreylistedGuest,
-            party_guest.guest.name,
+            GreylistedGuest, party_guest.guest.name
         )
         party_guest.save()
     return redirect("partylist-guests", party_id=party_id)

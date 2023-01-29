@@ -7,15 +7,10 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ("PartyListV2", "0004_partyguest_inviteused"),
-    ]
+    dependencies = [("PartyListV2", "0004_partyguest_inviteused")]
 
     operations = [
-        migrations.RemoveField(
-            model_name="partyguest",
-            name="signedIn",
-        ),
+        migrations.RemoveField(model_name="partyguest", name="signedIn"),
         migrations.AddField(
             model_name="partyguest",
             name="_signedIn",

@@ -7,9 +7,7 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ("PartyList", "0006_change_on_delete"),
-    ]
+    dependencies = [("PartyList", "0006_change_on_delete")]
 
     operations = [
         migrations.AddField(

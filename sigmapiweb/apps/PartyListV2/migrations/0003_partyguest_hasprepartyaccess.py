@@ -7,14 +7,12 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ("PartyListV2", "0002_restrictedguest"),
-    ]
+    dependencies = [("PartyListV2", "0002_restrictedguest")]
 
     operations = [
         migrations.AddField(
             model_name="partyguest",
             name="hasPrepartyAccess",
             field=models.BooleanField(default=False),
-        ),
+        )
     ]

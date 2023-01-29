@@ -7,9 +7,7 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ("PartyListV2", "0010_partyguest__cached_json"),
-    ]
+    dependencies = [("PartyListV2", "0010_partyguest__cached_json")]
 
     operations = [
         migrations.AddField(

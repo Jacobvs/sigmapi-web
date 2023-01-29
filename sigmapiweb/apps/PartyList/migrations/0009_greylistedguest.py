@@ -8,9 +8,7 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ("PartyList", "0008_partyguest_wasvouchedfor"),
-    ]
+    dependencies = [("PartyList", "0008_partyguest_wasvouchedfor")]
 
     operations = [
         migrations.CreateModel(
@@ -28,9 +26,7 @@ class Migration(migrations.Migration):
                 ("name", models.CharField(db_index=True, max_length=100)),
                 ("details", models.TextField()),
             ],
-            options={
-                "permissions": (("manage_greylist", "Can manage the greylist"),),
-            },
+            options={"permissions": (("manage_greylist", "Can manage the greylist"),)},
             bases=(common.mixins.ModelMixin, models.Model),
-        ),
+        )
     ]

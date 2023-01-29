@@ -160,19 +160,14 @@ class Party(ModelMixin, models.Model):
         # Find invites we used (excluding ones that use another
         # person's invites)
         invites = PartyGuest.objects.filter(
-            party=self,
-            added_by=user,
-            invite_used__isnull=True,
+            party=self, added_by=user, invite_used__isnull=True
         ).count()
 
         # Add any invites we gave to other people
-        invites += PartyGuest.objects.filter(
-            party=self,
-            invite_used=user,
-        ).count()
+        invites += PartyGuest.objects.filter(party=self, invite_used=user).count()
 
         return invites >= self.max_party_invites and self.has_party_invite_limits
-        
+
     def user_reached_guy_limit(self, user: User):
         """
         Determines if a user has reached their party invite limit for guys
@@ -183,11 +178,11 @@ class Party(ModelMixin, models.Model):
 
         if user is None:
             raise ValueError("User cannot be None")
-        
+
         # Find guy invites we used (excluding ones that use another
         # person's invites)
         invites_guy = PartyGuest.objects.filter(
-            party=self, added_by=user, invite_used__isnull=True, gender="M",
+            party=self, added_by=user, invite_used__isnull=True, gender="M"
         ).count()
 
         # # Add any invites we gave to other people
@@ -195,13 +190,15 @@ class Party(ModelMixin, models.Model):
         #     party=self,
         #     invite_used=user,
         # ).count()
-        
+
         invites_guy += PartyGuest.objects.filter(
-            party=self, invite_used=user, gender="M",
+            party=self, invite_used=user, gender="M"
         ).count()
 
-        return invites_guy >= self.max_guy_party_invites and self.has_party_invite_limits
-        
+        return (
+            invites_guy >= self.max_guy_party_invites and self.has_party_invite_limits
+        )
+
     def user_reached_girl_limit(self, user: User):
         """
         Determines if a user has reached their party invite limit for girls
@@ -212,7 +209,7 @@ class Party(ModelMixin, models.Model):
 
         if user is None:
             raise ValueError("User cannot be None")
-        
+
         # Find guy invites we used (excluding ones that use another
         # person's invites)
         invites_girl = PartyGuest.objects.filter(
@@ -224,12 +221,14 @@ class Party(ModelMixin, models.Model):
         #     party=self,
         #     invite_used=user,
         # ).count()
-        
+
         invites_girl += PartyGuest.objects.filter(
-            party=self, invite_used=user, gender="F",
+            party=self, invite_used=user, gender="F"
         ).count()
 
-        return invites_girl >= self.max_girl_party_invites and self.has_party_invite_limits
+        return (
+            invites_girl >= self.max_girl_party_invites and self.has_party_invite_limits
+        )
 
     def user_reached_vouching_limit(self, user: User):
         """Indicate a brother has reached their vouching limit."""
@@ -365,10 +364,7 @@ class PartyCountRecord(ModelMixin, models.Model):
     """Class to keep track of the party count."""
 
     party = models.ForeignKey(
-        Party,
-        related_name="related_party",
-        default=1,
-        on_delete=models.CASCADE,
+        Party, related_name="related_party", default=1, on_delete=models.CASCADE
     )
     guycount = models.IntegerField()
     girlcount = models.IntegerField()
@@ -409,10 +405,7 @@ class PartyGuest(ModelMixin, models.Model):
     gender = models.CharField(max_length=10)
 
     party = models.ForeignKey(
-        Party,
-        related_name="party_for_guest",
-        default=1,
-        on_delete=models.CASCADE,
+        Party, related_name="party_for_guest", default=1, on_delete=models.CASCADE
     )
 
     added_by = models.ForeignKey(
@@ -438,10 +431,7 @@ class PartyGuest(ModelMixin, models.Model):
     created_at = models.DateTimeField(auto_now_add=True, db_index=True)
     _signed_in = models.BooleanField(default=False, db_column="signedIn")
     ever_signed_in = models.BooleanField(default=False)
-    time_first_signed_in = models.DateTimeField(
-        null=True,
-        blank=True,
-    )
+    time_first_signed_in = models.DateTimeField(null=True, blank=True)
     _cached_json = models.TextField(null=True, blank=True)
     update_counter = models.IntegerField(default=0)
 
@@ -548,11 +538,7 @@ class RestrictedGuest(ModelMixin, models.Model):
 
     name = models.CharField(max_length=100)
     added_by = models.ForeignKey(
-        User,
-        null=True,
-        blank=False,
-        on_delete=models.SET_NULL,
-        default=None,
+        User, null=True, blank=False, on_delete=models.SET_NULL, default=None
     )
     details = models.TextField(default="(No identifying details provided)")
     reason = models.TextField(default="(No reason provided)")
@@ -609,17 +595,10 @@ class SearchLogEntry(ModelMixin, models.Model):
     """Model for search logs."""
 
     user = models.ForeignKey(
-        User,
-        null=True,
-        blank=False,
-        on_delete=models.SET_NULL,
-        default=None,
+        User, null=True, blank=False, on_delete=models.SET_NULL, default=None
     )
     party = models.ForeignKey(
-        Party,
-        related_name="party_for_search",
-        default=1,
-        on_delete=models.CASCADE,
+        Party, related_name="party_for_search", default=1, on_delete=models.CASCADE
     )
 
     search = models.TextField()

@@ -5,9 +5,7 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ("PartyListV2", "0014_alter_admin_form"),
-    ]
+    dependencies = [("PartyListV2", "0014_alter_admin_form")]
 
     operations = [
         migrations.AddField(

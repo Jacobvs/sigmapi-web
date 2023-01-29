@@ -7,9 +7,7 @@ from django.db import migrations
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ("PartyListV2", "0006_restrictedguest_cachedjson"),
-    ]
+    dependencies = [("PartyListV2", "0006_restrictedguest_cachedjson")]
 
     operations = [
         migrations.AlterModelOptions(
@@ -27,8 +25,5 @@ class Migration(migrations.Migration):
                 ),
             },
         ),
-        migrations.RemoveField(
-            model_name="restrictedguest",
-            name="cachedJSON",
-        ),
+        migrations.RemoveField(model_name="restrictedguest", name="cachedJSON"),
     ]

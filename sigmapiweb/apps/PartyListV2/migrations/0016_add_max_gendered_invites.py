@@ -5,9 +5,7 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ("PartyListV2", "0015_nonbinary"),
-    ]
+    dependencies = [("PartyListV2", "0015_nonbinary")]
 
     operations = [
         migrations.AddField(

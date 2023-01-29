@@ -176,10 +176,7 @@ def family_tree(request):
     View for the family tree page
     """
 
-    context = {
-        "pages": settings.PUBLIC_PAGES,
-        "current_page_name": "Brothers",
-    }
+    context = {"pages": settings.PUBLIC_PAGES, "current_page_name": "Brothers"}
     return render(request, "userinfo/public/family-tree.html", context)
 
 

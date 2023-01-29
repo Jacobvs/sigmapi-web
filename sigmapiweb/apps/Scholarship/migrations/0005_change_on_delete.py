@@ -9,9 +9,7 @@ import django.db.models.deletion
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ("Scholarship", "0004_misc"),
-    ]
+    dependencies = [("Scholarship", "0004_misc")]
 
     operations = [
         migrations.AlterField(

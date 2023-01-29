@@ -7,14 +7,10 @@ from django.db import migrations
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ("PartyList", "0011_remember_listing"),
-    ]
+    dependencies = [("PartyList", "0011_remember_listing")]
 
     operations = [
         migrations.RenameField(
-            model_name="greylistedguest",
-            old_name="greylister",
-            new_name="addedBy",
-        ),
+            model_name="greylistedguest", old_name="greylister", new_name="addedBy"
+        )
     ]

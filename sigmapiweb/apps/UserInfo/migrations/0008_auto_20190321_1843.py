@@ -7,14 +7,12 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ("UserInfo", "0007_change_on_delete"),
-    ]
+    dependencies = [("UserInfo", "0007_change_on_delete")]
 
     operations = [
         migrations.AlterField(
             model_name="userinfo",
             name="graduationYear",
             field=models.PositiveIntegerField(default=2022),
-        ),
+        )
     ]

@@ -7,9 +7,7 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ("PartyList", "0010_greylistedguest_changes"),
-    ]
+    dependencies = [("PartyList", "0010_greylistedguest_changes")]
 
     operations = [
         migrations.AddField(

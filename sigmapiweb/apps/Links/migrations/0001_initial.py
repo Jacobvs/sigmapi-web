@@ -7,9 +7,7 @@ from django.conf import settings
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-    ]
+    dependencies = [migrations.swappable_dependency(settings.AUTH_USER_MODEL)]
 
     operations = [
         migrations.CreateModel(
@@ -44,5 +42,5 @@ class Migration(migrations.Migration):
                 ),
             },
             bases=(models.Model,),
-        ),
+        )
     ]

@@ -49,10 +49,7 @@ def index(request):
     return render(request, "standards/index.html", context)
 
 
-@permission_required(
-    "Standards.add_summonsrequest",
-    login_url="pub-permission_denied",
-)
+@permission_required("Standards.add_summonsrequest", login_url="pub-permission_denied")
 def send_summons_request(request):
     """
     View for sending a summons request.
@@ -142,8 +139,7 @@ def send_summons_request(request):
 
 
 @permission_required(
-    "Standards.change_summonsrequest",
-    login_url="pub-permission_denied",
+    "Standards.change_summonsrequest", login_url="pub-permission_denied"
 )
 def manage_summons_requests(request):
     """
@@ -167,8 +163,7 @@ def manage_summons_requests(request):
 
 
 @permission_required(
-    "Standards.delete_summonsrequest",
-    login_url="pub-permission_denied",
+    "Standards.delete_summonsrequest", login_url="pub-permission_denied"
 )
 def reject_summons_request(request, summons_req):
     """
@@ -191,8 +186,7 @@ def reject_summons_request(request, summons_req):
 
 
 @permission_required(
-    "Standards.change_summonsrequest",
-    login_url="pub-permission_denied",
+    "Standards.change_summonsrequest", login_url="pub-permission_denied"
 )
 def approve_summons_request(request, summons_req):
     """
@@ -309,10 +303,7 @@ def accept_summons(request, summons):
     return redirect(manage_summons)
 
 
-@permission_required(
-    "Standards.delete_summons",
-    login_url="pub-permission_denied",
-)
+@permission_required("Standards.delete_summons", login_url="pub-permission_denied")
 def delete_summons(request, summons):
     """
     Reject a summons.

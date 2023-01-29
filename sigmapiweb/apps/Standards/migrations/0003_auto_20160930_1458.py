@@ -6,15 +6,11 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ("Standards", "0002_auto_20160926_1641"),
-    ]
+    dependencies = [("Standards", "0002_auto_20160926_1641")]
 
     operations = [
         migrations.AddField(
-            model_name="summons",
-            name="outcomes",
-            field=models.TextField(blank=True),
+            model_name="summons", name="outcomes", field=models.TextField(blank=True)
         ),
         migrations.RenameField(
             model_name="summons", old_name="reason", new_name="special_circumstance"

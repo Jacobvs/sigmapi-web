@@ -19,9 +19,7 @@ class CliqueGroup(ModelMixin, models.Model):
     """
 
     creator = models.ForeignKey(
-        CliqueUser,
-        on_delete=models.CASCADE,
-        related_name="creator",
+        CliqueUser, on_delete=models.CASCADE, related_name="creator"
     )
     name = models.TextField(unique=True)
     members = models.ManyToManyField(CliqueUser)

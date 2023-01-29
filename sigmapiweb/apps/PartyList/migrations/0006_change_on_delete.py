@@ -9,9 +9,7 @@ import django.db.models.deletion
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ("PartyList", "0005_details_to_textfield"),
-    ]
+    dependencies = [("PartyList", "0005_details_to_textfield")]
 
     operations = [
         migrations.AlterField(
@@ -24,5 +22,5 @@ class Migration(migrations.Migration):
                 related_name="added_by",
                 to=settings.AUTH_USER_MODEL,
             ),
-        ),
+        )
     ]

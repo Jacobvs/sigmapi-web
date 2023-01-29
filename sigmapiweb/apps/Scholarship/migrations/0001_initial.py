@@ -8,9 +8,7 @@ from django.conf import settings
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-    ]
+    dependencies = [migrations.swappable_dependency(settings.AUTH_USER_MODEL)]
 
     operations = [
         migrations.CreateModel(
@@ -139,9 +137,7 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={
-                "permissions": (("scholarship_head", "Can modify study hours."),),
-            },
+            options={"permissions": (("scholarship_head", "Can modify study hours."),)},
             bases=(models.Model,),
         ),
     ]

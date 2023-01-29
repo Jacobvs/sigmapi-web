@@ -9,16 +9,8 @@ from django.template.defaultfilters import slugify
 from django.utils.html import strip_tags
 from django_downloadview import sendfile
 
-from .forms import (
-    BylawsForm,
-    GuideForm,
-    HouseRulesForm,
-)
-from .models import (
-    Bylaws,
-    Guide,
-    HouseRules,
-)
+from .forms import BylawsForm, GuideForm, HouseRulesForm
+from .models import Bylaws, Guide, HouseRules
 
 
 @login_required
@@ -56,10 +48,7 @@ def bylaws(request):
     return render(request, "archive/bylaws.html", context)
 
 
-@permission_required(
-    "Archive.access_bylaws",
-    login_url="pub-permission_denied",
-)
+@permission_required("Archive.access_bylaws", login_url="pub-permission_denied")
 def download_bylaw(request, bylaw):
     """
     View for downloading bylaws
@@ -73,10 +62,7 @@ def download_bylaw(request, bylaw):
     )
 
 
-@permission_required(
-    "Archive.delete_bylaws",
-    login_url="pub-permission_denied",
-)
+@permission_required("Archive.delete_bylaws", login_url="pub-permission_denied")
 def delete_bylaw(request):
     """
     Deletes the bylaws with the given primary key.
@@ -89,10 +75,7 @@ def delete_bylaw(request):
     return redirect("archive-bylaws")
 
 
-@permission_required(
-    "Archive.access_houserules",
-    login_url="pub-permission_denied",
-)
+@permission_required("Archive.access_houserules", login_url="pub-permission_denied")
 def rules(request):
     """
     View for all house rules
@@ -118,10 +101,7 @@ def rules(request):
     return render(request, "archive/rules.html", context)
 
 
-@permission_required(
-    "Archive.access_houserules",
-    login_url="pub-permission_denied",
-)
+@permission_required("Archive.access_houserules", login_url="pub-permission_denied")
 def download_rules(request, rules_id):
     """
     View for downloading rules
@@ -135,10 +115,7 @@ def download_rules(request, rules_id):
     )
 
 
-@permission_required(
-    "Archive.delete_houserules",
-    login_url="pub-permission_denied",
-)
+@permission_required("Archive.delete_houserules", login_url="pub-permission_denied")
 def delete_rules(request):
     """
     Deletes the rules with the given primary key.
@@ -151,10 +128,7 @@ def delete_rules(request):
     return redirect("archive-rules")
 
 
-@permission_required(
-    "Archive.access_guide",
-    login_url="pub-permission_denied",
-)
+@permission_required("Archive.access_guide", login_url="pub-permission_denied")
 def guides(request):
     """
     View for all guides
@@ -175,10 +149,7 @@ def guides(request):
         else:
             redirect("pub-permission_denied")
     guides_obj = Guide.objects.all()
-    context = {
-        "guides": guides_obj,
-        "form": form,
-    }
+    context = {"guides": guides_obj, "form": form}
     return render(request, "archive/guides.html", context)
 
 

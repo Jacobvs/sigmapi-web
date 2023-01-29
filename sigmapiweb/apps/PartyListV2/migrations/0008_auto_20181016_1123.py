@@ -7,9 +7,7 @@ from django.db import migrations
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ("PartyListV2", "0007_auto_20180510_2347"),
-    ]
+    dependencies = [("PartyListV2", "0007_auto_20180510_2347")]
 
     operations = [
         migrations.AlterModelOptions(
@@ -25,24 +23,16 @@ class Migration(migrations.Migration):
             },
         ),
         migrations.RenameField(
-            model_name="partyguest",
-            old_name="_signedIn",
-            new_name="_signed_in",
+            model_name="partyguest", old_name="_signedIn", new_name="_signed_in"
         ),
         migrations.RenameField(
-            model_name="partyguest",
-            old_name="addedBy",
-            new_name="added_by",
+            model_name="partyguest", old_name="addedBy", new_name="added_by"
         ),
         migrations.RenameField(
-            model_name="partyguest",
-            old_name="createdAt",
-            new_name="created_at",
+            model_name="partyguest", old_name="createdAt", new_name="created_at"
         ),
         migrations.RenameField(
-            model_name="partyguest",
-            old_name="everSignedIn",
-            new_name="ever_signed_in",
+            model_name="partyguest", old_name="everSignedIn", new_name="ever_signed_in"
         ),
         migrations.RenameField(
             model_name="partyguest",
@@ -50,9 +40,7 @@ class Migration(migrations.Migration):
             new_name="has_preparty_access",
         ),
         migrations.RenameField(
-            model_name="partyguest",
-            old_name="inviteUsed",
-            new_name="invite_used",
+            model_name="partyguest", old_name="inviteUsed", new_name="invite_used"
         ),
         migrations.RenameField(
             model_name="partyguest",
@@ -64,8 +52,5 @@ class Migration(migrations.Migration):
             old_name="wasVouchedFor",
             new_name="was_vouched_for",
         ),
-        migrations.RemoveField(
-            model_name="partyguest",
-            name="cachedJSON",
-        ),
+        migrations.RemoveField(model_name="partyguest", name="cachedJSON"),
     ]

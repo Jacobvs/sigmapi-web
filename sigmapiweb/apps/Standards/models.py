@@ -36,16 +36,9 @@ class SummonsRequest(ModelMixin, models.Model):
 
     # TODO: Delete this model, and just use Summons with an approved flag.
     summoner = models.ForeignKey(
-        User,
-        related_name="+",
-        null=True,
-        on_delete=models.SET_NULL,
+        User, related_name="+", null=True, on_delete=models.SET_NULL
     )
-    summonee = models.ForeignKey(
-        User,
-        related_name="+",
-        on_delete=models.CASCADE,
-    )
+    summonee = models.ForeignKey(User, related_name="+", on_delete=models.CASCADE)
     spokeWith = models.BooleanField()
     outcomes = models.TextField(blank=True)
     standards_action = models.TextField(blank=True)
@@ -77,21 +70,11 @@ class Summons(ModelMixin, models.Model):
     """
 
     summoner = models.ForeignKey(
-        User,
-        related_name="+",
-        null=True,
-        on_delete=models.SET_NULL,
+        User, related_name="+", null=True, on_delete=models.SET_NULL
     )
-    summonee = models.ForeignKey(
-        User,
-        related_name="+",
-        on_delete=models.CASCADE,
-    )
+    summonee = models.ForeignKey(User, related_name="+", on_delete=models.CASCADE)
     approver = models.ForeignKey(
-        User,
-        related_name="+",
-        null=True,
-        on_delete=models.SET_NULL,
+        User, related_name="+", null=True, on_delete=models.SET_NULL
     )
     spokeWith = models.BooleanField()
     outcomes = models.TextField(blank=True)
@@ -118,21 +101,11 @@ class SummonsHistoryRecord(ModelMixin, models.Model):
     """
 
     summoner = models.ForeignKey(
-        User,
-        related_name="+",
-        null=True,
-        on_delete=models.SET_NULL,
+        User, related_name="+", null=True, on_delete=models.SET_NULL
     )
-    summonee = models.ForeignKey(
-        User,
-        related_name="+",
-        on_delete=models.CASCADE,
-    )
+    summonee = models.ForeignKey(User, related_name="+", on_delete=models.CASCADE)
     saved_by = models.ForeignKey(
-        User,
-        related_name="+",
-        null=True,
-        on_delete=models.SET_NULL,
+        User, related_name="+", null=True, on_delete=models.SET_NULL
     )
     details = models.TextField()
     resultReason = models.TextField()

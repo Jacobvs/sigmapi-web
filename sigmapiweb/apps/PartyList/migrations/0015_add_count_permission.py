@@ -7,9 +7,7 @@ from django.db import migrations
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ("PartyList", "0014_change_guest_listings"),
-    ]
+    dependencies = [("PartyList", "0014_change_guest_listings")]
 
     operations = [
         migrations.AlterModelOptions(
@@ -22,5 +20,5 @@ class Migration(migrations.Migration):
                 "verbose_name": "Party",
                 "verbose_name_plural": "Parties",
             },
-        ),
+        )
     ]
