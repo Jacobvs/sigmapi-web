@@ -6,18 +6,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('PartyListV2', '0015_nonbinary'),
+        ("PartyListV2", "0015_nonbinary"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='party',
-            name='max_girl_party_invites',
+            model_name="party",
+            name="max_girl_party_invites",
             field=models.IntegerField(default=999),
         ),
         migrations.AddField(
-            model_name='party',
-            name='max_guy_party_invites',
+            model_name="party",
+            name="max_guy_party_invites",
             field=models.IntegerField(default=1),
         ),
     ]

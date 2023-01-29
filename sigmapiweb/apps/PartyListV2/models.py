@@ -168,21 +168,13 @@ class Party(ModelMixin, models.Model):
         # Find guy invites we used (excluding ones that use another
         # person's invites)
         invites_guy = PartyGuest.objects.filter(
-            party=self,
-            added_by=user,
-            invite_used__isnull=True,
-            gender='M'
-            
+            party=self, added_by=user, invite_used__isnull=True, gender="M"
         ).count()
 
         # Find gal invites we used (excluding ones that use another
         # person's invites)
         invites_girl = PartyGuest.objects.filter(
-            party=self,
-            added_by=user,
-            invite_used__isnull=True,
-            gender='F'
-            
+            party=self, added_by=user, invite_used__isnull=True, gender="F"
         ).count()
 
         # Add any invites we gave to other people
@@ -191,9 +183,11 @@ class Party(ModelMixin, models.Model):
             invite_used=user,
         ).count()
 
-        return (invites >= self.max_party_invites and
-                invites_girl >= self.max_girl_party_invites and
-                invites_guy >= self.max_guy_party_invites) and self.has_party_invite_limits
+        return (
+            invites >= self.max_party_invites
+            and invites_girl >= self.max_girl_party_invites
+            and invites_guy >= self.max_guy_party_invites
+        ) and self.has_party_invite_limits
 
     def user_reached_vouching_limit(self, user: User):
         """Indicate a brother has reached their vouching limit."""
