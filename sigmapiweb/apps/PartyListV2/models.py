@@ -165,29 +165,71 @@ class Party(ModelMixin, models.Model):
             invite_used__isnull=True,
         ).count()
 
-        # Find guy invites we used (excluding ones that use another
-        # person's invites)
-        invites_guy = PartyGuest.objects.filter(
-            party=self, added_by=user, invite_used__isnull=True, gender="M"
-        ).count()
-
-        # Find gal invites we used (excluding ones that use another
-        # person's invites)
-        invites_girl = PartyGuest.objects.filter(
-            party=self, added_by=user, invite_used__isnull=True, gender="F"
-        ).count()
-
         # Add any invites we gave to other people
         invites += PartyGuest.objects.filter(
             party=self,
             invite_used=user,
         ).count()
 
-        return (
-            invites >= self.max_party_invites
-            and invites_girl >= self.max_girl_party_invites
-            and invites_guy >= self.max_guy_party_invites
-        ) and self.has_party_invite_limits
+        return invites >= self.max_party_invites and self.has_party_invite_limits
+        
+    def user_reached_guy_limit(self, user: User):
+        """
+        Determines if a user has reached their party invite limit for guys
+        :param user: The user to check
+        :return: True if there is an invite limit and the user has reached it,
+                False otherwise
+        """
+
+        if user is None:
+            raise ValueError("User cannot be None")
+        
+        # Find guy invites we used (excluding ones that use another
+        # person's invites)
+        invites_guy = PartyGuest.objects.filter(
+            party=self, added_by=user, invite_used__isnull=True, gender="M",
+        ).count()
+
+        # # Add any invites we gave to other people
+        # invites += PartyGuest.objects.filter(
+        #     party=self,
+        #     invite_used=user,
+        # ).count()
+        
+        invites_guy += PartyGuest.objects.filter(
+            party=self, invite_used=user, gender="M",
+        ).count()
+
+        return invites_guy >= self.max_guy_party_invites and self.has_party_invite_limits
+        
+    def user_reached_girl_limit(self, user: User):
+        """
+        Determines if a user has reached their party invite limit for girls
+        :param user: The user to check
+        :return: True if there is an invite limit and the user has reached it,
+                False otherwise
+        """
+
+        if user is None:
+            raise ValueError("User cannot be None")
+        
+        # Find guy invites we used (excluding ones that use another
+        # person's invites)
+        invites_girl = PartyGuest.objects.filter(
+            party=self, added_by=user, invite_used__isnull=True, gender="F"
+        ).count()
+
+        # # Add any invites we gave to other people
+        # invites += PartyGuest.objects.filter(
+        #     party=self,
+        #     invite_used=user,
+        # ).count()
+        
+        invites_girl += PartyGuest.objects.filter(
+            party=self, invite_used=user, gender="F",
+        ).count()
+
+        return invites_girl >= self.max_girl_party_invites and self.has_party_invite_limits
 
     def user_reached_vouching_limit(self, user: User):
         """Indicate a brother has reached their vouching limit."""
