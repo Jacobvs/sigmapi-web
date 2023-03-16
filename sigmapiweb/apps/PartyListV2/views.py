@@ -11,7 +11,7 @@ from django.views.decorators.clickjacking import xframe_options_sameorigin
 from django_downloadview import sendfile
 
 from apps.PartyListV2.forms import EditPartyForm, RestrictedGuestForm
-from apps.PartyListV2.models import Party, RestrictedGuest
+from apps.PartyListV2.models import Party, RestrictedGuest, PartyGuest
 
 import apps.PartyList.models
 
@@ -38,12 +38,22 @@ def guests(request, party_id):
     except Party.DoesNotExist:
         return redirect("partylist-index")
 
-    brothers = [
-        (user.username, user.get_full_name())
-        for user in User.objects.filter(
-            groups__name__in=["Brothers", "Pledges", "Sweethearts"]
-        ).order_by("first_name")
-    ]
+    brothers = []
+    for user in User.objects.filter(groups__name__in=["Brothers", "Pledges", "Sweethearts"]).order_by("first_name"):
+        invites = PartyGuest.objects.filter(
+            party=requested_party,
+            added_by=user,
+            invite_used__isnull=True,
+            has_preparty_access=True,
+        ).count()
+
+        # Add any invites we gave to other people
+        invites += PartyGuest.objects.filter(
+            party=requested_party, invite_used=user, has_preparty_access=True
+        ).count()
+
+        brothers.append((user.username, f"{user.get_full_name()} ({requested_party.max_party_invites-invites} Left)"))
+
     context = {
         "party": requested_party,
         "brothers": brothers,
